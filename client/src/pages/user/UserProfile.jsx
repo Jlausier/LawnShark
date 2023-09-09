@@ -1,4 +1,4 @@
-export default function CustomerProfile() {
+export default function UserProfile() {
 
     return (
       <>

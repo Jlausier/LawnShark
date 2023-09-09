@@ -7,10 +7,10 @@ function App() {
     <>
       {/* TODO: create a CSS GRID or Bootstrap Grid System to arrange the divs */}
       <main className='min-vh-100 row gx-0'>
-        <div className=' col-sm-4 col-md-4 col-lg-3 gx-0'>
+        <div className=' col-sm-4 col-md-3 col-lg-2 gx-0'>
           <NavBar />
         </div>
-        <div className=' col-sm-8 col-md-8 col-lg-9 gx-0'>
+        <div className=' col-sm-8 col-md-9 col-lg-10 gx-0'>
           <div className=' row gx-0'>
             <TopBar />
           </div>
