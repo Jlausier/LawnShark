@@ -8,7 +8,7 @@ const customerSchema = new Schema({
   },
   location: [
     {
-      adress: {
+      address: {
         type: String,
         required: true,
       },
