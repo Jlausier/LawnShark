@@ -6,19 +6,30 @@ const resolvers = {
       return await Service.find({});
     },
     postings: async() => {
-      return await Posting.find({})
-    }
+      return await Posting.find({});
+    },
   },
 
   Mutation: {
-    addUser: async (parent, { username, email, password }) => {
-      // First we create the user
-      const user = await User.create({ username, email, password });
-      // To reduce friction for the user, we immediately sign a JSON Web Token and log the user in after they are created
+    // !!!!!!Needs to be changed to take into account customer/company!!!!!!!
+    //addUser: async (parent, { username, email, password }) => {
+    //  const user = await User.create({ username, email, password });
+    //  const token = signToken(user);
+    //  return { token, user };
+    //},
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+      if (!user) {
+        throw AuthenticationError
+      }
+      const correctPw = await user.isCorrectPassword(password);
+      if (!correctPw) {
+        throw AuthenticationError
+      }
       const token = signToken(user);
-      // Return an `Auth` object that consists of the signed token and user's information
       return { token, user };
     },
+    addPosting: async (parent, {})
   }
 }
 
