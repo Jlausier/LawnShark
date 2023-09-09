@@ -1,6 +1,6 @@
 export default function TopBar() {
   return (
-    <div className="bg-dark-subtle">
+    <div>
       <nav className="px-3 navbar navbar-expand-lg navbar-light bg-light">
         {/* Collapse Button for Responsiveness */}
         <button

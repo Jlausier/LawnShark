@@ -5,4 +5,4 @@ export default function UserProfile() {
         <div>User Profile</div>
       </>
     );
-};
+}

@@ -5,4 +5,4 @@ export default function MyBids() {
         <div>My Bids</div>
       </>
     );
-};
+}

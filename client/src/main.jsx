@@ -10,6 +10,8 @@ import MyBids from './pages/company/MyBids.jsx';
 import CompanyProfile from './pages/company/CompanyProfile.jsx';
 import JobPostings from './pages/user/JobPostings.jsx';
 import UserProfile from './pages/user/UserProfile.jsx';
+import Search from './pages/Search.jsx';
+import SplashPage from './pages/SplashPage.jsx';
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -36,6 +38,14 @@ const router = createBrowserRouter([
       {
         path: '/UserProfile',
         element: <UserProfile />,
+      },
+      {
+        path: '/Search',
+        element: <Search />,
+      },
+      {
+        path: '/SplashPage',
+        element: <SplashPage />,
       },
     ],
   },

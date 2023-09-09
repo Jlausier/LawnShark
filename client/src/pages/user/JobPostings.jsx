@@ -5,4 +5,4 @@ export default function JobPostings() {
         <div>Job Postings</div>
       </>
     );
-};
+}

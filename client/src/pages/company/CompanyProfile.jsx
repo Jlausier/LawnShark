@@ -5,4 +5,4 @@ export default function CompanyProfile() {
         <div>Company Profile</div>
       </>
     );
-};
+}
