@@ -29,6 +29,24 @@ const customerSchema = new Schema({
   ],
 });
 
+const reviewSchema = new Schema({
+  reviewText: {
+    type: String,
+    required: true,
+    minlength: 1,
+    maxlength: 280,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  rating: {
+    type: Number,
+    maxlength: 1,
+    match: /[0-5]/,
+  },
+});
+
 const companySchema = new Schema({
   description: {
     type: String,
@@ -43,25 +61,7 @@ const companySchema = new Schema({
       ref: "Service",
     },
   ],
-  reviews: [
-    {
-      reviewText: {
-        type: String,
-        required: true,
-        minlength: 1,
-        maxlength: 280,
-      },
-      createdAt: {
-        type: Date,
-        default: Date.now,
-      },
-      rating: {
-        type: Number,
-        maxlength: 1,
-        match: /[0-5]/,
-      },
-    },
-  ],
+  reviews: [reviewSchema],
 });
 
 const userSchema = new Schema({
@@ -81,6 +81,11 @@ const userSchema = new Schema({
     type: String,
     required: true,
     minlength: 8,
+  },
+  isCompany: {
+    type: Boolean,
+    required: true,
+    default: false,
   },
   customer: customerSchema,
   company: companySchema,
