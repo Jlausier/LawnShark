@@ -12,7 +12,10 @@ const resolvers = {
       });
     },
     companies: async() => {
-      return await Company .find
+      return await Company.find({});
+    },
+    customers: async() => {
+      return await Customer.find({});
     }
   },
 
