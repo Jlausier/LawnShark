@@ -1,6 +1,11 @@
 const { Schema, model } = require("mongoose");
 
 const customerSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+    trim: true,
+  },
   location: [
     {
       adress: {

@@ -23,6 +23,12 @@ const reviewSchema = new Schema({
 });
 
 const companySchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true,
+  },
   description: {
     type: String,
     required: "You need to leave a description!",

@@ -1,30 +1,25 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
+const price = require("../utils/price");
 
-const postingSchema = new Schema(
-  {
-    service: {
+const postingSchema = new Schema({
+  service: {
+    type: Schema.Types.ObjectId,
+    ref: "Service",
+  },
+  askingPrice: price,
+  estimatePrice: price,
+  bids: [
+    {
       type: Schema.Types.ObjectId,
-      ref: 'Service'
+      ref: "Bid",
     },
-    askingPrice: {
-      type: Number
-    },
-    estimatePrice: {
-      type: Number
-    },
-    
-    bids: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Bid'
-    }],
+  ],
+  customer: {
+    type: Schema.Types.ObjectId,
+    ref: "Customer",
+  },
+});
 
-    customer: {
-      type: Schema.Types.ObjectId,
-      ref: 'User'
-    }
-  });
-
-const Posting = model('Posting', postingSchema);
+const Posting = model("Posting", postingSchema);
 
 module.exports = Posting;
