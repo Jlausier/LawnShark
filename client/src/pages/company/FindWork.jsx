@@ -1,4 +1,4 @@
-import BidCard from '../../components/BidCard';
+import JobPostingCard from '../../components/JobPostingCard';
 
 export default function FindWork() {
 
@@ -17,7 +17,7 @@ export default function FindWork() {
             <a className='pe-2'>Fertilizing</a>
           </div>
           <div className="border">
-            <BidCard />
+            <JobPostingCard />
             Cards
           </div>
         </div>

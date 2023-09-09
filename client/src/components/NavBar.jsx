@@ -12,6 +12,11 @@ export default function NavBar() {
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">
+                My Jobs
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">
                 My Bids
               </a>
             </li>

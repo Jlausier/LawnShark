@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 import App from "./App.jsx";
 import FindWork from './pages/company/FindWork.jsx';
+import MyJobs from './pages/company/MyJobs.jsx';
 import MyBids from './pages/company/MyBids.jsx';
 import CompanyProfile from './pages/company/CompanyProfile.jsx';
 import JobPostings from './pages/user/JobPostings.jsx';
@@ -20,8 +21,12 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        index: '/FindWork',
+        path: '/FindWork',
         element: <FindWork />,
+      },
+      {
+        path: '/MyJobs',
+        element: <MyJobs />,
       },
       {
         path: '/MyBids',
