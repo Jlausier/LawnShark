@@ -59,7 +59,15 @@ const typeDefs = `
   }
 
   type Query {
+    service(serviceId: ID!): Service
     services: [Service]
+    posting(postingId: ID!): Posting
+    postings: [Posting]
+    company(companyId: ID!): Company 
+    companies: [Company]
+    customer(customerId: ID!): 
+    customers: [Customer]
+
   }
 
 `;

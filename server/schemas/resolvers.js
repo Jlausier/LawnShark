@@ -2,17 +2,36 @@ const { Service, User, Posting, Bid } = require("../models");
 
 const resolvers = {
   Query: {
-    services: async () => {
-      return await Service.find({});
+
+    service: async (parent, {serviceId}) => {
+      return await Service.findOne({_id: serviceId});
     },
-    postings: async() => {
-      return await Posting.find({}).populate("bids").populate("customer").populate({
+    services: async () => {
+      return await Service.find();
+    },
+    posting: async(parent, {postingId}) => {
+      return await Posting.findOne({_id: postingId}).populate("bids").populate("customer").populate({
         path: "bids",
         populate: "company"
+      }).populate({
+        path: "customer",
+        populate: "location"
+      });
+    },  
+    postings: async() => {
+      return await Posting.find().populate("bids").populate("customer").populate({
+        path: "bids",
+        populate: "company"
+      }).populate({
+        path: "customer",
+        populate: "location"
       });
     },
+    company: async(parent, {companyId}) => {
+      return await Company.findOne({_id: companyId}).populate("reviews").populate("services")
+    },
     companies: async() => {
-      return await Company.find({});
+      return await Company.find().populate("reviews");
     },
     customers: async() => {
       return await Customer.find({});
