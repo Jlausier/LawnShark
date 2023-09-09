@@ -1,9 +1,8 @@
-function Dashboard() {
+export default function Dashboard() {
+
     return (
       <>
         <></>
       </>
     );
-  }
-  
-  export default Dashboard;
+};

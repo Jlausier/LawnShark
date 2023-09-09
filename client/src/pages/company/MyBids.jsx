@@ -1,9 +1,8 @@
-function MyBids() {
+export default function MyBids() {
+
     return (
       <>
         <></>
       </>
     );
-  }
-  
-  export default MyBids;
+};

@@ -1,9 +1,8 @@
-function CustomerProfile() {
+export default function CustomerProfile() {
+
     return (
       <>
         <></>
       </>
     );
-  }
-  
-  export default CustomerProfile;
+};

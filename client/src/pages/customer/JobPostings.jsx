@@ -1,9 +1,8 @@
-function JobPostings() {
+export default function JobPostings() {
+
     return (
       <>
         <></>
       </>
     );
-  }
-  
-  export default JobPostings;
+};

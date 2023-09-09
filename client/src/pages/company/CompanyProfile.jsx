@@ -1,9 +1,8 @@
-function CompanyProfile() {
+export default function CompanyProfile() {
+
     return (
       <>
         <></>
       </>
     );
-  }
-  
-  export default CompanyProfile;
+};

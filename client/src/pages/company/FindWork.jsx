@@ -1,9 +1,8 @@
-function FindWork() {
+export default function FindWork() {
+
     return (
       <>
         <></>
       </>
     );
-  }
-  
-  export default FindWork;
+};
