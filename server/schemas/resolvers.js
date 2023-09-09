@@ -6,8 +6,14 @@ const resolvers = {
       return await Service.find({});
     },
     postings: async() => {
-      return await Posting.find({});
+      return await Posting.find({}).populate("bids").populate("customer").populate({
+        path: "bids",
+        populate: "company"
+      });
     },
+    companies: async() => {
+      return await Company .find
+    }
   },
 
   Mutation: {
@@ -28,10 +34,9 @@ const resolvers = {
       }
       const token = signToken(user);
       return { token, user };
-    },
-    addPosting: async (parent, {})
+    }
   }
-}
+};
 
 
 module.exports = resolvers;
