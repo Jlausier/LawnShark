@@ -20,17 +20,32 @@ const userSchema = new Schema(
       minlength: 8,
     },
     customer: [
-      {
-        postings: [
-          {
+      { 
+        location: [{
+          adress: {
+            type: String,
+            required: true
+          },
+          city: {
+            type: String,
+            required: true
+          },
+          state: {
+            type: String,
+            required: true
+          },
+          zip: {
+            type: String,
+            required: true
+          }
+        }],
+        postings: [{
             type: Schema.Types.ObjectId,
             ref: 'Posting'
-          }
-        ],
-      }
-    ],
-    company: [
-      {
+        }]
+      }],
+
+    company: [{
         description: {
           type: String,
           required: 'You need to leave a description!',
@@ -38,14 +53,11 @@ const userSchema = new Schema(
           maxlength: 500,
           trim: true,
         },
-        services: [
-          {
+        services: [{
             type: Schema.Types.ObjectId,
             ref: 'Service'
-          }
-        ],
-        reviews: [
-          {
+          }],
+        reviews: [{
             reviewText: {
               type: String,
               required: true,
@@ -64,12 +76,24 @@ const userSchema = new Schema(
 
             }
 
-          }
-        ]
-      }
-    ]
+          }]
+      }]
   }
 );
+//password logic
+userSchema.pre('save', async function (next) {
+  if (this.isNew || this.isModified('password')) {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(this.password, saltRounds);
+  }
+
+  next();
+});
+
+
+userSchema.methods.isCorrectPassword = async function (password) {
+  return bcrypt.compare(password, this.password);
+};
 
 const User = model('User', userSchema);
 

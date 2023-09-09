@@ -6,25 +6,24 @@ const postingSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'Service'
     },
-    price: {
+    askingPrice: {
       type: Number
     },
-    location: {
-      type: String,
-      required: true
+    estimatePrice: {
+      type: Number
     },
+    
     bids: [
       {
         type: Schema.Types.ObjectId,
         ref: 'Bid'
-      }
-    ],
+    }],
+
     customer: {
       type: Schema.Types.ObjectId,
       ref: 'User'
     }
-  }
-);
+  });
 
 const Posting = model('Posting', postingSchema);
 
