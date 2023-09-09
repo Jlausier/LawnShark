@@ -7,7 +7,7 @@ const typeDefs = `
 
   type Bid {
     _id: ID
-    amount: Number
+    amount: Int
     posting: Posting
     company: Company
   }
@@ -15,8 +15,8 @@ const typeDefs = `
   type Posting {
     _id: ID
     service: Service
-    askingPrice: Number
-    estimatePrice: Number
+    askingPrice: Int
+    estimatePrice: Int
     bids: [Bid]
     customer: Customer
   }
@@ -29,16 +29,25 @@ const typeDefs = `
     _company: Company
   }
 
+  type Location {
+    address: String
+    city: String
+    state: String
+    zip: String
+  }
+
   type Customer {
     _id: ID
     name: String
-    location: {
-      address: String
-      city: String
-      state: String
-      zip: String
-    }
+    location: Location
     postings: [Posting]
+  }
+
+  type Review {
+    reviewText: String
+    createAt: String
+    rating: Int
+    customer: Customer
   }
 
   type Company {
@@ -46,12 +55,11 @@ const typeDefs = `
     name: String
     description: String
     services: [Service]
-    reviews: [{
-      reviewText: String
-      createAt: Date
-      rating: Number
-      customer: Customer
-    }]
+    reviews: [Review]
+  }
+
+  type Query {
+    services: [Service]
   }
 
 `;
