@@ -8,14 +8,17 @@ const userSchema = new Schema(
       unique: true,
       trim: true
     },
-
-    email: {type: String,
+    email: {
+      type: String,
       required: true,
       unique: true,
-      match: [/.+@.+\..+/, 'Must match an email address!'],},
-
-    password: {},
-
+      match: [/.+@.+\..+/, 'Must match an email address!'],
+    },
+    password: {
+      type: String,
+      required: true,
+      minlength: 8,
+    },
     customer: [
       {
         postings: [
@@ -26,7 +29,6 @@ const userSchema = new Schema(
         ],
       }
     ],
-
     company: [
       {
         description: {
@@ -39,7 +41,7 @@ const userSchema = new Schema(
         services: [
           {
             type: Schema.Types.ObjectId,
-            ref: 'Service'  
+            ref: 'Service'
           }
         ],
         reviews: [
@@ -53,18 +55,17 @@ const userSchema = new Schema(
             createdAt: {
               type: Date,
               default: Date.now,
-              get: (timestamp) => dateFormat(timestamp),
+              
             },
             rating: {
               type: Number,
+              maxlength: 1,
               match: /[0-5]/
 
             }
-            
+
           }
         ]
-
-
       }
     ]
   }
