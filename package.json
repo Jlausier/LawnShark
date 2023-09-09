@@ -7,7 +7,5 @@
   "keywords": [],
   "author": "",
   "license": "MIT",
-  "dependencies": {
-    "prop-types": "^15.8.1"
-  }
+  "dependencies": {}
 }
