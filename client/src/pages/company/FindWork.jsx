@@ -1,3 +1,5 @@
+import BidCard from '../../components/BidCard';
+
 export default function FindWork() {
 
     return (
