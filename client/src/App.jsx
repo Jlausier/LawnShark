@@ -16,7 +16,7 @@ function App() {
           <div className=' row gx-0'>
             <TopBar />
           </div>
-          <div className=' row gx-0'>
+          <div className=' row gx-0 city'>
             <Outlet />
           </div>
         </div>
