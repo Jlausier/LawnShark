@@ -78,8 +78,8 @@ const userSchema = new Schema(
 
           }]
       }]
-  }
-);
+  });
+  
 //password logic
 userSchema.pre('save', async function (next) {
   if (this.isNew || this.isModified('password')) {
