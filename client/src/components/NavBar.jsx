@@ -2,6 +2,8 @@ import { Link, useLocation } from 'react-router-dom';
 
 export default function NavBar() {
 
+  const company = true;
+
   const currentPage = useLocation().pathname;
 
   return (
