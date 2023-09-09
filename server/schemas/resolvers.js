@@ -1,4 +1,4 @@
-const { Service, User, Posting, Bid } = require("../models");
+const { Service, User, Posting, Bid, Cusstomer, Company } = require("../models");
 
 const resolvers = {
   Query: {
@@ -32,6 +32,9 @@ const resolvers = {
     },
     companies: async() => {
       return await Company.find().populate("reviews");
+    },
+    customer: async(parent, {customerId}) => {
+      return await Customer.findOne({_id: customerId}).populate("location").populate("postings");
     },
     customers: async() => {
       return await Customer.find({});

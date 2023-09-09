@@ -65,7 +65,7 @@ const typeDefs = `
     postings: [Posting]
     company(companyId: ID!): Company 
     companies: [Company]
-    customer(customerId: ID!): 
+    customer(customerId: ID!): Customer
     customers: [Customer]
 
   }
