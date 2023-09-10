@@ -1,10 +1,24 @@
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
+import NavBarLink from "./NavBarLink";
 
 export default function NavBar() {
-
   const company = true;
 
   const currentPage = useLocation().pathname;
+  const links = [
+    {
+      title: "Find Work",
+      path: "/MyJobs",
+    },
+    {
+      title: "My Bids",
+      path: "/MyBids",
+    },
+    {
+      title: "Search",
+      path: "/Search",
+    },
+  ];
 
   return (
     <>
@@ -12,46 +26,9 @@ export default function NavBar() {
         <div className="">Logo</div>
         <nav className="navbar navbar-expand-lg">
           <ul className="navbar-nav nav-pills flex-column">
-            <li className="nav-item active">
-              <a className="nav-link" href="#">
-                <Link
-                  to="/FindWork"
-                  className={currentPage === '/' ? 'nav-link active' : 'nav-link'}
-                >
-                  Find Work
-                </Link>
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                <Link
-                  to="/MyJobs"
-                  className={currentPage === '/' ? 'nav-link active' : 'nav-link'}
-                >
-                  My Jobs
-                </Link>
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                <Link
-                  to="/MyBids"
-                  className={currentPage === '/' ? 'nav-link active' : 'nav-link'}
-                >
-                  My Bids
-                </Link>              
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                <Link
-                  to="/Search"
-                  className={currentPage === '/' ? 'nav-link active' : 'nav-link'}
-                >
-                  Search
-                </Link>   
-              </a>
-            </li>
+            {links.map((link) => (
+              <NavBarLink {...link} currentPage={currentPage} key={link.path} />
+            ))}
           </ul>
         </nav>
       </div>
