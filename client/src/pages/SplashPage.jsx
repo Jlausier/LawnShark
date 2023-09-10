@@ -1,3 +1,7 @@
+// import LoginForm from '../components/LoginForm'
+// import SignUpLink from '../components/SignUpLink'
+
+
 export default function SplashPage() {
 
     return (
@@ -12,6 +16,7 @@ export default function SplashPage() {
           <div className="p-4 border border-1 rounded bg-light col d-flex flex-column">
             <h2 className="fs-5">Log in to Lawn Shark</h2>
             {/* Move Into A Component */}
+            {/* <LoginForm /> */}
             <form>
               <div className="mb-3">
                 <label for="exampleInputEmail1" className="form-label">Email address</label>
@@ -25,9 +30,13 @@ export default function SplashPage() {
               </div>
               <button type="submit" className="btn btn-primary">Submit</button>
             </form>
+
             <hr/>
+
             <div>
               <span>Don't have an account? </span>
+            {/* Move Into A Link Component */}
+            {/* <SignUpLink /> */}
               <a>Sign-up</a>
             </div>
 

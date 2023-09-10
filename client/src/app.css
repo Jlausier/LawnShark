@@ -2,6 +2,10 @@
     background-color: #2E983B;
 }
 
+.dark-green{
+    background-color: #16661B;
+}
+
 .landing-page-bg {
     background-image: url(/images/landing-page-image.png);
 }
