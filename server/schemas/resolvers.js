@@ -1,4 +1,5 @@
 const { Service, User, Posting, Bid, Customer, Company } = require("../models");
+import { signToken, AuthenticationError } from "../utils/auth";
 
 const resolvers = {
   Query: {
@@ -53,12 +54,6 @@ const resolvers = {
   },
 
   Mutation: {
-    // !!!!!!Needs to be changed to take into account customer/company!!!!!!!
-    //addUser: async (parent, { username, email, password }) => {
-    //  const user = await User.create({ username, email, password });
-    //  const token = signToken(user);
-    //  return { token, user };
-    //},
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {
@@ -68,6 +63,14 @@ const resolvers = {
       if (!correctPw) {
         throw AuthenticationError;
       }
+      const token = signToken(user);
+      return { token, user };
+    },
+
+    addUser: async (parent, { email, password }) => {
+      const user = await User.create({ email, password });
+      /** @TODO handle user creation error */
+
       const token = signToken(user);
       return { token, user };
     },
