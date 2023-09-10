@@ -23,13 +23,13 @@ import "./index.css";
 
 const router = createBrowserRouter([
   {
+    path: "/login",
+    element: <SplashPage />,
+  },
+  {
     path: "/",
     element: <App />,
     children: [
-      {
-        path: '/SplashPage',
-        element: <SplashPage />,
-      },
       {
         path: '/FindWork',
         element: <FindWork />,

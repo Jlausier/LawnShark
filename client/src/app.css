@@ -1,3 +1,7 @@
 .green{
     background-color: #2E983B;
 }
+
+.landing-page-bg {
+    background-image: url(/images/landing-page-image.png);
+}
