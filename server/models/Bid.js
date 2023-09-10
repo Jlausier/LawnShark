@@ -11,7 +11,7 @@ const bidSchema = new Schema({
   },
   company: {
     type: Schema.Types.ObjectId,
-    ref: "User",
+    ref: "Company",
   },
 });
 

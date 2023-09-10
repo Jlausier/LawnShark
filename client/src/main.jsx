@@ -5,14 +5,20 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import App from "./App.jsx";
+import SplashPage from './pages/SplashPage.jsx';
+
 import FindWork from './pages/company/FindWork.jsx';
 import MyJobs from './pages/company/MyJobs.jsx';
 import MyBids from './pages/company/MyBids.jsx';
 import CompanyProfile from './pages/company/CompanyProfile.jsx';
+
 import JobPostings from './pages/user/JobPostings.jsx';
 import UserProfile from './pages/user/UserProfile.jsx';
+
 import Search from './pages/Search.jsx';
-import SplashPage from './pages/SplashPage.jsx';
+import Notifications from './pages/Notifications.jsx';
+import Messages from './pages/Messages.jsx';
+
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -20,6 +26,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     children: [
+      {
+        path: '/SplashPage',
+        element: <SplashPage />,
+      },
       {
         path: '/FindWork',
         element: <FindWork />,
@@ -49,8 +59,12 @@ const router = createBrowserRouter([
         element: <Search />,
       },
       {
-        path: '/SplashPage',
-        element: <SplashPage />,
+        path: '/Notifications',
+        element: <Notifications />,
+      },
+      {
+        path: '/Messages',
+        element: <Messages />,
       },
     ],
   },
