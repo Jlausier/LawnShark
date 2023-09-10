@@ -1,5 +1,4 @@
 const typeDefs = `
-
   type Service {
     _id: ID
     name: String
@@ -67,9 +66,11 @@ const typeDefs = `
     companies: [Company]
     customer(customerId: ID!): Customer
     customers: [Customer]
-
   }
 
+  type Mutation {
+    login(email: String!, password: String!): Auth
+  }
 `;
 
 module.exports = typeDefs;
