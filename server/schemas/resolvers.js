@@ -1,14 +1,16 @@
 const { Service, User, Posting, Bid, Customer, Company } = require("../models");
-import { signToken, AuthenticationError } from "../utils/auth";
+const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
   Query: {
     service: async (parent, { serviceId }) => {
       return await Service.findOne({ _id: serviceId });
     },
+
     services: async () => {
       return await Service.find();
     },
+
     posting: async (parent, { postingId }) => {
       return await Posting.findOne({ _id: postingId })
         .populate("bids")
@@ -22,6 +24,7 @@ const resolvers = {
           populate: "location",
         });
     },
+
     postings: async () => {
       return await Posting.find()
         .populate("bids")
@@ -35,19 +38,23 @@ const resolvers = {
           populate: "location",
         });
     },
+
     company: async (parent, { companyId }) => {
       return await Company.findOne({ _id: companyId })
         .populate("reviews")
         .populate("services");
     },
+
     companies: async () => {
       return await Company.find().populate("reviews");
     },
+
     customer: async (parent, { customerId }) => {
       return await Customer.findOne({ _id: customerId })
         .populate("location")
         .populate("postings");
     },
+
     customers: async () => {
       return await Customer.find({});
     },
@@ -76,22 +83,22 @@ const resolvers = {
         { _id: userId },
         { $set: { _customer: customer._id } },
         { new: true }
-      );
+      ).populate("_customer");
 
       if (!user) throw AuthenticationError;
-      return { user, customer };
+      return { user };
     },
 
-    addCompany: async (parent, { userId, description, services }) => {
-      const company = await Company.create({ description, services });
+    addCompany: async (parent, { userId, name, description, services }) => {
+      const company = await Company.create({ name, description, services });
       const user = await User.findOneAndUpdate(
         { _id: userId },
         { $set: { _company: company._id } },
         { new: true }
-      );
+      ).populate("_company");
 
       if (!user) throw AuthenticationError;
-      return { user, company };
+      return { user };
     },
   },
 };

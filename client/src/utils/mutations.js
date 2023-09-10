@@ -26,14 +26,15 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_CUSTOMER = gql`
-  mutation addCustomer($userId: ID!, $name: String!, $location: Location!) {
+  mutation addCustomer(
+    $userId: ID!
+    $name: String!
+    $location: LocationInput!
+  ) {
     addCustomer(userId: $userId, name: $name, location: $location) {
       user {
         _id
-      }
-      customer {
-        _id
-        name
+        _customer
       }
     }
   }
@@ -43,7 +44,7 @@ export const ADD_COMPANY = gql`
   mutation addCompany(
     $userId: ID!
     $description: String!
-    $services: [Service]!
+    $services: [ServiceInput]!
   ) {
     addCompany(
       userId: $userId
@@ -52,10 +53,7 @@ export const ADD_COMPANY = gql`
     ) {
       user {
         _id
-      }
-      company {
-        _id
-        name
+        _company
       }
     }
   }
