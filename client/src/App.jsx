@@ -4,6 +4,8 @@ import TopBar from "./components/TopBar";
 
 import { AuthProvider } from "./utils/AuthProvider";
 
+import './app.css';
+
 function App() {
   return (
     <AuthProvider>
@@ -12,7 +14,7 @@ function App() {
         <div className=" col-sm-4 col-md-3 col-lg-2 gx-0">
           <NavBar />
         </div>
-        <div className='min-vh-100 bg-dark-subtle col-sm-8 col-md-9 col-lg-10 gx-0'>
+        <div className='min-vh-100 bg-light col-sm-8 col-md-9 col-lg-10 gx-0'>
           <div className=' row gx-0'>
             <TopBar />
           </div>
