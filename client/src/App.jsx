@@ -10,7 +10,7 @@ function App() {
   return (
     <AuthProvider>
       {/* TODO: create a CSS GRID or Bootstrap Grid System to arrange the divs */}
-      <main className="min-vh-100 row gx-0">
+      <main className="min-vh-100 row gx-0 green">
         <div className=" col-sm-4 col-md-3 col-lg-2 gx-0">
           <NavBar />
         </div>
