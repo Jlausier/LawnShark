@@ -56,23 +56,30 @@ const resolvers = {
   Mutation: {
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
-      if (!user) {
-        throw AuthenticationError;
-      }
+      if (!user) throw AuthenticationError;
       const correctPw = await user.isCorrectPassword(password);
-      if (!correctPw) {
-        throw AuthenticationError;
-      }
+      if (!correctPw) throw AuthenticationError;
       const token = signToken(user);
       return { token, user };
     },
 
     addUser: async (parent, { email, password }) => {
       const user = await User.create({ email, password });
-      /** @TODO handle user creation error */
-
+      if (!user) throw AuthenticationError;
       const token = signToken(user);
       return { token, user };
+    },
+
+    addCustomer: async (parent, { userId, name, location }) => {
+      const customer = await Customer.create({ name, location });
+      const user = await User.findOneAndUpdate(
+        { _id: userId },
+        { $set: { _customer: customer._id } },
+        { new: true }
+      );
+
+      if (!user) throw AuthenticationError;
+      return { user, customer };
     },
   },
 };
