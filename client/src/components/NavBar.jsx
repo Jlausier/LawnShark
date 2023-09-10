@@ -22,7 +22,7 @@ export default function NavBar() {
 
   return (
     <>
-      <div className="min-vh-100 p-4 bg-success text-white ">
+      <div className="min-vh-100 p-4 green text-white ">
         <div className="pb-2">Logo</div>
         <nav className="navbar navbar-expand-lg">
           <ul className="navbar-nav nav-pills flex-column">
