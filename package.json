@@ -7,5 +7,9 @@
   "keywords": [],
   "author": "",
   "license": "MIT",
-  "dependencies": {}
+  "dependencies": {
+    "@apollo/client": "^3.8.3",
+    "graphql": "^16.8.0",
+    "jwt-decode": "^3.1.2"
+  }
 }

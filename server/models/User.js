@@ -30,9 +30,9 @@ userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-userSchema.methods.getRole = function () {
+userSchema.virtual("role").get(function () {
   return this._company ? "company" : "customer";
-};
+});
 
 const User = model("User", userSchema);
 

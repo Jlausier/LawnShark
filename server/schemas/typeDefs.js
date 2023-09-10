@@ -4,6 +4,10 @@ const typeDefs = `
     name: String
   }
 
+  input ServiceInput {
+    _id: ID
+  }
+
   type Bid {
     _id: ID
     amount: Int
@@ -35,6 +39,14 @@ const typeDefs = `
     zip: String
   }
 
+  input LocationInput {
+    address: String
+    city: String
+    state: String
+    zip: String
+  }
+
+
   type Customer {
     _id: ID
     name: String
@@ -57,6 +69,11 @@ const typeDefs = `
     reviews: [Review]
   }
 
+  type Auth {
+    token: ID!
+    user: User
+  }
+
   type Query {
     service(serviceId: ID!): Service
     services: [Service]
@@ -69,7 +86,10 @@ const typeDefs = `
   }
 
   type Mutation {
+    addUser(email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+    addCustomer(userId: String!, name: String!, location: LocationInput!): User
+    addCompany(userId: String!, name: String!, description: String!, services: [ServiceInput]!): User
   }
 `;
 
