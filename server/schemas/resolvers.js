@@ -81,6 +81,18 @@ const resolvers = {
       if (!user) throw AuthenticationError;
       return { user, customer };
     },
+
+    addCompany: async (parent, { userId, description, services }) => {
+      const company = await Company.create({ description, services });
+      const user = await User.findOneAndUpdate(
+        { _id: userId },
+        { $set: { _company: company._id } },
+        { new: true }
+      );
+
+      if (!user) throw AuthenticationError;
+      return { user, company };
+    },
   },
 };
 
