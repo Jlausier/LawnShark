@@ -24,3 +24,16 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_CUSTOMER = gql`
+  mutation addCustomer(userId: ID!, $name: String!, location: Location!) {
+    addCustomer(userId: $userId, name: $name, location: $location) {
+      user {
+        _id
+      }
+      customer {
+        name
+      }
+    }
+  }
+`;
