@@ -1,4 +1,4 @@
-const { Service, User, Posting, Bid, Cusstomer, Company } = require("../models");
+const { Service, User, Posting, Bid, Customer, Company } = require("../models");
 
 const resolvers = {
   Query: {
