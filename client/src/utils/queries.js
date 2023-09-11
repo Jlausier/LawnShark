@@ -7,14 +7,18 @@ export const QUERY_SERVICE = gql`
       name
     }
   }
+`;
 
+export const QUERY_SERVICES = gql`
   query services {
     services {
       _id
       name
     }
   }
+`;
 
+export const QUERY_POSTING = gql`
   query posting($postingId) {
     posting(postingId: $postingId) {
       _id
@@ -38,7 +42,9 @@ export const QUERY_SERVICE = gql`
       }
     }
   }
+`;
 
+export const QUERY_POSTINGS = gql`
   query postings {
     postings {
       _id
@@ -53,7 +59,9 @@ export const QUERY_SERVICE = gql`
       }
     }
   }
-  
+`;
+
+export const QUERY_COMPANY = gql`
   query company($companyId) {
     company(companyId: $companyId) {
       _id
@@ -74,7 +82,9 @@ export const QUERY_SERVICE = gql`
       }
     }
   }
+`;
 
+export const QUERY_COMPANIES = gql`
   query companies {
     companies {
       _id
@@ -86,7 +96,9 @@ export const QUERY_SERVICE = gql`
       averageRating
     }
   }
+`;
 
+export const QUERY_CUSTOMER = gql`
   query customer($customerId) {
     customer(customerId: $customerId) {
       _id
