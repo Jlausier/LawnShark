@@ -18,6 +18,14 @@ export default function NavBar() {
       title: "Search",
       path: "/Search",
     },
+    {
+      title: "Job Postings",
+      path: "/JobPostings",
+    },
+    {
+      title: "Search",
+      path: "/Search",
+    },
   ];
 
   return (
