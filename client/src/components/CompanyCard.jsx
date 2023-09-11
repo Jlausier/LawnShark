@@ -1,3 +1,5 @@
+export default function CompanyCard() {
+  return (
 <div class="card-group">
   <div class="card">
     <img class="card-img-top" src="..." alt="Card image cap"></img>
@@ -24,3 +26,5 @@
     </div>
   </div>
 </div>
+  );
+}
