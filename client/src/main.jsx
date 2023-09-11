@@ -17,6 +17,7 @@ import CompanyProfile from "./pages/company/CompanyProfile.jsx";
 
 import JobPostings from "./pages/user/JobPostings.jsx";
 import JobPosting from "./pages/user/JobPosting.jsx";
+import CreateJobPosting from "./pages/user/CreateJobPosting.jsx";
 import UserProfile from "./pages/user/UserProfile.jsx";
 
 import Search from "./pages/Search.jsx";
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
       {
         path: "/JobPosting",
         element: <JobPosting />,
+      },
+      {
+        path: "/CreateJobPosting",
+        element: <CreateJobPosting />,
       },
       {
         path: "/UserProfile",

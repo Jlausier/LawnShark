@@ -1,8 +1,10 @@
-import { posting } from "../../utils/testData";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
+import { posting } from "../../utils/testData";
 import { QUERY_POSTING } from "../../utils/queries";
+
+import CreateBid from '../../components/CreateBid'
 
 export default function JobPosting() {
   const { postingId } = useParams();
@@ -34,11 +36,11 @@ export default function JobPosting() {
           <span> {posting.customer.name} </span>
           <p>{posting.description}</p>
         </div>
-        <div className="">
-          {/* Switch for button component */}
-          <a className="btn green text-light" href="#" role="button">
-            Place Bid
-          </a>
+        <hr/>
+        <div className="d-flex flex-column align-items-start">
+          {/* Make the CreateBid Component Appear if the button is clicked */}
+          <a class='btn green text-light' href='#' role='button'>Place Bid</a>
+          <CreateBid />
         </div>
       </div>
     </div>
