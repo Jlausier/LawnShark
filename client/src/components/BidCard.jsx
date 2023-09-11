@@ -7,7 +7,7 @@ export default function BidCard() {
     amount: 0,
     posting: {
       _id: "",
-      title: "#postingTitle",
+      title: "#bid'sPostingTitle",
       service: {
         _id: "",
         name: "#serviceName",
