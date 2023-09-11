@@ -45,6 +45,12 @@ const companySchema = new Schema({
   reviews: [reviewSchema],
 });
 
+companySchema.virtual("averageRating").get(function () {
+  return this.reviews.length > 0
+    ? this.reviews.reduce((prev, curr) => prev + curr, 0) / this.reviews.length
+    : -1;
+});
+
 const Company = model("Company", companySchema);
 
 module.exports = Company;
