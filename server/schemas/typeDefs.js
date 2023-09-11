@@ -46,7 +46,6 @@ const typeDefs = `
     zip: String
   }
 
-
   type Customer {
     _id: ID
     name: String
@@ -56,7 +55,7 @@ const typeDefs = `
 
   type Review {
     reviewText: String
-    createAt: String
+    createdAt: String
     rating: Int
     customer: Customer
   }

@@ -36,7 +36,7 @@ const resolvers = {
     },
 
     companies: async () => {
-      return await Company.find().populate("reviews");
+      return await Company.find().populate("services");
     },
 
     customer: async (parent, { customerId }) => {

@@ -54,4 +54,36 @@ export const QUERY_SERVICE = gql`
     }
   }
   
+  query company($companyId) {
+    company(companyId: $companyId) {
+      _id
+      name
+      description
+      services {
+        _id
+        name
+      }
+      reviews {
+        reviewText
+        createdAt
+        rating
+        customer {
+          _id
+          name
+        }
+      }
+    }
+  }
+
+  query companies {
+    companies {
+      _id
+      name
+      services {
+        _id
+        name
+      }
+      averageRating
+    }
+  }
 `;
