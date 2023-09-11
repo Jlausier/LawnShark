@@ -87,6 +87,7 @@ const typeDefs = `
     addCustomer(userId: String!, name: String!, location: LocationInput!): User
     addCompany(userId: String!, name: String!, description: String!, services: [ID]!): User
     addService(name: String!, description: String!): Service
+    addPosting(customerId: ID!, serviceId: ID!, askingPrice: Int!, estimatePrice: Int): Posting
   }
 `;
 

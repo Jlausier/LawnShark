@@ -97,6 +97,27 @@ const resolvers = {
       const service = await Service.create({ name, description });
       return service;
     },
+
+    addPosting: async (
+      _,
+      { customerId, serviceId, askingPrice, estimatePrice }
+    ) => {
+      const customer = await Customer.findById(customerId);
+      if (!customer) throw AuthenticationError;
+
+      const newPosting = await Posting.create({
+        customer: customerId,
+        service: serviceId,
+        askingPrice,
+        estimatePrice: estimatePrice || -1,
+      });
+
+      const posting = await Posting.findById(newPosting._id)
+        .populate("customer")
+        .populate("service");
+
+      return posting;
+    },
   },
 };
 
