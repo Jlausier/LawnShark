@@ -58,3 +58,30 @@ export const ADD_COMPANY = gql`
     }
   }
 `;
+
+export const ADD_POSTING = gql`
+  mutation addPosting(
+    $customerId: ID!
+    $serviceId: ID!
+    $askingPrice: Int!
+    $estimatePrice: Int
+  ) {
+    addPosting(
+      customerId: $customerId
+      serviceId: $serviceId
+      askingPrice: $askingPrice
+      estimatePrice: $estimatePrice
+    ) {
+      customer {
+        _id
+        name
+      }
+      _id
+      service {
+        _id
+        name
+      }
+      askingPrice
+    }
+  }
+`;
