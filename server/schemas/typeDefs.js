@@ -14,6 +14,7 @@ const typeDefs = `
 
   type Posting {
     _id: ID
+    title: String
     service: Service
     askingPrice: Int
     estimatePrice: Int
