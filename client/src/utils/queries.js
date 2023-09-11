@@ -86,4 +86,25 @@ export const QUERY_SERVICE = gql`
       averageRating
     }
   }
+
+  query customer($customerId) {
+    customer(customerId: $customerId) {
+      _id
+      name
+      location {
+        address
+        city
+        state
+        zip
+      }
+      postings {
+        _id
+        service {
+          _id
+          name
+        }
+        askingPrice
+      }
+    }
+  }
 `;

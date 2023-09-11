@@ -3,7 +3,7 @@ const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
   Query: {
-    service: async (parent, { serviceId }) => {
+    service: async (_, { serviceId }) => {
       return await Service.findOne({ _id: serviceId });
     },
 
@@ -11,7 +11,7 @@ const resolvers = {
       return await Service.find();
     },
 
-    posting: async (parent, { postingId }) => {
+    posting: async (_, { postingId }) => {
       return await Posting.findOne({ _id: postingId })
         .populate("bids")
         .populate({
@@ -29,7 +29,7 @@ const resolvers = {
       return await Posting.find().populate("service").populate("customer");
     },
 
-    company: async (parent, { companyId }) => {
+    company: async (_, { companyId }) => {
       return await Company.findOne({ _id: companyId })
         .populate("reviews")
         .populate("services");
@@ -39,19 +39,19 @@ const resolvers = {
       return await Company.find().populate("services");
     },
 
-    customer: async (parent, { customerId }) => {
+    customer: async (_, { customerId }) => {
       return await Customer.findOne({ _id: customerId })
         .populate("location")
-        .populate("postings");
-    },
-
-    customers: async () => {
-      return await Customer.find({});
+        .populate("postings")
+        .populate({
+          path: "postings",
+          populate: "service",
+        });
     },
   },
 
   Mutation: {
-    login: async (parent, { email, password }) => {
+    login: async (_, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) throw AuthenticationError;
       const correctPw = await user.isCorrectPassword(password);
@@ -60,14 +60,16 @@ const resolvers = {
       return { token, user };
     },
 
-    addUser: async (parent, { email, password }) => {
+    addUser: async (_, { email, password }) => {
       const user = await User.create({ email, password });
       if (!user) throw AuthenticationError;
       const token = signToken(user);
       return { token, user };
     },
 
-    addCustomer: async (parent, { userId, name, location }) => {
+    /** @TODO Only add customer or company if they do not exist on _ user */
+
+    addCustomer: async (_, { userId, name, location }) => {
       const customer = await Customer.create({ name, location });
       const user = await User.findOneAndUpdate(
         { _id: userId },
@@ -79,7 +81,7 @@ const resolvers = {
       return { user };
     },
 
-    addCompany: async (parent, { userId, name, description, services }) => {
+    addCompany: async (_, { userId, name, description, services }) => {
       const company = await Company.create({ name, description, services });
       const user = await User.findOneAndUpdate(
         { _id: userId },
