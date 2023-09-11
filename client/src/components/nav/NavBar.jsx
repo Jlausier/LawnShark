@@ -8,6 +8,10 @@ export default function NavBar() {
   const links = [
     {
       title: "Find Work",
+      path: "/FindWork",
+    },
+    {
+      title: "My Jobs",
       path: "/MyJobs",
     },
     {
