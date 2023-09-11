@@ -2,6 +2,18 @@ const { Schema, model } = require("mongoose");
 const price = require("../utils/price");
 
 const postingSchema = new Schema({
+  title: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  frequency: {
+    type: String,
+    required: true,
+  },
   service: {
     type: Schema.Types.ObjectId,
     ref: "Service",
