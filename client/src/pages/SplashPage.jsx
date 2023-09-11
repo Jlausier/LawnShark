@@ -1,15 +1,15 @@
 // import LoginForm from '../components/LoginForm'
 // import SignUpLink from '../components/SignUpLink'
+
 import "../index.css";
 
 export default function SplashPage() {
 
     return (
      
-      <div className="min-vh-100 d-flex justify-content-center align-items-center bg-pic  ">
-       <div className="layer">
+    <div className="min-vh-100 d-flex justify-content-center align-items-center landing-page-bg">
         <div className="row rounded">
-          <div className="col  rounded text-white">
+          <div className="col rounded text-white">
             <span>Welcome to</span>
             <h1>Lawn Shark</h1>
             <span className="pb-4">Make the proffesionals come to you!</span>
@@ -21,27 +21,42 @@ export default function SplashPage() {
             {/* <LoginForm /> */}
             <form>
               <div className="mb-3">
-                <label for="exampleInputEmail1" className="form-label">Email address</label>
-                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                <div id="emailHelp" className="form-text text-white">We'll never share your email with anyone else.</div>
+                <label htmlFor="exampleInputEmail1" className="form-label">
+                  Email address
+                </label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+                <div id="emailHelp" className="form-text text-white">
+                  We'll never share your email with anyone else.</div>
+
               </div>
+            </div>
+            <div className="mb-3">
+              <label htmlFor="exampleInputPassword1" className="form-label">
+                Password
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                id="exampleInputPassword1"
+              />
+            </div>
+            <button type="submit" className="btn btn-primary">
+              Submit
+            </button>
+          </form>
 
-              <div className="mb-3">
-                <label for="exampleInputPassword1" className="form-label">Password</label>
-                <input type="password" className="form-control" id="exampleInputPassword1" />
-              </div>
-              <button type="submit" className="btn btn-secondary">Submit</button>
-            </form>
+          <hr />
 
-            <hr/>
-
-            <div>
-              <span>Don't have an account? </span>
+          <div>
+            <span>Don&apos;t have an account? </span>
             {/* Move Into A Link Component */}
             {/* <SignUpLink /> */}
-              <a>Sign-up</a>
-            </div>
-
+            <a>Sign-up</a>
           </div>
         </div>
         </div>
@@ -50,3 +65,4 @@ export default function SplashPage() {
       
     );
 }
+

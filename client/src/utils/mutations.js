@@ -15,7 +15,7 @@ export const LOGIN_USER = gql`
 
 export const ADD_USER = gql`
   mutation addUser($email: String!, $password: String!) {
-    addUser(email: $email, password: $password) {
+    user(email: $email, password: $password) {
       token
       user {
         _id
@@ -31,7 +31,7 @@ export const ADD_CUSTOMER = gql`
     $name: String!
     $location: LocationInput!
   ) {
-    addCustomer(userId: $userId, name: $name, location: $location) {
+    customer(userId: $userId, name: $name, location: $location) {
       user {
         _id
         _customer
@@ -46,15 +46,38 @@ export const ADD_COMPANY = gql`
     $description: String!
     $services: [ServiceInput]!
   ) {
-    addCompany(
-      userId: $userId
-      description: $description
-      services: $services
-    ) {
+    company(userId: $userId, description: $description, services: $services) {
       user {
         _id
         _company
       }
+    }
+  }
+`;
+
+export const ADD_POSTING = gql`
+  mutation addPosting(
+    $customerId: ID!
+    $serviceId: ID!
+    $askingPrice: Int!
+    $estimatePrice: Int
+  ) {
+    posting(
+      customerId: $customerId
+      serviceId: $serviceId
+      askingPrice: $askingPrice
+      estimatePrice: $estimatePrice
+    ) {
+      customer {
+        _id
+        name
+      }
+      _id
+      service {
+        _id
+        name
+      }
+      askingPrice
     }
   }
 `;

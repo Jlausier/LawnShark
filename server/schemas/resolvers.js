@@ -70,7 +70,7 @@ const resolvers = {
     /** @TODO Only add customer or company if they do not exist on _ user */
 
     addCustomer: async (_, { userId, name, location }) => {
-      const customer = await Customer.create({ name, location });
+      const customer = await Customer.create({ name, location: [location] });
       const user = await User.findOneAndUpdate(
         { _id: userId },
         { $set: { _customer: customer._id } },
@@ -78,7 +78,7 @@ const resolvers = {
       ).populate("_customer");
 
       if (!user) throw AuthenticationError;
-      return { user };
+      return user;
     },
 
     addCompany: async (_, { userId, name, description, services }) => {
@@ -90,7 +90,33 @@ const resolvers = {
       ).populate("_company");
 
       if (!user) throw AuthenticationError;
-      return { user };
+      return user;
+    },
+
+    addService: async (_, { name, description }) => {
+      const service = await Service.create({ name, description });
+      return service;
+    },
+
+    addPosting: async (
+      _,
+      { customerId, serviceId, askingPrice, estimatePrice }
+    ) => {
+      const customer = await Customer.findById(customerId);
+      if (!customer) throw AuthenticationError;
+
+      const newPosting = await Posting.create({
+        customer: customerId,
+        service: serviceId,
+        askingPrice,
+        estimatePrice: estimatePrice || -1,
+      });
+
+      const posting = await Posting.findById(newPosting._id)
+        .populate("customer")
+        .populate("service");
+
+      return posting;
     },
   },
 };
