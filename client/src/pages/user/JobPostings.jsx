@@ -25,5 +25,6 @@ export default function JobPostings() {
           </div>
         </div>
       </div>
+    </div>
   );
 }

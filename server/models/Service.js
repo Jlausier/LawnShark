@@ -7,6 +7,11 @@ const serviceSchema = new Schema({
     unique: true,
     trim: true,
   },
+  description: {
+    type: String,
+    required: true,
+    trim: true,
+  },
 });
 
 const Service = model("Service", serviceSchema);
