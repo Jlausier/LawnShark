@@ -2,10 +2,14 @@
   "name": "lawnshark",
   "version": "1.0.0",
   "description": "",
-  "main": "",
-  "scripts": {},
+  "main": "server/server.js",
+  "scripts": {
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm run dev\""
+  },
   "keywords": [],
   "author": "",
   "license": "MIT",
-  "dependencies": {}
+  "dependencies": {
+    "concurrently": "^8.2.1"
+  }
 }
