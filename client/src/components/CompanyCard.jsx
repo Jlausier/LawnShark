@@ -18,7 +18,7 @@ export default function CompanyCard() {
         {
           reviewText: "#reviewText",
           createdAt: "#createdAt",
-          rating: 0,
+          rating: 5,
           customer: {
             _id: "",
             name: "#customerName"
@@ -31,9 +31,20 @@ export default function CompanyCard() {
   return (
       <div class="card w-100">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          <div className="row mt-2 mb-4">
+            <div className="col-6">
+              <h5 class="card-title fs-2">{ company._company.name }</h5>
+            </div>
+            <div className="col-6 d-flex justify-content-end align-items-center">
+              {/* Make into a Link */}
+              <a href="/Messages" className="mx-2">Message</a>
+              <span className="mx-3 fs-6">
+                Total Reviews: {company._company.reviews.length}
+              </span>
+              <span className="px-4 py-2 rounded green text-light fs-5">{ company._company.reviews[0].rating }</span>
+            </div>
+          </div>
+          <p class="card-text">{ company._company.description }</p>
         </div>
       </div>
   );
