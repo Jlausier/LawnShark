@@ -20,7 +20,7 @@ export default function CreateJobPosting() {
     
       const handleSubmit = (e) => {
         e.preventDefault();
-
+            // TODO: POST/Mutate to the database
         console.log(formData);
       };
 
