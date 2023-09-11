@@ -70,7 +70,7 @@ const resolvers = {
     /** @TODO Only add customer or company if they do not exist on _ user */
 
     addCustomer: async (_, { userId, name, location }) => {
-      const customer = await Customer.create({ name, location });
+      const customer = await Customer.create({ name, location: [location] });
       const user = await User.findOneAndUpdate(
         { _id: userId },
         { $set: { _customer: customer._id } },

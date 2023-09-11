@@ -5,6 +5,7 @@ export const QUERY_SERVICE = gql`
     service(serviceId: $serviceId) {
       _id
       name
+      description
     }
   }
 `;
@@ -19,7 +20,7 @@ export const QUERY_SERVICES = gql`
 `;
 
 export const QUERY_POSTING = gql`
-  query posting($postingId) {
+  query posting($postingId: ID!) {
     posting(postingId: $postingId) {
       _id
       service {
@@ -62,7 +63,7 @@ export const QUERY_POSTINGS = gql`
 `;
 
 export const QUERY_COMPANY = gql`
-  query company($companyId) {
+  query company($companyId: ID!) {
     company(companyId: $companyId) {
       _id
       name
@@ -99,7 +100,7 @@ export const QUERY_COMPANIES = gql`
 `;
 
 export const QUERY_CUSTOMER = gql`
-  query customer($customerId) {
+  query customer($customerId: ID!) {
     customer(customerId: $customerId) {
       _id
       name
