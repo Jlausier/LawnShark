@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from "react";
 
 export default function CreateBid() {
   const [formData, setFormData] = useState({
-    proposedAmount: '',
-    description: '',
+    proposedAmount: "",
+    description: "",
   });
 
   const handleChange = (e) => {
@@ -21,8 +21,8 @@ export default function CreateBid() {
   };
 
   return (
-    <div className='mt-3'>
-        <form onSubmit={handleSubmit}>
+    <div className="mt-3">
+      <form onSubmit={handleSubmit}>
         {/* Proposed Amount */}
         <div className="mb-3">
           <label htmlFor="proposedAmount" className="form-label">
@@ -60,6 +60,5 @@ export default function CreateBid() {
         </button>
       </form>
     </div>
-      
   );
 }

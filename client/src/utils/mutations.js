@@ -81,3 +81,22 @@ export const ADD_POSTING = gql`
     }
   }
 `;
+
+export const ADD_BID = gql`
+  mutation addBid(
+    $amount: Int!,
+    $postingId: ID!,
+    companyId: ID!
+  ) {
+    bid {
+      amount
+      posting {
+        _id
+      }
+      company {
+        _id
+        name
+      }
+    }
+  }
+`;
