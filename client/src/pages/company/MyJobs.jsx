@@ -1,4 +1,4 @@
-import JobPosting from  '../../components/JobPosting';
+import JobPosting from  '../user/JobPosting';
 
 export default function MyJobs() {
 
