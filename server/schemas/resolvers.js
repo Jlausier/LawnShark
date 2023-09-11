@@ -14,11 +14,11 @@ const resolvers = {
     posting: async (parent, { postingId }) => {
       return await Posting.findOne({ _id: postingId })
         .populate("bids")
-        .populate("customer")
         .populate({
           path: "bids",
           populate: "company",
         })
+        .populate("customer")
         .populate({
           path: "customer",
           populate: "location",
@@ -26,17 +26,7 @@ const resolvers = {
     },
 
     postings: async () => {
-      return await Posting.find()
-        .populate("bids")
-        .populate("customer")
-        .populate({
-          path: "bids",
-          populate: "company",
-        })
-        .populate({
-          path: "customer",
-          populate: "location",
-        });
+      return await Posting.find().populate("service").populate("customer");
     },
 
     company: async (parent, { companyId }) => {

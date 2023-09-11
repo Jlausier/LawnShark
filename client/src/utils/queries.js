@@ -53,4 +53,5 @@ export const QUERY_SERVICE = gql`
       }
     }
   }
+  
 `;
