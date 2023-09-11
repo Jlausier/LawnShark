@@ -46,6 +46,10 @@ export default function NavBar() {
       title: "Messages",
       path: "/Messages",
     },
+    {
+      title: "Landing Page",
+      path: "/Login",
+    },
   ];
 
   return (
