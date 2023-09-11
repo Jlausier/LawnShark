@@ -1,8 +1,63 @@
+import ReviewCard from "../../components/ReviewCard";
+
 export default function CompanyProfile() {
 
+  const company = {
+    _id: "",
+    email: "#test@email.com",
+    password: "#password",
+    _company: {
+      _id: "",
+      name: "#companyName",
+      description: "#description",
+      services: [
+        {
+          _id: "",
+          name: "#serviceName",
+        }
+      ],
+      reviews: [
+        {
+          reviewText: "#reviewText",
+          createdAt: "#createdAt",
+          rating: 0,
+          customer: {
+            _id: "",
+            name: "#customerName"
+          }
+        }
+      ]
+    },
+  };
+
     return (
-      <>
-        <div>Company Profile</div>
-      </>
+      <div className='p-5'>
+        <div className="border p-4 rounded">
+          <div className="d-flex justify-content-between align-items-start">
+            <div>
+              <span>Company Profile</span>
+              <h2 className=' fs-1'>{ company._company.name }</h2>
+              <span>{ company._company.location }</span>
+            </div>
+            {/* Make button a component */}
+            {/* Add a modal */}
+            <a class='btn green text-light' href='#' role='button'>Edit Profile</a>
+          </div>
+          <hr/>
+          <div>
+            <h3 className="fs-5">Company Info</h3>
+            <p>email: { company.email }</p>
+            <p>password: { company.password }</p>
+          </div>
+          <hr/>
+          <div className="d-flex justify-content-between">
+            <h3 className="fs-5">Reviews</h3>
+            <span> Total Reviews: { company._company.reviews.length } </span>
+          </div>
+          <div>
+            <ReviewCard />
+          </div>
+        </div>
+      </div>
     );
 }
