@@ -26,6 +26,10 @@ import "./index.css";
 
 const router = createBrowserRouter([
   {
+    path: "/login",
+    element: <SplashPage />,
+  },
+  {
     path: "/",
     element: <App />,
     children: [
