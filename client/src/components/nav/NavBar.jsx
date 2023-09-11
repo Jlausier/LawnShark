@@ -7,6 +7,10 @@ export default function NavBar() {
   const currentPage = useLocation().pathname;
   const links = [
     {
+      title: "Company Profile",
+      path: "/CompanyProfile",
+    },
+    {
       title: "Find Work",
       path: "/FindWork",
     },
@@ -19,16 +23,28 @@ export default function NavBar() {
       path: "/MyBids",
     },
     {
-      title: "Search",
-      path: "/Search",
+      title: "Customer Profile",
+      path: "/UserProfile",
     },
     {
       title: "Job Postings",
       path: "/JobPostings",
     },
     {
+      title: "Single Job Posting",
+      path: "/JobPosting",
+    },
+    {
       title: "Search",
       path: "/Search",
+    },
+    {
+      title: "Notifications",
+      path: "/Notifications",
+    },
+    {
+      title: "Messages",
+      path: "/Messages",
     },
   ];
 
