@@ -1,0 +1,11 @@
+.bg-pic {
+    background-image:  url(../public/images/lawncare.jpg);
+  background-size: cover;
+}
+.card-img-top{
+    background-image: url(../public/images/landing-page-image.png);
+ 
+}
+.card{
+    width: 18rem;
+}
