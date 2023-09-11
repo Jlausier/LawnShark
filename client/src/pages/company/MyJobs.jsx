@@ -1,4 +1,4 @@
-import JobPosting from  '../user/JobPosting';
+import JobPostingCard from  '../../components/JobPostingCard';
 
 export default function MyJobs() {
 
@@ -10,7 +10,7 @@ export default function MyJobs() {
           {/* <span className=''>Click on job titles to view more details</span> */}
         </div>
         <div className="">
-          <JobPosting />
+          <JobPostingCard />
           // Cards Go Here
         </div>
       </div>
