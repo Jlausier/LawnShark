@@ -1,0 +1,12 @@
+.bg-pic {
+    background-image: url(../public/images/lawncare.jpg);
+    background-size: cover;
+}
+.motto{
+    color: whitesmoke;
+    background: linear-gradient(to left, #0e0477, #172eb3 50%, #0989b4 75%, #068abd 75%);
+}
+.motto2{
+    color: whitesmoke;
+    background: linear-gradient(to right, #0e0477, #172eb3 50%, #0989b4 75%, #068abd 75%);
+}
