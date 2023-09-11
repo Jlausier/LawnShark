@@ -39,9 +39,14 @@ export default function CompanyProfile() {
               <h2 className=' fs-1'>{ company._company.name }</h2>
               <span>{ company._company.location }</span>
             </div>
-            {/* Make button a component */}
-            {/* Add a modal */}
-            <a class='btn green text-light' href='#' role='button'>Edit Profile</a>
+
+            <div className="justify-content-end align-items-start">
+              {/* Make into a Link */}
+              <a href="/Messages" className="mx-2">Message</a>
+              {/* Make button a component */}
+              {/* Add a modal */}
+              <a class='btn green text-light' href='#' role='button'>Edit Profile</a>
+            </div>
           </div>
           <hr/>
           <div>

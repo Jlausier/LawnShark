@@ -1,3 +1,5 @@
+import CreateBid from '../../components/CreateBid'
+
 export default function JobPosting() {
 
   const posting = {
@@ -48,9 +50,12 @@ export default function JobPosting() {
           <span> { posting.customer.name } </span>
           <p>{ posting.description }</p>
         </div>
-        <div className="">
+        <hr/>
+        <div className="d-flex flex-column align-items-start">
           {/* Switch for button component */}
+          {/* Make the CreateBid Component Appear if the button is clicked */}
           <a class='btn green text-light' href='#' role='button'>Place Bid</a>
+          <CreateBid />
         </div>
       </div>
       
