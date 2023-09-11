@@ -78,7 +78,7 @@ const resolvers = {
       ).populate("_customer");
 
       if (!user) throw AuthenticationError;
-      return { user };
+      return user;
     },
 
     addCompany: async (_, { userId, name, description, services }) => {
@@ -90,7 +90,12 @@ const resolvers = {
       ).populate("_company");
 
       if (!user) throw AuthenticationError;
-      return { user };
+      return user;
+    },
+
+    addService: async (_, { name, description }) => {
+      const service = await Service.create({ name, description });
+      return service;
     },
   },
 };

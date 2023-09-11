@@ -2,10 +2,7 @@ const typeDefs = `
   type Service {
     _id: ID
     name: String
-  }
-
-  input ServiceInput {
-    _id: ID
+    description: String
   }
 
   type Bid {
@@ -88,7 +85,8 @@ const typeDefs = `
     addUser(email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addCustomer(userId: String!, name: String!, location: LocationInput!): User
-    addCompany(userId: String!, name: String!, description: String!, services: [ServiceInput]!): User
+    addCompany(userId: String!, name: String!, description: String!, services: [ID]!): User
+    addService(name: String!, description: String!): Service
   }
 `;
 
