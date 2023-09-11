@@ -19,7 +19,6 @@ export default function FindWork() {
             </div>
             <div className="">
               <JobPostingCard />
-              // Cards Go Here
             </div>
           </div>
         </div>

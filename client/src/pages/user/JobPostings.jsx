@@ -28,6 +28,5 @@ export default function JobPostings() {
           <JobPostingCard />- // Cards Go Here
         </div>
       </div>
-    </div>
   );
 }

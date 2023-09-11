@@ -10,7 +10,7 @@ export default function MyBids() {
           </div>
           <div className="">
             <BidCard />
-            // Cards Go Here
+ 
           </div>
         </div>
       </div>
