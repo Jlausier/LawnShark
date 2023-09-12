@@ -2,13 +2,15 @@
 import { useLocation } from "react-router-dom";
 import JobPostingCard from "../../components/Button";
 import Button from "../../components/JobPostingCard";
-
+import {QUERY_POSTINGS} from "../../utils/queries"
 export default function JobPostings() {
   const currentPage = useLocation().pathname;
   const link = {
     title: "Add New",
     path: "/CreateJobPosting",
   };
+
+  const {data} = useQuery(QUERY_POSTINGS)
 
   return (
     <div className="p-5">
