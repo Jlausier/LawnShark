@@ -7,6 +7,7 @@ export default function CompanyCard({
   description,
   services,
   averageRating,
+  reviewCount,
 }) {
   return (
     <div className="card w-100">
@@ -20,10 +21,12 @@ export default function CompanyCard({
             <a href="/Messages" className="mx-2">
               Message
             </a>
-            <span className="mx-3 fs-6">Total Reviews: {1}</span>
-            <span className="px-4 py-2 rounded green text-light fs-5">
-              {averageRating}
-            </span>
+            <span className="mx-3 fs-6">Total Reviews: {reviewCount}</span>
+            {averageRating !== -1 && (
+              <span className="px-4 py-2 rounded green text-light fs-5">
+                {averageRating}
+              </span>
+            )}
           </div>
         </div>
         <p className="card-text">{description}</p>
@@ -38,4 +41,5 @@ CompanyCard.propTypes = {
   description: PropTypes.string,
   services: PropTypes.arrayOf(PropTypes.object),
   averageRating: PropTypes.number,
+  reviewCount: PropTypes.number,
 };

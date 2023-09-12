@@ -95,6 +95,7 @@ export const QUERY_COMPANIES = gql`
         name
       }
       averageRating
+      reviewCount
     }
   }
 `;
@@ -109,6 +110,8 @@ export const QUERY_COMPANIES_FILTERED = gql`
         _id
         name
       }
+      averageRating
+      reviewCount
     }
   }
 `;

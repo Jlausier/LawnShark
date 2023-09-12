@@ -58,6 +58,10 @@ companySchema.virtual("averageRating").get(function () {
     : -1;
 });
 
+companySchema.virtual("reviewCount").get(function () {
+  return this.reviews.length;
+});
+
 const Company = model("Company", companySchema);
 
 module.exports = Company;

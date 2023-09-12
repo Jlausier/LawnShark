@@ -66,6 +66,8 @@ const typeDefs = `
     description: String
     services: [Service]
     reviews: [Review]
+    averageRating: Int
+    reviewCount: Int
   }
 
   type Auth {
