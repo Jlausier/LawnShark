@@ -1,39 +1,16 @@
 import ReviewCard from "../../components/ReviewCard";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import{ QUERY_COMPANY}
+import{ QUERY_COMPANY } from "../../utils/queries"; 
 
 
 
 export default function CompanyProfile() {
 
-  const company = {
-    _id: "",
-    email: "#test@email.com",
-    password: "#password",
-    _company: {
-      _id: "",
-      name: "#companyName",
-      description: "#description",
-      services: [
-        {
-          _id: "",
-          name: "#serviceName",
-        }
-      ],
-      reviews: [
-        {
-          reviewText: "#reviewText",
-          createdAt: "#createdAt",
-          rating: 0,
-          customer: {
-            _id: "",
-            name: "#customerName"
-          }
-        }
-      ]
-    },
-  };
+  const {companyId} = useParams();
+  const{data} = useQuery(QUERY_COMPANY, )
+
+  
 
     return (
       <div className='p-5'>

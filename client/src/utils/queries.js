@@ -46,7 +46,7 @@ export const QUERY_POSTING = gql`
 `;
 
 export const QUERY_POSTINGS_FILTERED = gql`
-query postingsFiltered($searchText: String!, $service: [ID]!) {
+query postingsFiltered($searchText: String!, $service: ID!) {
   postingsFiltered(searchText: $searchText, service: $service)) {
     _id
     service {
