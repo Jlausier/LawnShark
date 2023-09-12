@@ -25,15 +25,13 @@ const resolvers = {
       const options = {};
       if (searchText !== "")
         options.name = { $regex: searchText, options: "i" };
+      if (service) options.service = service;
       
 
       return await Posting.find(options)
       .populate("service")
       .populate("customer")
-      .populate({
-        path: "customer",
-        populate:"location"
-      });
+      
     },
 
     myPostings: async (_, { customerId }) => {

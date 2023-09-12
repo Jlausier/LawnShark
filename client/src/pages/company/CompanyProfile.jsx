@@ -1,4 +1,9 @@
 import ReviewCard from "../../components/ReviewCard";
+import { useParams } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import{ QUERY_COMPANY}
+
+
 
 export default function CompanyProfile() {
 
