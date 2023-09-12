@@ -1,7 +1,10 @@
+import Button from "../Button";
+
 export default function LoginForm() {
-  const toggleForms = () => {
-    setShowLoginForm(!showLoginForm);
-  };
+
+  const handleSubmit = () => {
+    alert("Submit Form");
+  }
 
   return (
     <div>
@@ -31,9 +34,7 @@ export default function LoginForm() {
             id="exampleInputPassword1"
           />
         </div>
-        <button type="submit" className="btn green text-light">
-          Submit
-        </button>
+        <Button title={"Submit"} onClick={handleSubmit}/>
       </form>
     </div>
   );

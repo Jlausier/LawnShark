@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Button from "../../components/Button";
 
 export default function CreateJobPosting() {
 
@@ -20,8 +21,8 @@ export default function CreateJobPosting() {
     
       const handleSubmit = (e) => {
         e.preventDefault();
-            // TODO: POST/Mutate to the database
         console.log(formData);
+        alert("Oh Boy!");
       };
 
   return (
@@ -234,9 +235,7 @@ export default function CreateJobPosting() {
                 </div>
 
                 {/* Submit Button */}
-                <button type="submit" className="btn btn-primary">
-                Create Job Posting
-                </button>
+                <Button title={"Create Job Posting"} onSubmit={handleSubmit} />
             </form>
         </div>  
       </div>

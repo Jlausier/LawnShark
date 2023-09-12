@@ -1,19 +1,49 @@
-
-import ReviewCard from "../../components/ReviewCard";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
+
 import{ QUERY_COMPANY } from "../../utils/queries"; 
 
-
+import ReviewCard from "../../components/ReviewCard";
+import Button from "../../components/Button";
 
 export default function CompanyProfile() {
-
+  
   const {companyId} = useParams();
   const{data} = useQuery(QUERY_COMPANY, {
     variables: { companyId },
   });
 
-  
+  const openModal = () => {
+    alert("Open Modal");
+  }
+
+  const company = {
+    _id: "",
+    email: "#test@email.com",
+    password: "#password",
+    _company: {
+      _id: "",
+      name: "#companyName",
+      description: "#description",
+      services: [
+        {
+          _id: "",
+          name: "#serviceName",
+        }
+      ],
+      reviews: [
+        {
+          reviewText: "#reviewText",
+          createdAt: "#createdAt",
+          rating: 0,
+          customer: {
+            _id: "",
+            name: "#customerName"
+          }
+        }
+      ]
+    },
+  };
 
     return (
       <div className='p-5'>
@@ -28,9 +58,8 @@ export default function CompanyProfile() {
             <div className="justify-content-end align-items-start">
               {/* Make into a Link */}
               <a href="/Messages" className="mx-2">Message</a>
-              {/* Make button a component */}
               {/* Add a modal */}
-              <a className='btn green text-light' href='#' role='button'>Edit Profile</a>
+              <Button title={"Edit Profile"} onClick={openModal}/>
             </div>
           </div>
           <div>

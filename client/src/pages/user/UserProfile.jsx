@@ -1,6 +1,11 @@
 import JobPostingCard from "../../components/JobPostingCard";
+import Button from "../../components/Button";
 
 export default function UserProfile() {
+
+  const openModal = () => {
+    alert("Open Modal");
+  }
 
   const user = {
     _id: "",
@@ -43,9 +48,8 @@ export default function UserProfile() {
               <h2 className=' fs-1'>{ user._customer.name }</h2>
               <span>{ user._customer.location }</span>
             </div>
-            {/* Make button a component */}
             {/* Add a modal */}
-            <a class='btn green text-light' href='#' role='button'>Edit Profile</a>
+            <Button title={"Edit Profile"} onClick={openModal}/>
           </div>
           <hr/>
           <div>
