@@ -3,7 +3,7 @@ import { useQuery } from "@apollo/client";
 
 import{ QUERY_COMPANY } from "../../utils/queries"; 
 
-import ReviewCard from "../../components/ReviewCard";
+import ReviewCard from "../../components/company/ReviewCard";
 import Button from "../../components/Button";
 
 export default function CompanyProfile() {
