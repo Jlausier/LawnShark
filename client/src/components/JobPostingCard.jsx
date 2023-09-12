@@ -1,4 +1,4 @@
-export default function JobPostingCard(postings) {
+export default function JobPostingCard({postings}) {
 
   if (!postings.length) {
     return <h3>No Job Postings Yet</h3>;
@@ -7,7 +7,7 @@ export default function JobPostingCard(postings) {
   return (
    
     <div>
-       {postings.map(posting => (
+       {postings.map((posting) => (
         <div className="card w-100">
       <div className="card-body">
         <div className="row mt-2 mb-4">

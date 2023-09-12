@@ -1,7 +1,8 @@
 import JobPostingCard from '../../components/JobPostingCard';
 import {QUERY_POSTINGS} from "../../utils/queries"
-const {data} = useQuery(QUERY_POSTINGS)
-  const postings = data?.postings || []
+import { useQuery } from "@apollo/client";
+//const {data} = useQuery(QUERY_POSTINGS)
+  const postings = data
 
 export default function FindWork() {
 
