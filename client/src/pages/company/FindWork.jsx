@@ -1,4 +1,7 @@
 import JobPostingCard from '../../components/JobPostingCard';
+import {QUERY_POSTINGS} from "../../utils/queries"
+const {data} = useQuery(QUERY_POSTINGS)
+  const postings = data?.postings || []
 
 export default function FindWork() {
 
@@ -18,7 +21,7 @@ export default function FindWork() {
               <a className='pe-2'>Fertilizing</a>
             </div>
             <div className="">
-              <JobPostingCard />
+              <JobPostingCard postings = {postings} />
             </div>
           </div>
         </div>
