@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import JobPostingCard from "../../components/Button";
 import Button from "../../components/JobPostingCard";
 import {QUERY_POSTINGS} from "../../utils/queries"
+import { useQuery } from "@apollo/client";
 export default function JobPostings() {
   const currentPage = useLocation().pathname;
   const link = {

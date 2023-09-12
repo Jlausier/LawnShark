@@ -1,11 +1,12 @@
 import JobPostingCard from '../../components/JobPostingCard';
 import {QUERY_POSTINGS} from "../../utils/queries"
 import { useQuery } from "@apollo/client";
-//const {data} = useQuery(QUERY_POSTINGS)
-  const postings = data
+
+  
 
 export default function FindWork() {
-
+  const {data} = useQuery(QUERY_POSTINGS)
+  const postings = data
     return (
         <div className=" p-5">
           <div className="border p-4 rounded">
