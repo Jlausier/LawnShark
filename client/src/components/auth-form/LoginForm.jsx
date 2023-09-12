@@ -1,4 +1,4 @@
-export default function LoginForm() {
+
 
     const toggleForms = () => {
         setShowLoginForm(!showLoginForm);
@@ -40,5 +40,6 @@ export default function LoginForm() {
   );
 }
 
+export default LoginForm;
 
 
