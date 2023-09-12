@@ -100,12 +100,15 @@ const resolvers = {
 
     addPosting: async (
       _,
-      { customerId, serviceId, askingPrice, estimatePrice }
+      { customerId, serviceId, askingPrice, estimatePrice, frequency, description, title }
     ) => {
       const customer = await Customer.findById(customerId);
       if (!customer) throw AuthenticationError;
 
       const newPosting = await Posting.create({
+        description,
+        title,
+        frequency,
         customer: customerId,
         service: serviceId,
         askingPrice,
