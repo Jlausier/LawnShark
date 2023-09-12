@@ -66,29 +66,8 @@ const resolvers = {
       const correctPw = await user.isCorrectPassword(password);
       if (!correctPw) throw AuthenticationError;
 
-      const authRole = {
-        _id: "",
-        name: "",
-      };
-
-      if (user._company) {
-        authRole._id = user._company._id;
-        authRole.name = user._company.name;
-      } else if (user._customer) {
-        authRole._id = user._customer._id;
-        authRole.name = user._customer.name;
-      }
-
-      const authUser = {
-        _id: user._id,
-        email: user.email,
-        password: user.password,
-        role: user.role,
-        authRole,
-      };
-
-      const token = signToken(authUser);
-      return { token, user: authUser };
+      const token = signToken(user);
+      return { token, user };
     },
 
     addUser: async (_, { email, password }) => {
@@ -98,7 +77,7 @@ const resolvers = {
       return { token, user };
     },
 
-    /** @TODO Only add customer or company if they do not exist on _ user */
+    /** @TODO Only add customer or company if they do not exist on user */
 
     addCustomer: async (_, { userId, name, location }) => {
       const customer = await Customer.create({ name, location: [location] });

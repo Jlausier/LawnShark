@@ -7,10 +7,9 @@ export const LOGIN_USER = gql`
       user {
         _id
         email
-        role
-        authRole {
+        userRole {
           _id
-          name
+          role
         }
       }
     }

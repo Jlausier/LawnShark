@@ -14,6 +14,14 @@ export function getRole() {
   // return getProfile().data.role;
 }
 
+export function getAuthRole() {
+  const { data } = getProfile();
+  return {
+    authId: data.authRole._id,
+    role: data.role,
+  };
+}
+
 export function loggedIn() {
   const token = getToken();
   return token && !isTokenExpired(token) ? true : false;

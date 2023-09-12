@@ -24,13 +24,18 @@ const typeDefs = `
     customer: Customer
   }
 
+  type UserRole {
+    _id: ID
+    role: String
+  }
+
   type User {
     _id: ID
     email: String
     password: String
     _customer: Customer
     _company: Company
-    role: String
+    userRole: UserRole
   }
 
   type Location {
@@ -70,23 +75,10 @@ const typeDefs = `
     averageRating: Int
     reviewCount: Int
   }
-
-  type AuthRole {
-    _id: ID
-    name: String
-  }
   
-  type AuthUser {
-    _id: ID
-    email: String
-    password: String
-    role: String
-    authRole: AuthRole
-  }
-
   type Auth {
     token: ID!
-    user: AuthUser
+    user: User
   }
 
   type Query {
