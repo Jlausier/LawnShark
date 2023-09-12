@@ -6,8 +6,9 @@ export default function JobPostingCard(postings) {
 
   return (
    
-    <div className="card w-100">
+    <div>
        {postings.map(posting => (
+        <div className="card w-100">
       <div className="card-body">
         <div className="row mt-2 mb-4">
           <div className="col-6">
@@ -22,8 +23,10 @@ export default function JobPostingCard(postings) {
         </div>
         <p className="card-text">{ posting.description }</p>
       </div>
+      </div>
       ))}
     </div>
+    
     
   );
 }
