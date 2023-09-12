@@ -99,6 +99,21 @@ export const QUERY_COMPANIES = gql`
   }
 `;
 
+export const QUERY_COMPANIES_FILTERED = gql`
+  query companiesFiltered($searchText: String, $services: [ID]) {
+    companiesFiltered(searchText: $searchText, services: $services) {
+      _id
+      name
+      description
+      services {
+        _id
+        name
+      }
+      averageRating
+    }
+  }
+`;
+
 export const QUERY_CUSTOMER = gql`
   query customer($customerId: ID!) {
     customer(customerId: $customerId) {
