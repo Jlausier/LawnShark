@@ -21,11 +21,9 @@ const resolvers = {
         .populate("customer");
     },
 
-    postingsFiltered: async(_, {searchText, service}) => {
+    postingsFiltered: async(_, {services}) => {
       const options = {};
-      if (searchText !== "")
-        options.name = { $regex: searchText, options: "i" };
-      if (service) options.service = service;
+      if (services.length > 0) options.services = services;
       
 
       return await Posting.find(options)

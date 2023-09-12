@@ -79,7 +79,7 @@ const typeDefs = `
     service(serviceId: ID!): Service
     services: [Service]
     posting(postingId: ID!): Posting
-    postingsFiltered(searchText: String!, service: ID!): [Posting]
+    postingsFiltered(services: [ID]!): [Posting]
     myPostings(customerId: ID!): [Posting]
     company(companyId: ID!): Company 
     companies: [Company]
