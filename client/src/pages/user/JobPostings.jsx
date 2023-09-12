@@ -2,6 +2,7 @@ import { useQuery } from "@apollo/client";
 
 import { QUERY_MY_POSTINGS } from "../../utils/queries";
 import JobPostingCard from "../../components/JobPostingCard";
+import Button from "../../components/Button";
 
 export default function JobPostings() {
   const { data } = useQuery(QUERY_MY_POSTINGS, {
@@ -23,6 +24,7 @@ export default function JobPostings() {
           >
             New Job Posting
           </a>
+          <Button title={"New Job Posting"}   />
         </div>
         <div className="">
           {data && data.myPostings && data.myPostings.length > 0 ? (

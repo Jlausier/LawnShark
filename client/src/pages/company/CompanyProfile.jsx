@@ -1,6 +1,11 @@
 import ReviewCard from "../../components/company/ReviewCard";
+import Button from "../../components/Button";
 
 export default function CompanyProfile() {
+
+  const openModal = () => {
+    alert("Open Modal");
+  }
 
   const company = {
     _id: "",
@@ -43,9 +48,8 @@ export default function CompanyProfile() {
             <div className="justify-content-end align-items-start">
               {/* Make into a Link */}
               <a href="/Messages" className="mx-2">Message</a>
-              {/* Make button a component */}
               {/* Add a modal */}
-              <a class='btn green text-light' href='#' role='button'>Edit Profile</a>
+              <Button title={"Edit Profile"} onClick={openModal}/>
             </div>
           </div>
           <div>
