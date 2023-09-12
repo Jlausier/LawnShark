@@ -44,6 +44,7 @@ export default function Search() {
           {/* Turn search form into a seperate component */}
           {/* <SearchForm /> */}
           <div className="mb-5">
+            {/** @TODO handle submit only works on button, needs to move to form */}
             <form className="d-flex w-100" role="search">
               <input
                 className="form-control me-2"
