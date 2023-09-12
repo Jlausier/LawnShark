@@ -4,8 +4,6 @@ import SignUpForm from "../components/auth-form/SignUpForm";
 
 import "../index.css";
 
-
-
 export default function SplashPage() {
 
   const [showLoginForm, setShowLoginForm] = useState(true)
