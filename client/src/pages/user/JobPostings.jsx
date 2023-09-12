@@ -17,14 +17,7 @@ export default function JobPostings() {
       <div className="border p-4 rounded">
         <div className="mb-5 d-flex justify-content-between align-items-start">
           <h2 className=" fs-1">My Job Postings</h2>
-          <a
-            className="btn green text-light"
-            href="/CreateJobPosting"
-            role="button"
-          >
-            New Job Posting
-          </a>
-          <Button title={"New Job Posting"}   />
+          <Button title={"New Job Posting"} />
         </div>
         <div className="">
           {data && data.myPostings && data.myPostings.length > 0 ? (

@@ -7,7 +7,10 @@ export const LOGIN_USER = gql`
       user {
         _id
         email
-        role
+        userRole {
+          _id
+          role
+        }
       }
     }
   }

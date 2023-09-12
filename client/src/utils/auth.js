@@ -9,6 +9,15 @@ export function getUserId() {
   // return getProfile().data._id;
 }
 
+export function getRole() {
+  return "company";
+  // return getProfile().data.userRole.role;
+}
+
+export function getUserRole() {
+  return getProfile().data.userRole;
+}
+
 export function loggedIn() {
   const token = getToken();
   return token && !isTokenExpired(token) ? true : false;

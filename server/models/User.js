@@ -24,13 +24,10 @@ const userSchema = new Schema(
   }
 );
 
-//password logic
 userSchema.pre("save", async function (next) {
   if (this.isNew || this.isModified("password")) {
-    const saltRounds = 10;
-    this.password = await bcrypt.hash(this.password, saltRounds);
+    this.password = await bcrypt.hash(this.password, 10);
   }
-
   next();
 });
 
@@ -38,8 +35,25 @@ userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-userSchema.virtual("role").get(function () {
-  return this._company ? "company" : "customer";
+userSchema.virtual("userRole").get(function () {
+  if (this._company) {
+    this.populate("_company");
+    return {
+      role: "company",
+      _id: this._company._id,
+    };
+  } else if (this._customer) {
+    this.populate("_customer");
+    return {
+      role: "customer",
+      _id: this._customer._id,
+    };
+  } else {
+    return {
+      role: "none",
+      _id: "",
+    };
+  }
 });
 
 const User = model("User", userSchema);

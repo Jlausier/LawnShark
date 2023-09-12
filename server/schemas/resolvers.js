@@ -70,10 +70,13 @@ const resolvers = {
 
   Mutation: {
     login: async (_, { email, password }) => {
-      const user = await User.findOne({ email });
+      const user = await User.findOne({ email })
+        .populate("_customer")
+        .populate("_company");
       if (!user) throw AuthenticationError;
       const correctPw = await user.isCorrectPassword(password);
       if (!correctPw) throw AuthenticationError;
+
       const token = signToken(user);
       return { token, user };
     },
@@ -85,7 +88,7 @@ const resolvers = {
       return { token, user };
     },
 
-    /** @TODO Only add customer or company if they do not exist on _ user */
+    /** @TODO Only add customer or company if they do not exist on user */
 
     addCustomer: async (_, { userId, name, location }) => {
       const customer = await Customer.create({ name, location: [location] });

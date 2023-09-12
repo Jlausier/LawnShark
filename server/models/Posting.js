@@ -35,9 +35,14 @@ const postingSchema = new Schema(
   {
     toJSON: {
       getters: true,
+      virtuals: true,
     },
   }
 );
+
+postingSchema.virtual("bidCount").get(function () {
+  return this.bids.length;
+});
 
 const Posting = model("Posting", postingSchema);
 
