@@ -39,6 +39,16 @@ const resolvers = {
       return await Company.find().populate("services");
     },
 
+    companiesFiltered: async (_, { searchText, services }) => {
+      const options = {};
+
+      if (searchText && searchText !== "")
+        options.name = { $regex: searchText, options: "i" };
+      if (services && services.length > 0) options.services = services;
+
+      return await Company.find(options);
+    },
+
     customer: async (_, { customerId }) => {
       return await Customer.findOne({ _id: customerId })
         .populate("location")

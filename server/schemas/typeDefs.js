@@ -80,6 +80,7 @@ const typeDefs = `
     postings: [Posting]
     company(companyId: ID!): Company 
     companies: [Company]
+    companiesFiltered(searchText: String, services: [ID]): [Company]
     customer(customerId: ID!): Customer
     customers: [Customer]
   }
