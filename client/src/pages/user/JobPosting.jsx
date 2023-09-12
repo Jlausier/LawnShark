@@ -1,11 +1,15 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
+import { getRole } from "../../utils/auth";
 import { QUERY_POSTING } from "../../utils/queries";
 
 import CreateBid from "../../components/bids/CreateBid";
 
 export default function JobPosting() {
+  // eslint-disable-next-line no-unused-vars
+  const role = getRole();
+
   const { postingId } = useParams();
   const { data } = useQuery(QUERY_POSTING, {
     variables: { postingId },
@@ -21,7 +25,7 @@ export default function JobPosting() {
           </div>
           <div className="col-6 text-end">
             <span className="mx-3 fs-5">
-              Total Bids: {data.posting.bids.length}
+              Total Bids: {data.posting.bidCount}
             </span>
             <span className="px-4 py-2 rounded green text-light fs-4">
               ${data.posting.askingPrice}

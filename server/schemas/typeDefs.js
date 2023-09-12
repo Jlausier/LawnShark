@@ -30,6 +30,7 @@ const typeDefs = `
     password: String
     _customer: Customer
     _company: Company
+    role: String
   }
 
   type Location {
