@@ -28,7 +28,7 @@ export default function JobPostings() {
           {/* <Button {...link} currentPage={currentPage} key={link.path} /> */}
         </div>
         <div className="">
-          <JobPostingCard />- // Cards Go Here
+          <JobPostingCard postings = {postings} />- // Cards Go Here
         </div>
       </div>
     </div>
