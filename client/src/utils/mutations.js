@@ -8,6 +8,10 @@ export const LOGIN_USER = gql`
         _id
         email
         role
+        authRole {
+          _id
+          name
+        }
       }
     }
   }
