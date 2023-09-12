@@ -24,13 +24,10 @@ const userSchema = new Schema(
   }
 );
 
-//password logic
 userSchema.pre("save", async function (next) {
   if (this.isNew || this.isModified("password")) {
-    const saltRounds = 10;
-    this.password = await bcrypt.hash(this.password, saltRounds);
+    this.password = await bcrypt.hash(this.password, 10);
   }
-
   next();
 });
 
@@ -39,7 +36,9 @@ userSchema.methods.isCorrectPassword = async function (password) {
 };
 
 userSchema.virtual("role").get(function () {
-  return this._company ? "company" : "customer";
+  if (this._company) return "company";
+  else if (this._customer) return "customer";
+  return "none";
 });
 
 const User = model("User", userSchema);

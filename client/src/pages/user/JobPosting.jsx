@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
-// import { data.posting } from "../../utils/testData";
 import { QUERY_POSTING } from "../../utils/queries";
 
 import CreateBid from "../../components/bids/CreateBid";
