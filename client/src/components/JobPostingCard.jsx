@@ -1,6 +1,8 @@
 export default function JobPostingCard(postings) {
 
-  
+  if (!postings.length) {
+    return <h3>No Job Postings Yet</h3>;
+  }
 
   return (
    
