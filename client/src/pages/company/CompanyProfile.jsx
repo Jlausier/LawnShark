@@ -48,6 +48,9 @@ export default function CompanyProfile() {
               <a class='btn green text-light' href='#' role='button'>Edit Profile</a>
             </div>
           </div>
+          <div>
+            <p>{ company._company.description }</p>
+          </div>
           <hr/>
           <div>
             <h3 className="fs-5">Company Info</h3>
