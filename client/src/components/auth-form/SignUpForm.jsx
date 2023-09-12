@@ -1,7 +1,12 @@
 import { useState } from 'react';
 import {checkPassword, validateEmail} from "../../utils/auth"
+import Button from "../Button";
 
 function SignUpForm() {
+
+  const handleSubmit = () => {
+    alert("Submit Form");
+  }
     // Create state variables for the fields in the form
     // We are also setting their initial values to an empty string
     const [email, setEmail] = useState('');
@@ -81,9 +86,7 @@ function SignUpForm() {
                   placeholder="Password"
                 />
             </div>
-            <button type="submit" className="btn green text-light">
-                Submit
-            </button>
+            <Button title={"Submit"} onClick={handleSubmit}/>
         </form>
         {errorMessage && (
         <div>
