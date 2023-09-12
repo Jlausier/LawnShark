@@ -66,6 +66,8 @@ const typeDefs = `
     description: String
     services: [Service]
     reviews: [Review]
+    averageRating: Int
+    reviewCount: Int
   }
 
   type Auth {
@@ -80,6 +82,7 @@ const typeDefs = `
     postings: [Posting]
     company(companyId: ID!): Company 
     companies: [Company]
+    companiesFiltered(searchText: String!, services: [ID]!): [Company]
     customer(customerId: ID!): Customer
     customers: [Customer]
   }
