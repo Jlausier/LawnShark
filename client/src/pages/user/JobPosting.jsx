@@ -4,7 +4,8 @@ import { useQuery } from "@apollo/client";
 // import { data.posting } from "../../utils/testData";
 import { QUERY_POSTING } from "../../utils/queries";
 
-import CreateBid from "../../components/CreateBid";
+import CreateBid from "../../components/bids/CreateBid";
+import BidCardView from "../../components/bids/BidCardView";
 
 export default function JobPosting() {
   const { postingId } = useParams();
@@ -17,7 +18,7 @@ export default function JobPosting() {
       <div className="border p-4 rounded">
         <div className="row">
           <div className="col-6">
-            <h2 className=" fs-1">{data.posting.title}</h2>
+            {/* <h2 className=" fs-1">{data.posting.title}</h2> */}
             <span>{data.posting.service.name}</span>
           </div>
           <div className="col-6 text-end">
@@ -44,9 +45,17 @@ export default function JobPosting() {
           </a>
           <CreateBid />
         </div>
+        <div>
+          <h6>Live Bids</h6>
+          <BidCardView />
+        </div>
       </div>
     </div>
   ) : (
-    <div>damn that sucks</div>
+    <div>
+      <div>damn that sucks</div>
+    </div>
+
+
   );
 }

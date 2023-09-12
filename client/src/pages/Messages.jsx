@@ -1,5 +1,5 @@
-// import MessageCard from '../components/MessageCard'
-// import MessageConversation from '../components/MessageConversation'
+import MessageCard from '../components/message/MessageCard'
+import MessageConversation from '../components/message/MessageConversation'
 
 export default function Messages() {
 
@@ -9,12 +9,11 @@ export default function Messages() {
           <h2 className="mb-5 fs-1">Messages</h2>
           <div className="row">
             <div className=" pe-2 col-lg-4">
-              // MessageCard goes here
-              {/* <MessageCard /> */}
+             <MessageCard/> 
           </div>
             <div className=" col-lg-8">
-              // Message Conversation goes here
-              {/* <MessageConversation /> */}
+              
+               <MessageConversation />
             </div>
           </div>
         </div>
