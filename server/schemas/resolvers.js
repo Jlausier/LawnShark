@@ -37,6 +37,16 @@ const resolvers = {
       return await Company.find().populate("services");
     },
 
+    companiesFiltered: async (_, { searchText, services }) => {
+      const options = {};
+
+      if (searchText !== "")
+        options.name = { $regex: searchText, options: "i" };
+      if (services.length > 0) options.services = services;
+
+      return await Company.find(options).populate(services);
+    },
+
     customer: async (_, { customerId }) => {
       return await Customer.findOne({ _id: customerId })
         .populate("postings")
@@ -125,6 +135,26 @@ const resolvers = {
         .populate("service");
 
       return posting;
+    },
+
+    addBid: async (_, { amount, message, postingId, companyId }) => {
+      const newBid = await Bid.create({
+        amount,
+        message,
+        posting: postingId,
+        company: companyId,
+      });
+
+      /** @TODO validate posting has new bid */
+      await Posting.findByIdAndUpdate(postingId, {
+        $addToSet: { bids: newBid._id },
+      });
+
+      const bid = await Bid.findById(newBid._id)
+        .populate("posting")
+        .populate("company");
+
+      return bid;
     },
   },
 };
