@@ -1,7 +1,32 @@
 // import SearchForm from '../components/SearchForm'
+import { useState } from "react";
 import CompanyCard from "../components/CompanyCard";
 
+import { useCompaniesSearch } from "../hooks/useCompanies";
+
 export default function Search() {
+  const [searchOptions, setSearchOptions] = useState();
+
+  const [formData, setFormData] = useState({
+    searchText: "",
+    services: [],
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSearchOptions(formData);
+  };
+
+  const companies = useCompaniesSearch({ ...searchOptions });
+
   return (
     <div className="container p-5">
       <div className="border p-4 rounded">
@@ -22,15 +47,26 @@ export default function Search() {
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
+                onChange={handleChange}
               />
-              <button className="btn btn-outline-success" type="submit">
+              <button
+                onSubmit={handleSubmit}
+                className="btn btn-outline-success"
+                type="submit"
+              >
                 Search
               </button>
             </form>
           </div>
-          <div>
-            <CompanyCard />
-          </div>
+          {companies && companies.length > 0 ? (
+            <div>
+              {companies.map((company) => (
+                <CompanyCard {...company} key={company._id} />
+              ))}
+            </div>
+          ) : (
+            <div>no companies</div>
+          )}
         </div>
       </div>
     </div>
