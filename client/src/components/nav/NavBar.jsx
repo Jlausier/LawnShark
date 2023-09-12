@@ -56,8 +56,8 @@ export default function NavBar() {
   return (
     <>
       <div className="min-vh-100 p-4 green text-white ">
-        <div className="p-5 logo"></div>
-        <nav className="navbar navbar-expand-lg">
+        <div className="p-5  logo"></div>
+        <nav className="navbar navbar-expand-lg ">
           <ul className="navbar-nav nav-pills flex-column">
             {links.map((link) => (
               <NavBarLink {...link} currentPage={currentPage} key={link.path} />
