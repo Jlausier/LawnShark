@@ -1,6 +1,6 @@
 // import SearchForm from '../components/SearchForm'
 import { useState } from "react";
-import CompanyCard from "../components/CompanyCard";
+import CompanyCard from "../components/company/CompanyCard";
 
 import { useCompaniesSearch } from "../hooks/useCompanies";
 

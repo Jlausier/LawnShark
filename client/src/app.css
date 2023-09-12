@@ -8,4 +8,5 @@
 
 .landing-page-bg {
     background-image: url(/images/green-background-image.png);
+    background-size: cover;
 }
