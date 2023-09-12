@@ -21,13 +21,10 @@ export default function Search() {
       ...formData,
       [name]: value,
     });
-
-    console.log(formData);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
     setSearchOptions(formData);
   };
 
@@ -65,9 +62,11 @@ export default function Search() {
               </button>
             </form>
           </div>
-          {companies && companies.length > 0 ? (
+          {companies &&
+          companies.companiesFiltered &&
+          companies.companiesFiltered.length > 0 ? (
             <div>
-              {companies.map((company) => (
+              {companies.companiesFiltered.map((company) => (
                 <CompanyCard {...company} key={company._id} />
               ))}
             </div>

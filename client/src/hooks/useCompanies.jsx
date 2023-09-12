@@ -6,5 +6,5 @@ export function useCompaniesSearch(variables) {
   const { data } = useQuery(QUERY_COMPANIES_FILTERED, {
     variables,
   });
-  return data.companiesFiltered;
+  return data;
 }

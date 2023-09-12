@@ -25,3 +25,31 @@ export const posting = {
   description: "#description",
   frequency: "#frequency",
 };
+
+export const company = {
+  _id: "",
+  email: "#test@email.com",
+  password: "#password",
+  _company: {
+    _id: "",
+    name: "#companyName",
+    description: "#description",
+    services: [
+      {
+        _id: "",
+        name: "#serviceName",
+      },
+    ],
+    reviews: [
+      {
+        reviewText: "#reviewText",
+        createdAt: "#createdAt",
+        rating: 5,
+        customer: {
+          _id: "",
+          name: "#customerName",
+        },
+      },
+    ],
+  },
+};

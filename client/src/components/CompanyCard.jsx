@@ -1,51 +1,41 @@
-export default function CompanyCard() {
+/* eslint-disable no-unused-vars */
+import PropTypes from "prop-types";
 
-  const company = {
-    _id: "",
-    email: "#test@email.com",
-    password: "#password",
-    _company: {
-      _id: "",
-      name: "#companyName",
-      description: "#description",
-      services: [
-        {
-          _id: "",
-          name: "#serviceName",
-        }
-      ],
-      reviews: [
-        {
-          reviewText: "#reviewText",
-          createdAt: "#createdAt",
-          rating: 5,
-          customer: {
-            _id: "",
-            name: "#customerName"
-          }
-        }
-      ]
-    },
-  }; 
-
+export default function CompanyCard({
+  _id,
+  name,
+  description,
+  services,
+  averageRating,
+}) {
   return (
-      <div class="card w-100">
-        <div class="card-body">
-          <div className="row mt-2 mb-4">
-            <div className="col-6">
-              <h5 class="card-title fs-2">{ company._company.name }</h5>
-            </div>
-            <div className="col-6 d-flex justify-content-end align-items-center">
-              {/* Make into a Link */}
-              <a href="/Messages" className="mx-2">Message</a>
-              <span className="mx-3 fs-6">
-                Total Reviews: {company._company.reviews.length}
-              </span>
-              <span className="px-4 py-2 rounded green text-light fs-5">{ company._company.reviews[0].rating }</span>
-            </div>
+    <div className="card w-100">
+      <div className="card-body">
+        <div className="row mt-2 mb-4">
+          <div className="col-6">
+            <h5 className="card-title fs-2">{name}</h5>
           </div>
-          <p class="card-text">{ company._company.description }</p>
+          <div className="col-6 d-flex justify-content-end align-items-center">
+            {/* Make into a Link */}
+            <a href="/Messages" className="mx-2">
+              Message
+            </a>
+            <span className="mx-3 fs-6">Total Reviews: {1}</span>
+            <span className="px-4 py-2 rounded green text-light fs-5">
+              {averageRating}
+            </span>
+          </div>
         </div>
+        <p className="card-text">{description}</p>
       </div>
+    </div>
   );
 }
+
+CompanyCard.propTypes = {
+  _id: PropTypes.string,
+  name: PropTypes.string,
+  description: PropTypes.string,
+  services: PropTypes.arrayOf(PropTypes.object),
+  averageRating: PropTypes.number,
+};
