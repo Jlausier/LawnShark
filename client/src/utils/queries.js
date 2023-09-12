@@ -45,6 +45,32 @@ export const QUERY_POSTING = gql`
   }
 `;
 
+export const QUERY_POSTINGS_FILTERED = gql`
+query posting($searchText: String!, $services: [ID]!) {
+  postingsFiltered(searchText: $searchText, services: $services)) {
+    _id
+    service {
+      _id
+      name
+    }
+    askingPrice
+    estimatePrice
+    bids {
+      _id
+      amount
+      company {
+        _id
+        name
+      }
+    }
+    customer {
+      _id
+      name
+    }
+  }
+}
+`;
+
 export const QUERY_MY_POSTINGS = gql`
   query myPostings($customerId: ID!) {
     myPostings(customerId: $customerId) {

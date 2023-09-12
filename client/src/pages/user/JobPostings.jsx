@@ -6,7 +6,7 @@ import JobPostingCard from "../../components/JobPostingCard";
 export default function JobPostings() {
   const { data } = useQuery(QUERY_MY_POSTINGS, {
     variables: {
-      customerId: "64ff282df6d415478c806752",
+      customerId: "64ffdd99efba6db008dce024",
     },
   });
   console.log(data);

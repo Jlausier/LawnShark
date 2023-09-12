@@ -21,6 +21,24 @@ const resolvers = {
         .populate("customer");
     },
 
+    postingsFiltered: async(_, {searchText, service}) => {
+      const options = {};
+      if (searchText !== "")
+        options.name = { $regex: searchText, options: "i" };
+      if (services.length > 0) options.services = service;
+
+      return await Posting.find(options)
+      .populate("service")
+      .populate("customer")
+      ,populate({
+        path: "customer",
+        populate:"location"
+      });
+    },
+
+
+    },
+
     myPostings: async (_, { customerId }) => {
       return await Posting.find({ customer: customerId })
         .populate("service")
