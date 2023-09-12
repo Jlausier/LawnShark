@@ -1,25 +1,17 @@
 
 function MessageCard() {
     return (
-<div className="modal" tabindex="-1" role="dialog">
-  <div className="modal-dialog" role="document">
-    <div className="modal-content">
-      <div className="modal-header">
-        <h5 className="modal-title">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div className="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div className="modal-footer">
-        <button type="button" class="btn btn-warning" data-dismiss="modal">Delete</button>
-        <button type="button" class="btn btn-primary">Reply</button>
+
+      <div class="card">
+      <h5 class="card-header">From:</h5>
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary m-2">Reply</a>
+        <a href="#" class="btn btn-danger">Delete</a>
       </div>
     </div>
-  </div>
-</div>
+
     );
 }
 
