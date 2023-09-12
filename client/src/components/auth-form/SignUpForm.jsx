@@ -1,5 +1,8 @@
 export default function SignUpForm() {
 
+    const toggleForms = () => {
+        setShowLoginForm(!showLoginForm);
+      }
 
     return (
         <div>
@@ -43,7 +46,7 @@ export default function SignUpForm() {
                 id="exampleInputPassword1"
                 />
             </div>
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn green text-light">
                 Submit
             </button>
         </form>
