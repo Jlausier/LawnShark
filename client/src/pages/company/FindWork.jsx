@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
 import { useQuery } from "@apollo/client";
-import { usePostingsSearch} from "../../hooks/usePostings.js";
+import { useState } from "react"
+import { usePostingsSearch } from "../../hooks/usePostings.js";
 import JobPostingCard from "../../components/JobPostingCard";
 
 
 export default function FindWork() {
-  
+
 
 
   const postings = usePostingsSearch
@@ -19,12 +20,30 @@ export default function FindWork() {
         <div className=" mb-3">
           <span className="pe-2">Filter Results:</span>
 
-          <a className="pe-2 ">Lawn Work</a>
-          <a className="pe-2">Tree Trimming</a>
-          <a className="pe-2">Power Washing</a>
-          <a className="pe-2">Fertilizing</a>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" />
+            <label class="form-check-label" for="flexCheckDefault">
+              Lawn Work
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" />
+            <label class="form-check-label" for="flexCheckDefault">
+              Tree Timming
+            </label>
+          </div><div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" />
+            <label class="form-check-label" for="flexCheckDefault">
+              Pressure-Washing
+            </label>
+          </div><div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" />
+            <label class="form-check-label" for="flexCheckDefault">
+              Fertilizing
+            </label>
+          </div>
         </div>
-        
+
       </div>
     </div>
   );
