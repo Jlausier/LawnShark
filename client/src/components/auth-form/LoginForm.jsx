@@ -1,5 +1,3 @@
-export default function LoginForm() {
-
 
   return (
     <div>
@@ -37,5 +35,6 @@ export default function LoginForm() {
   );
 }
 
+export default LoginForm;
 
 
