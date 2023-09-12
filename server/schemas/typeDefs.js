@@ -71,9 +71,22 @@ const typeDefs = `
     reviewCount: Int
   }
 
+  type AuthRole {
+    _id: ID
+    name: String
+  }
+  
+  type AuthUser {
+    _id: ID
+    email: String
+    password: String
+    role: String
+    authRole: AuthRole
+  }
+
   type Auth {
     token: ID!
-    user: User
+    user: AuthUser
   }
 
   type Query {

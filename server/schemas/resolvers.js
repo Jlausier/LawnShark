@@ -59,12 +59,36 @@ const resolvers = {
 
   Mutation: {
     login: async (_, { email, password }) => {
-      const user = await User.findOne({ email });
+      const user = await User.findOne({ email })
+        .populate("_customer")
+        .populate("_company");
       if (!user) throw AuthenticationError;
       const correctPw = await user.isCorrectPassword(password);
       if (!correctPw) throw AuthenticationError;
-      const token = signToken(user);
-      return { token, user };
+
+      const authRole = {
+        _id: "",
+        name: "",
+      };
+
+      if (user._company) {
+        authRole._id = user._company._id;
+        authRole.name = user._company.name;
+      } else if (user._customer) {
+        authRole._id = user._customer._id;
+        authRole.name = user._customer.name;
+      }
+
+      const authUser = {
+        _id: user._id,
+        email: user.email,
+        password: user.password,
+        role: user.role,
+        authRole,
+      };
+
+      const token = signToken(authUser);
+      return { token, user: authUser };
     },
 
     addUser: async (_, { email, password }) => {
