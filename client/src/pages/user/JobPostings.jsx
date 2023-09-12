@@ -11,6 +11,7 @@ export default function JobPostings() {
   };
 
   const {data} = useQuery(QUERY_POSTINGS)
+  const postings = data?.postings || []
 
   return (
     <div className="p-5">

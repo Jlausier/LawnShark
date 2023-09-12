@@ -1,35 +1,11 @@
-export default function JobPostingCard() {
+export default function JobPostingCard(postings) {
 
-  const posting = {
-    _id: "",
-    title: "#postingTitle",
-    service: {
-      _id: "",
-      name: "#serviceName",
-    },
-    askingPrice: 0,
-    estimatePrice: 0,
-    bids: [
-      {
-        _id: "",
-        amount: 0,
-        company: {
-          _id: "",
-          name: "#companyName",
-        },
-      },
-    ],
-    customer: {
-      _id: "",
-      name: "#customerName",
-      location: "#customerLocation"
-    },
-    description: "#description",
-    frequency: "#frequency",
-  }
+  
 
   return (
+   
     <div className="card w-100">
+       {postings.map(posting => (
       <div className="card-body">
         <div className="row mt-2 mb-4">
           <div className="col-6">
@@ -44,6 +20,8 @@ export default function JobPostingCard() {
         </div>
         <p className="card-text">{ posting.description }</p>
       </div>
+      ))}
     </div>
+    
   );
 }
