@@ -45,18 +45,27 @@ export const QUERY_POSTING = gql`
   }
 `;
 
-export const QUERY_POSTINGS = gql`
-  query postings {
-    postings {
+export const QUERY_MY_POSTINGS = gql`
+  query myPostings($customerId: ID!) {
+    myPostings(customerId: $customerId) {
       _id
+      title
+      askingPrice
+      frequency
+      description
       service {
         _id
         name
       }
-      askingPrice
       customer {
         _id
         name
+        location {
+          address
+          city
+          state
+          zip
+        }
       }
     }
   }

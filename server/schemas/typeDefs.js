@@ -77,7 +77,7 @@ const typeDefs = `
     service(serviceId: ID!): Service
     services: [Service]
     posting(postingId: ID!): Posting
-    postings: [Posting]
+    myPostings(customerId: ID!): [Posting]
     company(companyId: ID!): Company 
     companies: [Company]
     customer(customerId: ID!): Customer

@@ -18,15 +18,13 @@ const resolvers = {
           path: "bids",
           populate: "company",
         })
-        .populate("customer")
-        .populate({
-          path: "customer",
-          populate: "location",
-        });
+        .populate("customer");
     },
 
-    postings: async () => {
-      return await Posting.find().populate("service").populate("customer");
+    myPostings: async (_, { customerId }) => {
+      return await Posting.find({ customer: customerId })
+        .populate("service")
+        .populate("customer");
     },
 
     company: async (_, { companyId }) => {
@@ -41,7 +39,6 @@ const resolvers = {
 
     customer: async (_, { customerId }) => {
       return await Customer.findOne({ _id: customerId })
-        .populate("location")
         .populate("postings")
         .populate({
           path: "postings",
@@ -100,7 +97,15 @@ const resolvers = {
 
     addPosting: async (
       _,
-      { customerId, serviceId, askingPrice, estimatePrice, frequency, description, title }
+      {
+        customerId,
+        serviceId,
+        askingPrice,
+        estimatePrice,
+        frequency,
+        description,
+        title,
+      }
     ) => {
       const customer = await Customer.findById(customerId);
       if (!customer) throw AuthenticationError;
