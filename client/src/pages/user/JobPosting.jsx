@@ -4,7 +4,7 @@ import { useQuery } from "@apollo/client";
 // import { data.posting } from "../../utils/testData";
 import { QUERY_POSTING } from "../../utils/queries";
 
-import CreateBid from "../../components/CreateBid";
+import CreateBid from "../../components/bids/CreateBid";
 
 export default function JobPosting() {
   const { postingId } = useParams();

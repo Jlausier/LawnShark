@@ -28,7 +28,7 @@ import "./index.css";
 
 const router = createBrowserRouter([
   {
-    path: "/login",
+    path: "/Welcome",
     element: <SplashPage />,
   },
   {

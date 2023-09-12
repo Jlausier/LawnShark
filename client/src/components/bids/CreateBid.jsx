@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { useAddBid } from "../hooks/useBids";
+import { useAddBid } from "../../hooks/useBids";
 
 export default function CreateBid() {
   const { postingId } = useParams();

@@ -1,4 +1,4 @@
-import BidCard from  '../../components/BidCard';
+import BidCard from  '../../components/bids/BidCard';
 
 export default function MyBids() {
 
