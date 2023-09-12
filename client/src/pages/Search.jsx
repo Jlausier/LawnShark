@@ -5,7 +5,10 @@ import CompanyCard from "../components/CompanyCard";
 import { useCompaniesSearch } from "../hooks/useCompanies";
 
 export default function Search() {
-  const [searchOptions, setSearchOptions] = useState();
+  const [searchOptions, setSearchOptions] = useState({
+    searchText: "",
+    services: [],
+  });
 
   const [formData, setFormData] = useState({
     searchText: "",
@@ -18,14 +21,17 @@ export default function Search() {
       ...formData,
       [name]: value,
     });
+
+    console.log(formData);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(formData);
     setSearchOptions(formData);
   };
 
-  const companies = useCompaniesSearch({ ...searchOptions });
+  const companies = useCompaniesSearch(searchOptions);
 
   return (
     <div className="container p-5">
@@ -47,6 +53,7 @@ export default function Search() {
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
+                name="searchText"
                 onChange={handleChange}
               />
               <button

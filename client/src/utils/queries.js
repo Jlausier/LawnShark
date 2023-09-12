@@ -100,7 +100,7 @@ export const QUERY_COMPANIES = gql`
 `;
 
 export const QUERY_COMPANIES_FILTERED = gql`
-  query companiesFiltered($searchText: String, $services: [ID]) {
+  query companiesFiltered($searchText: String!, $services: [ID]!) {
     companiesFiltered(searchText: $searchText, services: $services) {
       _id
       name
@@ -109,7 +109,6 @@ export const QUERY_COMPANIES_FILTERED = gql`
         _id
         name
       }
-      averageRating
     }
   }
 `;

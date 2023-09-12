@@ -42,11 +42,11 @@ const resolvers = {
     companiesFiltered: async (_, { searchText, services }) => {
       const options = {};
 
-      if (searchText && searchText !== "")
+      if (searchText !== "")
         options.name = { $regex: searchText, options: "i" };
-      if (services && services.length > 0) options.services = services;
+      if (services.length > 0) options.services = services;
 
-      return await Company.find(options);
+      return await Company.find(options).populate(services);
     },
 
     customer: async (_, { customerId }) => {
