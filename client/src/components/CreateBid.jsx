@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
+/* eslint-disable no-unused-vars */
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+import { useAddBid } from "../hooks/useBids";
 
 export default function CreateBid() {
+  const { postingId } = useParams();
+
   const [formData, setFormData] = useState({
-    proposedAmount: '',
-    description: '',
+    proposedAmount: "",
+    message: "",
   });
+
+  /** @TODO handle error with mutation usage */
+  const { createBid, error } = useAddBid();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -14,15 +22,25 @@ export default function CreateBid() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(formData);
+    /** @TODO validate form data */
+    const { proposedAmount, message } = formData;
+
+    createBid({
+      amount: parseInt(proposedAmount) || -1,
+      message,
+      postingId,
+    }).catch((err) => {
+      /** @TODO display error if bid cannot be created */
+      console.error(err);
+    });
   };
 
   return (
-    <div className='mt-3'>
-        <form onSubmit={handleSubmit}>
+    <div className="mt-3">
+      <form onSubmit={handleSubmit}>
         {/* Proposed Amount */}
         <div className="mb-3">
           <label htmlFor="proposedAmount" className="form-label">
@@ -60,6 +78,5 @@ export default function CreateBid() {
         </button>
       </form>
     </div>
-      
   );
 }
