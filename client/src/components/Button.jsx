@@ -1,21 +1,14 @@
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import { buttonClasslist } from "../utils/commonClasslist";
 
-export default function Button({ currentPage, path, title }) {
+export default function Button({ title, ...props }) {
   return (
-    <button className="btn green text-light">
-      <Link
-        to={path}
-        className={currentPage === path ? "nav-link active" : "nav-link"}
-      >
-        {title}
-      </Link>
+    <button className={buttonClasslist} {...props} >
+      {title}
     </button>
   );
 }
 
 Button.propTypes = {
-  currentPage: PropTypes.string,
-  path: PropTypes.string,
   title: PropTypes.string,
 };

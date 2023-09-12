@@ -1,4 +1,4 @@
-// import NotificationCard from '../components/NotificationCard'
+import NotificationCard from '../components/NotificationCard'
 
 
 export default function Notifications() {
@@ -8,8 +8,7 @@ export default function Notifications() {
       <div className="border p-4 rounded">
         <h2 className="mb-5 fs-1">Notifications</h2>
         <div className="d-flex flex-column">
-          // Notification Card goes here
-          {/* <NotificationCard /> */}
+           <NotificationCard /> 
         </div>
       </div>
     </div>

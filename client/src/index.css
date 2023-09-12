@@ -9,3 +9,7 @@
 .card{
     width: 18rem;
 }
+.logo{
+    background-image: url(/images/shark.png);
+  background-size: 100%;
+}

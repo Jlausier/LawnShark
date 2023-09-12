@@ -6,6 +6,7 @@ import { QUERY_POSTING } from "../../utils/queries";
 import { postingHasCompanyBid } from "../../utils/dataValidation";
 
 import CreateBid from "../../components/bids/CreateBid";
+import BidCardView from "../../components/bids/BidCardView";
 
 export default function JobPosting() {
   // eslint-disable-next-line no-unused-vars
@@ -21,7 +22,7 @@ export default function JobPosting() {
       <div className="border p-4 rounded">
         <div className="row">
           <div className="col-6">
-            <h2 className=" fs-1">{data.posting.title}</h2>
+            {/* <h2 className=" fs-1">{data.posting.title}</h2> */}
             <span>{data.posting.service.name}</span>
           </div>
           <div className="col-6 text-end">
@@ -41,10 +42,24 @@ export default function JobPosting() {
           <p>{data.posting.description}</p>
         </div>
         <hr />
-        {!postingHasCompanyBid(userRole, data.posting.bids) && <CreateBid />}
+        {!postingHasCompanyBid(userRole, data.posting.bids) && (
+          <div className="d-flex flex-column align-items-start">
+            {/* Make the CreateBid Component Appear if the button is clicked */}
+            <a className="btn green text-light" href="#" role="button">
+              Place Bid
+            </a>
+            <CreateBid />
+          </div>
+        )}
+        <div>
+          <h6>Live Bids</h6>
+          <BidCardView />
+        </div>
       </div>
     </div>
   ) : (
-    <div>damn that sucks</div>
+    <div>
+      <div>damn that sucks</div>
+    </div>
   );
 }
