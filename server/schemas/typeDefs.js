@@ -79,7 +79,7 @@ const typeDefs = `
     service(serviceId: ID!): Service
     services: [Service]
     posting(postingId: ID!): Posting
-    postings: [Posting]
+    myPostings(customerId: ID!): [Posting]
     company(companyId: ID!): Company 
     companies: [Company]
     companiesFiltered(searchText: String!, services: [ID]!): [Company]
@@ -93,7 +93,7 @@ const typeDefs = `
     addCustomer(userId: String!, name: String!, location: LocationInput!): User
     addCompany(userId: String!, name: String!, description: String!, services: [ID]!): User
     addService(name: String!, description: String!): Service
-    addPosting(customerId: ID!, serviceId: ID!, askingPrice: Int!, estimatePrice: Int): Posting
+    addPosting(customerId: ID!, serviceId: ID!, askingPrice: Int!, estimatePrice: Int, frequency: String!, title: String!, description: String!): Posting
     addBid(amount: Int!, message: String!, postingId: ID!, companyId: ID!): Bid
   }
 `;

@@ -1,14 +1,15 @@
-/* eslint-disable no-unused-vars */
-import { useLocation } from "react-router-dom";
-import JobPostingCard from "../../components/Button";
-import Button from "../../components/JobPostingCard";
+import { useQuery } from "@apollo/client";
+
+import { QUERY_MY_POSTINGS } from "../../utils/queries";
+import JobPostingCard from "../../components/JobPostingCard";
 
 export default function JobPostings() {
-  const currentPage = useLocation().pathname;
-  const link = {
-    title: "Add New",
-    path: "/CreateJobPosting",
-  };
+  const { data } = useQuery(QUERY_MY_POSTINGS, {
+    variables: {
+      customerId: "64ff282df6d415478c806752",
+    },
+  });
+  console.log(data);
 
   return (
     <div className="p-5">
@@ -22,10 +23,17 @@ export default function JobPostings() {
           >
             New Job Posting
           </a>
-          {/* <Button {...link} currentPage={currentPage} key={link.path} /> */}
         </div>
         <div className="">
-          <JobPostingCard />- // Cards Go Here
+          {data && data.myPostings && data.myPostings.length > 0 ? (
+            <div>
+              {data.myPostings.map((posting) => (
+                <JobPostingCard {...posting} key={posting._id} />
+              ))}
+            </div>
+          ) : (
+            <div>No job postings...</div>
+          )}
         </div>
       </div>
     </div>
