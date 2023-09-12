@@ -8,7 +8,7 @@ function SignUpForm() {
     
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-  
+    
     const handleInputChange = (e) => {
       // Getting the value and name of the input which triggered the change
       const { target } = e;
@@ -22,7 +22,7 @@ function SignUpForm() {
         setPassword(inputValue);
       }
     };
-  
+    
     const handleFormSubmit = (e) => {
       // Preventing the default behavior of the form submit (which is to refresh the page)
       e.preventDefault();
@@ -40,13 +40,15 @@ function SignUpForm() {
         );
         return;
       }
-     
-  
+      
       // If everything goes according to plan, we want to clear out the input after a successful registration.
-     
       setPassword('');
       setEmail('');
     };
+  
+    const toggleForms = () => {
+      setShowLoginForm(!showLoginForm);
+    }
 
     return (
         <div>
@@ -79,7 +81,7 @@ function SignUpForm() {
                   placeholder="Password"
                 />
             </div>
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn green text-light">
                 Submit
             </button>
         </form>

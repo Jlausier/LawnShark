@@ -1,5 +1,8 @@
 
 
+    const toggleForms = () => {
+        setShowLoginForm(!showLoginForm);
+      }
 
   return (
     <div>
@@ -29,7 +32,7 @@
                 id="exampleInputPassword1"
                 />
             </div>
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn green text-light">
                 Submit
             </button>
         </form>
