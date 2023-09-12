@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import NavBarLink from "./NavBarLink";
+import "/src/index.css"
 
 export default function NavBar() {
   const company = true;
@@ -48,14 +49,14 @@ export default function NavBar() {
     },
     {
       title: "Landing Page",
-      path: "/Login",
+      path: "/Welcome",
     },
   ];
 
   return (
     <>
       <div className="min-vh-100 p-4 green text-white ">
-        <div className="pb-2">Logo</div>
+        <div className="p-5 logo"></div>
         <nav className="navbar navbar-expand-lg">
           <ul className="navbar-nav nav-pills flex-column">
             {links.map((link) => (
