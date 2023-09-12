@@ -127,6 +127,11 @@ const resolvers = {
         company: companyId,
       });
 
+      /** @TODO validate posting has new bid */
+      await Posting.findByIdAndUpdate(postingId, {
+        $addToSet: { bids: newBid._id },
+      });
+
       const bid = await Bid.findById(newBid._id)
         .populate("posting")
         .populate("company");
