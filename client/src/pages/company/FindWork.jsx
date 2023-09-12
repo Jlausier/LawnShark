@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/client";
 //import { QUERY_POSTINGS_FILTERED} from "../../utils/queries";
 import JobPostingCard from "../../components/JobPostingCard";
 
+
 export default function FindWork() {
   //const {data} = useQuery(QUERY_POSTINGS)
   return (
