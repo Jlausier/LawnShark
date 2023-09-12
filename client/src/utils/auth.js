@@ -11,15 +11,11 @@ export function getUserId() {
 
 export function getRole() {
   return "company";
-  // return getProfile().data.role;
+  // return getProfile().data.userRole.role;
 }
 
-export function getAuthRole() {
-  const { data } = getProfile();
-  return {
-    authId: data.authRole._id,
-    role: data.role,
-  };
+export function getUserRole() {
+  return getProfile().data.userRole;
 }
 
 export function loggedIn() {

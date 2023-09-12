@@ -1,14 +1,15 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
-import { getRole } from "../../utils/auth";
+import { getUserRole } from "../../utils/auth";
 import { QUERY_POSTING } from "../../utils/queries";
+import { postingHasCompanyBid } from "../../utils/dataValidation";
 
 import CreateBid from "../../components/bids/CreateBid";
 
 export default function JobPosting() {
   // eslint-disable-next-line no-unused-vars
-  const role = getRole();
+  const userRole = getUserRole();
 
   const { postingId } = useParams();
   const { data } = useQuery(QUERY_POSTING, {
@@ -40,13 +41,7 @@ export default function JobPosting() {
           <p>{data.posting.description}</p>
         </div>
         <hr />
-        <div className="d-flex flex-column align-items-start">
-          {/* Make the CreateBid Component Appear if the button is clicked */}
-          <a className="btn green text-light" href="#" role="button">
-            Place Bid
-          </a>
-          <CreateBid />
-        </div>
+        {!postingHasCompanyBid(userRole, data.posting.bids) && <CreateBid />}
       </div>
     </div>
   ) : (
