@@ -118,6 +118,21 @@ const resolvers = {
 
       return posting;
     },
+
+    addBid: async (_, { amount, message, postingId, companyId }) => {
+      const newBid = await Bid.create({
+        amount,
+        message,
+        posting: postingId,
+        company: companyId,
+      });
+
+      const bid = await Bid.findById(newBid._id)
+        .populate("posting")
+        .populate("company");
+
+      return bid;
+    },
   },
 };
 

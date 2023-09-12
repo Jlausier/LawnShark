@@ -84,11 +84,17 @@ export const ADD_POSTING = gql`
 
 export const ADD_BID = gql`
   mutation addBid(
-    $amount: Int!,
-    $postingId: ID!,
-    companyId: ID!
+    $amount: Int!
+    $message: String!
+    $postingId: ID!
+    $companyId: ID!
   ) {
-    bid {
+    addBid(
+      amount: $amount
+      message: $message
+      postingId: $postingId
+      companyId: $companyId
+    ) {
       amount
       posting {
         _id

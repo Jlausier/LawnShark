@@ -5,6 +5,9 @@ const bidSchema = new Schema({
     type: Number,
     required: true,
   },
+  message: {
+    type: String,
+  },
   posting: {
     type: Schema.Types.ObjectId,
     ref: "Posting",

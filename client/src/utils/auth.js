@@ -4,6 +4,11 @@ export function getProfile() {
   return decode(getToken());
 }
 
+export function getUserId() {
+  return "64fe862c323bd14816cff8a0";
+  // return getProfile().data._id;
+}
+
 export function loggedIn() {
   const token = getToken();
   return token && !isTokenExpired(token) ? true : false;
