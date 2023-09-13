@@ -54,6 +54,17 @@ export const company = {
   },
 };
 
+export const review = {
+  reviewText: "#reviewText",
+  createdAt: "#createdAt",
+  rating: 5,
+  customer: {
+    _id: "",
+    name: "#customerName",
+    location: "#customerLocation",
+  },
+};
+
 export const notification = {
   title: "Quote",
   text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.",

@@ -4,18 +4,16 @@ export function getProfile() {
   return decode(getToken());
 }
 
-export function getUserId() {
-  return "64fe862c323bd14816cff8a0";
-  // return getProfile().data._id;
+export function getUserEmail() {
+  return getProfile().data.email;
 }
 
-export function getRole() {
-  return "company";
-  // return getProfile().data.userRole.role;
+export function getUserId() {
+  return getProfile().data._id;
 }
 
 export function getUserRole() {
-  return getProfile().data.userRole;
+  return getProfile().data.role;
 }
 
 export function loggedIn() {
@@ -36,17 +34,17 @@ export function getToken() {
   return localStorage.getItem("id_token");
 }
 
-export function login(idToken) {
+export function loginUser(idToken) {
   localStorage.setItem("id_token", idToken);
-  window.location.assign("/");
 }
 
-export function logout() {
+export function logoutUser() {
   localStorage.removeItem("id_token");
   window.location.reload();
 }
 export function validateEmail(email) {
-  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const re =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
 }
 

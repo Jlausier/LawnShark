@@ -1,30 +1,42 @@
-import { createHttpLink, ApolloClient, InMemoryCache } from "@apollo/client";
+import {
+  createHttpLink,
+  ApolloLink,
+  ApolloClient,
+  InMemoryCache,
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
+import { onError } from "apollo-link-error";
+import { getToken } from "./auth";
 
-const loggingPlugin = {
-  async requestDidStart(requestContext) {
-    console.log("Request started! Query:\n" + requestContext.request.query);
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+  if (graphQLErrors) {
+    console.log("graphQLErrors", graphQLErrors);
+  }
+  if (networkError) {
+    console.log("networkError", networkError);
+  }
+});
 
-    return {
-      async parsingDidStart(requestContext) {
-        console.log("Parsing started!\n" + requestContext);
-      },
-
-      async validationDidStart(requestContext) {
-        console.log("Validation started\n" + requestContext);
-      },
-    };
-  },
-};
-
-const link = createHttpLink({
+const httpLink = createHttpLink({
   uri: "/graphql",
   credentials: "same-origin",
 });
 
+const authLink = setContext((_, { headers }) => {
+  const token = getToken();
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    },
+  };
+});
+
+const link = ApolloLink.from([errorLink, authLink.concat(httpLink)]);
+
 const client = new ApolloClient({
   cache: new InMemoryCache(),
   link,
-  plugins: [loggingPlugin],
 });
 
 export default client;

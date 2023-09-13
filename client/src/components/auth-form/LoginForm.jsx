@@ -1,37 +1,61 @@
+import { useState } from "react";
+
 import Button from "../Button";
+import useLogin from "../../hooks/useLogin";
 
 export default function LoginForm() {
+  const [formState, setFormState] = useState({ email: "", password: "" });
+  const { loginAsRole } = useLogin();
 
-  const handleSubmit = () => {
-    alert("Submit Form");
-  }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await loginAsRole(formState);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <div>
       <h2 className="fs-3 header">Log in to Lawn Shark</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label body-font">
+          <label htmlFor="email" className="form-label body-font">
             Email address
           </label>
           <input
             type="email"
+            name="email"
+            id="email"
             className="form-control"
-            id="exampleInputEmail1"
             aria-describedby="emailHelp"
+            value={formState.email}
+            onChange={handleChange}
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label body-font">
+          <label htmlFor="password" className="form-label body-font">
             Password
           </label>
           <input
             type="password"
+            name="password"
+            id="password"
             className="form-control"
-            id="exampleInputPassword1"
+            value={formState.password}
+            onChange={handleChange}
           />
         </div>
-        <Button title={"Submit"} onClick={handleSubmit}/>
+        <Button title={"Submit"} type="submit" />
       </form>
     </div>
   );
