@@ -29,7 +29,7 @@ export default function CreateJobPosting() {
       <div className=' p-5'>
         <div className='p-4 border rounded'>
             <div className='mb-5 d-flex justify-content-between align-items-start'>
-            <h2 className=' fs-1'>Create a New Job Post</h2>
+            <h2 className="header">Create a New Job Post</h2>
             </div>
             <form onSubmit={handleSubmit}>
                 {/* Job Title */}

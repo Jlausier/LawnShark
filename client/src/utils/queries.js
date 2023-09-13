@@ -46,34 +46,34 @@ export const QUERY_POSTING = gql`
 `;
 
 export const QUERY_POSTINGS_FILTERED = gql`
-query postingsFiltered($services: [ID]!) {
-  postingsFiltered(services: $services) {
-    _id
-    service {
+  query postingsFiltered($services: [ID]!) {
+    postingsFiltered(services: $services) {
       _id
-      name
-    }
-    askingPrice
-    estimatePrice
-    bids {
-      _id
-      amount
-      company {
+      service {
+        _id
+        name
+      }
+      askingPrice
+      estimatePrice
+      bids {
+        _id
+        amount
+        company {
+          _id
+          name
+        }
+      }
+      customer {
         _id
         name
       }
     }
-    customer {
-      _id
-      name
-    }
   }
-}
 `;
 
 export const QUERY_MY_BIDS = gql`
   query myBids($companyId: ID!) {
-    myBids(companyID: $companyID) {
+    myBids(companyId: $companyId) {
       _id
       amount
       posting {

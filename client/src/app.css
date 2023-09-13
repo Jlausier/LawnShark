@@ -10,3 +10,27 @@
     background-image: url(/images/green-background-image.png);
     background-size: cover;
 }
+
+.header,
+.header-landing {
+    font-family: 'Rosa', serif;
+}
+
+.body-font {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.header {
+    color: #16661B;
+    font-size: 4rem;
+}
+
+.header-landing {
+    color: #F8F9FA;
+    font-size: 5rem;
+}
+
+.size-sm {
+    width: 75px;
+}
+

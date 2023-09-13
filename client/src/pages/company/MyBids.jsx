@@ -15,7 +15,7 @@ export default function MyBids() {
       <div className=" p-5">
         <div className="border p-4 rounded">
           <div className='mb-5'>
-            <h2 className=" fs-1">My Bids</h2>
+            <h2 className="header">My Bids</h2>
           </div>
           <div className="">
             {/* <BidCard /> */}
@@ -26,7 +26,7 @@ export default function MyBids() {
               ))}
             </div>
           ) : (
-            <div>You have not made any new bids.</div>
+            <div className="body-font fs-4">You have not made any new bids.</div>
           )}
           </div>
         </div>

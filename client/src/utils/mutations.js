@@ -7,9 +7,21 @@ export const LOGIN_USER = gql`
       user {
         _id
         email
-        userRole {
+        role
+        _customer {
           _id
-          role
+          name
+          location {
+            address
+            city
+            state
+            zip
+          }
+        }
+        _company {
+          _id
+          name
+          description
         }
       }
     }
@@ -23,6 +35,7 @@ export const ADD_USER = gql`
       user {
         _id
         email
+        role
       }
     }
   }
@@ -38,6 +51,7 @@ export const ADD_CUSTOMER = gql`
       user {
         _id
         _customer
+        role
       }
     }
   }
@@ -53,6 +67,7 @@ export const ADD_COMPANY = gql`
       user {
         _id
         _company
+        role
       }
     }
   }
