@@ -16,7 +16,7 @@ export default function CompanyProfile() {
     alert("Open Modal");
   };
 
-  return (
+  return data && data.company ? (
     <div className="p-5">
       <div className="border p-4 rounded">
         <div className="d-flex justify-content-between align-items-start">
@@ -25,7 +25,6 @@ export default function CompanyProfile() {
             <h2 className=" fs-1">{data.company.name}</h2>
             <span>{data.company.location}</span>
           </div>
-
           <div className="justify-content-end align-items-start">
             {/* Make into a Link */}
             <a href="/Messages" className="mx-2">
@@ -49,9 +48,14 @@ export default function CompanyProfile() {
           <span> Total Reviews: {data.company.reviews.length} </span>
         </div>
         <div>
-          <ReviewCard />
+          {data.reviews &&
+            data.reviews.map((review) => (
+              <ReviewCard {...review} key={review.customer._id} />
+            ))}
         </div>
       </div>
     </div>
+  ) : (
+    <div>Loading...</div>
   );
 }

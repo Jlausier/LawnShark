@@ -52,7 +52,7 @@ const router = createBrowserRouter([
         element: <MyBids />,
       },
       {
-        path: "/CompanyProfile",
+        path: "/CompanyProfile/:companyId",
         element: <CompanyProfile />,
       },
       {
