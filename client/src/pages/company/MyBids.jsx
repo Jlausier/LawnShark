@@ -26,7 +26,7 @@ export default function MyBids() {
               ))}
             </div>
           ) : (
-            <div>You have not made any new bids.</div>
+            <div className="body-font fs-4">You have not made any new bids.</div>
           )}
           </div>
         </div>

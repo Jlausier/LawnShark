@@ -35,7 +35,7 @@ export default function Search() {
       <div className="border p-4 rounded">
         <div className="mb-5">
           <h2 className="header">Search</h2>
-          <span>
+          <span className="body-font">
             Type in the name of the company you would like to work with.
           </span>
         </div>
@@ -56,7 +56,7 @@ export default function Search() {
               />
               <button
                 onSubmit={handleSubmit}
-                className="btn btn-outline-success"
+                className="btn btn-outline-success fs-6 header"
                 type="submit"
               >
                 Search
@@ -72,7 +72,7 @@ export default function Search() {
               ))}
             </div>
           ) : (
-            <div>Search results will appear here.</div>
+            <div className="body-font fs-4">Search results will appear here.</div>
           )}
         </div>
       </div>

@@ -27,7 +27,7 @@ export default function JobPostings() {
               ))}
             </div>
           ) : (
-            <div>You have not made any new Job Postings.</div>
+            <div className="body-font fs-4">You have not made any new Job Postings.</div>
           )}
         </div>
       </div>
