@@ -1,11 +1,5 @@
 import PropTypes from "prop-types";
 
-const testNotification = {
-  title: "Quote",
-  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.",
-  source: "Source Title",
-};
-
 function NotificationCard({ title, text, source }) {
   return (
     <div className="card">
