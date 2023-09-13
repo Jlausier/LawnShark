@@ -1,19 +1,25 @@
+import PropTypes from "prop-types";
 
-
-function NotificationCard() {
+function NotificationCard({ title, text, source }) {
   return (
     <div className="card">
-    <div className="card-header">
-      Quote
+      <div className="card-header">{title}</div>
+      <div className="card-body">
+        <blockquote className="blockquote mb-0">
+          <p>{text}</p>
+          <footer className="blockquote-footer">
+            FROM <cite title="Source Title">{source}</cite>
+          </footer>
+        </blockquote>
+      </div>
     </div>
-    <div className="card-body">
-      <blockquote className="blockquote mb-0">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-        <footer className="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-      </blockquote>
-    </div>
-  </div>
   );
 }
+
+NotificationCard.propTypes = {
+  title: PropTypes.string,
+  text: PropTypes.string,
+  source: PropTypes.string,
+};
 
 export default NotificationCard;

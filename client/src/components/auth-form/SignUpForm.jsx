@@ -57,10 +57,10 @@ function SignUpForm() {
 
     return (
         <div>
-        <h2 className="fs-5">Sign Up to Lawn Shark</h2>
+        <h2 className="fs-3 header">Sign Up to Lawn Shark</h2>
         <form  onSubmit={handleFormSubmit}>
             <div className="mb-3">
-                <label htmlFor="exampleInputEmail1" className="form-label">
+                <label htmlFor="exampleInputEmail1" className="form-label body-font">
                 Email address
                 </label>
                 <input
@@ -69,10 +69,8 @@ function SignUpForm() {
                 onChange={handleInputChange}
                 type="email"
                 placeholder="email"
+                className="form-control"
                 />
-                <div id="emailHelp" className="form-text text-white">
-                We&apos;ll never share your email with anyone else.
-                </div>
             </div>
             <div className="mb-3">
                 <label htmlFor="exampleInputPassword1" className="form-label">
@@ -84,6 +82,7 @@ function SignUpForm() {
                   onChange={handleInputChange}
                   type="password"
                   placeholder="Password"
+                  className="form-control"
                 />
             </div>
             <Button title={"Submit"} onClick={handleSubmit}/>
