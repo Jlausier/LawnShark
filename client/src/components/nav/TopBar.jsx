@@ -20,7 +20,7 @@ export default function TopBar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item active">
-              <a className="nav-link" href="#">
+              <a className="nav-link" href="/Notifications">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -34,7 +34,7 @@ export default function TopBar() {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <a className="nav-link" href="/Messages">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -49,7 +49,7 @@ export default function TopBar() {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <a className="nav-link" href="/UserProfile">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"

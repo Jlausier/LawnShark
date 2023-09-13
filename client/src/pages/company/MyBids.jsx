@@ -9,8 +9,16 @@ export default function MyBids() {
             <h2 className=" fs-1">My Bids</h2>
           </div>
           <div className="">
-            <BidCard />
- 
+            {/* <BidCard /> */}
+            {data && data.myBids && data.myBids.length > 0 ? (
+            <div>
+              {data.myBids.map((bids) => (
+                <BidCard {...bids} key={bids._id} />
+              ))}
+            </div>
+          ) : (
+            <div>No job postings...</div>
+          )}
           </div>
         </div>
       </div>
