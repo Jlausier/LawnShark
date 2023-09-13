@@ -53,3 +53,9 @@ export const company = {
     ],
   },
 };
+
+export const notification = {
+  title: "Quote",
+  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.",
+  source: "Source Title",
+};
