@@ -1,1 +1,1 @@
-export const buttonClasslist = "btn green text-light";
+export const buttonClasslist = "pt-2 btn green text-light body-font";

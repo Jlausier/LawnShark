@@ -24,8 +24,8 @@ export default function FindWork() {
     <div className=" p-5">
       <div className="border p-4 rounded">
         <div className="mb-5">
-          <h2 className=" fs-1">Find Work</h2>
-          <span className="">Click on job titles to view more details</span>
+          <h2 className="header">Find Work</h2>
+          <span className="body-font">Click on job titles to view more details</span>
         </div>
         <div className="d-flex mb-3">
           <span className="pe-2">Filter Results:</span>
@@ -42,7 +42,7 @@ export default function FindWork() {
               ))}
             </div>
           ) : (
-            <div>There are no available job postings.</div>
+            <div className="fs-4 body-font">There are no available job postings. Check again later!</div>
           )}
         </div>
       </div>

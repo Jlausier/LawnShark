@@ -22,7 +22,7 @@ export default function JobPosting() {
       <div className="border p-4 rounded">
         <div className="row">
           <div className="col-6">
-            {/* <h2 className=" fs-1">{data.posting.title}</h2> */}
+            <h2 className="header">{data.posting.title}</h2>
             <span>{data.posting.service.name}</span>
           </div>
           <div className="col-6 text-end">

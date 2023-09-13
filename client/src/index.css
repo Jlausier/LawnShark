@@ -10,6 +10,11 @@
     width: 18rem;
 }
 .logo{
-    background-image: url(/images/shark.png);
-  background-size: 100%;
+  background-image: url(/images/lawn-shark-logo-1000.png);
+  background-size: contain;
+  background-repeat: none;
+}
+
+.size { 
+  width: 100px;
 }

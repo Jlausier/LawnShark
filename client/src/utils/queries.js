@@ -73,7 +73,7 @@ query postingsFiltered($services: [ID]!) {
 
 export const QUERY_MY_BIDS = gql`
   query myBids($companyId: ID!) {
-    myBids(companyID: $companyID) {
+    myBids(companyId: $companyId) {
       _id
       amount
       posting {
