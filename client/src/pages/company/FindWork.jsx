@@ -24,7 +24,7 @@ export default function FindWork() {
     <div className=" p-5">
       <div className="border p-4 rounded">
         <div className="mb-5">
-          <h2 className=" fs-1">Find Work</h2>
+          <h2 className="header">Find Work</h2>
           <span className="">Click on job titles to view more details</span>
         </div>
         <div className="d-flex mb-3">

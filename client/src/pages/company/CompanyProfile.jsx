@@ -22,7 +22,7 @@ export default function CompanyProfile() {
         <div className="d-flex justify-content-between align-items-start">
           <div>
             <span>Company Profile</span>
-            <h2 className=" fs-1">{data.company.name}</h2>
+            <h2 className="header">{data.company.name}</h2>
             <span>{data.company.location}</span>
           </div>
 

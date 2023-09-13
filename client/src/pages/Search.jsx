@@ -34,7 +34,7 @@ export default function Search() {
     <div className="container p-5">
       <div className="border p-4 rounded">
         <div className="mb-5">
-          <h2 className="fs-1">Search</h2>
+          <h2 className="header">Search</h2>
           <span>
             Type in the name of the company you would like to work with.
           </span>

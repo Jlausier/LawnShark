@@ -71,7 +71,7 @@ export default function UserProfile() {
             <div className="d-flex justify-content-between align-items-start">
               <div>
                 <span>User Profile</span>
-                <h2 className=' fs-1'>{ data.customer.name }</h2>
+                <h2 className="header">{ data.customer.name }</h2>
                 <span>{ data.customer.location }</span>
               </div>
               {/* Add a modal */}

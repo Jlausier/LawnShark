@@ -16,7 +16,7 @@ export default function JobPostings() {
     <div className="p-5">
       <div className="border p-4 rounded">
         <div className="mb-5 d-flex justify-content-between align-items-start">
-          <h2 className=" fs-1">My Job Postings</h2>
+          <h2 className="header">My Job Postings</h2>
           <Button title={"New Job Posting"} />
         </div>
         <div className="">
