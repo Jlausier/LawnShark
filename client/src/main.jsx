@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ApolloProvider } from "@apollo/client";
@@ -6,6 +5,7 @@ import { ApolloProvider } from "@apollo/client";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import client from "./utils/apolloClient.js";
+import RoleProvider from "./utils/RoleProvider.jsx";
 
 import App from "./App.jsx";
 import SplashPage from "./pages/SplashPage.jsx";
@@ -25,6 +25,59 @@ import Notifications from "./pages/Notifications.jsx";
 import Messages from "./pages/Messages.jsx";
 
 import "./index.css";
+import PrivateRoute from "./pages/PrivateRoute.jsx";
+
+const privateRoutes = [
+  {
+    path: "/FindWork",
+    element: <FindWork />,
+  },
+  {
+    path: "/MyJobs",
+    element: <MyJobs />,
+  },
+  {
+    path: "/MyBids",
+    element: <MyBids />,
+  },
+  {
+    path: "/CompanyProfile/:companyId",
+    element: <CompanyProfile />,
+  },
+  {
+    path: "/JobPostings",
+    element: <JobPostings />,
+  },
+  {
+    path: "/JobPosting/:postingId",
+    element: <JobPosting />,
+  },
+  {
+    path: "/CreateJobPosting",
+    element: <CreateJobPosting />,
+  },
+  {
+    path: "/UserProfile",
+    element: <UserProfile />,
+  },
+  {
+    path: "/Search",
+    element: <Search />,
+  },
+  {
+    path: "/Notifications",
+    element: <Notifications />,
+  },
+  {
+    path: "/Messages",
+    element: <Messages />,
+  },
+].map((route) => {
+  return {
+    ...route,
+    element: <PrivateRoute>{route.element}</PrivateRoute>,
+  };
+});
 
 const router = createBrowserRouter([
   {
@@ -34,63 +87,14 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    children: [
-      {
-        path: "/SplashPage",
-        element: <SplashPage />,
-      },
-      {
-        path: "/FindWork",
-        element: <FindWork />,
-      },
-      {
-        path: "/MyJobs",
-        element: <MyJobs />,
-      },
-      {
-        path: "/MyBids",
-        element: <MyBids />,
-      },
-      {
-        path: "/CompanyProfile/:companyId",
-        element: <CompanyProfile />,
-      },
-      {
-        path: "/JobPostings",
-        element: <JobPostings />,
-      },
-      {
-        path: "/JobPosting/:postingId",
-        element: <JobPosting />,
-      },
-      {
-        path: "/CreateJobPosting",
-        element: <CreateJobPosting />,
-      },
-      {
-        path: "/UserProfile",
-        element: <UserProfile />,
-      },
-      {
-        path: "/Search",
-        element: <Search />,
-      },
-      {
-        path: "/Notifications",
-        element: <Notifications />,
-      },
-      {
-        path: "/Messages",
-        element: <Messages />,
-      },
-    ],
+    children: privateRoutes,
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  <RoleProvider>
     <ApolloProvider client={client}>
       <RouterProvider router={router} />
     </ApolloProvider>
-  </React.StrictMode>
+  </RoleProvider>
 );

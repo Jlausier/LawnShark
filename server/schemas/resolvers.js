@@ -21,15 +21,13 @@ const resolvers = {
         .populate("customer");
     },
 
-    postingsFiltered: async(_, {services}) => {
+    postingsFiltered: async (_, { services }) => {
       const options = {};
       if (services.length > 0) options.services = services;
-      
 
       return await Posting.find(options)
-      .populate("service")
-      .populate("customer")
-      
+        .populate("service")
+        .populate("customer");
     },
 
     myPostings: async (_, { customerId }) => {
@@ -76,7 +74,6 @@ const resolvers = {
       if (!user) throw AuthenticationError;
       const correctPw = await user.isCorrectPassword(password);
       if (!correctPw) throw AuthenticationError;
-
       const token = signToken(user);
       return { token, user };
     },
@@ -91,7 +88,11 @@ const resolvers = {
     /** @TODO Only add customer or company if they do not exist on user */
 
     addCustomer: async (_, { userId, name, location }) => {
-      const customer = await Customer.create({ name, location: [location] });
+      const customer = await Customer.create({
+        name,
+        location,
+        role: "customer",
+      });
       const user = await User.findOneAndUpdate(
         { _id: userId },
         { $set: { _customer: customer._id } },
@@ -103,7 +104,12 @@ const resolvers = {
     },
 
     addCompany: async (_, { userId, name, description, services }) => {
-      const company = await Company.create({ name, description, services });
+      const company = await Company.create({
+        name,
+        description,
+        services,
+        role: "company",
+      });
       const user = await User.findOneAndUpdate(
         { _id: userId },
         { $set: { _company: company._id } },
