@@ -23,6 +23,14 @@ export default function UserProfile() {
   // console.log(data);
 
   const [showModal, setShowModal] = useState(false);
+ const [userData, setUserData] = useState({
+  email: "",
+  password: "",
+  _customer: {
+    name: "",
+    location: "",
+  }
+ });
 
   const openModal = () => {
     setShowModal(true);
@@ -31,38 +39,14 @@ export default function UserProfile() {
   const closeModal = () => {
     setShowModal(false);
   };
-      
-  // const user = {
-  //   _id: "",
-  //   email: "#test@email.com",
-  //   password: "#password",
-  //   _customer: {
-  //     _id: "",
-  //     name: "#customerName",
-  //     location: "#location",
-  //     postings: [
-  //       {
-  //         _id: "",
-  //         service: {
-  //           _id: "",
-  //           name: "#serviceName",
-  //         },
-  //         askingPrice: 0,
-  //         estimatePrice: 0,
-  //         bids: [
-  //           {
-  //             _id: "",
-  //             amount: 0,
-  //             company: {
-  //               _id: "",
-  //               name: "#companyName",
-  //             },
-  //           }
-  //         ],
-  //       },
-  //     ],
-  //   },
-  // };
+    // Update user data based on the form input
+    const handleUpdate = (e) => {
+      const { name, value } = e.target;
+      setUserData((prevUserData) => ({
+        ...prevUserData,
+        [name]: value,
+      }));
+    };
 
     return (
       <div>
@@ -71,8 +55,8 @@ export default function UserProfile() {
             <div className="d-flex justify-content-between align-items-start">
               <div>
                 <span>User Profile</span>
-                <h2 className="header">{ data._customer.name }</h2>
-                <span>{ data._customer.location }</span>
+                <h2 className='header'>{ userData._customer.name }</h2>
+                <span>{ userData._customer.location }</span>
               </div>
               {/* Add a modal */}
               <Button title={"Edit Profile"} onClick={openModal}/>
@@ -80,13 +64,13 @@ export default function UserProfile() {
             <hr/>
             <div>
               <h3 className="fs-5">User Info</h3>
-              <p>email: { data.email }</p>
-              <p>password: { data.password }</p>
+              <p>email: { userData.email }</p>
+              <p>password: { userData.password }</p>
             </div>
             <hr/>
             <div className="d-flex justify-content-between">
               <h3 className="fs-5">Job Posting History</h3>
-              <span> Total Job Postings: { data._customer.postings.length } </span>
+              <span> Total Job Postings: { userData._customer.postings } </span>
             </div>
             <div>
             {/* {data && data.myPostings && data.myPostings.length > 0 ? (
@@ -119,13 +103,26 @@ export default function UserProfile() {
                     {/* Content for your modal */}
                     <div className="modal-header">User Info</div>
                     <div className="p-3">
-                      <UpdateForm title={"Name"}/>
-                      <UpdateForm title={"Email"}/>
-                      <UpdateForm title={"Password"}/>
+                      <UpdateForm 
+                      title={"Name"}
+                      value={userData._customer.name}
+                      onUpdate={handleUpdate}
+                      />
+                      <UpdateForm title={"Email"}
+                       value={userData.email}
+                       onUpdate={handleUpdate}
+                       />
+                      <UpdateForm title={"Password"}
+                        value={userData.password}
+                        onUpdate={handleUpdate}
+                      />
                     </div>
                     <div className="modal-header">Location</div>
                     <div className="p-3">
-                      <UpdateForm title={"Address"}/>
+                      <UpdateForm title={"Address"}
+                        value={userData.location}
+                        onUpdate={handleUpdate}
+                        />
                       <UpdateForm title={"City"}/>
                       <UpdateForm title={"State"}/>
                       <UpdateForm title={"Zip"}/>
