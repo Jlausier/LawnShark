@@ -36,7 +36,7 @@ export default function UserProfile() {
   //   _id: "",
   //   email: "#test@email.com",
   //   password: "#password",
-  //   customer: {
+  //   _customer: {
   //     _id: "",
   //     name: "#customerName",
   //     location: "#location",
@@ -71,8 +71,8 @@ export default function UserProfile() {
             <div className="d-flex justify-content-between align-items-start">
               <div>
                 <span>User Profile</span>
-                <h2 className="header">{ data.customer.name }</h2>
-                <span>{ data.customer.location }</span>
+                <h2 className="header">{ data._customer.name }</h2>
+                <span>{ data._customer.location }</span>
               </div>
               {/* Add a modal */}
               <Button title={"Edit Profile"} onClick={openModal}/>
@@ -86,7 +86,7 @@ export default function UserProfile() {
             <hr/>
             <div className="d-flex justify-content-between">
               <h3 className="fs-5">Job Posting History</h3>
-              <span> Total Job Postings: { data.customer.postings.length } </span>
+              <span> Total Job Postings: { data._customer.postings.length } </span>
             </div>
             <div>
             {/* {data && data.myPostings && data.myPostings.length > 0 ? (
