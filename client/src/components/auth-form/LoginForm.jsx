@@ -8,7 +8,7 @@ export default function LoginForm() {
 
   return (
     <div>
-      <h2 className="fs-3 header">Log in to Lawn Shark</h2>
+      <h2 className="mb-4 fs-3 header">Log in to Lawn Shark</h2>
       <form>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label body-font">
