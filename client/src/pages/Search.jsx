@@ -72,7 +72,7 @@ export default function Search() {
               ))}
             </div>
           ) : (
-            <div>no companies</div>
+            <div>Search results will appear here.</div>
           )}
         </div>
       </div>
