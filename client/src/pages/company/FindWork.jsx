@@ -1,13 +1,22 @@
 /* eslint-disable no-unused-vars */
 import { useQuery } from "@apollo/client";
+
+import { QUERY_POSTINGS_FILTERED } from "../../utils/queries";
+
 import { useState } from "react"
+
 import { usePostingsSearch } from "../../hooks/usePostings.js";
 import JobPostingCard from "../../components/JobPostingCard";
 
 
 export default function FindWork() {
 
-
+    const { data } = useQuery(QUERY_MY_BIDS, {
+      variables: {
+        companyId: "",
+      },
+    });
+    console.log(data);
 
   const postings = usePostingsSearch
   return (

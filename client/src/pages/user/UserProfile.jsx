@@ -1,6 +1,7 @@
 import { useState } from "react";
 import JobPostingCard from "../../components/JobPostingCard";
 import Button from "../../components/Button";
+import UpdateForm from "../../components/modal/UpdateForm";
 
 export default function UserProfile() {
   const [showModal, setShowModal] = useState(false);
@@ -75,6 +76,7 @@ export default function UserProfile() {
           </div>
         </div>
         {showModal && (
+          // Turn into a Component
           <div className="modal show" tabIndex="-1" style={{ display: 'block' }}>
               <div className="modal-dialog">
                 <div className="modal-content">
@@ -89,20 +91,21 @@ export default function UserProfile() {
                   </div>
                   <div className="modal-body">
                     {/* Content for your modal */}
-                    <p>Modal body text goes here.</p>
+                    <div className="modal-header">User Info</div>
+                    <div className="p-3">
+                      <UpdateForm title={"Name"}/>
+                      <UpdateForm title={"Email"}/>
+                      <UpdateForm title={"Password"}/>
+                    </div>
+                    <div className="modal-header">Location</div>
+                    <div className="p-3">
+                      <UpdateForm title={"Address"}/>
+                      <UpdateForm title={"City"}/>
+                      <UpdateForm title={"State"}/>
+                      <UpdateForm title={"Zip"}/>
+                    </div>            
                   </div>
-                  <div className="modal-footer">
-                    <button
-                      type="button"
-                      className="btn btn-secondary"
-                      onClick={closeModal}
-                    >
-                      Close
-                    </button>
-                    <button type="button" className="btn btn-primary" onClick={closeModal}>
-                      Save changes
-                    </button>
-                  </div>
+
                 </div>
               </div>
           </div>

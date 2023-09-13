@@ -1,4 +1,12 @@
+import { useState } from "react";
+
 export default function Modal() {
+
+    const [showModal, setShowModal] = useState(false);
+
+    const closeModal = () => {
+        setShowModal(false);
+    };
 
   return (
     <div className="modal show" tabIndex="-1" style={{ display: 'block' }}>
