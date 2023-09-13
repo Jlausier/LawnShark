@@ -24,18 +24,13 @@ const typeDefs = `
     customer: Customer
   }
 
-  type UserRole {
-    _id: ID
-    role: String
-  }
-
   type User {
     _id: ID
     email: String
     password: String
     _customer: Customer
     _company: Company
-    userRole: UserRole
+    role: String
   }
 
   type Location {
@@ -75,6 +70,25 @@ const typeDefs = `
     averageRating: Int
     reviewCount: Int
   }
+
+  type CustomerAuth {
+    _id: ID
+    name: String
+    location: Location
+  }
+
+  type CompanyAuth {
+    _id: ID
+    name: String
+    description: String
+  }
+
+  type UserAuth {
+    _id: ID
+    email: String
+    _company: CompanyAuth
+    _customer: CustomerAuth
+  }
   
   type Auth {
     token: ID!
@@ -87,7 +101,7 @@ const typeDefs = `
     posting(postingId: ID!): Posting
     postingsFiltered(services: [ID]!): [Posting]
     myPostings(customerId: ID!): [Posting]
-    company(companyId: ID!): Company 
+    company(companyId: ID!): Company
     companies: [Company]
     companiesFiltered(searchText: String!, services: [ID]!): [Company]
     customer(customerId: ID!): Customer

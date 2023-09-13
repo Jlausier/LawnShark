@@ -7,26 +7,24 @@ const customerSchema = new Schema(
       required: true,
       trim: true,
     },
-    location: [
-      {
-        address: {
-          type: String,
-          required: true,
-        },
-        city: {
-          type: String,
-          required: true,
-        },
-        state: {
-          type: String,
-          required: true,
-        },
-        zip: {
-          type: String,
-          required: true,
-        },
+    location: {
+      address: {
+        type: String,
+        required: true,
       },
-    ],
+      city: {
+        type: String,
+        required: true,
+      },
+      state: {
+        type: String,
+        required: true,
+      },
+      zip: {
+        type: String,
+        required: true,
+      },
+    },
     postings: [
       {
         type: Schema.Types.ObjectId,
