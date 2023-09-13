@@ -1,9 +1,20 @@
 import { useState } from "react";
+import { useQuery } from "@apollo/client";
+
+import { QUERY_MY_POSTINGS } from "../../utils/queries";
 import JobPostingCard from "../../components/JobPostingCard";
 import Button from "../../components/Button";
 import UpdateForm from "../../components/modal/UpdateForm";
 
 export default function UserProfile() {
+
+    const { data } = useQuery(QUERY_MY_POSTINGS, {
+    variables: {
+      customerId: "",
+    },
+  });
+  console.log(data);
+
   const [showModal, setShowModal] = useState(false);
 
   const openModal = () => {
@@ -71,7 +82,15 @@ export default function UserProfile() {
               <span> Total Job Postings: { user._customer.postings.length } </span>
             </div>
             <div>
-              <JobPostingCard />
+            {data && data.myPostings && data.myPostings.length > 0 ? (
+              <div>
+                {data.myPostings.map((jobs) => (
+                  <JobPostingCard {...jobs} key={jobs._id} />
+                ))}
+              </div>
+            ) : (
+              <div>You have not made any Job Postings.</div>
+            )}
             </div>
           </div>
         </div>
