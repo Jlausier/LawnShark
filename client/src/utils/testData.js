@@ -53,3 +53,14 @@ export const company = {
     ],
   },
 };
+
+export const review = {
+  reviewText: "#reviewText",
+  createdAt: "#createdAt",
+  rating: 5,
+  customer: {
+    _id: "",
+    name: "#customerName",
+    location: "#customerLocation",
+  },
+};
