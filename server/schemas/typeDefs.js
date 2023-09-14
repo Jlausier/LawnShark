@@ -10,6 +10,7 @@ const typeDefs = `
     amount: Int
     posting: Posting
     company: Company
+    accepted: Boolean
   }
 
   type Posting {
