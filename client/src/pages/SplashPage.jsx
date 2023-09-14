@@ -14,12 +14,15 @@ export default function SplashPage() {
 
   return (
     <div>
-      <div className="p-4 position-fixed top-0 start-0">
+      <div className="p-4 position-fixed top-0 end-0 d-sm-none">
+        <img src="./images/lawn-shark-logo-white-1000.png" className="size-sm"></img>
+      </div>
+      <div className="p-4 position-fixed top-0 start-0 d-none d-sm-block">
         <img src="./images/lawn-shark-logo-white-1000.png" className="size-sm"></img>
       </div>
       <div className="min-vh-100 d-flex justify-content-center align-items-center landing-page-bg">
-        <div className=" row align-items-center">
-          <div className="col pe-3 text-white">
+        <div className="p-5 row align-items-center">
+          <div className="col-sm pe-3 text-white">
             <span className="fs-4 body-font">Welcome to</span>
             <h1 className="header-landing">Lawn Shark</h1>
             <span className="pb-4 fs-4 body-font">Where the professionals come to you!</span>
