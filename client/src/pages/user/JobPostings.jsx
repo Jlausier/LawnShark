@@ -4,6 +4,14 @@ import JobPostingCard from "../../components/JobPostingCard";
 import Button from "../../components/Button";
 
 export default function JobPostings({ postings }) {
+
+//   const { data } = useQuery(QUERY_MY_POSTINGS, {
+  //   variables: {
+  //     customerId: "",
+  //   },
+  // });
+  // console.log(data);
+
   return (
     <div className="p-5">
       <div className="border p-4 rounded">
@@ -12,10 +20,10 @@ export default function JobPostings({ postings }) {
           <Button title={"New Job Posting"} />
         </div>
         <div className="">
-          {postings ? (
+          {data && data.myPostings && data.myPostings.length > 0 ? (
             <div>
-              {postings.map((posting) => (
-                <JobPostingCard {...posting} key={posting._id} />
+              {data.myPostings.map((jobs) => (
+                <JobPostingCard {...jobs} key={jobs._id} />
               ))}
             </div>
           ) : (
