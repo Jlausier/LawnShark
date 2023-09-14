@@ -31,6 +31,7 @@ export const QUERY_POSTING = gql`
       estimatePrice
       bids {
         _id
+        accepted
         amount
         company {
           _id
@@ -72,6 +73,32 @@ export const QUERY_POSTINGS_FILTERED = gql`
 `;
 
 export const QUERY_MY_POSTINGS = gql`
+  query myPostings($customerId: ID!) {
+    myPostings(customerId: $customerId) {
+      _id
+      title
+      askingPrice
+      frequency
+      description
+      service {
+        _id
+        name
+      }
+      customer {
+        _id
+        name
+        location {
+          address
+          city
+          state
+          zip
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_MY_ACTIVE_POSTINGS = gql`
   query myPostings($customerId: ID!) {
     myPostings(customerId: $customerId) {
       _id
