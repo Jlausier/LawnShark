@@ -3,8 +3,22 @@
     background-color: #278C2E;
 }
 
+.main-height {
+    height: 100vh;
+}
+
+
+
+.footer-height {
+    height: 10vh;
+}
+
 .dark-green{
     background-color: #16661B;
+}
+
+.dark-footer {
+    background-color: #062601;
 }
 
 .landing-page-bg {
@@ -41,5 +55,11 @@
 
 .nav-dark {
     background-color: #2E983B;
+}
+
+.notification-red {
+    border-radius: 25px;
+    color: #F8F9FA;
+    background-color: orangered;
 }
 
