@@ -77,19 +77,34 @@ export default function UserProfile() {
         <div className="border p-4 rounded">
           <div className="d-flex justify-content-between align-items-start">
             <div>
+              <span>It's good to see you,</span>
               <h2 className="header">{userData._customer.name}</h2>
-              <span>{createLocationString(userData._customer.location)}</span>
+              <span></span>
             </div>
             <Button title={"Edit Profile"} onClick={openModal} />
           </div>
           <hr />
-          <div>
-            <h3 className="fs-5">User Info</h3>
-            <p>email: {userData.email}</p>
+          <h3 className="fs-5 mb-4 body-font">User Info</h3>
+          <div className="row mb-3">
+            <div className="col-1">
+              <span>email:</span>
+            </div>
+            <div className="col">
+            {userData.email}
+            </div>
+          </div>
+          <div className="row mb-3">
+            <div className="col-1">
+              <span>location:</span>
+            </div>
+            <div className="col">
+            {createLocationString(userData._customer.location)}
+            </div>
+
           </div>
           <hr />
           <div className="d-flex justify-content-between">
-            <h3 className="fs-5">Job Posting History</h3>
+            <h3 className="fs-5 body-font">Job Posting History</h3>
             <span>
               {" "}
               Total Job Postings: {userData._customer.postings.length}{" "}
