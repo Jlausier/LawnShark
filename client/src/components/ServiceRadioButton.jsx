@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-import { createServiceStub } from "../utils/dataValidation";
+import { createNameStub } from "../utils/dataValidation";
 
 export default function ServiceRadioButton({
   name,
@@ -8,7 +8,7 @@ export default function ServiceRadioButton({
   activeId,
   handleChange,
 }) {
-  const serviceStub = createServiceStub(name);
+  const serviceStub = createNameStub(name);
   return (
     <div className="form-check">
       <input
