@@ -86,20 +86,20 @@ export default function NavBar() {
 
   return (
     <>
-      <div className="main-height p-4 green text-white d-flex flex-column justify-content-between d-none d-sm-block">
-        <div>
-          <img src="./images/lawn-shark-logo-1000.png" className="p-1 size"></img>
-          <nav className="navbar navbar-expand-lg ">
-            <ul className="w-100 navbar-nav nav-pills flex-column">
-              {links.map((link) => (
-                <NavBarLink {...link} currentPage={currentPage} key={link.path} />
-              ))}
-            </ul>
-          </nav>
-        </div>
-        <div>
-        © 2023 Lawn Shark® Global Inc.
-        </div>
+      <div className=" main-height p-4 green text-white d-flex flex-column align-items-between d-none d-sm-block">
+          <div className="">
+            <img src="./images/lawn-shark-logo-1000.png" className="p-1 size"></img>
+            <nav className="navbar navbar-expand-lg ">
+              <ul className="w-100 navbar-nav nav-pills flex-column">
+                {links.map((link) => (
+                  <NavBarLink {...link} currentPage={currentPage} key={link.path} />
+                ))}
+              </ul>
+            </nav>
+          </div>
+          <div className="">
+          © 2023 Lawn Shark® Global Inc.
+          </div>
       </div>
     </>
   );
