@@ -4,7 +4,7 @@ import { createServiceStub } from "../utils/dataValidation";
 
 export default function ServiceRadioButton({
   name,
-  id,
+  _id,
   activeId,
   handleChange,
 }) {
@@ -15,8 +15,8 @@ export default function ServiceRadioButton({
         type="radio"
         id={serviceStub}
         name="service"
-        value={id}
-        checked={activeId === id}
+        value={_id}
+        checked={activeId === _id}
         onChange={handleChange}
         className="form-check-input"
       />
@@ -29,7 +29,7 @@ export default function ServiceRadioButton({
 
 ServiceRadioButton.propTypes = {
   name: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
+  _id: PropTypes.string.isRequired,
   activeId: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
 };

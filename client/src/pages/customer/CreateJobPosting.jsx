@@ -63,76 +63,15 @@ export default function CreateJobPosting() {
         <div className="mb-3">
           <label className="form-label">Service</label>
           <div>
-            <div className="form-check">
-              <input
-                type="radio"
-                id="lawn_work"
-                name="service"
-                value="lawn_work"
-                checked={formData.service === "lawn_work"}
-                onChange={handleChange}
-                className="form-check-input"
-              />
-              <label htmlFor="lawn_work" className="form-check-label">
-                Lawn Work
-              </label>
-            </div>
-            <div className="form-check">
-              <input
-                type="radio"
-                id="tree_trimming"
-                name="service"
-                value="tree_trimming"
-                checked={formData.service === "tree_trimming"}
-                onChange={handleChange}
-                className="form-check-input"
-              />
-              <label htmlFor="tree_trimming" className="form-check-label">
-                Tree Trimming
-              </label>
-            </div>
-            <div className="form-check">
-              <input
-                type="radio"
-                id="weeding"
-                name="service"
-                value="weeding"
-                checked={formData.service === "weeding"}
-                onChange={handleChange}
-                className="form-check-input"
-              />
-              <label htmlFor="weeding" className="form-check-label">
-                Weeding
-              </label>
-            </div>
-            <div className="form-check">
-              <input
-                type="radio"
-                id="power_washing"
-                name="service"
-                value="power_washing"
-                checked={formData.service === "power_washing"}
-                onChange={handleChange}
-                className="form-check-input"
-              />
-              <label htmlFor="power_washing" className="form-check-label">
-                Power Washing
-              </label>
-            </div>
-            <div className="form-check">
-              <input
-                type="radio"
-                id="fertilizing"
-                name="service"
-                value="fertilizing"
-                checked={formData.service === "fertilizing"}
-                onChange={handleChange}
-                className="form-check-input"
-              />
-              <label htmlFor="fertilizing" className="form-check-label">
-                Fertilizing
-              </label>
-            </div>
+            {services.length > 0 &&
+              services.map((service) => (
+                <ServiceRadioButton
+                  {...service}
+                  activeId={formData.service}
+                  handleChange={handleChange}
+                  key={service._id}
+                />
+              ))}
           </div>
         </div>
 
