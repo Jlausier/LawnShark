@@ -7,7 +7,7 @@ export default function CustomerRoute({ children }) {
   return loggedIn() && getUserRole() === "customer" ? (
     children
   ) : (
-    <Navigate to="/MyJobs" />
+    <Navigate to="/FindWork" />
   );
 }
 

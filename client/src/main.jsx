@@ -7,20 +7,31 @@ import client from "./utils/apolloClient.js";
 import App from "./App.jsx";
 import SplashPage from "./pages/SplashPage.jsx";
 
-import { FindWork, MyBids, MyJobs, Search } from "./pages/company";
-import { CreateJobPosting, JobPostings, UserProfile } from "./pages/customer";
+import {
+  FindWork,
+  MyBids,
+  MyJobs,
+  Search,
+  CompanyRoute,
+} from "./pages/company";
+import {
+  CreateJobPosting,
+  JobPostings,
+  UserProfile,
+  CustomerRoute,
+} from "./pages/customer";
 import {
   CompanyProfile,
   JobPosting,
   Messages,
   Notifications,
+  PrivateRoute,
 } from "./pages/private";
-import PrivateRoute from "./pages/private/PrivateRoute.jsx";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
-const privateRoutes = [
+const companyRoutes = [
   {
     path: "/FindWork",
     element: <FindWork />,
@@ -33,17 +44,15 @@ const privateRoutes = [
     path: "/MyBids",
     element: <MyBids />,
   },
-  {
-    path: "/CompanyProfile/:companyId",
-    element: <CompanyProfile />,
-  },
+].map((route) => ({
+  ...route,
+  element: <CompanyRoute>{route.element}</CompanyRoute>,
+}));
+
+const customerRoutes = [
   {
     path: "/JobPostings",
     element: <JobPostings />,
-  },
-  {
-    path: "/JobPosting/:postingId",
-    element: <JobPosting />,
   },
   {
     path: "/CreateJobPosting",
@@ -52,6 +61,20 @@ const privateRoutes = [
   {
     path: "/UserProfile",
     element: <UserProfile />,
+  },
+].map((route) => ({
+  ...route,
+  element: <CustomerRoute>{route.element}</CustomerRoute>,
+}));
+
+const privateRoutes = [
+  {
+    path: "/CompanyProfile/:companyId",
+    element: <CompanyProfile />,
+  },
+  {
+    path: "/JobPosting/:postingId",
+    element: <JobPosting />,
   },
   {
     path: "/Search",
@@ -65,12 +88,10 @@ const privateRoutes = [
     path: "/Messages",
     element: <Messages />,
   },
-].map((route) => {
-  return {
-    ...route,
-    element: <PrivateRoute>{route.element}</PrivateRoute>,
-  };
-});
+].map((route) => ({
+  ...route,
+  element: <PrivateRoute>{route.element}</PrivateRoute>,
+}));
 
 const router = createBrowserRouter([
   {
@@ -80,7 +101,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    children: privateRoutes,
+    children: [...privateRoutes, ...customerRoutes, ...companyRoutes],
   },
 ]);
 

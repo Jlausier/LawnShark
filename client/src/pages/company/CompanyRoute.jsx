@@ -4,10 +4,14 @@ import PropTypes from "prop-types";
 import { getUserRole, loggedIn } from "../../utils/auth";
 
 export default function CompanyRoute({ children }) {
-  return loggedIn() && getUserRole() === "company" ? (
+  const role = getUserRole();
+
+  console.log(role);
+
+  return loggedIn() && role === "company" ? (
     children
   ) : (
-    <Navigate to="/FindWork" />
+    <Navigate to="/JobPostings" />
   );
 }
 
