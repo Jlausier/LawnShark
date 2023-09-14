@@ -6,6 +6,7 @@ import { QUERY_SERVICES } from "../../utils/queries";
 import ServiceRadioButton from "../../components/ServiceRadioButton";
 import RadioButton from "../../components/RadioButton";
 import Button from "../../components/Button";
+import { getUserRoleId } from "../../utils/auth";
 
 export default function CreateJobPosting() {
   const { data } = useQuery(QUERY_SERVICES);
@@ -18,12 +19,12 @@ export default function CreateJobPosting() {
     "Bi-Weekly",
   ];
   const [services, setServices] = useState([]);
-  const [service, setService] = useState("");
+  const [serviceId, setServiceId] = useState("");
   const [formData, setFormData] = useState({
     title: "",
     frequency: "One Time",
     description: "",
-    budget: "",
+    askingPrice: "",
   });
 
   useEffect(() => {
@@ -34,10 +35,10 @@ export default function CreateJobPosting() {
       services.length === 0
     ) {
       setServices(data.services);
-      if (!data.services.some((s) => s._id === service))
-        setService(data.services[0]._id);
+      if (!data.services.some((s) => s._id === serviceId))
+        setServiceId(data.services[0]._id);
     }
-  }, [data, services.length, service]);
+  }, [data, services.length, serviceId]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -48,13 +49,17 @@ export default function CreateJobPosting() {
   };
 
   const handleServiceChange = (e) => {
-    setService(e.target.value);
+    setServiceId(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
-    console.log(service);
+    const newPosting = {
+      customerId: getUserRoleId(),
+      serviceId,
+      ...formData,
+      estimatePrice: formData.askingPrice,
+    };
   };
 
   return (
@@ -87,7 +92,7 @@ export default function CreateJobPosting() {
               services.map((_service) => (
                 <ServiceRadioButton
                   {..._service}
-                  activeId={service}
+                  activeId={serviceId}
                   handleChange={handleServiceChange}
                   key={_service._id}
                 />
@@ -128,15 +133,15 @@ export default function CreateJobPosting() {
 
         {/* Budget */}
         <div className="mb-3">
-          <label htmlFor="budget" className="form-label">
+          <label htmlFor="askingPrice" className="form-label">
             Budget
           </label>
           <input
             type="number"
             className="form-control"
-            id="budget"
-            name="budget"
-            value={formData.budget}
+            id="askingPrice"
+            name="askingPrice"
+            value={formData.askingPrice}
             onChange={handleChange}
             required
           />
