@@ -39,10 +39,9 @@ export default function FindWork() {
   console.log(postings);
   console.log(data)
   return (
-    <div className="p-5">
       <div className="border p-4 rounded">
         <div className="mb-5">
-          <h2 className="fs-1">Find Work</h2>
+          <h2 className="header">Find Work</h2>
           <span className="">Click on job titles to view more details</span>
         </div>
         {data && data.services && data.services.length > 0 ? (
@@ -65,21 +64,21 @@ export default function FindWork() {
             ))}
           </div>
         ) : (
-          <div> NO SERVICES </div>
+          <div> </div>
         )}
-      </div>
-      <div>
-      {postings && postings.postingsFiltered && postings.postingsFiltered.length > 0 ? (
+        <hr/>
         <div>
-          {postings.postingsFiltered.map((posting) => (
-            <JobPostingCard {...posting} key={posting._id} />
-          ))}
+        {postings && postings.postingsFiltered && postings.postingsFiltered.length > 0 ? (
+          <div>
+            {postings.postingsFiltered.map((posting) => (
+              <JobPostingCard {...posting} key={posting._id} />
+            ))}
+          </div>
+        ) : (
+          <div className="body-font fs-4"> There are no new Job Postings. </div>
+        )}
         </div>
-      ) : (
-        <div> No Postings </div>
-      )}
       </div>
-    </div>
   );
 }
 

@@ -6,6 +6,37 @@ export default function NavBar() {
   const company = true;
 
   const currentPage = useLocation().pathname;
+
+  const customerLinks = [
+    {
+      title: "Job Postings",
+      path: "/JobPostings",
+    },
+    {
+      title: "Search",
+      path: "/Search",
+    },
+  ];
+
+  const companyLinks = [
+    {
+      title: "Find Work",
+      path: "/FindWork",
+    },
+    {
+      title: "My Jobs",
+      path: "/MyJobs",
+    },
+    {
+      title: "My Bids",
+      path: "/MyBids",
+    },
+    {
+      title: "Search",
+      path: "/Search",
+    },
+  ];
+
   const links = [
     {
       title: "Company Profile",
@@ -55,7 +86,7 @@ export default function NavBar() {
 
   return (
     <>
-      <div className="main-height p-4 green text-white d-flex flex-column justify-content-between">
+      <div className="main-height p-4 green text-white d-flex flex-column justify-content-between d-none d-sm-block">
         <div>
           <img src="./images/lawn-shark-logo-1000.png" className="p-1 size"></img>
           <nav className="navbar navbar-expand-lg ">

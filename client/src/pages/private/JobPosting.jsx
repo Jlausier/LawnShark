@@ -14,7 +14,6 @@ export default function JobPosting() {
   });
 
   return data ? (
-    <div className="p-5">
       <div className="border p-4 rounded">
         <div className="row">
           <div className="col-6">
@@ -52,7 +51,7 @@ export default function JobPosting() {
           <BidCardView />
         </div>
       </div>
-    </div>
+
   ) : (
     <div>
       <div>damn that sucks</div>

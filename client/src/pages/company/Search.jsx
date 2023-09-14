@@ -31,7 +31,7 @@ export default function Search() {
   const companies = useCompaniesSearch(searchOptions);
 
   return (
-    <div className="container p-5">
+    <div className="container">
       <div className="border p-4 rounded">
         <div className="mb-5">
           <h2 className="header">Search</h2>

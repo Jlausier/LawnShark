@@ -13,11 +13,14 @@ export default function JobPostings({ postings }) {
    console.log(data);
 
   return (
-    <div className="p-5">
       <div className="border p-4 rounded">
-        <div className="mb-5 d-flex justify-content-between align-items-start">
-          <h2 className="header">My Job Postings</h2>
-          <Button title={"New Job Posting"} />
+        <div className="mb-5 row">
+          <div className="col-12 col-lg-10">
+            <h2 className="header">My Job Postings</h2>
+          </div>
+          <div className="col-12 col-lg-2">
+            <Button title={"New Job Posting"} />
+          </div>
         </div>
         <div className="">
           {data && data.myPostings && data.myPostings.length > 0 ? (
@@ -33,7 +36,6 @@ export default function JobPostings({ postings }) {
           )}
         </div>
       </div>
-    </div>
   );
 }
 
