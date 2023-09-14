@@ -1,6 +1,6 @@
 import React from "react";
 import NotificationCard from "../components/NotificationCard";
-import { testData } from "../utils/testData"; // Assuming testData is an array of notifications
+import { testData } from "../utils/testData"; 
 
 export default function Notifications() {
   return (
