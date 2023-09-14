@@ -21,9 +21,9 @@ const resolvers = {
         .populate("customer");
     },
 
-    postingsFiltered: async (_, { services }) => {
+    postingsFiltered: async (_, { service }) => {
       const options = {};
-      if (services.length > 0) options.services = services;
+      if (service.length > 0) options.service = service;
 
       return await Posting.find(options)
         .populate("service")

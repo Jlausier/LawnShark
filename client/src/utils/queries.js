@@ -46,8 +46,8 @@ export const QUERY_POSTING = gql`
 `;
 
 export const QUERY_POSTINGS_FILTERED = gql`
-  query postingsFiltered($services: [ID]!) {
-    postingsFiltered(services: $services) {
+  query postingsFiltered($service: [ID]!) {
+    postingsFiltered(service: $service) {
       _id
       service {
         _id

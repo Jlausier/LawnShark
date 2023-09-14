@@ -26,12 +26,12 @@ export default function FindWork() {
       (serviceId) => checkedState[serviceId]
     );
 
-    setSearchOptions({ services: selectedServices });
+    setSearchOptions({ service: selectedServices });
   }, [checkedState]);
 
   // Initialize state for search options
   const [searchOptions, setSearchOptions] = useState({
-    services: [],
+    service: [],
   });
 
   // Fetch postings based on search options
@@ -68,6 +68,7 @@ export default function FindWork() {
           <div> NO SERVICES </div>
         )}
       </div>
+      <div>
       {postings && postings.postingsFiltered && postings.postingsFiltered.length > 0 ? (
         <div>
           {postings.postingsFiltered.map((posting) => (
@@ -77,6 +78,7 @@ export default function FindWork() {
       ) : (
         <div> No Postings </div>
       )}
+      </div>
     </div>
   );
 }
