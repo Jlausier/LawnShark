@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+
 
 import JobPostingCard from "../../components/JobPostingCard";
 import Button from "../../components/Button";
@@ -29,14 +29,3 @@ export default function JobPostings({ postings }) {
   );
 }
 
-JobPostings.propTypes = {
-  postings: PropTypes.arrayOf(
-    PropTypes.shape({
-      _id: PropTypes.string,
-      title: PropTypes.string,
-      askingPrice: PropTypes.number,
-      frequency: PropTypes.string,
-      description: PropTypes.string,
-    })
-  ),
-};
