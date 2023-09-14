@@ -79,12 +79,18 @@ export const ADD_POSTING = gql`
     $serviceId: ID!
     $askingPrice: Int!
     $estimatePrice: Int
+    $frequency: String!
+    $description: String!
+    $title: String!
   ) {
-    posting(
+    addPosting(
       customerId: $customerId
       serviceId: $serviceId
       askingPrice: $askingPrice
       estimatePrice: $estimatePrice
+      frequency: $frequency
+      description: $description
+      title: $title
     ) {
       customer {
         _id
@@ -96,6 +102,10 @@ export const ADD_POSTING = gql`
         name
       }
       askingPrice
+      estimatePrice
+      frequency
+      description
+      title
     }
   }
 `;
