@@ -76,6 +76,7 @@ export const QUERY_MY_BIDS = gql`
     myBids(companyId: $companyId) {
       _id
       amount
+      accepted
       posting {
         _id
         title
@@ -102,7 +103,40 @@ export const QUERY_MY_BIDS = gql`
 `;
 
 export const QUERY_MY_ACCEPTED_BIDS = gql`
-  query myAcceptedBids`
+  query myAcceptedBids($companyId: ID!) {
+    myBids(companyId: $companyId, accepted: true) {
+      _id
+      amount
+      accepted
+      posting {
+        _id
+        title
+        service {
+          _id
+          name
+        }
+        askingPrice
+        estimatePrice
+        customer {
+          _id
+          name
+          location
+        }
+        description
+        frequency
+      }
+      company {
+        _id
+        name
+      }
+    }
+  }
+`;
+
+
+
+
+
 
 export const QUERY_MY_POSTINGS = gql`
   query myPostings($customerId: ID!) {
