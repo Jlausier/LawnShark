@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/client";
 
 import { QUERY_SERVICES } from "../../utils/queries";
 
+import ServiceRadioButton from "../../components/ServiceRadioButton";
 import Button from "../../components/Button";
 
 export default function CreateJobPosting() {

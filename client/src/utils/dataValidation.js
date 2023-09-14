@@ -14,3 +14,6 @@ export function postingHasCompanyBid(bids) {
 export function createLocationString({ address, city, state, zip }) {
   return `${address}, ${city}, ${state} ${zip}`;
 }
+
+export const createServiceStub = (serviceName) =>
+  serviceName.split(" ").join("_");
