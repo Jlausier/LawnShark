@@ -36,6 +36,17 @@ const resolvers = {
         .populate("customer");
     },
 
+    myActivePostings: async (_, { customerId }) => {
+      return await Posting.find({ customer: customerId })
+        .populate('service')
+        .populate('customer')
+        .populate({
+          path: 'bids',
+          match: { accepted: true }, // Add this match condition to filter bids with accepted: true
+          populate: { path: 'company' },
+        });
+    },
+
     company: async (_, { companyId }) => {
       return await Company.findOne({ _id: companyId })
         .populate("reviews")
