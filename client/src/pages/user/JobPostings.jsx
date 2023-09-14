@@ -7,7 +7,7 @@ import Button from "../../components/Button";
 export default function JobPostings() {
   const { data } = useQuery(QUERY_MY_POSTINGS, {
     variables: {
-      customerId: "64ffdd99efba6db008dce024",
+      customerId: "650252708a4622c7fcfd3fb6",
     },
   });
   console.log(data);
