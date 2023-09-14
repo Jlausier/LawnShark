@@ -18,7 +18,7 @@ export default function SplashPage() {
         <img src="./images/lawn-shark-logo-white-1000.png" className="size-sm"></img>
       </div>
       <div className="min-vh-100 d-flex justify-content-center align-items-center landing-page-bg">
-        <div className=" d-flex align-items-center">
+        <div className=" row align-items-center">
           <div className="col pe-3 text-white">
             <span className="fs-4 body-font">Welcome to</span>
             <h1 className="header-landing">Lawn Shark</h1>
