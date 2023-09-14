@@ -92,7 +92,7 @@ export default function CustomerForm() {
   return (
     <form  onSubmit={handleFormSubmit}>
     <div className='row mb-4'>
-      <div className='col-6'>
+      <div className='col-12 col-lg-6'>
         <div className="">
           <label htmlFor="emailInput" className="form-label body-font">
           Email Address
@@ -106,7 +106,7 @@ export default function CustomerForm() {
           />
         </div>
       </div>
-      <div className='col-6'>
+      <div className='col-12 col-lg-6'>
         <div className="">
           <label htmlFor="passwordInput" className="form-label body-font">
           Password
@@ -122,7 +122,7 @@ export default function CustomerForm() {
       </div>
     </div>
     <div className='row mb-4'>
-      <div className='col-6'>
+      <div className='col-12 col-md-6'>
         <div className="">
           <label htmlFor="emailInput" className="form-label body-font">
           First Name
@@ -136,7 +136,7 @@ export default function CustomerForm() {
           />
         </div>
       </div>
-      <div className='col-6'>
+      <div className='col-12 col-md-6'>
         <div className="">
           <label htmlFor="emailInput" className="form-label body-font">
           Last Name
@@ -167,18 +167,19 @@ export default function CustomerForm() {
           </div>
       </div>
       <div className='row mb-4'>
-        <div className='col-5'>
+        <div className='col-12 col-lg-5'>
           <label htmlFor="cityInput" className="form-label body-font">
           City
           </label>
           <input
+          value={city}
           name="city"
           onChange={handleInputChange}
           type="text"
           className="form-control"
           />
         </div>
-        <div className='col-4'>
+        <div className='col-12 col-lg-4'>
           <label htmlFor="stateInput" className="form-label body-font">
             State
           </label>  
@@ -187,11 +188,12 @@ export default function CustomerForm() {
             {stateOptions}
           </select>
         </div>
-        <div className='col-3'>
+        <div className='col-12 col-lg-3'>
           <label htmlFor="zipInput" className="form-label body-font">
           Zip
           </label>
           <input
+          value={zip}
           name="zip"
           onChange={handleInputChange}
           type="text"

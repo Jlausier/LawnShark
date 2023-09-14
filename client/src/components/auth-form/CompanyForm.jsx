@@ -3,16 +3,6 @@ import {checkPassword, validateEmail} from "../../utils/auth"
 import Button from "../Button";
 
 export default function CompanyForm() {
-
-    const [selectedState, setSelectedState] = useState('');
-
-    const stateNames = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
-  
-    const stateOptions = stateNames.map((state) => (
-      <option key={state} value={state}>
-        {state}
-      </option>
-    ));
   
     const handleStateChange = (e) => {
       setSelectedState(e.target.value);
@@ -76,7 +66,7 @@ export default function CompanyForm() {
   return (
     <form  onSubmit={handleFormSubmit}>
     <div className='row mb-4'>
-      <div className='col-6'>
+      <div className='col-12 col-lg-6'>
         <div className="">
           <label htmlFor="emailInput" className="form-label body-font">
           Email Address
@@ -90,7 +80,7 @@ export default function CompanyForm() {
           />
         </div>
       </div>
-      <div className='col-6'>
+      <div className='col-12 col-lg-6'>
         <div className="">
           <label htmlFor="passwordInput" className="form-label body-font">
           Password
