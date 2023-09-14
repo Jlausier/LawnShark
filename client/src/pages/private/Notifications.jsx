@@ -1,5 +1,5 @@
-import NotificationCard from "../components/NotificationCard";
-import { notification } from "../utils/testData";
+import NotificationCard from "../../components/NotificationCard";
+import { notification } from "../../utils/testData";
 
 export default function Notifications() {
   return (

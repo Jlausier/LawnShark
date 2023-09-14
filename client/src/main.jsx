@@ -10,19 +10,20 @@ import RoleProvider from "./utils/RoleProvider.jsx";
 import App from "./App.jsx";
 import SplashPage from "./pages/SplashPage.jsx";
 
+import JobPosting from "./pages/private/JobPosting.jsx";
+
 import FindWork from "./pages/company/FindWork.jsx";
 import MyJobs from "./pages/company/MyJobs.jsx";
 import MyBids from "./pages/company/MyBids.jsx";
-import CompanyProfile from "./pages/company/CompanyProfile.jsx";
+import CompanyProfile from "./pages/private/CompanyProfile.jsx";
 
-import JobPostings from "./pages/user/JobPostings.jsx";
-import JobPosting from "./pages/user/JobPosting.jsx";
-import CreateJobPosting from "./pages/user/CreateJobPosting.jsx";
-import UserProfile from "./pages/user/UserProfile.jsx";
+import JobPostings from "./pages/customer/JobPostings.jsx";
+import CreateJobPosting from "./pages/customer/CreateJobPosting.jsx";
+import UserProfile from "./pages/customer/UserProfile.jsx";
 
-import Search from "./pages/Search.jsx";
-import Notifications from "./pages/Notifications.jsx";
-import Messages from "./pages/Messages.jsx";
+import Search from "./pages/company/Search.jsx";
+import Notifications from "./pages/private/Notifications.jsx";
+import Messages from "./pages/private/Messages.jsx";
 
 import "./index.css";
 import PrivateRoute from "./pages/PrivateRoute.jsx";
