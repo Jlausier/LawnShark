@@ -5,6 +5,7 @@ import { QUERY_COMPANY } from "../../utils/queries";
 
 import ReviewCard from "../../components/company/ReviewCard";
 import Button from "../../components/Button";
+import { createLocationString } from "../../utils/dataValidation";
 
 export default function CompanyProfile() {
   const { companyId } = useParams();
@@ -22,8 +23,12 @@ export default function CompanyProfile() {
         <div className="d-flex justify-content-between align-items-start">
           <div>
             <span>Company Profile</span>
-            <h2 className="header">{data._company.name}</h2>
-            <span>{data._company.location}</span>
+            {data.company.name && (
+              <h2 className="header">{data.company.name}</h2>
+            )}
+            {data.company.location && (
+              <span>{createLocationString(data.company.location)}</span>
+            )}
           </div>
           <div className="justify-content-end align-items-start">
             {/* Make into a Link */}
@@ -35,21 +40,21 @@ export default function CompanyProfile() {
           </div>
         </div>
         <div>
-          <p>{data._company.description}</p>
+          <p>{data.company.description}</p>
         </div>
         <hr />
         <div>
           <h3 className="fs-5">Company Info</h3>
-          <p>email: {data._company.email}</p>
+          <p>email: {data.company.email}</p>
         </div>
         <hr />
         <div className="d-flex justify-content-between">
           <h3 className="fs-5">Reviews</h3>
-          <span> Total Reviews: {data._company.reviews.length} </span>
+          <span> Total Reviews: {data.company.reviews.length} </span>
         </div>
         <div>
-          {data.reviews &&
-            data.reviews.map((review) => (
+          {data.company.reviews &&
+            data.company.reviews.map((review) => (
               <ReviewCard {...review} key={review.customer._id} />
             ))}
         </div>

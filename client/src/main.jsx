@@ -2,32 +2,36 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ApolloProvider } from "@apollo/client";
 
-import "bootstrap/dist/css/bootstrap.min.css";
-
 import client from "./utils/apolloClient.js";
-import RoleProvider from "./utils/RoleProvider.jsx";
 
 import App from "./App.jsx";
 import SplashPage from "./pages/SplashPage.jsx";
 
-import FindWork from "./pages/company/FindWork.jsx";
-import MyJobs from "./pages/company/MyJobs.jsx";
-import MyBids from "./pages/company/MyBids.jsx";
-import CompanyProfile from "./pages/company/CompanyProfile.jsx";
+import {
+  FindWork,
+  MyBids,
+  MyJobs,
+  Search,
+  CompanyRoute,
+} from "./pages/company";
+import {
+  CreateJobPosting,
+  JobPostings,
+  UserProfile,
+  CustomerRoute,
+} from "./pages/customer";
+import {
+  CompanyProfile,
+  JobPosting,
+  Messages,
+  Notifications,
+  PrivateRoute,
+} from "./pages/private";
 
-import JobPostings from "./pages/user/JobPostings.jsx";
-import JobPosting from "./pages/user/JobPosting.jsx";
-import CreateJobPosting from "./pages/user/CreateJobPosting.jsx";
-import UserProfile from "./pages/user/UserProfile.jsx";
-
-import Search from "./pages/Search.jsx";
-import Notifications from "./pages/Notifications.jsx";
-import Messages from "./pages/Messages.jsx";
-
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
-import PrivateRoute from "./pages/PrivateRoute.jsx";
 
-const privateRoutes = [
+const companyRoutes = [
   {
     path: "/FindWork",
     element: <FindWork />,
@@ -40,17 +44,15 @@ const privateRoutes = [
     path: "/MyBids",
     element: <MyBids />,
   },
-  {
-    path: "/CompanyProfile/:companyId",
-    element: <CompanyProfile />,
-  },
+].map((route) => ({
+  ...route,
+  element: <CompanyRoute>{route.element}</CompanyRoute>,
+}));
+
+const customerRoutes = [
   {
     path: "/JobPostings",
     element: <JobPostings />,
-  },
-  {
-    path: "/JobPosting/:postingId",
-    element: <JobPosting />,
   },
   {
     path: "/CreateJobPosting",
@@ -59,6 +61,20 @@ const privateRoutes = [
   {
     path: "/UserProfile",
     element: <UserProfile />,
+  },
+].map((route) => ({
+  ...route,
+  element: <CustomerRoute>{route.element}</CustomerRoute>,
+}));
+
+const privateRoutes = [
+  {
+    path: "/CompanyProfile/:companyId",
+    element: <CompanyProfile />,
+  },
+  {
+    path: "/JobPosting/:postingId",
+    element: <JobPosting />,
   },
   {
     path: "/Search",
@@ -72,12 +88,10 @@ const privateRoutes = [
     path: "/Messages",
     element: <Messages />,
   },
-].map((route) => {
-  return {
-    ...route,
-    element: <PrivateRoute>{route.element}</PrivateRoute>,
-  };
-});
+].map((route) => ({
+  ...route,
+  element: <PrivateRoute>{route.element}</PrivateRoute>,
+}));
 
 const router = createBrowserRouter([
   {
@@ -87,14 +101,12 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    children: privateRoutes,
+    children: [...privateRoutes, ...customerRoutes, ...companyRoutes],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <RoleProvider>
-    <ApolloProvider client={client}>
-      <RouterProvider router={router} />
-    </ApolloProvider>
-  </RoleProvider>
+  <ApolloProvider client={client}>
+    <RouterProvider router={router} />
+  </ApolloProvider>
 );
