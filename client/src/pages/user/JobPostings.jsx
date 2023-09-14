@@ -1,9 +1,17 @@
-import PropTypes from "prop-types";
-
+import { useQuery } from "@apollo/client";
+import { QUERY_MY_POSTINGS } from "../../utils/queries"
 import JobPostingCard from "../../components/JobPostingCard";
 import Button from "../../components/Button";
 
 export default function JobPostings({ postings }) {
+
+   const { data } = useQuery(QUERY_MY_POSTINGS, {
+     variables: {
+       customerId: "650252708a4622c7fcfd3fb6",
+     },
+   });
+   console.log(data);
+
   return (
     <div className="p-5">
       <div className="border p-4 rounded">
@@ -12,10 +20,10 @@ export default function JobPostings({ postings }) {
           <Button title={"New Job Posting"} />
         </div>
         <div className="">
-          {postings ? (
+          {data && data.myPostings && data.myPostings.length > 0 ? (
             <div>
-              {postings.map((posting) => (
-                <JobPostingCard {...posting} key={posting._id} />
+              {data.myPostings.map((jobs) => (
+                <JobPostingCard {...jobs} key={jobs._id} />
               ))}
             </div>
           ) : (
@@ -29,14 +37,3 @@ export default function JobPostings({ postings }) {
   );
 }
 
-JobPostings.propTypes = {
-  postings: PropTypes.arrayOf(
-    PropTypes.shape({
-      _id: PropTypes.string,
-      title: PropTypes.string,
-      askingPrice: PropTypes.number,
-      frequency: PropTypes.string,
-      description: PropTypes.string,
-    })
-  ),
-};
