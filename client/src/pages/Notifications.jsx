@@ -1,5 +1,6 @@
+import React from "react";
 import NotificationCard from "../components/NotificationCard";
-import { notification } from "../utils/testData";
+import { testData } from "../utils/testData"; // Assuming testData is an array of notifications
 
 export default function Notifications() {
   return (
@@ -7,7 +8,9 @@ export default function Notifications() {
       <div className="border p-4 rounded">
         <h2 className="header">Notifications</h2>
         <div className="d-flex flex-column">
-          <NotificationCard {...notification} />
+          {testData.map((notification, index) => (
+            <NotificationCard key={index} {...notification} />
+          ))}
         </div>
       </div>
     </div>
