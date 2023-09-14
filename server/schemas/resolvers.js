@@ -194,7 +194,23 @@ const resolvers = {
 
       return bid;
     },
+
+    acceptBid: async (_, { bidId }) => {
+      const bid =  await Bid.findById(bidId);
+      if (!bid) {
+        throw new Error(`Bid with ID ${bidId} not found`);
+      }
+
+      // Update the bid's accepted field to true
+      bid.accepted = true;
+
+      return bid;
+    },
   },
 };
+
+
+    
+ 
 
 module.exports = resolvers;
