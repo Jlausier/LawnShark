@@ -3,7 +3,7 @@ import { buttonClasslist } from "../utils/commonClasslist";
 
 export default function Button({ title, ...props }) {
   return (
-    <button className={buttonClasslist} {...props} >
+    <button className="buttonMaster" >
       {title}
     </button>
   );
