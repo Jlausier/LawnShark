@@ -28,7 +28,7 @@ function App() {
           <div className="row gx-0">
             <TopBar />
           </div>
-          <div className="row p-5 gx-0">
+          <div className="row pb-5 px-5 gx-0">
             <Outlet />
           </div>
         </div>
