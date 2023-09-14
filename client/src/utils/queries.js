@@ -100,7 +100,7 @@ export const QUERY_MY_POSTINGS = gql`
 
 export const QUERY_MY_ACTIVE_POSTINGS = gql`
   query myPostings($customerId: ID!) {
-    myPostings(customerId: $customerId) {
+    myPostings(customerId: $customerId, accepted: true) {
       _id
       title
       askingPrice
@@ -110,14 +110,13 @@ export const QUERY_MY_ACTIVE_POSTINGS = gql`
         _id
         name
       }
-      customer {
+      bids {
         _id
-        name
-        location {
-          address
-          city
-          state
-          zip
+        accepted
+        amount
+        company {
+          _id
+          name
         }
       }
     }
