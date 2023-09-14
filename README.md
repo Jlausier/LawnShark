@@ -11,7 +11,7 @@
   - [Tests](#tests)
   - [License](#license)
   - [Questions](#questions)
-  
+  - [Contributors](#contributors)
   ## License
 
 This project is licensed under the [MIT](https://opensource.org/licenses/MIT) License.
@@ -30,6 +30,13 @@ This project is licensed under the [MIT](https://opensource.org/licenses/MIT) Li
 
   ## ScreenShot
   ![Screenshot](/client/public/images/localhost_5173_welcome.png)
+
+  ## Contributors
+  - Matthew Alfaro 
+  - Holden Garrison
+  - Arnaldo Henriquez
+  - Brian Gorman 
+
   ## Questions
   For any questions or feedback, please feel free to contact me:
   - GitHub: [jlausier](https://github.com/jlausier)
