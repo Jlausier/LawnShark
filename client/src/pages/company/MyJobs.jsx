@@ -12,7 +12,6 @@ export default function MyJobs() {
   // console.log(data);
 
   return (
-      <div className=" p-5">
         <div className="border p-4 rounded">
           <div className='mb-5'>
             <h2 className="header">My Jobs</h2>
@@ -29,6 +28,5 @@ export default function MyJobs() {
           )} */}
           </div>
         </div>
-      </div>
   );
 }

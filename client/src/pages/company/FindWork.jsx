@@ -39,7 +39,6 @@ export default function FindWork() {
   console.log(postings);
   console.log(data)
   return (
-    <div className="p-5">
       <div className="border p-4 rounded">
         <div className="mb-5">
           <h2 className="header">Find Work</h2>
@@ -80,8 +79,6 @@ export default function FindWork() {
         )}
         </div>
       </div>
-      
-    </div>
   );
 }
 

@@ -17,7 +17,6 @@ export default function CompanyProfile() {
   };
 
   return data && data.company ? (
-    <div className="p-5">
       <div className="border p-4 rounded">
         <div className="d-flex justify-content-between align-items-start">
           <div>
@@ -54,7 +53,6 @@ export default function CompanyProfile() {
             ))}
         </div>
       </div>
-    </div>
   ) : (
     <div>Loading...</div>
   );

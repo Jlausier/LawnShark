@@ -12,7 +12,6 @@ export default function MyBids() {
   console.log(data);
 
   return (
-      <div className=" p-5">
         <div className="border p-4 rounded">
           <div className='mb-5'>
             <h2 className="header">My Bids</h2>
@@ -30,6 +29,5 @@ export default function MyBids() {
           )}
           </div>
         </div>
-      </div>
   );
 }

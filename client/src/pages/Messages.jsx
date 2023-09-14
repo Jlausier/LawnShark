@@ -4,7 +4,7 @@ import MessageConversation from '../components/message/MessageConversation'
 export default function Messages() {
 
     return (
-      <div className="container p-5">
+      <div className="container">
         <div className="border p-4 rounded">
           <h2 className="header">Messages</h2>
           <div className="row">
