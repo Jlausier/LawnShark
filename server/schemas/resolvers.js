@@ -110,6 +110,8 @@ const resolvers = {
       const company = await Company.create({
         name,
         description: bio,
+        email,
+        _user: newUser._id,
       });
 
       if (!company) {
@@ -117,18 +119,16 @@ const resolvers = {
         throw AuthenticationError;
       }
 
-      newUser.update;
-
-      const token = signToken({
-        ...newUser.toJSON(),
-        roleId: "company",
-      });
-
       const user = await User.findByIdAndUpdate(
         newUser._id,
         { $set: { _company: company._id } },
         { new: true }
       );
+
+      const token = signToken({
+        ...user.toJSON(),
+        roleId: "company",
+      });
 
       return { token, user };
     },

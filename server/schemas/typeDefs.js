@@ -70,6 +70,7 @@ const typeDefs = `
 
   type Company {
     _id: ID
+    _user: User
     name: String
     description: String
     services: [Service]

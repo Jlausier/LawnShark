@@ -12,9 +12,7 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!loggedIn()) {
-      navigate("/welcome");
-    }
+    if (!loggedIn()) navigate("/welcome");
   }, [navigate]);
 
   return (

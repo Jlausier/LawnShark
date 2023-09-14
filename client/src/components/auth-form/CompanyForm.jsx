@@ -1,27 +1,34 @@
 import { useState } from "react";
 import { validatePassword, validateEmail } from "../../utils/auth";
+import useSignUpCompany from "../../hooks/useSignUpCompany";
 import Button from "../Button";
 
 export default function CompanyForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [bio, setBio] = useState("");
+  const { signUpAsCompany } = useSignUpCompany();
+
+  const [formState, setFormState] = useState({
+    email: "",
+    password: "",
+    name: "",
+    bio: "",
+  });
+
+  // eslint-disable-next-line no-unused-vars
   const [errorMessages, setErrorMessages] = useState({});
 
   const handleInputChange = (e) => {
     const { name: inputName, value } = e.target;
-
-    if (inputName === "email") setEmail(value);
-    else if (inputName == "password") setPassword(value);
-    else if (inputName == "name") setName(value);
-    else if (inputName === "bio") setBio(value);
+    setFormState({
+      ...formState,
+      [inputName]: value,
+    });
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
 
     const errors = {};
+    const { email, password, name, bio } = formState;
 
     if (email === "") {
       errors.email = "Email is required";
@@ -43,14 +50,30 @@ export default function CompanyForm() {
       errors.bio = "Company bio is required";
     }
 
-    if (Object.keys(errors).length !== 0) {
+    if (Object.keys(errors).length > 0) {
       setErrorMessages(errors);
       return;
     }
 
-    // If everything goes according to plan, we want to clear out the input after a successful registration.
-    setPassword("");
-    setEmail("");
+    try {
+      await signUpAsCompany({
+        email,
+        password,
+        name,
+        bio,
+      });
+
+      setFormState({
+        email: "",
+        password: "",
+        name: "",
+        bio: "",
+      });
+      setErrorMessages({});
+    } catch (err) {
+      console.error(err);
+      setErrorMessages({ graphQL: err });
+    }
   };
 
   return (
@@ -62,13 +85,12 @@ export default function CompanyForm() {
               Email Address
             </label>
             <input
-              value={email}
+              value={formState.email}
               id="email"
               name="email"
               onChange={handleInputChange}
               type="email"
               className="form-control"
-              required
             />
           </div>
         </div>
@@ -78,13 +100,12 @@ export default function CompanyForm() {
               Password
             </label>
             <input
-              value={password}
+              value={formState.password}
               id="password"
               name="password"
               onChange={handleInputChange}
               type="password"
               className="form-control"
-              required
             />
           </div>
         </div>
@@ -96,13 +117,12 @@ export default function CompanyForm() {
               Company Name
             </label>
             <input
-              value={name}
+              value={formState.name}
               name="name"
               id="name"
               onChange={handleInputChange}
               type="text"
               className="form-control"
-              required
             />
           </div>
         </div>
@@ -114,7 +134,7 @@ export default function CompanyForm() {
             Company Bio
           </label>
           <textarea
-            value={bio}
+            value={formState.bio}
             name="bio"
             id="bio"
             onChange={handleInputChange}
@@ -122,7 +142,6 @@ export default function CompanyForm() {
             className="form-control"
             rows="4"
             cols="50"
-            required
           />
         </div>
       </div>

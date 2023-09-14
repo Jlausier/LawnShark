@@ -30,18 +30,16 @@ const companySchema = new Schema(
       unique: true,
       trim: true,
     },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-      match: [/.+@.+\..+/, "Must match an email address!"],
-    },
     description: {
       type: String,
       required: "You need to leave a description!",
       minlength: 1,
       maxlength: 500,
       trim: true,
+    },
+    _user: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
     },
     services: [
       {
