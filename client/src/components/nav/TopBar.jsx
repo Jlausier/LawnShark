@@ -3,7 +3,7 @@ import "/src/index.css"
 export default function TopBar() {
   return (
     <div>
-      <nav className="px-3 navbar navbar-expand-lg navbar-light ">
+      <nav className="pt-3 pe-5 navbar navbar-expand-lg navbar-light ">
         {/* Collapse Button for Responsiveness */}
         <button
           className="navbar-toggler ms-auto"
@@ -19,12 +19,12 @@ export default function TopBar() {
         {/* Visible NavBar */}
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
-            <li className="nav-item active">
-              <a className="nav-link" href="/Notifications">
+            <li className="nav-item ps-2 active">
+              <a className={"nav-link"} href="/Notifications">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
+                  width="25"
+                  height="25"
                   fill="currentColor"
                   className="bi bi-bell"
                   viewBox="0 0 16 16"
@@ -33,12 +33,12 @@ export default function TopBar() {
                 </svg>
               </a>
             </li>
-            <li className="nav-item">
+            <li className="nav-item ps-2">
               <a className="nav-link" href="/Messages">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
+                  width="25"
+                  height="25"
                   fill="currentColor"
                   className="bi bi-chat-left-dots"
                   viewBox="0 0 16 16"
@@ -48,12 +48,12 @@ export default function TopBar() {
                 </svg>
               </a>
             </li>
-            <li className="nav-item">
+            <li className="nav-item ps-2">
               <a className="nav-link" href="/UserProfile">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
+                  width="25"
+                  height="25"
                   fill="currentColor"
                   className="bi bi-person-badge"
                   viewBox="0 0 16 16"

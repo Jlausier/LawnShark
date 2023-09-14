@@ -43,3 +43,9 @@
     background-color: #2E983B;
 }
 
+.notification-red {
+    border-radius: 25px;
+    color: #F8F9FA;
+    background-color: orangered;
+}
+
