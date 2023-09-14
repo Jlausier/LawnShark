@@ -8,8 +8,8 @@ import JobPostingCard from "../../components/JobPostingCard";
 
 export default function FindWork() {
  
-  const { serviceData } = useQuery(QUERY_SERVICES);
-
+  const { data } =  useQuery(QUERY_SERVICES);
+  console.log(data)
   // Initialize state for checked services
   const [checkedState, setCheckedState] = useState({});
 
@@ -36,7 +36,8 @@ export default function FindWork() {
 
   // Fetch postings based on search options
   const postings = usePostingsSearch(searchOptions);
-
+  console.log(postings);
+  console.log(data)
   return (
     <div className="p-5">
       <div className="border p-4 rounded">
@@ -44,10 +45,10 @@ export default function FindWork() {
           <h2 className="fs-1">Find Work</h2>
           <span className="">Click on job titles to view more details</span>
         </div>
-        {serviceData && serviceData.services && serviceData.services.length > 0 ? (
+        {data && data.services && data.services.length > 0 ? (
           <div className="mb-3">
             <span className="pe-2">Filter Results:</span>
-            {serviceData.services.map((service) => (
+            {data.services.map((service) => (
               <div className="form-check" key={service._id}>
                 <input
                   className="form-check-input"
