@@ -1,5 +1,6 @@
 .green{
-    background-color: #2E983B;
+
+    background-color: #278C2E;
 }
 
 .dark-green{
@@ -17,7 +18,7 @@
 }
 
 .body-font {
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Urbanist', sans-serif;
 }
 
 .header {
@@ -32,5 +33,13 @@
 
 .size-sm {
     width: 75px;
+}
+
+.nav-green {
+    background-color: #2E983B;
+}
+
+.nav-dark {
+    background-color: #2E983B;
 }
 

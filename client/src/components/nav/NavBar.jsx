@@ -58,7 +58,7 @@ export default function NavBar() {
       <div className="min-vh-100 p-4 green text-white ">
         <img src="./images/lawn-shark-logo-1000.png" className="p-1 size"></img>
         <nav className="navbar navbar-expand-lg ">
-          <ul className="navbar-nav nav-pills flex-column">
+          <ul className="w-100 navbar-nav nav-pills flex-column">
             {links.map((link) => (
               <NavBarLink {...link} currentPage={currentPage} key={link.path} />
             ))}
