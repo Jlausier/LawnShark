@@ -3,8 +3,22 @@
     background-color: #278C2E;
 }
 
+.main-height {
+    height: 100vh;
+}
+
+
+
+.footer-height {
+    height: 10vh;
+}
+
 .dark-green{
     background-color: #16661B;
+}
+
+.dark-footer {
+    background-color: #062601;
 }
 
 .landing-page-bg {
