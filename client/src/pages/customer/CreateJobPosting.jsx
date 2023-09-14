@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 
 import { QUERY_SERVICES } from "../../utils/queries";
+import { ADD_POSTING } from "../../utils/mutations";
 
 import ServiceRadioButton from "../../components/ServiceRadioButton";
 import RadioButton from "../../components/RadioButton";
@@ -10,6 +11,14 @@ import { getUserRoleId } from "../../utils/auth";
 
 export default function CreateJobPosting() {
   const { data } = useQuery(QUERY_SERVICES);
+  const [addPosting, { error }] = useMutation(ADD_POSTING, {
+    refetchQueries: [
+      "postingsFiltered",
+      "myPostings",
+      "customer",
+      "customerUser",
+    ],
+  });
 
   const frequencies = [
     "One Time",
@@ -52,14 +61,28 @@ export default function CreateJobPosting() {
     setServiceId(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const newPosting = {
-      customerId: getUserRoleId(),
-      serviceId,
-      ...formData,
-      estimatePrice: formData.askingPrice,
-    };
+
+    if (error) return;
+
+    try {
+      const { data: submitData } = await addPosting({
+        variables: {
+          customerId: getUserRoleId(),
+          serviceId,
+          askingPrice: parseInt(formData.askingPrice),
+          estimatePrice: parseInt(formData.askingPrice),
+          frequency: formData.frequency,
+          description: formData.description,
+          title: formData.title,
+        },
+      });
+
+      console.log(submitData);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -104,14 +127,15 @@ export default function CreateJobPosting() {
         <div className="mb-3">
           <label className="form-label">Frequency</label>
           <div>
-            {frequencies.map((frequency) => {
+            {frequencies.map((frequency) => (
               <RadioButton
                 name="frequency"
                 value={frequency}
                 activeValue={formData.frequency}
                 handleChange={handleChange}
-              />;
-            })}
+                key={frequency}
+              />
+            ))}
           </div>
         </div>
 
@@ -148,7 +172,11 @@ export default function CreateJobPosting() {
         </div>
 
         {/* Submit Button */}
-        <Button title={"Create Job Posting"} onSubmit={handleSubmit} />
+        <Button
+          title={"Create Job Posting"}
+          type="submit"
+          onSubmit={handleSubmit}
+        />
       </form>
     </div>
   );
