@@ -101,6 +101,9 @@ export const QUERY_MY_BIDS = gql`
   }
 `;
 
+export const QUERY_MY_ACCEPTED_BIDS = gql`
+  query myAcceptedBids`
+
 export const QUERY_MY_POSTINGS = gql`
   query myPostings($customerId: ID!) {
     myPostings(customerId: $customerId) {
