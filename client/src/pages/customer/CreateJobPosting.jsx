@@ -4,23 +4,38 @@ import { useQuery } from "@apollo/client";
 import { QUERY_SERVICES } from "../../utils/queries";
 
 import ServiceRadioButton from "../../components/ServiceRadioButton";
+import RadioButton from "../../components/RadioButton";
 import Button from "../../components/Button";
 
 export default function CreateJobPosting() {
   const { data } = useQuery(QUERY_SERVICES);
 
+  const frequencies = [
+    "One Time",
+    "Monthly",
+    "Bi-Monthly",
+    "Weekly",
+    "Bi-Weekly",
+  ];
   const [services, setServices] = useState([]);
+  const [service, setService] = useState("");
   const [formData, setFormData] = useState({
     title: "",
-    service: "",
-    frequency: "one_time",
+    frequency: "One Time",
     description: "",
     budget: "",
   });
 
   useEffect(() => {
-    if (data && data.services && services.length === 0)
+    if (
+      data &&
+      data.services &&
+      data.services.length > 0 &&
+      services.length === 0
+    ) {
       setServices(data.services);
+      setService(data.services[0]);
+    }
   }, [data, services.length]);
 
   const handleChange = (e) => {
@@ -31,10 +46,15 @@ export default function CreateJobPosting() {
     });
   };
 
+  const handleServiceChange = (e) => {
+    const { value } = e.target;
+    setService(value);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
-    alert("Oh Boy!");
+    console.log(service);
   };
 
   return (
@@ -67,8 +87,8 @@ export default function CreateJobPosting() {
               services.map((service) => (
                 <ServiceRadioButton
                   {...service}
-                  activeId={formData.service}
-                  handleChange={handleChange}
+                  activeId={service}
+                  handleChange={handleServiceChange}
                   key={service._id}
                 />
               ))}
@@ -79,76 +99,14 @@ export default function CreateJobPosting() {
         <div className="mb-3">
           <label className="form-label">Frequency</label>
           <div>
-            <div className="form-check">
-              <input
-                type="radio"
-                id="one_time"
+            {frequencies.map((frequency) => {
+              <RadioButton
                 name="frequency"
-                value="one_time"
-                checked={formData.frequency === "one_time"}
-                onChange={handleChange}
-                className="form-check-input"
-              />
-              <label htmlFor="one_time" className="form-check-label">
-                One Time
-              </label>
-            </div>
-            <div className="form-check">
-              <input
-                type="radio"
-                id="monthly"
-                name="frequency"
-                value="monthly"
-                checked={formData.frequency === "monthly"}
-                onChange={handleChange}
-                className="form-check-input"
-              />
-              <label htmlFor="monthly" className="form-check-label">
-                Monthly
-              </label>
-            </div>
-            <div className="form-check">
-              <input
-                type="radio"
-                id="bi_monthly"
-                name="frequency"
-                value="bi_monthly"
-                checked={formData.frequency === "bi_monthly"}
-                onChange={handleChange}
-                className="form-check-input"
-              />
-              <label htmlFor="bi_monthly" className="form-check-label">
-                Bi-Monthly
-              </label>
-            </div>
-            <div className="form-check">
-              <input
-                type="radio"
-                id="weekly"
-                name="frequency"
-                value="weekly"
-                checked={formData.frequency === "weekly"}
-                onChange={handleChange}
-                className="form-check-input"
-              />
-              <label htmlFor="weekly" className="form-check-label">
-                Weekly
-              </label>
-            </div>
-            <div className="form-check">
-              <input
-                type="radio"
-                id="bi_weekly"
-                name="frequency"
-                value="bi_weekly"
-                checked={formData.frequency === "bi_weekly"}
-                onChange={handleChange}
-                className="form-check-input"
-              />
-              <label htmlFor="bi_weekly" className="form-check-label">
-                Bi-Weekly
-              </label>
-            </div>
+                value={frequency}
+                activeValue={formData.frequency}
+                handleChange={handleChange}
+              />;
+            })}
           </div>
         </div>
 
