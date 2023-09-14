@@ -88,6 +88,8 @@ const typeDefs = `
     services: [Service]
     posting(postingId: ID!): Posting
     postingsFiltered(service: [ID]!): [Posting]
+    myBids(companyId: ID!): [Bid]
+    myAcceptedBids
     myPostings(customerId: ID!): [Posting]
     company(companyId: ID!): Company
     companies: [Company]
