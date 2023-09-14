@@ -10,6 +10,7 @@ const typeDefs = `
     amount: Int
     posting: Posting
     company: Company
+    accepted: Boolean
   }
 
   type Posting {
@@ -104,6 +105,7 @@ const typeDefs = `
     addService(name: String!, description: String!): Service
     addPosting(customerId: ID!, serviceId: ID!, askingPrice: Int!, estimatePrice: Int, frequency: String!, title: String!, description: String!): Posting
     addBid(amount: Int!, message: String!, postingId: ID!, companyId: ID!): Bid
+    acceptBid(bidId: ID!): Bid
   }
 `;
 

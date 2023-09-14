@@ -16,6 +16,10 @@ const bidSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Company",
   },
+  accepted: {
+    type: Boolean,
+    default: false,
+  }
 });
 
 const Bid = model("Bid", bidSchema);
