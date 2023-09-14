@@ -103,6 +103,36 @@ const resolvers = {
       return { token, user };
     },
 
+    signUpCompany: async (_, { email, password, name, bio }) => {
+      const newUser = await User.create({ email, password });
+      if (!newUser) throw AuthenticationError;
+
+      const company = await Company.create({
+        name,
+        description: bio,
+      });
+
+      if (!company) {
+        await User.deleteOne({ _id: newUser._id });
+        throw AuthenticationError;
+      }
+
+      newUser.update;
+
+      const token = signToken({
+        ...newUser.toJSON(),
+        roleId: "company",
+      });
+
+      const user = await User.findByIdAndUpdate(
+        newUser._id,
+        { $set: { _company: company._id } },
+        { new: true }
+      );
+
+      return { token, user };
+    },
+
     /** @TODO Only add customer or company if they do not exist on user */
 
     addCustomer: async (_, { userId, name, location }) => {
@@ -196,7 +226,7 @@ const resolvers = {
     },
 
     acceptBid: async (_, { bidId }) => {
-      const bid =  await Bid.findById(bidId);
+      const bid = await Bid.findById(bidId);
       if (!bid) {
         throw new Error(`Bid with ID ${bidId} not found`);
       }
@@ -208,9 +238,5 @@ const resolvers = {
     },
   },
 };
-
-
-    
- 
 
 module.exports = resolvers;

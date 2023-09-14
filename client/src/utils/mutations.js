@@ -49,12 +49,15 @@ export const SIGN_UP_COMPANY = gql`
     $bio: String!
   ) {
     signUpCompany(email: $email, password: $password, name: $name, bio: $bio) {
-      _id
-      email
-      _company {
+      token
+      user {
         _id
-        name
-        bio
+        email
+        _company {
+          _id
+          name
+          description
+        }
       }
     }
   }
