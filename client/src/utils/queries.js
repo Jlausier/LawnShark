@@ -99,8 +99,8 @@ export const QUERY_MY_POSTINGS = gql`
 `;
 
 export const QUERY_MY_ACTIVE_POSTINGS = gql`
-  query myPostings($customerId: ID!) {
-    myPostings(customerId: $customerId, accepted: true) {
+  query myActivePostings($customerId: ID!) {
+    myActivePostings(customerId: $customerId, accepted: true) {
       _id
       title
       askingPrice
