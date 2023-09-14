@@ -34,9 +34,10 @@ export default function CreateJobPosting() {
       services.length === 0
     ) {
       setServices(data.services);
-      setService(data.services[0]);
+      if (!data.services.some((s) => s._id === service))
+        setService(data.services[0]._id);
     }
-  }, [data, services.length]);
+  }, [data, services.length, service]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -47,8 +48,7 @@ export default function CreateJobPosting() {
   };
 
   const handleServiceChange = (e) => {
-    const { value } = e.target;
-    setService(value);
+    setService(e.target.value);
   };
 
   const handleSubmit = (e) => {
@@ -84,12 +84,12 @@ export default function CreateJobPosting() {
           <label className="form-label">Service</label>
           <div>
             {services.length > 0 &&
-              services.map((service) => (
+              services.map((_service) => (
                 <ServiceRadioButton
-                  {...service}
+                  {..._service}
                   activeId={service}
                   handleChange={handleServiceChange}
-                  key={service._id}
+                  key={_service._id}
                 />
               ))}
           </div>
