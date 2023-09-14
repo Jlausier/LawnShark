@@ -71,6 +71,32 @@ export const QUERY_POSTINGS_FILTERED = gql`
   }
 `;
 
+export const QUERY_MY_POSTINGS = gql`
+  query myPostings($customerId: ID!) {
+    myPostings(customerId: $customerId) {
+      _id
+      title
+      askingPrice
+      frequency
+      description
+      service {
+        _id
+        name
+      }
+      customer {
+        _id
+        name
+        location {
+          address
+          city
+          state
+          zip
+        }
+      }
+    }
+  }
+`;
+
 export const QUERY_MY_BIDS = gql`
   query myBids($companyId: ID!) {
     myBids(companyId: $companyId) {
@@ -128,37 +154,6 @@ export const QUERY_MY_ACCEPTED_BIDS = gql`
       company {
         _id
         name
-      }
-    }
-  }
-`;
-
-
-
-
-
-
-export const QUERY_MY_POSTINGS = gql`
-  query myPostings($customerId: ID!) {
-    myPostings(customerId: $customerId) {
-      _id
-      title
-      askingPrice
-      frequency
-      description
-      service {
-        _id
-        name
-      }
-      customer {
-        _id
-        name
-        location {
-          address
-          city
-          state
-          zip
-        }
       }
     }
   }
