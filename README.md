@@ -2,7 +2,7 @@
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
   ## Description
-  An app to post bids on work you need done ex: tree trimming or lawn mowed. Then the companys will bid on the job with there contact info. This is an app designed to make comapnies come to you. 
+  An app to connect customers in need of yard work (Mowing, tree trimming, pressure washing, etc.) with compnaies that provide those services. Cusatomers post the jobs they need completed along with how much they are willing to pay. Companies can then see the job postings and place bids. When a customer accepts a company's bid the company will be notified.
   
   ## Table of Contents
   - [Installation](#installation)
@@ -32,7 +32,7 @@ This project is licensed under the [MIT](https://opensource.org/licenses/MIT) Li
   ![Screenshot](/client/public/images/localhost_5173_welcome.png)
 
   ## Contributors
-  - Matthew Alfaro 
+  - Matthew Alfaro ()
   - Holden Garrison
   - Arnaldo Henriquez
   - Brian Gorman 
