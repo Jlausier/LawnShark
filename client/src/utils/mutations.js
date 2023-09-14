@@ -124,3 +124,16 @@ export const ADD_BID = gql`
     }
   }
 `;
+
+export const ACCEPT_BID = gql`
+  mutation acceptBid(
+    $bidId: ID!
+    ) {
+    acceptBid(
+      bidId: $bidId
+      ) {
+      _id
+      accepted
+    }
+  }
+`;
