@@ -64,6 +64,15 @@ const resolvers = {
           populate: "service",
         });
     },
+
+    customerUser: async (_, { userId }) => {
+      return await User.findById(userId).populate({
+        path: "_customer",
+        populate: {
+          path: "postings",
+        },
+      });
+    },
   },
 
   Mutation: {
@@ -74,7 +83,16 @@ const resolvers = {
       if (!user) throw AuthenticationError;
       const correctPw = await user.isCorrectPassword(password);
       if (!correctPw) throw AuthenticationError;
-      const token = signToken(user);
+
+      let roleId = "";
+      if (user._customer) roleId = user._customer._id;
+      else if (user._company) roleId = user._company._id;
+
+      const token = signToken({
+        ...user.toJSON(),
+        roleId,
+      });
+
       return { token, user };
     },
 

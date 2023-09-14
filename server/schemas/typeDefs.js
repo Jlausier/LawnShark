@@ -54,6 +54,12 @@ const typeDefs = `
     postings: [Posting]
   }
 
+  type CustomerUser {
+    _id: String
+    email: String
+    _customer: Customer
+  }
+
   type Review {
     reviewText: String
     createdAt: String
@@ -69,25 +75,6 @@ const typeDefs = `
     reviews: [Review]
     averageRating: Int
     reviewCount: Int
-  }
-
-  type CustomerAuth {
-    _id: ID
-    name: String
-    location: Location
-  }
-
-  type CompanyAuth {
-    _id: ID
-    name: String
-    description: String
-  }
-
-  type UserAuth {
-    _id: ID
-    email: String
-    _company: CompanyAuth
-    _customer: CustomerAuth
   }
   
   type Auth {
@@ -106,6 +93,7 @@ const typeDefs = `
     companiesFiltered(searchText: String!, services: [ID]!): [Company]
     customer(customerId: ID!): Customer
     customers: [Customer]
+    customerUser(userId: ID!): CustomerUser
   }
 
   type Mutation {

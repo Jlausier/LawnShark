@@ -2,7 +2,7 @@
 import { useState } from "react";
 import CompanyCard from "../components/company/CompanyCard";
 
-import { useCompaniesSearch } from "../hooks/useCompanies";
+import useCompaniesSearch from "../hooks/useCompanies";
 
 export default function Search() {
   const [searchOptions, setSearchOptions] = useState({
@@ -72,7 +72,9 @@ export default function Search() {
               ))}
             </div>
           ) : (
-            <div className="body-font fs-4">Search results will appear here.</div>
+            <div className="body-font fs-4">
+              Search results will appear here.
+            </div>
           )}
         </div>
       </div>

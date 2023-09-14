@@ -1,7 +1,7 @@
 import { useMutation } from "@apollo/client";
 
 import { ADD_BID } from "../utils/mutations";
-import { getUserId } from "../utils/auth";
+import { getUserRoleId } from "../utils/auth";
 
 export function useAddBid() {
   const [addBid, { error }] = useMutation(ADD_BID, {
@@ -15,7 +15,7 @@ export function useAddBid() {
           amount,
           message,
           postingId,
-          companyId: getUserId(),
+          companyId: getUserRoleId(),
         },
       });
       return data;

@@ -12,13 +12,21 @@ export function getUserId() {
   return getProfile().data._id;
 }
 
+export function getUserRoleId() {
+  return getProfile().data.roleId;
+}
+
 export function getUserRole() {
   return getProfile().data.role;
 }
 
+export function getUserInfo() {
+  return getProfile().data;
+}
+
 export function loggedIn() {
   const token = getToken();
-  return token && !isTokenExpired(token) ? true : false;
+  return token && !isTokenExpired(token);
 }
 
 export function isTokenExpired(token) {
@@ -50,8 +58,5 @@ export function validateEmail(email) {
 
 export function checkPassword(input) {
   const passw = /^[A-Za-z]\w{7,14}$/;
-  if (input.match(passw)) {
-    return true;
-  }
-  return false;
+  return input.match(passw);
 }
