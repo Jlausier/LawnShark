@@ -36,10 +36,39 @@ const resolvers = {
         .populate("customer");
     },
 
+    myActivePostings: async (_, { customerId }) => {
+      return await Posting.find({ customer: customerId, accepted: true })
+        .populate("service")
+        .populate("customer")
+        .populate({
+          path: "bids",
+          match: { accepted: true },
+          populate: "company" ,
+        });
+    },
+
+    myBids: async (_, { companyId }) => {
+      return await Bid.find({ company: companyId })
+        .populate("posting")
+        .populate({
+          path: "posting",
+          populate:"customer"
+        });
+    },
+
+    myAcceptedBids: async (_, { companyId }) => {
+      return await Bid.find({ company: companyId, accepted: true })
+        .populate("posting")
+        .populate({
+          path: "posting", 
+          populate:"customer"
+        });
+    },
+
     company: async (_, { companyId }) => {
       return await Company.findOne({ _id: companyId })
         .populate("reviews")
-        .populate("services");
+        
     },
 
     companies: async () => {
