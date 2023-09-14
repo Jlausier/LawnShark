@@ -15,7 +15,7 @@ import {
   Messages,
   Notifications,
 } from "./pages/private";
-import PrivateRoute from "./pages/PrivateRoute.jsx";
+import PrivateRoute from "./pages/private/PrivateRoute.jsx";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
