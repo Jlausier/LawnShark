@@ -3,7 +3,7 @@ import "/src/index.css"
 export default function TopBar() {
   return (
     <div>
-      <nav className="pt-3 pe-5 navbar navbar-expand-lg navbar-light ">
+      <nav className="pt-3 pe-5 navbar navbar-expand-lg navbar-light d-none d-sm-block">
         {/* Collapse Button for Responsiveness */}
         <button
           className="navbar-toggler ms-auto"
