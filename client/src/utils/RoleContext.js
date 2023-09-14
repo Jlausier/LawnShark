@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useContext } from "react";
 
 export const RoleContext = createContext({
   company: {},
@@ -7,12 +7,10 @@ export const RoleContext = createContext({
   setCustomer: () => {},
 });
 
-// export function useRoleData() {
-//   const { company, customer } = useContext(RoleContext);
+export function useRoleData() {
+  const { company, customer } = useContext(RoleContext);
 
-//   console.log({ company, customer });
-
-//   if (company) return company;
-//   else if (customer) return customer;
-//   else return undefined;
-// }
+  if (Object.keys(company).length !== 0) return company;
+  else if (Object.keys(customer).length !== 0) return customer;
+  else return undefined;
+}

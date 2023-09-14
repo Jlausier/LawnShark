@@ -10,3 +10,7 @@ export function postingHasCompanyBid(bids) {
   });
   return false;
 }
+
+export function createLocationString({ address, city, state, zip }) {
+  return `${address}, ${city}, ${state} ${zip}`;
+}

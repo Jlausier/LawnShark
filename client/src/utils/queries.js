@@ -83,15 +83,15 @@ export const QUERY_MY_BIDS = gql`
           _id
           name
         }
-      askingPrice
-      estimatePrice
-      customer {
-        _id
-        name
-        location
-      }
-      description
-      frequency
+        askingPrice
+        estimatePrice
+        customer {
+          _id
+          name
+          location
+        }
+        description
+        frequency
       }
       company {
         _id
@@ -199,6 +199,32 @@ export const QUERY_CUSTOMER = gql`
           name
         }
         askingPrice
+      }
+    }
+  }
+`;
+
+export const QUERY_CUSTOMER_USER = gql`
+  query customerUser($userId: ID!) {
+    customerUser(userId: $userId) {
+      _id
+      email
+      _customer {
+        _id
+        name
+        location {
+          address
+          city
+          state
+          zip
+        }
+        postings {
+          _id
+          title
+          askingPrice
+          frequency
+          description
+        }
       }
     }
   }
