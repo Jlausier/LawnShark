@@ -11,10 +11,12 @@ export default function About() {
             <section className="container mt-5">
         <div className="row">
             <div className="col-lg-6">
+                <h4>Who We Are</h4>
                 <p>Welcome to Lawn Shark, where we bridge the gap between homeowners seeking top-notch lawn care services and professionals dedicated to transforming your outdoor spaces into beautiful landscapes. We understand the importance of a well-maintained lawn, and that's why we're here to make your lawn care journey easier, more efficient, and more enjoyable.</p>
-                <p>Our mission is simple yet powerful: to create a seamless connection between homeowners and lawn care experts. We believe that everyone deserves access to high-quality, reliable lawn care services, and we're committed to making that happen.</p>
             </div>
             <div className="col-lg-6">
+            <h4>Our Mission</h4>
+            <p>Our mission is simple yet powerful: to create a seamless connection between homeowners and lawn care experts. We believe that everyone deserves access to high-quality, reliable lawn care services, and we're committed to making that happen.</p>
             </div>
         </div>
     </section>
@@ -27,9 +29,9 @@ export default function About() {
             </div>
           </div>
           <div className="row">
-            <div className="mb-4 d-flex justify-content-center">
+            <div className=" d-flex flex-wrap justify-content-center">
 
-              <div className="card mx-3">
+              <div className="card my-3 mx-3">
                 <div className="pt-4 d-flex justify-content-center align-items-center">
                   <img src="/images/brian.jpeg" className="w-50 rounded-pill" />
                 </div>
@@ -52,7 +54,7 @@ export default function About() {
               </div>
 
 
-                <div className="card mx-3">
+                <div className="card my-3 mx-3">
                   <div className="pt-4 d-flex justify-content-center align-items-center">
                     <img src="/images/matthew.png" className="w-50 rounded-pill" />
                   </div>
@@ -75,7 +77,7 @@ export default function About() {
                 </div>
 
 
-              <div className="card mx-3">
+              <div className="card my-3 mx-3">
                 <div className="pt-4 d-flex justify-content-center align-items-center">
                   <img src="/images/holden.jpeg" className="w-50 rounded-pill" />
                 </div>
@@ -99,9 +101,9 @@ export default function About() {
 
             </div>
               {/* Bottom Row */}
-            <div className="d-flex justify-content-center">
+            <div className="d-flex flex-wrap justify-content-center">
 
-                <div className="card mx-3">
+                <div className="card my-3 mx-3">
                     <div className="pt-4 d-flex justify-content-center align-items-center">
                       <img src="/images/jacob.jpeg" className="w-50 rounded-pill" />
                     </div>
@@ -123,7 +125,7 @@ export default function About() {
                     </div>
                   </div>
                     
-                  <div className="card mx-3">
+                  <div className="card my-3 mx-3">
                     <div className="pt-4 d-flex justify-content-center align-items-center">
                       <img src="/images/arnaldo.jpeg" className="w-50 rounded-pill" />
                     </div>
