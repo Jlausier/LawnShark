@@ -87,7 +87,7 @@ const typeDefs = `
   type Query {
     service(serviceId: ID!): Service
     services: [Service]
-    posting(postingId: ID!): Posting
+    posting(postingId: ID!, userRole: String!, roleId: ID!): Posting
     postingsFiltered(service: [ID]!): [Posting]
     myPostings(customerId: ID!): [Posting]
     myActivePostings(customerId: ID!, accepted: Boolean): [Posting]

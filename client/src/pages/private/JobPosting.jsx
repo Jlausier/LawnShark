@@ -1,22 +1,26 @@
-import { useParams } from "react-router-dom";
+/* eslint-disable no-unused-vars */
+import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
 import { QUERY_POSTING } from "../../utils/queries";
-import { getUserRoleId } from "../../utils/auth";
-// eslint-disable-next-line no-unused-vars
-import { postingHasCompanyBid } from "../../utils/dataValidation";
+import { getUserRole, getUserRoleId } from "../../utils/auth";
 
 import BidCardView from "../../components/bids/BidCardView";
 
 export default function JobPosting() {
   const roleId = getUserRoleId();
+  const userRole = getUserRole();
 
   const { postingId } = useParams();
-  const { data } = useQuery(QUERY_POSTING, {
-    variables: { postingId },
+  const { data, error } = useQuery(QUERY_POSTING, {
+    variables: { postingId, roleId, userRole },
   });
 
-  return data ? (
+  console.log(data);
+
+  return error ? (
+    <Navigate to="/" />
+  ) : data && data.posting ? (
     <div className="border p-4 rounded">
       <div className="row">
         <div className="col-6">
@@ -24,7 +28,9 @@ export default function JobPosting() {
           <span>{data.posting.service.name}</span>
         </div>
         <div className="col-6 text-end">
-          <span className="mx-3 fs-5">Total Bids: {data.posting.bidCount}</span>
+          <span className="mx-3 fs-5">
+            Total Bids: {data.posting.bids.length}
+          </span>
           <span className="px-4 py-2 rounded green text-light fs-4">
             ${data.posting.askingPrice}
           </span>

@@ -1,5 +1,9 @@
 const { Service, User, Posting, Bid, Customer, Company } = require("../models");
-const { signToken, AuthenticationError } = require("../utils/auth");
+const {
+  signToken,
+  AuthenticationError,
+  ForbiddenError,
+} = require("../utils/auth");
 
 const resolvers = {
   Query: {
@@ -11,14 +15,16 @@ const resolvers = {
       return await Service.find();
     },
 
-    posting: async (_, { postingId }) => {
-      return await Posting.findOne({ _id: postingId })
+    posting: async (_, { postingId, userRole, roleId }) => {
+      const posting = await Posting.findOne({ _id: postingId })
+        .populate("customer")
+        .populate("service")
         .populate("bids")
-        .populate({
-          path: "bids",
-          populate: "company",
-        })
-        .populate("customer");
+        .exec();
+
+      if (userRole === "customer" && posting.customer._id !== roleId) {
+        throw ForbiddenError;
+      } else return posting;
     },
 
     postingsFiltered: async (_, { service }) => {
@@ -43,7 +49,7 @@ const resolvers = {
         .populate({
           path: "bids",
           match: { accepted: true },
-          populate: "company" ,
+          populate: "company",
         });
     },
 
@@ -52,7 +58,7 @@ const resolvers = {
         .populate("posting")
         .populate({
           path: "posting",
-          populate:"customer"
+          populate: "customer",
         });
     },
 
@@ -60,15 +66,13 @@ const resolvers = {
       return await Bid.find({ company: companyId, accepted: true })
         .populate("posting")
         .populate({
-          path: "posting", 
-          populate:"customer"
+          path: "posting",
+          populate: "customer",
         });
     },
 
     company: async (_, { companyId }) => {
-      return await Company.findOne({ _id: companyId })
-        .populate("reviews")
-        
+      return await Company.findOne({ _id: companyId }).populate("reviews");
     },
 
     companies: async () => {
