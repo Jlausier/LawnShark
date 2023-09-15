@@ -4,7 +4,7 @@ export function postingHasCompanyBid(bids) {
   const userRole = getUserRole();
   if (userRole === "customer" || userRole === "none") return false;
   bids.forEach((bid) => {
-    if (bid.company._id === getUserRoleId()) {
+    if (bid.company._id === getUserId()) {
       return true;
     }
   });
@@ -16,3 +16,6 @@ export function createLocationString({ address, city, state, zip }) {
 }
 
 export const createNameStub = (serviceName) => serviceName.split(" ").join("_");
+
+
+
