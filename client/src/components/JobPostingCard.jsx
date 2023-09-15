@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 
 export default function JobPostingCard({
+  _id,
   title,
   askingPrice,
   frequency,
@@ -30,8 +31,9 @@ export default function JobPostingCard({
 }
 
 JobPostingCard.propTypes = {
-  title: PropTypes.string,
-  askingPrice: PropTypes.number,
-  frequency: PropTypes.string,
-  description: PropTypes.string,
+  _id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  askingPrice: PropTypes.number.isRequired,
+  frequency: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
 };
