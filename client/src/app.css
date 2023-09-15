@@ -91,3 +91,20 @@
     background-color: #16661B;
 
 }
+
+/* Apply these styles to the container div */
+.containerClass {
+    min-height: 100vh; /* Set minimum height to 100% of the viewport height */
+    display: flex; /* Use flexbox for vertical alignment */
+    flex-direction: column; /* Stack children vertically */
+  }
+  
+  /* Apply these styles to the div you want to stretch */
+  .stretchClass {
+    flex-grow: 1; /* Make the div grow and fill available vertical space */
+    /* You can add other styles as needed */
+  }
+
+.border-green {
+    border-color: #278C2E;
+}
