@@ -4,7 +4,6 @@ import { useQuery } from "@apollo/client";
 import { QUERY_POSTING } from "../../utils/queries";
 import { postingHasCompanyBid } from "../../utils/dataValidation";
 
-import CreateBid from "../../components/bids/CreateBid";
 import BidCardView from "../../components/bids/BidCardView";
 
 export default function JobPosting() {
@@ -37,15 +36,6 @@ export default function JobPosting() {
           <p>{data.posting.description}</p>
         </div>
         <hr />
-        {!postingHasCompanyBid(data.posting.bids) && (
-          <div className="d-flex flex-column align-items-start">
-            {/* Make the CreateBid Component Appear if the button is clicked */}
-            <a className="btn green text-light" href="#" role="button">
-              Place Bid
-            </a>
-            <CreateBid />
-          </div>
-        )}
         <div>
           <h6>Live Bids</h6>
           <BidCardView />
