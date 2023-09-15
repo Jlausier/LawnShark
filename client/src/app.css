@@ -2,6 +2,10 @@
     background-color: #278C2E;
   }
 
+  .light-green {
+    background-color: #d2f7d5;
+  }
+
 .main-height {
     height: 100vh;
 }
@@ -68,8 +72,8 @@
   }
 
 .buttonMaster {
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding-top: 12px;
+    padding-bottom: 12px;
     padding-left: 16px;
     padding-right: 16px;
     background-color: #278C2E;
