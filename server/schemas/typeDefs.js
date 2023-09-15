@@ -70,6 +70,7 @@ const typeDefs = `
 
   type Company {
     _id: ID
+    _user: User
     name: String
     description: String
     services: [Service]
@@ -102,6 +103,8 @@ const typeDefs = `
 
   type Mutation {
     addUser(email: String!, password: String!): Auth
+    signUpCompany(email: String!, password: String!, name: String!, bio: String!): Auth
+    signUpCustomer(email: String!, password: String!, name: String!, location: LocationInput!): Auth
     login(email: String!, password: String!): Auth
     addCustomer(userId: String!, name: String!, location: LocationInput!): User
     addCompany(userId: String!, name: String!, description: String!, services: [ID]!): User

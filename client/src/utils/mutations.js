@@ -41,6 +41,60 @@ export const ADD_USER = gql`
   }
 `;
 
+export const SIGN_UP_COMPANY = gql`
+  mutation signUpCompany(
+    $email: String!
+    $password: String!
+    $name: String!
+    $bio: String!
+  ) {
+    signUpCompany(email: $email, password: $password, name: $name, bio: $bio) {
+      token
+      user {
+        _id
+        email
+        _company {
+          _id
+          name
+          description
+        }
+      }
+    }
+  }
+`;
+
+export const SIGN_UP_CUSTOMER = gql`
+  mutation signUpCustomer(
+    $email: String!
+    $password: String!
+    $name: String!
+    $location: LocationInput!
+  ) {
+    signUpCustomer(
+      email: $email
+      password: $password
+      name: $name
+      location: $location
+    ) {
+      token
+      user {
+        _id
+        email
+        _customer {
+          _id
+          name
+          location {
+            address
+            city
+            state
+            zip
+          }
+        }
+      }
+    }
+  }
+`;
+
 export const ADD_CUSTOMER = gql`
   mutation addCustomer(
     $userId: ID!
@@ -136,12 +190,8 @@ export const ADD_BID = gql`
 `;
 
 export const ACCEPT_BID = gql`
-  mutation acceptBid(
-    $bidId: ID!
-    ) {
-    acceptBid(
-      bidId: $bidId
-      ) {
+  mutation acceptBid($bidId: ID!) {
+    acceptBid(bidId: $bidId) {
       _id
       accepted
     }

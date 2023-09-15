@@ -114,12 +114,19 @@ const resolvers = {
       if (!correctPw) throw AuthenticationError;
 
       let roleId = "";
-      if (user._customer) roleId = user._customer._id;
-      else if (user._company) roleId = user._company._id;
+      let role = "";
+      if (user._customer) {
+        role = "customer";
+        roleId = user._customer._id;
+      } else if (user._company) {
+        role = "company";
+        roleId = user._company._id;
+      }
 
       const token = signToken({
         ...user.toJSON(),
         roleId,
+        role,
       });
 
       return { token, user };
@@ -129,6 +136,66 @@ const resolvers = {
       const user = await User.create({ email, password });
       if (!user) throw AuthenticationError;
       const token = signToken(user);
+      return { token, user };
+    },
+
+    signUpCompany: async (_, { email, password, name, bio }) => {
+      const newUser = await User.create({ email, password });
+      if (!newUser) throw AuthenticationError;
+
+      const company = await Company.create({
+        name,
+        description: bio,
+        email,
+        _user: newUser._id,
+      });
+
+      if (!company) {
+        await User.deleteOne({ _id: newUser._id });
+        throw AuthenticationError;
+      }
+
+      const user = await User.findByIdAndUpdate(
+        newUser._id,
+        { $set: { _company: company._id } },
+        { new: true }
+      ).populate("_company");
+
+      const token = signToken({
+        ...user.toJSON(),
+        roleId: company._id,
+        role: "company",
+      });
+
+      return { token, user };
+    },
+
+    signUpCustomer: async (_, { email, password, name, location }) => {
+      const newUser = await User.create({ email, password });
+      if (!newUser) throw AuthenticationError;
+
+      const customer = await Customer.create({
+        name,
+        location,
+      });
+
+      if (!customer) {
+        await User.deleteOne({ _id: newUser._id });
+        throw AuthenticationError;
+      }
+
+      const user = await User.findByIdAndUpdate(
+        newUser._id,
+        { $set: { _customer: customer._id } },
+        { new: true }
+      ).populate("_customer");
+
+      const token = signToken({
+        ...user.toJSON(),
+        roleId: customer._id,
+        role: "customer",
+      });
+
       return { token, user };
     },
 
@@ -225,7 +292,7 @@ const resolvers = {
     },
 
     acceptBid: async (_, { bidId }) => {
-      const bid =  await Bid.findById(bidId);
+      const bid = await Bid.findById(bidId);
       if (!bid) {
         throw new Error(`Bid with ID ${bidId} not found`);
       }
@@ -237,9 +304,5 @@ const resolvers = {
     },
   },
 };
-
-
-    
- 
 
 module.exports = resolvers;
