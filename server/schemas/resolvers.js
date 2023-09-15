@@ -16,15 +16,22 @@ const resolvers = {
     },
 
     posting: async (_, { postingId, userRole, roleId }) => {
-      const posting = await Posting.findOne({ _id: postingId })
+      const options = {};
+      if (userRole === "customer") {
+        options.customer = roleId;
+      }
+
+      const posting = await Posting.findOne({ _id: postingId, ...options })
         .populate("customer")
         .populate("service")
         .populate("bids")
-        .exec();
+        .populate({
+          path: "bids",
+          populate: "company",
+        });
 
-      if (userRole === "customer" && posting.customer._id !== roleId) {
-        throw ForbiddenError;
-      } else return posting;
+      if (!posting) throw ForbiddenError;
+      return posting;
     },
 
     postingsFiltered: async (_, { service }) => {
