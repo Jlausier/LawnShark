@@ -4,7 +4,7 @@ import { getUserRoleId } from "../../utils/auth";
 import { QUERY_MY_POSTINGS } from "../../utils/queries";
 
 import JobPostingCard from "../../components/JobPostingCard";
-import Button from "../../components/Button";
+import NavButton from "../../components/NavButton";
 
 export default function JobPostings() {
   const customerId = getUserRoleId();
@@ -16,10 +16,14 @@ export default function JobPostings() {
   });
 
   return (
-    <div className="border p-4 rounded">
-      <div className="mb-5 row">
-        <div className="col-12 col-lg-10">
-          <h2 className="header">My Job Postings</h2>
+      <div className="border p-4 rounded">
+        <div className="mb-5 row">
+          <div className="col-12 col-lg-10">
+            <h2 className="header">My Job Postings</h2>
+          </div>
+          <div className="col-12 col-lg-2">
+            <NavButton title={"New Job Posting"} path={"/CreateJobPosting"} />
+          </div>
         </div>
         <div className="col-12 col-lg-2">
           <Button title={"New Job Posting"} />
