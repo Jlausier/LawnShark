@@ -79,11 +79,8 @@ export default function CustomerForm() {
     setSelectedState(e.target.value);
   };
 
-  const handleSubmit = () => {
-    alert("Submit Form");
-  };
-
   const [formState, setFormState] = useState(initialFormState);
+  // eslint-disable-next-line no-unused-vars
   const [errorMessages, setErrorMessages] = useState({});
 
   const handleInputChange = (e) => {
@@ -98,25 +95,54 @@ export default function CustomerForm() {
     e.preventDefault();
 
     const errors = {};
+    const { email, password, firstName, lastName, street, city, zip } =
+      formState;
 
-    if (formState.email === "") {
+    const validateEmptyInput = (title, name, value) => {
+      if (value === "") errors[name] = `${title} is required`;
+    };
+
+    if (email === "") {
       errors.email = "Email is required";
-    } else if (!validateEmail(formState.email)) {
+    } else if (!validateEmail(email)) {
       errors.email = "Email is invalid";
     }
 
-    if (formState.password === "") {
+    if (password === "") {
       errors.password = "Password is required";
-    } else if (!validatePassword(formState.password)) {
+    } else if (!validatePassword(password)) {
       errors.password = "Choose a more secure password for the account";
     }
 
+    validateEmptyInput("First name", "firstName", firstName);
+    validateEmptyInput("Last name", "lastName", lastName);
+    validateEmptyInput("Street", "street", street);
+    validateEmptyInput("City", "city", city);
+    validateEmptyInput("State", "state", selectedState);
+    validateEmptyInput("Zip code", "zip", zip);
+
     if (Object.keys(errors).length > 0) {
       setErrorMessages(errors);
+      console.log(errorMessages);
       return;
     }
 
+    const newCustomer = {
+      email,
+      password,
+      name: firstName + " " + lastName,
+      location: {
+        address: street,
+        city,
+        state: selectedState,
+        zip,
+      },
+    };
+
+    console.log(newCustomer);
+
     setFormState(initialFormState);
+    setSelectedState("");
   };
 
   return (
@@ -246,7 +272,7 @@ export default function CustomerForm() {
           </div>
         </div>
       </div>
-      <Button title={"Submit"} onClick={handleSubmit} />
+      <Button title={"Submit"} type="submit" />
     </form>
   );
 }
