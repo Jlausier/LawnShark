@@ -7,13 +7,17 @@ export default function CustomerRoute({ children }) {
   const role = getUserRole();
   const isLoggedIn = loggedIn();
 
-  console.log(role);
-  console.log(isLoggedIn);
-
   if (isLoggedIn && role === "customer") return children;
-  else if (isLoggedIn && role === "company") return <Navigate to="/MyJobs" />;
-  else {
-    if (isLoggedIn) logoutUser();
+  else if (isLoggedIn && role === "company") {
+    console.info("Company attempted to access customer route");
+    return <Navigate to="/MyJobs" />;
+  } else {
+    if (isLoggedIn) {
+      console.info("User with no role attempted to access customer route");
+      logoutUser();
+    } else {
+      console.info("Unauthenticated user attempted to access customer route");
+    }
     return <Navigate to="/Welcome" />;
   }
 }

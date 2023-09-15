@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { validatePassword, validateEmail } from "../../utils/auth";
-import Button from "../Button";
 import CustomerForm from "../auth-form/CustomerForm";
 import CompanyForm from "../auth-form/CompanyForm";
 

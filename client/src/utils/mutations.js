@@ -70,7 +70,12 @@ export const SIGN_UP_CUSTOMER = gql`
     $name: String!
     $location: LocationInput!
   ) {
-    signUpCustomer(email: $email, password: $password, name: $name, bio: $bio) {
+    signUpCustomer(
+      email: $email
+      password: $password
+      name: $name
+      location: $location
+    ) {
       token
       user {
         _id

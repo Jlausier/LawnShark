@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { validatePassword, validateEmail } from "../../utils/auth";
+import useSignUpCustomer from "../../hooks/useSignUpCustomer";
 import Button from "../Button";
 
 const stateNames = [
@@ -73,30 +74,30 @@ const stateOptions = stateNames.map((state) => (
 ));
 
 export default function CustomerForm() {
+  const { signUpAsCustomer } = useSignUpCustomer();
+
   const [selectedState, setSelectedState] = useState("");
+  const [customerFormState, setCustomerFormState] = useState(initialFormState);
+  const [errorMessages, setErrorMessages] = useState({});
 
   const handleStateChange = (e) => {
     setSelectedState(e.target.value);
   };
 
-  const [formState, setFormState] = useState(initialFormState);
-  // eslint-disable-next-line no-unused-vars
-  const [errorMessages, setErrorMessages] = useState({});
-
-  const handleInputChange = (e) => {
+  const handleCustomerInputChange = (e) => {
     const { name: inputName, value } = e.target;
-    setFormState({
-      ...formState,
+    setCustomerFormState({
+      ...customerFormState,
       [inputName]: value,
     });
   };
 
-  const handleFormSubmit = (e) => {
+  const handleCustomerFormSubmit = async (e) => {
     e.preventDefault();
 
     const errors = {};
     const { email, password, firstName, lastName, street, city, zip } =
-      formState;
+      customerFormState;
 
     const validateEmptyInput = (title, name, value) => {
       if (value === "") errors[name] = `${title} is required`;
@@ -139,14 +140,19 @@ export default function CustomerForm() {
       },
     };
 
-    console.log(newCustomer);
-
-    setFormState(initialFormState);
-    setSelectedState("");
+    try {
+      await signUpAsCustomer(newCustomer);
+      setCustomerFormState(initialFormState);
+      setSelectedState("");
+      setErrorMessages({});
+    } catch (err) {
+      console.error(err);
+      setErrorMessages({ graphQL: err });
+    }
   };
 
   return (
-    <form onSubmit={handleFormSubmit}>
+    <form onSubmit={handleCustomerFormSubmit}>
       <div className="row mb-4">
         <div className="col-12 col-lg-6">
           <div className="">
@@ -154,10 +160,10 @@ export default function CustomerForm() {
               Email Address
             </label>
             <input
-              value={formState.email}
+              value={customerFormState.email}
               name="email"
               id="email"
-              onChange={handleInputChange}
+              onChange={handleCustomerInputChange}
               type="email"
               className="form-control"
             />
@@ -169,10 +175,10 @@ export default function CustomerForm() {
               Password
             </label>
             <input
-              value={formState.password}
+              value={customerFormState.password}
               name="password"
               id="password"
-              onChange={handleInputChange}
+              onChange={handleCustomerInputChange}
               type="password"
               className="form-control"
             />
@@ -186,10 +192,10 @@ export default function CustomerForm() {
               First Name
             </label>
             <input
-              value={formState.firstName}
+              value={customerFormState.firstName}
               name="firstName"
               id="firstName"
-              onChange={handleInputChange}
+              onChange={handleCustomerInputChange}
               type="text"
               className="form-control"
             />
@@ -201,10 +207,10 @@ export default function CustomerForm() {
               Last Name
             </label>
             <input
-              value={formState.lastName}
+              value={customerFormState.lastName}
               name="lastName"
               id="lastName"
-              onChange={handleInputChange}
+              onChange={handleCustomerInputChange}
               type="text"
               className="form-control"
             />
@@ -218,10 +224,10 @@ export default function CustomerForm() {
               Street
             </label>
             <input
-              value={formState.street}
+              value={customerFormState.street}
               name="street"
               id="street"
-              onChange={handleInputChange}
+              onChange={handleCustomerInputChange}
               type="text"
               className="form-control"
             />
@@ -233,10 +239,10 @@ export default function CustomerForm() {
               City
             </label>
             <input
-              value={formState.city}
+              value={customerFormState.city}
               name="city"
               id="city"
-              onChange={handleInputChange}
+              onChange={handleCustomerInputChange}
               type="text"
               className="form-control"
             />
@@ -262,10 +268,10 @@ export default function CustomerForm() {
               Zip
             </label>
             <input
-              value={formState.zip}
+              value={customerFormState.zip}
               name="zip"
               id="zip"
-              onChange={handleInputChange}
+              onChange={handleCustomerInputChange}
               type="text"
               className="form-control"
             />
