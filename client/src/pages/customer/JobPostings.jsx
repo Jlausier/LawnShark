@@ -1,17 +1,17 @@
 import { useQuery } from "@apollo/client";
-import { useParams } from 'react-router-dom';
+import { getUserRoleId } from "../../utils/auth";
 import { QUERY_MY_POSTINGS } from "../../utils/queries"
 import JobPostingCard from "../../components/JobPostingCard";
 import Button from "../../components/Button";
 
 export default function JobPostings({ postings }) {
-  const { customerId } = useParams();
+  const  customerId  = getUserRoleId();
    const { data } = useQuery(QUERY_MY_POSTINGS, {
      variables: {
        customerId: customerId
      },
    });
-   console.log(data);
+   console.log(getUserRoleId);
 
   return (
       <div className="border p-4 rounded">
