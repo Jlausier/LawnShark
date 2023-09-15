@@ -21,15 +21,15 @@ export default function BidCardView({
             <a href="/Messages" className="mx-2">
               Message
             </a>
-            {/* Make button a component */}
             {/* Add a modal */}
-            <a
-              className="btn green text-light"
-              href="/CreateJobPosting"
-              role="button"
-            >
-              Accept Bid
-            </a>
+            {!accepted && (
+              <button
+                className="btn green text-light"
+                onClick={() => handleAcceptBid(_id)}
+              >
+                Accept Bid
+              </button>
+            )}
           </div>
         </div>
         {/* <span>Message:</span>
