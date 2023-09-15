@@ -9,7 +9,6 @@ export default function NavBarLink({ currentPage, path, title }) {
         className={currentPage === path ? "px-3 dark-green nav-link border-start border-5 body-font fw-bold text-light" : "px-3 nav-link body-font fw-semibold text-dark"}
 
       >
-        
         {title}
       </Link>
     </li>
