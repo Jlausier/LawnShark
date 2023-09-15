@@ -1,12 +1,11 @@
 import "../../index.css";
 import PropTypes from "prop-types";
-
+import { createLocationString } from "../../utils/dataValidation";
 export default function BidCard ({
  
  amount,
  posting,
- customer,
- location
+ 
  
 
 
@@ -31,9 +30,9 @@ export default function BidCard ({
           </div>
         </div>
         <div className="row pb-3">
-          {/* <div className="col-4">
-            <span className="card-text">Location: {customer.location }</span>
-          </div> */}
+          <div className="col-4">
+            <span className="card-text">Location: {createLocationString(posting.customer.location) }</span>
+          </div>
           <div className="col-4">
             <span className="card-text">Frequecny: { posting.frequency }</span>
           </div>
