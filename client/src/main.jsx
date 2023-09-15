@@ -22,7 +22,7 @@ import {
 } from "./pages/customer";
 import {
   CompanyProfile,
-  JobPosting,
+  JobPostingSwitch,
   Messages,
   Notifications,
   PrivateRoute,
@@ -74,7 +74,7 @@ const privateRoutes = [
   },
   {
     path: "/JobPosting/:postingId",
-    element: <JobPosting />,
+    element: <JobPostingSwitch />,
   },
   {
     path: "/Search",

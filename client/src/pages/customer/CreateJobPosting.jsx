@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useMutation, useQuery } from "@apollo/client";
+import { useNavigate } from "react-router-dom";
 
 import { QUERY_SERVICES } from "../../utils/queries";
 import { ADD_POSTING } from "../../utils/mutations";
@@ -10,6 +11,7 @@ import Button from "../../components/Button";
 import { getUserRoleId } from "../../utils/auth";
 
 export default function CreateJobPosting() {
+  const navigate = useNavigate();
   const { data } = useQuery(QUERY_SERVICES);
   const [addPosting, { error }] = useMutation(ADD_POSTING, {
     refetchQueries: [
@@ -79,7 +81,11 @@ export default function CreateJobPosting() {
         },
       });
 
-      console.log(submitData);
+      if (submitData && submitData.addPosting && submitData.addPosting._id)
+        navigate(`/JobPosting/${submitData.addPosting._id}`);
+      else {
+        // Handle error
+      }
     } catch (err) {
       console.log(err);
     }
