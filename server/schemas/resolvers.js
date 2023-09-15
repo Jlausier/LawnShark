@@ -123,11 +123,39 @@ const resolvers = {
         newUser._id,
         { $set: { _company: company._id } },
         { new: true }
-      );
+      ).populate("_company");
 
       const token = signToken({
         ...user.toJSON(),
-        roleId: "company",
+        roleId: company._id,
+      });
+
+      return { token, user };
+    },
+
+    signUpCustomer: async (_, { email, password, name, location }) => {
+      const newUser = await User.create({ email, password });
+      if (!newUser) throw AuthenticationError;
+
+      const customer = await Customer.create({
+        name,
+        location,
+      });
+
+      if (!customer) {
+        await User.deleteOne({ _id: newUser._id });
+        throw AuthenticationError;
+      }
+
+      const user = await User.findByIdAndUpdate(
+        newUser._id,
+        { $set: { _customer: customer._id } },
+        { new: true }
+      ).populate("_customer");
+
+      const token = signToken({
+        ...user.toJSON(),
+        roleId: customer._id,
       });
 
       return { token, user };
