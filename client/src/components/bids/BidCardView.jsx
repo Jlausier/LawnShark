@@ -1,33 +1,12 @@
 import "../../index.css";
-
-export default function BidCardView() {
-
-  const bid = {
-    _id: "",
-    amount: 0,
-    posting: {
-      _id: "",
-      title: "#bid'sPostingTitle",
-      service: {
-        _id: "",
-        name: "#serviceName",
-      },
-      askingPrice: 0,
-      estimatePrice: 0,
-      customer: {
-        _id: "",
-        name: "#customerName",
-        location: "#customerLocation"
-      },
-      description: "#description",
-      frequency: "#frequency",
-    },
-    company: {
-      _id: "",
-      name: "#companyName",
-    },
-    message: "#companyMessage"
-  }
+import PropTypes from "prop-types";
+export default function BidCardView({
+  _id,
+  title,
+  askingPrice,
+  frequency,
+  description,
+})
 
   return (
     <div className="card w-100">
@@ -56,4 +35,15 @@ export default function BidCardView() {
       </div>
     </div>
   );
-}
+
+  BidCardView.propTypes = {
+    _id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    askingPrice: PropTypes.number.isRequired,
+    frequency: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+  };
+  
+
+
+

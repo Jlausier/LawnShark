@@ -1,31 +1,16 @@
 import "../../index.css";
+import PropTypes from "prop-types";
 
 export default function BidCard() {
-
-  const bid = {
-    _id: "",
-    amount: 0,
-    posting: {
-      _id: "",
-      title: "#bid'sPostingTitle",
-      service: {
-        _id: "",
-        name: "#serviceName",
-      },
-      askingPrice: 0,
-      estimatePrice: 0,
-      customer: {
-        _id: "",
-        name: "#customerName",
-        location: "#customerLocation"
-      },
-      description: "#description",
-      frequency: "#frequency",
-    },
-    company: {
-      _id: "",
-      name: "",
-    },
+  _id,
+  title,
+  askingPrice,
+  frequency,
+  description,
+  name,
+  location,
+  
+ 
   }
 
   return (
