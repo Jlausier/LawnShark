@@ -31,12 +31,49 @@ export const QUERY_POSTING = gql`
         name
       }
       askingPrice
-      frequency
       estimatePrice
       bids {
         _id
         accepted
         amount
+        message
+        company {
+          _id
+          name
+        }
+      }
+      customer {
+        _id
+        name
+        location {
+          address
+          city
+          state
+          zip
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_COMPANY_POSTING = gql`
+  query companyPosting($postingId: ID!, $companyId: ID!) {
+    companyPosting(postingId: $postingId, companyId: $companyId) {
+      _id
+      title
+      frequency
+      description
+      service {
+        _id
+        name
+      }
+      askingPrice
+      estimatePrice
+      bids {
+        _id
+        accepted
+        amount
+        message
         company {
           _id
           name
@@ -151,7 +188,7 @@ export const QUERY_MY_BIDS = gql`
         customer {
           _id
           name
-          location{
+          location {
             address
             city
             state
