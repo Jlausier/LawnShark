@@ -37,7 +37,7 @@ console.log(data)
           <p>{data.posting.description}</p>
         </div>
         <hr />
-        {!postingHasCompanyBid(data.posting.bids) && (
+        {!postingHasCompanyBid(data.posting.bids) &&  (
           <div className="d-flex flex-column align-items-start">
             {/* Make the CreateBid Component Appear if the button is clicked */}
             <a className="btn green text-light" href="#" role="button">
@@ -46,10 +46,7 @@ console.log(data)
             <CreateBid />
           </div>
         )}
-        <div>
-          <h6>Live Bids</h6>
-          <BidCardView />
-        </div>
+       
       </div>
 
   ) : (

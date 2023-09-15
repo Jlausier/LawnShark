@@ -72,8 +72,7 @@ export default function CreateBid() {
             required
           />
         </div>
-
-        <button type="submit" className="btn green text-light">
+        <button type="submit" className="btn bg-success text-light">
           Submit
         </button>
       </form>
