@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { QUERY_MY_POSTINGS } from "../../utils/queries"
 import JobPostingCard from "../../components/JobPostingCard";
-import Button from "../../components/Button";
+import NavButton from "../../components/NavButton";
 
 export default function JobPostings({ postings }) {
 
@@ -19,7 +19,7 @@ export default function JobPostings({ postings }) {
             <h2 className="header">My Job Postings</h2>
           </div>
           <div className="col-12 col-lg-2">
-            <Button title={"New Job Posting"} />
+            <NavButton title={"New Job Posting"} path={"/CreateJobPosting"} />
           </div>
         </div>
         <div className="">
