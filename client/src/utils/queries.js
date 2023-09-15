@@ -31,15 +31,26 @@ export const QUERY_POSTING = gql`
         name
       }
       askingPrice
+      frequency
       estimatePrice
       bids {
         _id
         accepted
         amount
+        company {
+          _id
+          name
+        }
       }
       customer {
         _id
         name
+        location {
+          address
+          city
+          state
+          zip
+        }
       }
     }
   }

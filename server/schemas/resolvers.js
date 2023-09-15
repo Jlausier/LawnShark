@@ -23,6 +23,10 @@ const resolvers = {
 
       const posting = await Posting.findOne({ _id: postingId, ...options })
         .populate("customer")
+        .populate({
+          path: "customer",
+          populate: "location",
+        })
         .populate("service")
         .populate("bids")
         .populate({
@@ -303,14 +307,12 @@ const resolvers = {
     },
 
     acceptBid: async (_, { bidId }) => {
-      const bid = await Bid.findById(bidId);
-      if (!bid) {
-        throw new Error(`Bid with ID ${bidId} not found`);
-      }
-
-      // Update the bid's accepted field to true
-      bid.accepted = true;
-
+      const bid = await Bid.findOneAndUpdate(
+        { _id: bidId },
+        { accepted: true },
+        { new: true }
+      );
+      if (!bid) throw new Error(`Bid with ID ${bidId} not found`);
       return bid;
     },
   },

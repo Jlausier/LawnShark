@@ -8,6 +8,7 @@ const typeDefs = `
   type Bid {
     _id: ID
     amount: Int
+    message: String
     posting: Posting
     company: Company
     accepted: Boolean
