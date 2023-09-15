@@ -10,7 +10,7 @@ export default function CompanyCard({
   reviewCount,
 }) {
   return (
-    <div className="card w-100">
+    <div className="mb-3 card w-100">
       <div className="card-body">
         <div className="row mt-2 mb-4">
           <div className="col-6">
@@ -18,7 +18,7 @@ export default function CompanyCard({
               to={`/CompanyProfile/${_id}`}
               className="text-decoration-none text-dark"
             >
-              <h5 className="card-title fs-2">{name}</h5>
+              <h5 className="card-title body-font fs-2">{name}</h5>
             </Link>
           </div>
           <div className="col-6 d-flex justify-content-end align-items-center">
