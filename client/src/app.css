@@ -108,3 +108,9 @@
 .border-green {
     border-color: #278C2E;
 }
+
+.logo{
+    background-image: url(/images/lawn-shark-logo-1000.png);
+    background-size: contain;
+    background-repeat: none;
+  }
