@@ -171,8 +171,8 @@ export const QUERY_MY_ACTIVE_POSTINGS = gql`
 `;
 
 export const QUERY_MY_BIDS = gql`
-  query myBids($companyId: ID!) {
-    myBids(companyId: $companyId) {
+  query myBids($companyId: ID!, $accepted: Boolean!) {
+    myBids(companyId: $companyId, accepted: $accepted) {
       _id
       amount
       accepted
@@ -224,7 +224,7 @@ export const QUERY_MY_ACCEPTED_BIDS = gql`
         customer {
           _id
           name
-          location{
+          location {
             address
             city
             state

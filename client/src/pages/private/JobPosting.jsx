@@ -42,7 +42,9 @@ export default function JobPosting() {
       <div className="row">
         <div className="col-6">
           <h2 className="header">{data.posting.title}</h2>
-          <span className="px-3 py-1 border border-2 text-secondary body-font rounded-pill">{data.posting.service.name}</span>
+          <span className="px-3 py-1 border border-2 text-secondary body-font rounded-pill">
+            {data.posting.service.name}
+          </span>
         </div>
         <div className="col-6 text-end">
           <span className="mx-3 fs-5">
@@ -55,18 +57,14 @@ export default function JobPosting() {
       </div>
       <hr />
       <div className="row mb-2">
-        <div className="col-1">
-          Client:
-        </div>
+        <div className="col-1">Client:</div>
         <div className="col-10">
           <span>{data.posting.customer.name}</span>
         </div>
       </div>
       <div className="row mb-2">
         <div className="col-1">
-          <span>
-            Location:
-          </span>
+          <span>Location:</span>
         </div>
         <div className="col-10">
           <span>
@@ -76,25 +74,17 @@ export default function JobPosting() {
         </div>
       </div>
       <div className="row mb-2">
-        <div className="col-1">
-          Frequency: 
-        </div>
+        <div className="col-1">Frequency:</div>
         <div className="col-10">
           <span>{data.posting.frequency}</span>
         </div>
       </div>
       <div className="row mb-2">
-        <div className="col-1">
-          Description: 
-        </div>
+        <div className="col-1">Description:</div>
         <div className="col-10">
           <p>{data.posting.description}</p>
         </div>
       </div>
-        
-
-
-
 
       <hr />
       <div>

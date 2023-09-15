@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/client";
 
 import { QUERY_COMPANY_POSTING } from "../../utils/queries";
 import { getUserRoleId } from "../../utils/auth";
+import { createLocationString } from "../../utils/dataValidation";
 
 import CreateBid from "../../components/bids/CreateBid";
 import BidCardView from "../../components/bids/BidCardView";

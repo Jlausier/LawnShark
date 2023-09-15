@@ -76,7 +76,7 @@ const resolvers = {
     },
 
     myBids: async (_, { companyId }) => {
-      return await Bid.find({ company: companyId })
+      return await Bid.find({ company: companyId, accepted: false })
         .populate("posting")
         .populate({
           path: "posting",

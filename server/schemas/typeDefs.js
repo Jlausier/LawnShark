@@ -93,7 +93,7 @@ const typeDefs = `
     myPostings(customerId: ID!): [Posting]
     companyPosting(postingId: ID!, companyId: ID!): Posting
     myActivePostings(customerId: ID!, accepted: Boolean): [Posting]
-    myBids(companyId: ID!): [Bid]
+    myBids(companyId: ID!, accepted: Boolean): [Bid]
     myAcceptedBids(companyId: ID!, accepted: Boolean): [Bid]
     company(companyId: ID!): Company
     companies: [Company]
