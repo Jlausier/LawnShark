@@ -20,8 +20,8 @@ export const QUERY_SERVICES = gql`
 `;
 
 export const QUERY_POSTING = gql`
-  query posting($postingId: ID!) {
-    posting(postingId: $postingId) {
+  query posting($postingId: ID!, $userRole: String!, $roleId: ID!) {
+    posting(postingId: $postingId, userRole: $userRole, roleId: $roleId) {
       _id
       service {
         _id
@@ -33,10 +33,6 @@ export const QUERY_POSTING = gql`
         _id
         accepted
         amount
-        company {
-          _id
-          name
-        }
       }
       customer {
         _id
