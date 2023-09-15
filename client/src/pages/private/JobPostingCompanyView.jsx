@@ -12,14 +12,14 @@ export default function JobPostingCompanyView() {
   const { data } = useQuery(QUERY_POSTING, {
     variables: { postingId },
   });
-
+console.log(data)
   return data ? (
       <div className="border p-4 rounded">
         <div className="row">
           <div className="col-6">
             <h2 className="header">{data.posting.title}</h2>
             <span>{data.posting.service.name}</span>
-          </div>
+          </div> 
           <div className="col-6 text-end">
             <span className="mx-3 fs-5">
               Total Bids: {data.posting.bidCount}
@@ -31,7 +31,7 @@ export default function JobPostingCompanyView() {
         </div>
         <hr />
         <div className="d-flex flex-column">
-          <span>Location: {data.posting.customer.location}</span>
+          <span>Location: {data.posting.location}</span>
           <span>Frequency: {data.posting.frequency}</span>
           <span> {data.posting.customer.name} </span>
           <p>{data.posting.description}</p>

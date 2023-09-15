@@ -23,6 +23,9 @@ export const QUERY_POSTING = gql`
   query posting($postingId: ID!) {
     posting(postingId: $postingId) {
       _id
+      title
+      frequency
+      description
       service {
         _id
         name
