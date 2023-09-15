@@ -2,12 +2,15 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
 import { QUERY_POSTING } from "../../utils/queries";
+import { getUserRoleId } from "../../utils/auth";
 // eslint-disable-next-line no-unused-vars
 import { postingHasCompanyBid } from "../../utils/dataValidation";
 
 import BidCardView from "../../components/bids/BidCardView";
 
 export default function JobPosting() {
+  const roleId = getUserRoleId();
+
   const { postingId } = useParams();
   const { data } = useQuery(QUERY_POSTING, {
     variables: { postingId },

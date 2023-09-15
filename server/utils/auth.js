@@ -10,6 +10,11 @@ module.exports = {
       code: "UNAUTHENTICATED",
     },
   }),
+  ForbiddenError: new GraphQLError("Access to resource denied.", {
+    extensions: {
+      code: "FORBIDDEN",
+    },
+  }),
   signToken: function ({ email, _id, role, roleId }) {
     const payload = { email, _id, role, roleId };
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
