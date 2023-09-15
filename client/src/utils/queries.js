@@ -58,7 +58,7 @@ export const QUERY_POSTING = gql`
 
 export const QUERY_COMPANY_POSTING = gql`
   query companyPosting($postingId: ID!, $companyId: ID!) {
-    posting(postingId: $postingId, companyId: $companyId) {
+    companyPosting(postingId: $postingId, companyId: $companyId) {
       _id
       title
       frequency
@@ -69,11 +69,15 @@ export const QUERY_COMPANY_POSTING = gql`
       }
       askingPrice
       estimatePrice
-      bid {
+      bids {
         _id
         accepted
         amount
         message
+        company {
+          _id
+          name
+        }
       }
       customer {
         _id

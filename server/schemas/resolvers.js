@@ -64,6 +64,17 @@ const resolvers = {
         });
     },
 
+    companyPosting: async (_, { postingId, companyId }) => {
+      return await Posting.findOne({ _id: postingId })
+        .populate({
+          path: "bids",
+          match: { company: companyId },
+          populate: "company",
+        })
+        .populate("service")
+        .populate("customer");
+    },
+
     myBids: async (_, { companyId }) => {
       return await Bid.find({ company: companyId })
         .populate("posting")

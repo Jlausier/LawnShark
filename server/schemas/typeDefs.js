@@ -80,18 +80,6 @@ const typeDefs = `
     reviewCount: Int
   }
 
-  type CompanyPosting {
-    _id: ID
-    title: String
-    frequency: String
-    description: String
-    service: Service
-    askingPrice: Int
-    estimatePrice: Int
-    bid: Bid
-    customer: Customer
-  }
-  
   type Auth {
     token: ID!
     user: User
@@ -103,7 +91,7 @@ const typeDefs = `
     posting(postingId: ID!, userRole: String!, roleId: ID!): Posting
     postingsFiltered(service: [ID]!): [Posting]
     myPostings(customerId: ID!): [Posting]
-    companyPosting(postingId: ID!, companyId: ID!): CompanyPosting
+    companyPosting(postingId: ID!, companyId: ID!): Posting
     myActivePostings(customerId: ID!, accepted: Boolean): [Posting]
     myBids(companyId: ID!): [Bid]
     myAcceptedBids(companyId: ID!, accepted: Boolean): [Bid]
