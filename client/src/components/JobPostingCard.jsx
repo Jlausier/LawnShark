@@ -1,13 +1,15 @@
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 export default function JobPostingCard({
+  _id,
   title,
   askingPrice,
   frequency,
   description,
 }) {
   return (
-    <div className="card w-100">
+    <Link to={`/JobPosting/${_id}`} className="card w-100">
       <div className="card-body">
         <div className="row mt-2 mb-4">
           <div className="col-6">
@@ -25,13 +27,14 @@ export default function JobPostingCard({
         </div>
         <p className="card-text">{description}</p>
       </div>
-    </div>
+    </Link>
   );
 }
 
 JobPostingCard.propTypes = {
-  title: PropTypes.string,
-  askingPrice: PropTypes.number,
-  frequency: PropTypes.string,
-  description: PropTypes.string,
+  _id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  askingPrice: PropTypes.number.isRequired,
+  frequency: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
 };

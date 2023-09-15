@@ -1,17 +1,19 @@
 import { useQuery } from "@apollo/client";
+
 import { getUserRoleId } from "../../utils/auth";
-import { QUERY_MY_POSTINGS } from "../../utils/queries"
+import { QUERY_MY_POSTINGS } from "../../utils/queries";
+
 import JobPostingCard from "../../components/JobPostingCard";
 import NavButton from "../../components/NavButton";
 
-export default function JobPostings({ postings }) {
-  const  customerId  = getUserRoleId();
-   const { data } = useQuery(QUERY_MY_POSTINGS, {
-     variables: {
-       customerId: customerId
-     },
-   });
-   console.log(getUserRoleId);
+export default function JobPostings() {
+  const customerId = getUserRoleId();
+
+  const { data } = useQuery(QUERY_MY_POSTINGS, {
+    variables: {
+      customerId: customerId,
+    },
+  });
 
   return (
       <div className="border p-4 rounded">
@@ -23,20 +25,23 @@ export default function JobPostings({ postings }) {
             <NavButton title={"New Job Posting"} path={"/CreateJobPosting"} />
           </div>
         </div>
-        <div className="">
-          {data && data.myPostings && data.myPostings.length > 0 ? (
-            <div>
-              {data.myPostings.map((jobs) => (
-                <JobPostingCard {...jobs} key={jobs._id} />
-              ))}
-            </div>
-          ) : (
-            <div className="body-font fs-4">
-              You have not made any new Job Postings.
-            </div>
-          )}
+        <div className="col-12 col-lg-2">
+          <Button title={"New Job Posting"} />
         </div>
       </div>
+      <div className="">
+        {data && data.myPostings && data.myPostings.length > 0 ? (
+          <div>
+            {data.myPostings.map((jobs) => (
+              <JobPostingCard {...jobs} key={jobs._id} />
+            ))}
+          </div>
+        ) : (
+          <div className="body-font fs-4">
+            You have not made any new Job Postings.
+          </div>
+        )}
+      </div>
+    </div>
   );
 }
-
