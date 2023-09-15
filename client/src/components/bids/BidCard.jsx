@@ -29,7 +29,7 @@ export default function BidCard() {
   }
 
   return (
-    <div className="card w-100">
+    <div className="mb-3 card w-100">
       <div className="card-body">
         <div className="row mt-2 mb-4">
           <div className="col-6">
