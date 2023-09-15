@@ -172,7 +172,7 @@ export const QUERY_MY_ACTIVE_POSTINGS = gql`
 
 export const QUERY_MY_BIDS = gql`
   query myBids($companyId: ID!) {
-    myBids(companyId: $companyId) {
+    myBids(companyId: $companyId, accepted: false) {
       _id
       amount
       accepted
