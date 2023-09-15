@@ -48,15 +48,15 @@ export function loginUser(idToken) {
 
 export function logoutUser() {
   localStorage.removeItem("id_token");
-  window.location.reload();
 }
+
 export function validateEmail(email) {
   const re =
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
 }
 
-export function checkPassword(input) {
+export function validatePassword(input) {
   const passw = /^[A-Za-z]\w{7,14}$/;
   return input.match(passw);
 }

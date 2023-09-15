@@ -2,7 +2,7 @@ import { useMutation } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 
 import { LOGIN_USER } from "../utils/mutations";
-import { getUserInfo, loginUser } from "../utils/auth";
+import { loginUser } from "../utils/auth";
 
 export default function useLogin() {
   const [login, { error }] = useMutation(LOGIN_USER);
@@ -15,8 +15,6 @@ export default function useLogin() {
       });
 
       loginUser(data.login.token);
-
-      console.log(getUserInfo());
       navigate("/");
     } catch (err) {
       console.error(err);

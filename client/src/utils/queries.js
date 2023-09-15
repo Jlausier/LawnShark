@@ -31,6 +31,7 @@ export const QUERY_POSTING = gql`
       estimatePrice
       bids {
         _id
+        accepted
         amount
         company {
           _id
@@ -71,11 +72,63 @@ export const QUERY_POSTINGS_FILTERED = gql`
   }
 `;
 
+export const QUERY_MY_POSTINGS = gql`
+  query myPostings($customerId: ID!) {
+    myPostings(customerId: $customerId) {
+      _id
+      title
+      askingPrice
+      frequency
+      description
+      service {
+        _id
+        name
+      }
+      customer {
+        _id
+        name
+        location {
+          address
+          city
+          state
+          zip
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_MY_ACTIVE_POSTINGS = gql`
+  query myActivePostings($customerId: ID!) {
+    myActivePostings(customerId: $customerId, accepted: true) {
+      _id
+      title
+      askingPrice
+      frequency
+      description
+      service {
+        _id
+        name
+      }
+      bids {
+        _id
+        accepted
+        amount
+        company {
+          _id
+          name
+        }
+      }
+    }
+  }
+`;
+
 export const QUERY_MY_BIDS = gql`
   query myBids($companyId: ID!) {
     myBids(companyId: $companyId) {
       _id
       amount
+      accepted
       posting {
         _id
         title
@@ -101,27 +154,32 @@ export const QUERY_MY_BIDS = gql`
   }
 `;
 
-export const QUERY_MY_POSTINGS = gql`
-  query myPostings($customerId: ID!) {
-    myPostings(customerId: $customerId) {
+export const QUERY_MY_ACCEPTED_BIDS = gql`
+  query myAcceptedBids($companyId: ID!) {
+    myBids(companyId: $companyId, accepted: true) {
       _id
-      title
-      askingPrice
-      frequency
-      description
-      service {
+      amount
+      accepted
+      posting {
         _id
-        name
-      }
-      customer {
-        _id
-        name
-        location {
-          address
-          city
-          state
-          zip
+        title
+        service {
+          _id
+          name
         }
+        askingPrice
+        estimatePrice
+        customer {
+          _id
+          name
+          location
+        }
+        description
+        frequency
+      }
+      company {
+        _id
+        name
       }
     }
   }
