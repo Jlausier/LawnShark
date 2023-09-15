@@ -9,7 +9,7 @@ export default function JobPostingCard({
   description,
 }) {
   return (
-    <Link to={`/JobPosting/${_id}`} className="card w-100">
+    <Link to={`/JobPosting/${_id}`} className="mb-3 card w-100">
       <div className="card-body">
         <div className="row mt-2 mb-4">
           <div className="col-6">
