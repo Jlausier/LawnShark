@@ -1,13 +1,14 @@
 import { useQuery } from "@apollo/client";
+import { useParams } from 'react-router-dom';
 import { QUERY_MY_POSTINGS } from "../../utils/queries"
 import JobPostingCard from "../../components/JobPostingCard";
 import Button from "../../components/Button";
 
 export default function JobPostings({ postings }) {
-
+  const { customerId } = useParams();
    const { data } = useQuery(QUERY_MY_POSTINGS, {
      variables: {
-       customerId: "650252708a4622c7fcfd3fb6",
+       customerId: customerId
      },
    });
    console.log(data);

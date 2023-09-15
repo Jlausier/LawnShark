@@ -51,7 +51,7 @@ const companyRoutes = [
 
 const customerRoutes = [
   {
-    path: "/JobPostings/:customerId",
+    path: "/JobPostings",
     element: <JobPostings />,
   },
   {
