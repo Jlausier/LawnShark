@@ -3,14 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { logoutUser } from "../../utils/auth";
 
 export default function TopBar() {
-
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleLogout = () => {
     logoutUser();
     navigate("/welcome");
-  }
-  
+  };
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
