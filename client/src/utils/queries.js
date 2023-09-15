@@ -144,7 +144,12 @@ export const QUERY_MY_BIDS = gql`
         customer {
           _id
           name
-          location
+          location{
+            address
+            city
+            state
+            zip
+          }
         }
         description
         frequency

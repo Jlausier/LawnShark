@@ -1,12 +1,13 @@
 import { useQuery } from "@apollo/client";
-
+import {getUserRoleId} from "../../utils/auth"
 import { QUERY_MY_BIDS } from "../../utils/queries";
 import BidCard from  '../../components/bids/BidCard';
 
 export default function MyBids() {
+  const companyId = getUserRoleId();
   const { data } = useQuery(QUERY_MY_BIDS, {
     variables: {
-      companyId: "",
+      companyId: companyId,
     },
   });
   console.log(data);
