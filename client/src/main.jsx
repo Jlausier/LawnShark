@@ -26,6 +26,7 @@ import {
   Messages,
   Notifications,
   PrivateRoute,
+  About,
 } from "./pages/private";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -87,6 +88,10 @@ const privateRoutes = [
   {
     path: "/Messages",
     element: <Messages />,
+  },
+  {
+    path: "/About",
+    element: <About />,
   },
 ].map((route) => ({
   ...route,
