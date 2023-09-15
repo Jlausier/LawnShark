@@ -16,6 +16,7 @@ export default function JobPostings() {
   });
 
   return (
+    <div>
       <div className="border p-4 rounded">
         <div className="mb-5 row">
           <div className="col-12 col-lg-10">
@@ -24,9 +25,6 @@ export default function JobPostings() {
           <div className="col-12 col-lg-2">
             <NavButton title={"New Job Posting"} path={"/CreateJobPosting"} />
           </div>
-        </div>
-        <div className="col-12 col-lg-2">
-          <Button title={"New Job Posting"} />
         </div>
       </div>
       <div className="">
