@@ -85,12 +85,19 @@ const resolvers = {
       if (!correctPw) throw AuthenticationError;
 
       let roleId = "";
-      if (user._customer) roleId = user._customer._id;
-      else if (user._company) roleId = user._company._id;
+      let role = "";
+      if (user._customer) {
+        role = "customer";
+        roleId = user._customer._id;
+      } else if (user._company) {
+        role = "company";
+        roleId = user._company._id;
+      }
 
       const token = signToken({
         ...user.toJSON(),
         roleId,
+        role,
       });
 
       return { token, user };
@@ -128,6 +135,7 @@ const resolvers = {
       const token = signToken({
         ...user.toJSON(),
         roleId: company._id,
+        role: "company",
       });
 
       return { token, user };
@@ -156,6 +164,7 @@ const resolvers = {
       const token = signToken({
         ...user.toJSON(),
         roleId: customer._id,
+        role: "customer",
       });
 
       return { token, user };

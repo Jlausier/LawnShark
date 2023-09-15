@@ -48,7 +48,6 @@ export function loginUser(idToken) {
 
 export function logoutUser() {
   localStorage.removeItem("id_token");
-  window.location.reload();
 }
 
 export function validateEmail(email) {

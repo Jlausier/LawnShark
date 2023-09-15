@@ -50,6 +50,9 @@ const companySchema = new Schema(
     reviews: [reviewSchema],
   },
   {
+    toObject: {
+      virtuals: true,
+    },
     toJSON: {
       virtuals: true,
     },
