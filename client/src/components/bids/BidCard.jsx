@@ -1,20 +1,30 @@
-import "../../index.css";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+
 import { createLocationString } from "../../utils/dataValidation";
-export default function BidCard ({
- 
- amount,
- posting,
- 
- 
 
+export default function BidCard({ amount, posting }) {
+  const [isHovered, setIsHovered] = useState(false);
 
-   
-  }) {
-  
+  const linkStyle = {
+    textDecoration: "none",
+    color: "inherit",
+    transition: "0.3s",
+  };
+
+  const linkHoverStyle = {
+    backgroundColor: "#d2f7d5",
+  };
 
   return (
-    <div className="mb-3 card w-100">
+    <Link
+      to={`/JobPosting/${posting._id}`}
+      style={isHovered ? { ...linkStyle, ...linkHoverStyle } : linkStyle}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="mb-3 card w-100"
+    >
       <div className="card-body">
         <div className="row mt-2 mb-4">
           <div className="col-6">
@@ -38,29 +48,29 @@ export default function BidCard ({
           </div>
         </div>
         <span>Description:</span>
-        <p className="card-text">{ posting.description }</p>
+        <p className="card-text">{posting.description}</p>
       </div>
-    </div>
+    </Link>
   );
-  }
+}
 
-  BidCard.propTypes = {
-   
-      _id: PropTypes.string.isRequired,
-      amount: PropTypes.number.isRequired,
-      posting: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        askingPrice: PropTypes.number.isRequired,
-        frequency: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired,
-        customer: PropTypes.shape({
-          name: PropTypes.string.isRequired,
-          location: PropTypes.shape({
-            address: PropTypes.string.isRequired,
-            city: PropTypes.string.isRequired,
-            state: PropTypes.string.isRequired,
-            zip: PropTypes.string.isRequired,
-          }).isRequired,
-        }).isRequired,
+BidCard.propTypes = {
+  _id: PropTypes.string.isRequired,
+  amount: PropTypes.number.isRequired,
+  posting: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    askingPrice: PropTypes.number.isRequired,
+    frequency: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    customer: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      location: PropTypes.shape({
+        address: PropTypes.string.isRequired,
+        city: PropTypes.string.isRequired,
+        state: PropTypes.string.isRequired,
+        zip: PropTypes.string.isRequired,
       }).isRequired,
-  };
+    }).isRequired,
+  }).isRequired,
+};

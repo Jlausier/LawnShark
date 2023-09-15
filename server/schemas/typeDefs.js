@@ -79,7 +79,7 @@ const typeDefs = `
     averageRating: Int
     reviewCount: Int
   }
-  
+
   type Auth {
     token: ID!
     user: User
@@ -91,6 +91,7 @@ const typeDefs = `
     posting(postingId: ID!, userRole: String!, roleId: ID!): Posting
     postingsFiltered(service: [ID]!): [Posting]
     myPostings(customerId: ID!): [Posting]
+    companyPosting(postingId: ID!, companyId: ID!): Posting
     myActivePostings(customerId: ID!, accepted: Boolean): [Posting]
     myBids(companyId: ID!): [Bid]
     myAcceptedBids(companyId: ID!, accepted: Boolean): [Bid]
