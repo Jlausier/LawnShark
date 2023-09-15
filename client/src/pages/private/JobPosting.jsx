@@ -42,31 +42,63 @@ export default function JobPosting() {
       <div className="row">
         <div className="col-6">
           <h2 className="header">{data.posting.title}</h2>
-          <span>{data.posting.service.name}</span>
+          <span className="px-3 py-1 border border-2 text-secondary body-font rounded-pill">{data.posting.service.name}</span>
         </div>
         <div className="col-6 text-end">
           <span className="mx-3 fs-5">
             Total Bids: {data.posting.bids.length}
           </span>
-          <span className="px-4 py-2 rounded green text-light fs-4">
+          <span className="px-4 py-2 body-font rounded green text-light fs-4">
             ${data.posting.askingPrice}
           </span>
         </div>
       </div>
       <hr />
-      <div className="d-flex flex-column">
-        <span>
-          Location:{" "}
-          {data.posting.customer.location &&
-            createLocationString(data.posting.customer.location)}
-        </span>
-        <span>Frequency: {data.posting.frequency}</span>
-        <span>{data.posting.customer.name}</span>
-        <p>{data.posting.description}</p>
+      <div className="row mb-2">
+        <div className="col-1">
+          Client:
+        </div>
+        <div className="col-10">
+          <span>{data.posting.customer.name}</span>
+        </div>
       </div>
+      <div className="row mb-2">
+        <div className="col-1">
+          <span>
+            Location:
+          </span>
+        </div>
+        <div className="col-10">
+          <span>
+            {data.posting.customer.location &&
+              createLocationString(data.posting.customer.location)}
+          </span>
+        </div>
+      </div>
+      <div className="row mb-2">
+        <div className="col-1">
+          Frequency: 
+        </div>
+        <div className="col-10">
+          <span>{data.posting.frequency}</span>
+        </div>
+      </div>
+      <div className="row mb-2">
+        <div className="col-1">
+          Description: 
+        </div>
+        <div className="col-10">
+          <p>{data.posting.description}</p>
+        </div>
+      </div>
+        
+
+
+
+
       <hr />
       <div>
-        <h6>Live Bids</h6>
+        <h5 className="body-font">Live Bids</h5>
         {data.posting.bids &&
           data.posting.bids.map((bid) => (
             <BidCardView
