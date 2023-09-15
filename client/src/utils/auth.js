@@ -17,6 +17,8 @@ export function getUserRoleId() {
 }
 
 export function getUserRole() {
+  const token = getToken();
+  if (!token) return "unauthenticated";
   return getProfile().data.role;
 }
 

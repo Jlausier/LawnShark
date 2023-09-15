@@ -1,10 +1,10 @@
 import { useLocation } from "react-router-dom";
+
+import { getUserRole } from "../../utils/auth";
 import NavBarLink from "./NavBarLink";
-import "/src/index.css"
 
 export default function NavBar() {
-  const company = true;
-
+  const role = getUserRole();
   const currentPage = useLocation().pathname;
 
   const customerLinks = [
@@ -16,60 +16,22 @@ export default function NavBar() {
       title: "Search",
       path: "/Search",
     },
-  ];
+    {
+      title: "Messages",
+      path: "/Messages",
+    },
+    {
+      title: "Notifications",
+      path: "/Notifications",
+    },
 
-  const companyLinks = [
-    {
-      title: "Find Work",
-      path: "/FindWork",
-    },
-    {
-      title: "My Jobs",
-      path: "/MyJobs",
-    },
-    {
-      title: "My Bids",
-      path: "/MyBids",
-    },
-    {
-      title: "Search",
-      path: "/Search",
-    },
-  ];
-
-  const links = [
-    {
-      title: "Company Profile",
-      path: "/CompanyProfile",
-    },
-    {
-      title: "Find Work",
-      path: "/FindWork",
-    },
-    {
-      title: "My Jobs",
-      path: "/MyJobs",
-    },
-    {
-      title: "My Bids",
-      path: "/MyBids",
-    },
     {
       title: "Customer Profile",
       path: "/UserProfile",
     },
-    {
-      title: "Job Postings",
-      path: "/JobPostings",
-    },
-    {
-      title: "Single Job Posting",
-      path: "/JobPosting",
-    },
-    {
-      title: "Search",
-      path: "/Search",
-    },
+  ];
+
+  const companyLinks = [
     {
       title: "Notifications",
       path: "/Notifications",
@@ -79,8 +41,20 @@ export default function NavBar() {
       path: "/Messages",
     },
     {
-      title: "Landing Page",
-      path: "/Welcome",
+      title: "Find Work",
+      path: "/FindWork",
+    },
+    {
+      title: "My Jobs",
+      path: "/MyJobs",
+    },
+    {
+      title: "My Bids",
+      path: "/MyBids",
+    },
+    {
+      title: "Search",
+      path: "/Search",
     },
   ];
 
@@ -96,8 +70,21 @@ export default function NavBar() {
                 role="tablist" 
                 aria-orientation="vertical"
               >
-                {links.map((link) => (
-                  <NavBarLink {...link} currentPage={currentPage} key={link.path} />
+              {role === "customer" &&
+                customerLinks.map((link) => (
+                  <NavBarLink
+                    {...link}
+                    currentPage={currentPage}
+                    key={link.path}
+                  />
+                ))}
+              {role === "company" &&
+                companyLinks.map((link) => (
+                  <NavBarLink
+                    {...link}
+                    currentPage={currentPage}
+                    key={link.path}
+                  />
                 ))}
               </ul>
             </nav>
