@@ -3,14 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { logoutUser } from "../../utils/auth";
 
 export default function TopBar() {
-
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleLogout = () => {
     logoutUser();
     navigate("/welcome");
-  }
-  
+  };
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -22,19 +22,21 @@ export default function TopBar() {
           Your Logo
         </a>
         <button
-          className={`navbar-toggler ${isMenuOpen ? '' : 'collapsed'}`}
+          className={`navbar-toggler ${isMenuOpen ? "" : "collapsed"}`}
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
           aria-controls="navbarNav"
-          aria-expanded={isMenuOpen ? 'true' : 'false'}
+          aria-expanded={isMenuOpen ? "true" : "false"}
           aria-label="Toggle navigation"
           onClick={toggleMenu}
         >
           <span className="navbar-toggler-icon"></span>
         </button>
         <div
-          className={`w-75 collapse navbar-collapse fixed-top top-0 start-0 green text-light ${isMenuOpen ? 'show' : ''}`}
+          className={`w-75 collapse navbar-collapse fixed-top top-0 start-0 green text-light ${
+            isMenuOpen ? "show" : ""
+          }`}
           id="navbarNav"
         >
           <ul className="navbar-nav ml-auto">
@@ -80,7 +82,6 @@ export default function TopBar() {
       </div>
     </nav>
   );
-
 }
 
 //   return (

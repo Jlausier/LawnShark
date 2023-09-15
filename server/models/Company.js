@@ -3,7 +3,6 @@ const { Schema, model } = require("mongoose");
 const reviewSchema = new Schema({
   reviewText: {
     type: String,
-    required: true,
     minlength: 1,
     maxlength: 280,
   },
