@@ -29,6 +29,10 @@ export default function NavBar() {
       title: "Customer Profile",
       path: "/UserProfile",
     },
+    {
+      title: "About",
+      path: "/About",
+    },
   ];
 
   const companyLinks = [
@@ -55,6 +59,10 @@ export default function NavBar() {
     {
       title: "Search",
       path: "/Search",
+    },
+    {
+      title: "About",
+      path: "/About",
     },
   ];
 
