@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/client";
 
 import { QUERY_COMPANY_POSTING } from "../../utils/queries";
 import { getUserRoleId } from "../../utils/auth";
+import { createLocationString } from "../../utils/dataValidation";
 
 import CreateBid from "../../components/bids/CreateBid";
 import BidCardView from "../../components/bids/BidCardView";
@@ -34,8 +35,14 @@ export default function JobPostingCompanyView() {
         </div>
       </div>
       <hr />
+
       <div className="d-flex flex-column">
-        <span>Location: {data.companyPosting.location}</span>
+        {data.companyPosting.customer.location && (
+          <span>
+            Location:{" "}
+            {createLocationString(data.companyPosting.customer.location)}
+          </span>
+        )}
         <span>Frequency: {data.companyPosting.frequency}</span>
         <span> {data.companyPosting.customer.name} </span>
         <p>{data.companyPosting.description}</p>
