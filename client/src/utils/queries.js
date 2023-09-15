@@ -23,6 +23,9 @@ export const QUERY_POSTING = gql`
   query posting($postingId: ID!, $userRole: String!, $roleId: ID!) {
     posting(postingId: $postingId, userRole: $userRole, roleId: $roleId) {
       _id
+      title
+      frequency
+      description
       service {
         _id
         name
@@ -137,7 +140,12 @@ export const QUERY_MY_BIDS = gql`
         customer {
           _id
           name
-          location
+          location{
+            address
+            city
+            state
+            zip
+          }
         }
         description
         frequency

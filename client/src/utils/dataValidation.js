@@ -1,10 +1,10 @@
-import { getUserId, getUserRole } from "./auth";
+import { getUserId, getUserRoleId, getUserRole } from "./auth";
 
 export function postingHasCompanyBid(bids) {
   const userRole = getUserRole();
   if (userRole === "customer" || userRole === "none") return false;
   bids.forEach((bid) => {
-    if (bid.company._id === getUserId()) {
+    if (bid.company._id === getUserRoleId()) {
       return true;
     }
   });
