@@ -22,13 +22,15 @@ export default function BidCardView({
               Message
             </Link>
             {/* Add a modal */}
-            {!accepted && (
+            {!accepted ? (
               <button
-                className="btn green text-light"
+                className="buttonMaster"
                 onClick={() => handleAcceptBid(_id)}
               >
                 Accept Bid
               </button>
+            ) : (
+              <div className="buttonMaster">Accepted</div>
             )}
           </div>
         </div>
@@ -45,7 +47,7 @@ BidCardView.propTypes = {
   company: PropTypes.shape({
     name: PropTypes.string,
     _id: PropTypes.string,
-  }).isRequired,
+  }),
   accepted: PropTypes.bool.isRequired,
   handleAcceptBid: PropTypes.func.isRequired,
 };
