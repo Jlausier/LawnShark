@@ -44,9 +44,9 @@ export default function FindWork() {
         <h2 className="header">Find Work</h2>
         <span className="">Click on job titles to view more details</span>
       </div>
+      <span className="pe-2">Filter Results:</span>
       {data && data.services && data.services.length > 0 ? (
         <div className="mb-3">
-          <span className="pe-2">Filter Results:</span>
           {data.services.map((service) => (
             <div className="form-check" key={service._id}>
               <input

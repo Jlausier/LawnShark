@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
@@ -9,6 +10,19 @@ export default function CompanyCard({
   averageRating,
   reviewCount,
 }) {
+
+  const [isHovered, setIsHovered] = useState(false);
+
+  const linkStyle = {
+    textDecoration: "none",
+    color: "inherit",
+    transition: "0.3s"
+  };
+
+  const linkHoverStyle = {
+    backgroundColor: "#d2f7d5"
+  }
+
   return (
     <div className="mb-3 card w-100">
       <div className="card-body">
@@ -16,7 +30,10 @@ export default function CompanyCard({
           <div className="col-6">
             <Link
               to={`/CompanyProfile/${_id}`}
-              className="text-decoration-none text-dark"
+              style={isHovered ? { ...linkStyle, ...linkHoverStyle } : linkStyle}
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+              className="text-dark"
             >
               <h5 className="card-title body-font fs-2">{name}</h5>
             </Link>

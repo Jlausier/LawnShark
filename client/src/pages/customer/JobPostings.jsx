@@ -18,16 +18,15 @@ export default function JobPostings() {
   return (
     <div>
       <div className="border p-4 rounded">
-        <div className="mb-5 row">
+        <div className=" mb-5 row">
           <div className="col-12 col-lg-10">
             <h2 className="header">My Job Postings</h2>
           </div>
-          <div className="col-12 col-lg-2">
+          <div className=" col-12 col-lg-2 text-end">
             <NavButton title={"New Job Posting"} path={"/CreateJobPosting"} />
           </div>
         </div>
-      </div>
-      <div className="">
+        <div className="">
         {data && data.myPostings && data.myPostings.length > 0 ? (
           <div>
             {data.myPostings.map((jobs) => (
@@ -40,6 +39,8 @@ export default function JobPostings() {
           </div>
         )}
       </div>
+      </div>
+      
     </div>
   );
 }

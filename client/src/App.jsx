@@ -22,7 +22,7 @@ function App() {
         <div className="d-none d-sm-block col-md-3 col-lg-2 gx-0">
           <NavBar />
         </div>
-        <div className="main-height bg-light col-sm-12 col-md-9 col-lg-10 gx-0">
+        <div className="containerClass rounded bg-light col-sm-12 col-md-9 col-lg-10 gx-0">
           <div className="row gx-0">
             <TopBar />
           </div>
