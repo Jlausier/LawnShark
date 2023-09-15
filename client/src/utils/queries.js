@@ -208,7 +208,7 @@ export const QUERY_MY_BIDS = gql`
 
 export const QUERY_MY_ACCEPTED_BIDS = gql`
   query myAcceptedBids($companyId: ID!) {
-    myBids(companyId: $companyId, accepted: true) {
+    myAcceptedBids(companyId: $companyId, accepted: true) {
       _id
       amount
       accepted
@@ -224,7 +224,12 @@ export const QUERY_MY_ACCEPTED_BIDS = gql`
         customer {
           _id
           name
-          location
+          location{
+            address
+            city
+            state
+            zip
+          }
         }
         description
         frequency

@@ -16,3 +16,6 @@ export function createLocationString({ address, city, state, zip }) {
 }
 
 export const createNameStub = (serviceName) => serviceName.split(" ").join("_");
+
+
+

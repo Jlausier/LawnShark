@@ -19,7 +19,7 @@ export default function MyBids() {
           </div>
           <div className="">
             {/* <BidCard /> */}
-            {data && data.myBids && data.myBids.length > 0 ? (
+            {data && data.myBids && data.myBids.length > 0  ? (
             <div>
               {data.myBids.map((bids) => (
                 <BidCard {...bids} key={bids._id} />
