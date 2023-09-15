@@ -63,6 +63,33 @@ export const SIGN_UP_COMPANY = gql`
   }
 `;
 
+export const SIGN_UP_CUSTOMER = gql`
+  mutation signUpCustomer(
+    $email: String!
+    $password: String!
+    $name: String!
+    $location: Location!
+  ) {
+    signUpCustomer(email: $email, password: $password, name: $name, bio: $bio) {
+      token
+      user {
+        _id
+        email
+        _customer {
+          _id
+          name
+          location {
+            address
+            city
+            state
+            zip
+          }
+        }
+      }
+    }
+  }
+`;
+
 export const ADD_CUSTOMER = gql`
   mutation addCustomer(
     $userId: ID!
