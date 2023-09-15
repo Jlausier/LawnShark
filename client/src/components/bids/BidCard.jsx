@@ -28,25 +28,23 @@ export default function BidCard({ amount, posting }) {
       <div className="card-body">
         <div className="row mt-2 mb-4">
           <div className="col-6">
-            <h5 className="card-title fs-3">{posting.title}</h5>
+            <h5 className="card-title body-font fs-3">{posting.title}</h5>
           </div>
           <div className="col-6 d-flex justify-content-end align-items-center">
-            <span className="px-4 py-2 rounded fs-5">
+            <span className="px-4 py-2 body-font rounded fs-5">
               Asking Price:${posting.askingPrice}
             </span>
-            <span className="px-4 py-2 rounded green text-light fs-5">
+            <span className="px-4 py-2 body-font rounded green text-light fs-5">
               Bid:${amount}
             </span>
           </div>
         </div>
         <div className="row pb-3">
-          <div className="col-4">
-            <span className="card-text">
-              Location: {createLocationString(posting.customer.location)}
-            </span>
+          <div className="col-5">
+            <span className="card-text">Location: {createLocationString(posting.customer.location) }</span>
           </div>
-          <div className="col-4">
-            <span className="card-text">Frequency: {posting.frequency}</span>
+          <div className="col-3">
+            <span className="card-text">Frequency: { posting.frequency }</span>
           </div>
         </div>
         <span>Description:</span>

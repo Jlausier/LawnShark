@@ -11,11 +11,11 @@ export default function About() {
             <section className="container mt-5">
         <div className="row">
             <div className="col-lg-6">
-                <h4>Who We Are</h4>
+                <h4 className="body-font">Who We Are</h4>
                 <p>Welcome to Lawn Shark, where we bridge the gap between homeowners seeking top-notch lawn care services and professionals dedicated to transforming your outdoor spaces into beautiful landscapes. We understand the importance of a well-maintained lawn, and that's why we're here to make your lawn care journey easier, more efficient, and more enjoyable.</p>
             </div>
             <div className="col-lg-6">
-            <h4>Our Mission</h4>
+            <h4 className="body-font">Our Mission</h4>
             <p>Our mission is simple yet powerful: to create a seamless connection between homeowners and lawn care experts. We believe that everyone deserves access to high-quality, reliable lawn care services, and we're committed to making that happen.</p>
             </div>
         </div>
@@ -23,7 +23,7 @@ export default function About() {
 
     <section className="bg-light py-5">
         <div className="container">
-            <h2 className="text-center">Our Dev Team</h2>
+            <h2 className="text-center body-font">Our Dev Team</h2>
         </div>
     </section>
             </div>
@@ -36,7 +36,7 @@ export default function About() {
                   <img src="/images/brian.jpeg" className="w-50 rounded-pill" />
                 </div>
                 <div className="card-body">
-                  <h5 className="card-title text-center">Brian Gorman</h5>
+                  <h5 className="card-title text-center body-font">Brian Gorman</h5>
                   <p className="text-center">Back-End Development</p>
                 </div>
                 <div className="card-body text-center">
@@ -59,7 +59,7 @@ export default function About() {
                     <img src="/images/matthew.png" className="w-50 rounded-pill" />
                   </div>
                   <div className="card-body">
-                    <h5 className="card-title text-center">Matthew Alfaro</h5>
+                    <h5 className="card-title text-center body-font">Matthew Alfaro</h5>
                     <p className="text-center">Front-End Development</p>
                   </div>
                   <div className="card-body text-center">
@@ -82,7 +82,7 @@ export default function About() {
                   <img src="/images/holden.jpeg" className="w-50 rounded-pill" />
                 </div>
                 <div className="card-body">
-                  <h5 className="card-title text-center">Holden Garrison</h5>
+                  <h5 className="card-title text-center body-font">Holden Garrison</h5>
                   <p className="text-center">Back-End Development</p>
                 </div>
                 <div className="card-body text-center">
@@ -108,7 +108,7 @@ export default function About() {
                       <img src="/images/jacob.jpeg" className="w-50 rounded-pill" />
                     </div>
                     <div className="card-body">
-                      <h5 className="card-title text-center">Jocab Lausier</h5>
+                      <h5 className="card-title text-center body-font">Jocab Lausier</h5>
                       <p className="text-center">Front-End Development</p>
                     </div>
                     <div className="card-body text-center">
@@ -130,7 +130,7 @@ export default function About() {
                       <img src="/images/arnaldo.jpeg" className="w-50 rounded-pill" />
                     </div>
                     <div className="card-body">
-                      <h5 className="card-title text-center">Arnaldo Henriquez</h5>
+                      <h5 className="card-title text-center body-font">Arnaldo Henriquez</h5>
                       <p className="text-center">Front-End Development</p>
                     </div>
                     <div className="card-body text-center">
