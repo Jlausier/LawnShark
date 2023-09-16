@@ -326,6 +326,13 @@ const resolvers = {
       if (!bid) throw new Error(`Bid with ID ${bidId} not found`);
       return bid;
     },
+
+    removeBid: async (_, { bidId }) => {
+      /** @TODO handle customer notification if Bid status was accepted */
+      const bid = await Bid.findOneAndDelete({ _id: bidId });
+      if (!bid) return { error: `Could not delete Bid with ID` };
+      else return { message: `Success` };
+    },
   },
 };
 
