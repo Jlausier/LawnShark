@@ -85,6 +85,11 @@ const typeDefs = `
     user: User
   }
 
+  type Remove {
+    message: String
+    error: String
+  }
+
   type Query {
     service(serviceId: ID!): Service
     services: [Service]
@@ -114,6 +119,7 @@ const typeDefs = `
     addPosting(customerId: ID!, serviceId: ID!, askingPrice: Int!, estimatePrice: Int, frequency: String!, description: String!, title: String!): Posting
     addBid(amount: Int!, message: String!, postingId: ID!, companyId: ID!): Bid
     acceptBid(bidId: ID!): Bid
+    removeBid(bidId: ID!): Remove
   }
 `;
 

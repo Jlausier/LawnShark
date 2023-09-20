@@ -4,8 +4,25 @@ import PropTypes from "prop-types";
 
 import { createLocationString } from "../../utils/dataValidation";
 
-export default function BidCard({ amount, posting }) {
+/**
+ * @TODO - Display accepted status
+ * @TODO - Implement delete bid
+ */
+
+export default function BidCard({
+  _id,
+  amount,
+  posting,
+  accepted,
+  handleDeleteBid,
+}) {
   const [isHovered, setIsHovered] = useState(false);
+
+  const deleteBid = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    handleDeleteBid(_id);
+  };
 
   const linkStyle = {
     textDecoration: "none",
@@ -32,19 +49,21 @@ export default function BidCard({ amount, posting }) {
           </div>
           <div className="col-6 d-flex justify-content-end align-items-center">
             <span className="px-4 py-2 body-font rounded fs-5">
-              Asking Price:${posting.askingPrice}
+              Asking Price: ${posting.askingPrice}
             </span>
             <span className="px-4 py-2 body-font rounded green text-light fs-5">
-              Bid:${amount}
+              Bid: ${amount}
             </span>
           </div>
         </div>
         <div className="row pb-3">
           <div className="col-5">
-            <span className="card-text">Location: {createLocationString(posting.customer.location) }</span>
+            <span className="card-text">
+              Location: {createLocationString(posting.customer.location)}
+            </span>
           </div>
           <div className="col-3">
-            <span className="card-text">Frequency: { posting.frequency }</span>
+            <span className="card-text">Frequency: {posting.frequency}</span>
           </div>
         </div>
         <span>Description:</span>
@@ -57,6 +76,7 @@ export default function BidCard({ amount, posting }) {
 BidCard.propTypes = {
   _id: PropTypes.string.isRequired,
   amount: PropTypes.number.isRequired,
+  accepted: PropTypes.bool.isRequired,
   posting: PropTypes.shape({
     _id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
@@ -73,4 +93,5 @@ BidCard.propTypes = {
       }).isRequired,
     }).isRequired,
   }).isRequired,
+  handleDeleteBid: PropTypes.func.isRequired,
 };

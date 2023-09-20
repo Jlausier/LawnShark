@@ -197,3 +197,12 @@ export const ACCEPT_BID = gql`
     }
   }
 `;
+
+export const REMOVE_BID = gql`
+  mutation removeBid($bidId: ID!) {
+    removeBid(bidId: $bidId) {
+      message
+      error
+    }
+  }
+`;
