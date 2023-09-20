@@ -4,6 +4,11 @@ import PropTypes from "prop-types";
 
 import { createLocationString } from "../../utils/dataValidation";
 
+/**
+ * @TODO - Display accepted status
+ * @TODO - Implement delete bid
+ */
+
 export default function BidCard({
   _id,
   amount,
@@ -12,6 +17,12 @@ export default function BidCard({
   handleDeleteBid,
 }) {
   const [isHovered, setIsHovered] = useState(false);
+
+  const deleteBid = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    handleDeleteBid(_id);
+  };
 
   const linkStyle = {
     textDecoration: "none",
