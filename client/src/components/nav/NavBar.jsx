@@ -13,8 +13,8 @@ export default function NavBar() {
       path: "/JobPostings",
     },
     {
-      title: "Search",
-      path: "/Search",
+      title: "Companies",
+      path: "/FindCompanies",
     },
     {
       title: "About",
@@ -36,8 +36,8 @@ export default function NavBar() {
       path: "/MyBids",
     },
     {
-      title: "Search",
-      path: "/Search",
+      title: "Companies",
+      path: "/FindCompanies",
     },
     {
       title: "About",

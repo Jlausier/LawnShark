@@ -18,7 +18,7 @@ export default function JobPostingCompanyView() {
 
   console.log(data);
 
-  return data ? (
+  return data && data.companyPosting ? (
     <div className="border p-4 rounded">
       <div className="row">
         <div className="col-6">
@@ -69,7 +69,11 @@ export default function JobPostingCompanyView() {
       <hr />
       {data.companyPosting.bids.length > 0 ? (
         data.companyPosting.bids.map((bid) => (
-          <CompanyBidCard {...bid} key={bid._id} />
+          <CompanyBidCard
+            {...bid}
+            posting={data.companyPosting}
+            key={bid._id}
+          />
         ))
       ) : (
         <div className="d-flex flex-column align-items-start">

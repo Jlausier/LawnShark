@@ -1,4 +1,3 @@
-// import SearchForm from '../components/SearchForm'
 import { useState } from "react";
 import CompanyCard from "../../components/company/CompanyCard";
 
@@ -36,7 +35,7 @@ export default function Search() {
         <div className="mb-5">
           <h2 className="header">Search</h2>
           <span className="body-font">
-            Type in the name of the company you would like to work with.
+            Type in the name of the company you are looking for.
           </span>
         </div>
 

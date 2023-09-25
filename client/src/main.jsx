@@ -7,13 +7,7 @@ import client from "./utils/apolloClient.js";
 import App from "./App.jsx";
 import SplashPage from "./pages/SplashPage.jsx";
 
-import {
-  FindWork,
-  MyBids,
-  MyJobs,
-  Search,
-  CompanyRoute,
-} from "./pages/company";
+import { FindWork, MyBids, MyJobs, CompanyRoute } from "./pages/company";
 import {
   CreateJobPosting,
   JobPostings,
@@ -23,6 +17,7 @@ import {
 import {
   CompanyProfile,
   JobPostingSwitch,
+  Search,
   Messages,
   Notifications,
   PrivateRoute,
@@ -78,7 +73,7 @@ const privateRoutes = [
     element: <JobPostingSwitch />,
   },
   {
-    path: "/Search",
+    path: "/FindCompanies",
     element: <Search />,
   },
   {
