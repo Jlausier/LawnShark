@@ -17,6 +17,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "concurrently": "^8.2.1"
+    "concurrently": "^8.2.1",
+    "nanoid": "^5.0.1"
   }
 }

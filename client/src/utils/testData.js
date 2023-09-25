@@ -66,7 +66,9 @@ export const review = {
 };
 
 export const notification = {
-  title: "Quote",
-  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.",
-  source: "Source Title",
+  title: "Job Posting Title",
+  text: "This is what just happened in order to notify you.",
+  source: "00:00",
 };
+
+export const notifications = new Array(5).fill(notification);
