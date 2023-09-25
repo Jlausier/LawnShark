@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-export default function BidCardView({
+export default function CustomerBidCard({
   _id,
   amount,
   company,
@@ -41,7 +41,7 @@ export default function BidCardView({
   );
 }
 
-BidCardView.propTypes = {
+CustomerBidCard.propTypes = {
   _id: PropTypes.string.isRequired,
   amount: PropTypes.number.isRequired,
   company: PropTypes.shape({

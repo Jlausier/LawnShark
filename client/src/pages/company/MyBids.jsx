@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { getUserRoleId } from "../../utils/auth";
 import { QUERY_MY_BIDS } from "../../utils/queries";
-import BidCard from "../../components/bids/BidCard";
+import CompanyBidCard from "../../components/company-view/BidCard";
 
 export default function MyBids() {
   const companyId = getUserRoleId();
@@ -19,11 +19,10 @@ export default function MyBids() {
         <h2 className="header">My Bids</h2>
       </div>
       <div className="">
-        {/* <BidCard /> */}
         {data && data.myBids && data.myBids.length > 0 ? (
           <div>
             {data.myBids.map((bids) => (
-              <BidCard {...bids} key={bids._id} />
+              <CompanyBidCard {...bids} key={bids._id} />
             ))}
           </div>
         ) : (

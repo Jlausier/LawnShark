@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { validatePassword, validateEmail } from "../../utils/auth";
 import useSignUpCompany from "../../hooks/useSignUpCompany";
-import Button from "../Button";
+import Button from "../common/Button";
 
 export default function CompanyForm() {
   const { signUpAsCompany } = useSignUpCompany();

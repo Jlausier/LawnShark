@@ -1,14 +1,14 @@
 import PropTypes from "prop-types";
 
-import JobPostingCard from "./JobPostingCard";
+import CustomerJobPostingCard from "./JobPostingCard";
 
-export default function UserPostings({ postings }) {
+export default function CustomerPostings({ postings }) {
   return (
     <>
       {postings && postings.length > 0 ? (
         <div>
           {postings.map((posting) => (
-            <JobPostingCard {...posting} key={posting._id} />
+            <CustomerJobPostingCard {...posting} key={posting._id} />
           ))}
         </div>
       ) : (
@@ -18,7 +18,7 @@ export default function UserPostings({ postings }) {
   );
 }
 
-UserPostings.propTypes = {
+CustomerPostings.propTypes = {
   postings: PropTypes.arrayOf(
     PropTypes.shape({
       _id: PropTypes.string,

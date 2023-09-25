@@ -3,8 +3,8 @@ import { useQuery } from "@apollo/client";
 import { getUserRoleId } from "../../utils/auth";
 import { QUERY_MY_POSTINGS } from "../../utils/queries";
 
-import JobPostingCard from "../../components/JobPostingCard";
-import NavButton from "../../components/NavButton";
+import CustomerJobPostingCard from "../../components/customer-view/JobPostingCard";
+import NavButton from "../../components/common/NavButton";
 
 export default function JobPostings() {
   const customerId = getUserRoleId();
@@ -27,20 +27,19 @@ export default function JobPostings() {
           </div>
         </div>
         <div className="">
-        {data && data.myPostings && data.myPostings.length > 0 ? (
-          <div>
-            {data.myPostings.map((jobs) => (
-              <JobPostingCard {...jobs} key={jobs._id} />
-            ))}
-          </div>
-        ) : (
-          <div className="body-font fs-4">
-            You have not made any new Job Postings.
-          </div>
-        )}
+          {data && data.myPostings && data.myPostings.length > 0 ? (
+            <div>
+              {data.myPostings.map((jobs) => (
+                <CustomerJobPostingCard {...jobs} key={jobs._id} />
+              ))}
+            </div>
+          ) : (
+            <div className="body-font fs-4">
+              You have not made any new Job Postings.
+            </div>
+          )}
+        </div>
       </div>
-      </div>
-      
     </div>
   );
 }

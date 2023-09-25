@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import Button from "../Button";
+import Button from "../common/Button";
 import useLogin from "../../hooks/useLogin";
 
 export default function LoginForm() {

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { validatePassword, validateEmail } from "../../utils/auth";
 import useSignUpCustomer from "../../hooks/useSignUpCustomer";
-import Button from "../Button";
+import Button from "../common/Button";
 
 const stateNames = [
   "Alabama",

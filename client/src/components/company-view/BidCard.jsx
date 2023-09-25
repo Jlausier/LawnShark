@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -6,10 +7,10 @@ import { createLocationString } from "../../utils/dataValidation";
 
 /**
  * @TODO - Display accepted status
- * @TODO - Implement delete bid
+ * @TODO - Implement delete bid button
  */
 
-export default function BidCard({
+export default function CompanyBidCard({
   _id,
   amount,
   posting,
@@ -73,7 +74,7 @@ export default function BidCard({
   );
 }
 
-BidCard.propTypes = {
+CompanyBidCard.propTypes = {
   _id: PropTypes.string.isRequired,
   amount: PropTypes.number.isRequired,
   accepted: PropTypes.bool.isRequired,

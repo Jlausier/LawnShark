@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { QUERY_SERVICES } from "../../utils/queries";
 import { usePostingsSearch } from "../../hooks/usePostings.js";
 
-import JobPostingCard from "../../components/JobPostingCard";
+import CompanyJobPostingCard from "../../components/company-view/JobPostingCard";
 
 export default function FindWork() {
   const { data } = useQuery(QUERY_SERVICES);
@@ -73,7 +73,7 @@ export default function FindWork() {
         postings.postingsFiltered.length > 0 ? (
           <div>
             {postings.postingsFiltered.map((posting) => (
-              <JobPostingCard {...posting} key={posting._id} />
+              <CompanyJobPostingCard {...posting} key={posting._id} />
             ))}
           </div>
         ) : (
