@@ -3,9 +3,9 @@ import { useMutation } from "@apollo/client";
 import { ADD_BID } from "../utils/mutations";
 import { getUserRoleId } from "../utils/auth";
 
-export function useAddBid() {
+export default function useAddBid() {
   const [addBid, { error }] = useMutation(ADD_BID, {
-    refetchQueries: ["posting", "bids"],
+    refetchQueries: ["companyPosting", "myBids", "myAcceptedBids"],
   });
 
   async function createBid({ amount, message, postingId }) {

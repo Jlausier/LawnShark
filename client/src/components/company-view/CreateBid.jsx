@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { useAddBid } from "../../hooks/useBids";
+import useAddBid from "../../hooks/useBids";
 
 export default function CreateBid() {
   const { postingId } = useParams();
@@ -28,15 +28,21 @@ export default function CreateBid() {
     /** @TODO validate form data */
     const { proposedAmount, message } = formData;
 
-    createBid({
-      amount: parseInt(proposedAmount) || -1,
-      message,
-      postingId,
-    }).catch((err) => {
+    if (isNaN(proposedAmount)) {
+      /** @TODO set errors */
+      return;
+    }
+
+    try {
+      createBid({
+        amount: parseInt(proposedAmount),
+        message,
+        postingId,
+      });
+    } catch (err) {
       /** @TODO display error if bid cannot be created */
       console.error(err);
-    });
-    console.log(formData);
+    }
   };
 
   return (
