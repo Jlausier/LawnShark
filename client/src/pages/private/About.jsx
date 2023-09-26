@@ -20,7 +20,7 @@ const teamData = [
     name: "Holden Garrison",
     role: "Back-End Development",
     github: "holdenmg",
-    website: "https://sprightly-kleicha-2518d8.netlify.app/",
+    website: "https://holdengarrison.netlify.app/",
   },
   {
     imageName: "jacob.jpeg",
