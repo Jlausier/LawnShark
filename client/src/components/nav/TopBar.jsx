@@ -33,7 +33,11 @@ export default function TopBar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item ps-2 active">
-              <Link className="nav-link" to="/Notifications">
+              <Link
+                className="nav-link"
+                to="/Notifications"
+                aria-label="Notifications"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="25"
@@ -62,7 +66,11 @@ export default function TopBar() {
               </Link>
             </li>
             <li className="nav-item ps-2">
-              <Link className="nav-link" to={getUserProfileLink()}>
+              <Link
+                className="nav-link"
+                to={getUserProfileLink()}
+                aria-label="User Profile"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="25"
@@ -77,7 +85,7 @@ export default function TopBar() {
               </Link>
             </li>
             <li className="nav-item ps-2">
-              <button className="nav-link" onClick={logout}>
+              <button className="nav-link" onClick={logout} aria-label="Logout">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
