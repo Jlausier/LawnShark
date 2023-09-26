@@ -36,6 +36,7 @@ export default function CreateBid() {
       /** @TODO display error if bid cannot be created */
       console.error(err);
     });
+    console.log(formData);
   };
 
   return (
