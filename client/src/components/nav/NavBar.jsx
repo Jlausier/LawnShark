@@ -47,7 +47,7 @@ export default function NavBar() {
 
   return (
     <>
-      <div className=" main-height p-4 green text-white d-flex flex-column align-items-between d-none d-sm-block">
+      <div className="main-height p-4 green text-white d-flex flex-column align-items-between d-none d-sm-block">
         <div className="">
           <img
             src="./images/lawn-shark-logo-1000.png"
@@ -79,7 +79,7 @@ export default function NavBar() {
             </ul>
           </nav>
         </div>
-        <div className="">© 2023 Lawn Shark® Global Inc.</div>
+        <div className="">© 2023 LawnShark® Global Inc.</div>
       </div>
     </>
   );
