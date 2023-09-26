@@ -15,6 +15,11 @@ module.exports = {
       code: "FORBIDDEN",
     },
   }),
+  CreationError: new GraphQLError("Could not create resource.", {
+    extensions: {
+      code: "CREATE",
+    },
+  }),
   signToken: function ({ email, _id, role, roleId }) {
     const payload = { email, _id, role, roleId };
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
