@@ -88,6 +88,7 @@ export default function CompanyForm() {
               value={formState.email}
               id="email"
               name="email"
+              autoComplete="email"
               onChange={handleInputChange}
               type="email"
               className="form-control"
@@ -103,6 +104,7 @@ export default function CompanyForm() {
               value={formState.password}
               id="password"
               name="password"
+              autoComplete="new-password"
               onChange={handleInputChange}
               type="password"
               className="form-control"
@@ -120,6 +122,7 @@ export default function CompanyForm() {
               value={formState.name}
               name="name"
               id="name"
+              autoComplete="organization"
               onChange={handleInputChange}
               type="text"
               className="form-control"

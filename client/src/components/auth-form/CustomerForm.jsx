@@ -2,59 +2,7 @@ import { useState } from "react";
 import { validatePassword, validateEmail } from "../../utils/auth";
 import useSignUpCustomer from "../../hooks/useSignUpCustomer";
 import Button from "../common/Button";
-
-const stateNames = [
-  "Alabama",
-  "Alaska",
-  "Arizona",
-  "Arkansas",
-  "California",
-  "Colorado",
-  "Connecticut",
-  "Delaware",
-  "Florida",
-  "Georgia",
-  "Hawaii",
-  "Idaho",
-  "Illinois",
-  "Indiana",
-  "Iowa",
-  "Kansas",
-  "Kentucky",
-  "Louisiana",
-  "Maine",
-  "Maryland",
-  "Massachusetts",
-  "Michigan",
-  "Minnesota",
-  "Mississippi",
-  "Missouri",
-  "Montana",
-  "Nebraska",
-  "Nevada",
-  "New Hampshire",
-  "New Jersey",
-  "New Mexico",
-  "New York",
-  "North Carolina",
-  "North Dakota",
-  "Ohio",
-  "Oklahoma",
-  "Oregon",
-  "Pennsylvania",
-  "Rhode Island",
-  "South Carolina",
-  "South Dakota",
-  "Tennessee",
-  "Texas",
-  "Utah",
-  "Vermont",
-  "Virginia",
-  "Washington",
-  "West Virginia",
-  "Wisconsin",
-  "Wyoming",
-];
+import states from "./states.json";
 
 const initialFormState = {
   firstName: "",
@@ -66,12 +14,6 @@ const initialFormState = {
   state: "",
   zip: "",
 };
-
-const stateOptions = stateNames.map((state) => (
-  <option key={state} value={state}>
-    {state}
-  </option>
-));
 
 export default function CustomerForm() {
   const { signUpAsCustomer } = useSignUpCustomer();
@@ -163,6 +105,7 @@ export default function CustomerForm() {
               value={customerFormState.email}
               name="email"
               id="email"
+              autoComplete="email"
               onChange={handleCustomerInputChange}
               type="email"
               className="form-control"
@@ -178,6 +121,7 @@ export default function CustomerForm() {
               value={customerFormState.password}
               name="password"
               id="password"
+              autoComplete="new-password"
               onChange={handleCustomerInputChange}
               type="password"
               className="form-control"
@@ -195,6 +139,7 @@ export default function CustomerForm() {
               value={customerFormState.firstName}
               name="firstName"
               id="firstName"
+              autoComplete="given-name"
               onChange={handleCustomerInputChange}
               type="text"
               className="form-control"
@@ -210,6 +155,7 @@ export default function CustomerForm() {
               value={customerFormState.lastName}
               name="lastName"
               id="lastName"
+              autoComplete="family-name"
               onChange={handleCustomerInputChange}
               type="text"
               className="form-control"
@@ -227,6 +173,7 @@ export default function CustomerForm() {
               value={customerFormState.street}
               name="street"
               id="street"
+              autoComplete="address-line1"
               onChange={handleCustomerInputChange}
               type="text"
               className="form-control"
@@ -242,6 +189,7 @@ export default function CustomerForm() {
               value={customerFormState.city}
               name="city"
               id="city"
+              autoComplete="address-level2"
               onChange={handleCustomerInputChange}
               type="text"
               className="form-control"
@@ -257,10 +205,14 @@ export default function CustomerForm() {
               className="form-control"
               name="state"
               id="state"
+              autoComplete="address-level1"
             >
-              {/* Default empty option */}
               <option value="">Select a state</option>
-              {stateOptions}
+              {states.map((state) => (
+                <option key={state} value={state}>
+                  {state}
+                </option>
+              ))}
             </select>
           </div>
           <div className="col-12 col-lg-3">
@@ -271,6 +223,7 @@ export default function CustomerForm() {
               value={customerFormState.zip}
               name="zip"
               id="zip"
+              autoComplete="postal-code"
               onChange={handleCustomerInputChange}
               type="text"
               className="form-control"
