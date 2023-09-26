@@ -6,7 +6,7 @@ import { getUserRoleId } from "../../utils/auth";
 import { createLocationString } from "../../utils/dataValidation";
 
 import CreateBid from "../../components/company-view/CreateBid";
-import CompanyBidCard from "../../components/company-view/BidCard";
+import CompanyBidStub from "../../components/company-view/BidStub";
 
 export default function JobPostingCompanyView() {
   const companyId = getUserRoleId();
@@ -69,7 +69,7 @@ export default function JobPostingCompanyView() {
       <hr />
       {data.companyPosting.bids.length > 0 ? (
         data.companyPosting.bids.map((bid) => (
-          <CompanyBidCard
+          <CompanyBidStub
             {...bid}
             posting={data.companyPosting}
             key={bid._id}
