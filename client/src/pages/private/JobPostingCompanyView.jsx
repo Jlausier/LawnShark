@@ -8,11 +8,13 @@ import { createLocationString } from "../../utils/dataValidation";
 
 import CreateBid from "../../components/company-view/CreateBid";
 import CompanyBidStub from "../../components/company-view/BidStub";
+import useRemoveBid from "../../hooks/useRemoveBid";
 
 export default function JobPostingCompanyView() {
   const companyId = getUserRoleId();
   const { postingId } = useParams();
   const [showCreateBid, setShowCreateBid] = useState(false);
+  const { removeBid } = useRemoveBid();
 
   const { data } = useQuery(QUERY_COMPANY_POSTING, {
     variables: { postingId, companyId },
@@ -71,6 +73,7 @@ export default function JobPostingCompanyView() {
         data.companyPosting.bids.map((bid) => (
           <CompanyBidStub
             {...bid}
+            handleDeleteBid={removeBid}
             posting={data.companyPosting}
             key={bid._id}
           />
