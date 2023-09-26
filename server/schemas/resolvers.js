@@ -298,6 +298,16 @@ const resolvers = {
     },
 
     addBid: async (_, { amount, message, postingId, companyId }) => {
+      const existingBids = await Bid.find({
+        posting: postingId,
+        company: companyId,
+      });
+
+      if (existingBids.length > 0)
+        throw new Error(
+          "A bid from this company already exists for this posting."
+        );
+
       const newBid = await Bid.create({
         amount,
         message,
@@ -305,7 +315,6 @@ const resolvers = {
         company: companyId,
       });
 
-      /** @TODO validate posting has new bid */
       await Posting.findByIdAndUpdate(postingId, {
         $addToSet: { bids: newBid._id },
       });
@@ -328,10 +337,15 @@ const resolvers = {
     },
 
     removeBid: async (_, { bidId }) => {
-      /** @TODO handle customer notification if Bid status was accepted */
-      const bid = await Bid.findOneAndDelete({ _id: bidId });
-      if (!bid) return { error: `Could not delete Bid with ID` };
-      else return { message: `Success` };
+      const bid = await Bid.findById(bidId);
+      if (!bid) throw new Error("Bid not found.");
+
+      await Posting.findByIdAndUpdate(bid.posting, {
+        $pull: { bids: bidId },
+      });
+
+      await Bid.findByIdAndDelete(bidId);
+      return { message: "Success" };
     },
   },
 };
