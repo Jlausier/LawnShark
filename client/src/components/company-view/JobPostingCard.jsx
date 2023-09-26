@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+
+import LinkCard from "../common/LinkCard";
 
 export default function CompanyJobPostingCard({
   _id,
@@ -9,7 +10,7 @@ export default function CompanyJobPostingCard({
   description,
 }) {
   return (
-    <Link to={`/JobPosting/${_id}`} className="mb-3 card w-100">
+    <LinkCard to={`/JobPosting/${_id}`}>
       <div className="card-body">
         <div className="row mt-2 mb-4">
           <div className="col-6">
@@ -27,7 +28,7 @@ export default function CompanyJobPostingCard({
         </div>
         <p className="card-text">{description}</p>
       </div>
-    </Link>
+    </LinkCard>
   );
 }
 
