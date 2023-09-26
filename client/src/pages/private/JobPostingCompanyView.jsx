@@ -1,24 +1,23 @@
-import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
 import { QUERY_COMPANY_POSTING } from "../../utils/queries";
 import { getUserRoleId } from "../../utils/auth";
 import { createLocationString } from "../../utils/dataValidation";
+import useRemoveBid from "../../hooks/useRemoveBid";
 
 import CreateBid from "../../components/company-view/CreateBid";
 import CompanyBidStub from "../../components/company-view/BidStub";
-import useRemoveBid from "../../hooks/useRemoveBid";
 
 export default function JobPostingCompanyView() {
   const companyId = getUserRoleId();
   const { postingId } = useParams();
-  const [showCreateBid, setShowCreateBid] = useState(false);
-  const { removeBid } = useRemoveBid();
 
   const { data } = useQuery(QUERY_COMPANY_POSTING, {
     variables: { postingId, companyId },
   });
+
+  const { removeBid } = useRemoveBid();
 
   return data && data.companyPosting ? (
     <div className="border p-4 rounded">
@@ -80,16 +79,7 @@ export default function JobPostingCompanyView() {
         ))
       ) : (
         <div className="d-flex flex-column align-items-start">
-          {!showCreateBid ? (
-            <button
-              className="btn green text-light"
-              onClick={() => setShowCreateBid(true)}
-            >
-              Place Bid
-            </button>
-          ) : (
-            <CreateBid />
-          )}
+          <CreateBid />
         </div>
       )}
     </div>

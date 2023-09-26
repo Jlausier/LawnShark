@@ -1,17 +1,22 @@
 import { useQuery } from "@apollo/client";
+
 import { getUserRoleId } from "../../utils/auth";
 import { QUERY_MY_BIDS } from "../../utils/queries";
+import useRemoveBid from "../../hooks/useRemoveBid";
+
 import CompanyBidCard from "../../components/company-view/BidCard";
 
 export default function MyBids() {
   const companyId = getUserRoleId();
+
   const { data } = useQuery(QUERY_MY_BIDS, {
     variables: {
       companyId: companyId,
       accepted: false,
     },
   });
-  console.log(data);
+
+  const { removeBid } = useRemoveBid();
 
   return (
     <div className="border p-4 rounded">
@@ -21,8 +26,12 @@ export default function MyBids() {
       <div className="">
         {data && data.myBids && data.myBids.length > 0 ? (
           <div>
-            {data.myBids.map((bids) => (
-              <CompanyBidCard {...bids} key={bids._id} />
+            {data.myBids.map((bid) => (
+              <CompanyBidCard
+                handleDeleteBid={removeBid}
+                {...bid}
+                key={bid._id}
+              />
             ))}
           </div>
         ) : (
