@@ -7,16 +7,16 @@ import { createLocationString } from "../../utils/dataValidation";
 
 import CreateBid from "../../components/company-view/CreateBid";
 import CompanyBidCard from "../../components/company-view/BidCard";
+import { useState } from "react";
 
 export default function JobPostingCompanyView() {
   const companyId = getUserRoleId();
   const { postingId } = useParams();
+  const [showCreateBid, setShowCreateBid] = useState(false);
 
   const { data } = useQuery(QUERY_COMPANY_POSTING, {
     variables: { postingId, companyId },
   });
-
-  console.log(data);
 
   return data && data.companyPosting ? (
     <div className="border p-4 rounded">
@@ -77,11 +77,16 @@ export default function JobPostingCompanyView() {
         ))
       ) : (
         <div className="d-flex flex-column align-items-start">
-          {/* Make the CreateBid Component Appear if the button is clicked */}
-          <a className="btn green text-light" href="#" role="button">
-            Place Bid
-          </a>
-          <CreateBid />
+          {!showCreateBid ? (
+            <button
+              className="btn green text-light"
+              onClick={() => setShowCreateBid(true)}
+            >
+              Place Bid
+            </button>
+          ) : (
+            <CreateBid />
+          )}
         </div>
       )}
     </div>

@@ -9,8 +9,6 @@ import CompanyJobPostingCard from "../../components/company-view/JobPostingCard"
 
 export default function FindWork() {
   const { data } = useQuery(QUERY_SERVICES);
-  console.log(data);
-  // Initialize state for checked services
   const [checkedState, setCheckedState] = useState({});
 
   const handleOnChange = (serviceId) => {
