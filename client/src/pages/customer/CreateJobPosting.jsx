@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { QUERY_SERVICES } from "../../utils/queries";
 import { ADD_POSTING } from "../../utils/mutations";
 
-import ServiceRadioButton from "../../components/ServiceRadioButton";
-import RadioButton from "../../components/RadioButton";
-import Button from "../../components/Button";
+import ServiceRadioButton from "../../components/common/ServiceRadioButton";
+import RadioButton from "../../components/common/RadioButton";
+import Button from "../../components/common/Button";
 import { getUserRoleId } from "../../utils/auth";
 
 export default function CreateJobPosting() {

@@ -3,6 +3,8 @@ import { useLocation } from "react-router-dom";
 import { getUserRole } from "../../utils/auth";
 import NavBarLink from "./NavBarLink";
 
+import LogoSVG from "../../assets/logo.svg";
+
 export default function NavBar() {
   const role = getUserRole();
   const currentPage = useLocation().pathname;
@@ -13,21 +15,8 @@ export default function NavBar() {
       path: "/JobPostings",
     },
     {
-      title: "Search",
-      path: "/Search",
-    },
-    {
-      title: "Messages",
-      path: "/Messages",
-    },
-    {
-      title: "Notifications",
-      path: "/Notifications",
-    },
-
-    {
-      title: "Customer Profile",
-      path: "/UserProfile",
+      title: "Companies",
+      path: "/FindCompanies",
     },
     {
       title: "About",
@@ -36,14 +25,6 @@ export default function NavBar() {
   ];
 
   const companyLinks = [
-    {
-      title: "Notifications",
-      path: "/Notifications",
-    },
-    {
-      title: "Messages",
-      path: "/Messages",
-    },
     {
       title: "Find Work",
       path: "/FindWork",
@@ -57,8 +38,8 @@ export default function NavBar() {
       path: "/MyBids",
     },
     {
-      title: "Search",
-      path: "/Search",
+      title: "Companies",
+      path: "/FindCompanies",
     },
     {
       title: "About",
@@ -68,16 +49,16 @@ export default function NavBar() {
 
   return (
     <>
-      <div className=" main-height p-4 green text-white d-flex flex-column align-items-between d-none d-sm-block">
-          <div className="">
-            <img src="./images/lawn-shark-logo-1000.png" className="p-1 size"></img>
-            <nav className="navbar navbar-expand-lg ">
-              <ul 
-                className="w-100 navbar-nav nav-pills flex-column"
-                id="v-pills-tab" 
-                role="tablist" 
-                aria-orientation="vertical"
-              >
+      <div className="main-height p-4 green text-white d-flex flex-column align-items-between d-none d-sm-block">
+        <div className="">
+          <img src={LogoSVG} className="p-1 size"></img>
+          <nav className="navbar navbar-expand-lg ">
+            <ul
+              className="w-100 navbar-nav nav-pills flex-column"
+              id="v-pills-tab"
+              role="tablist"
+              aria-orientation="vertical"
+            >
               {role === "customer" &&
                 customerLinks.map((link) => (
                   <NavBarLink
@@ -94,12 +75,10 @@ export default function NavBar() {
                     key={link.path}
                   />
                 ))}
-              </ul>
-            </nav>
-          </div>
-          <div className="">
-          © 2023 Lawn Shark® Global Inc.
-          </div>
+            </ul>
+          </nav>
+        </div>
+        <div className="">© 2023 LawnShark® Global Inc.</div>
       </div>
     </>
   );

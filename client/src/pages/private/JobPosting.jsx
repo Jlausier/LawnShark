@@ -5,7 +5,7 @@ import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_POSTING } from "../../utils/queries";
 import { getUserRole, getUserRoleId } from "../../utils/auth";
 
-import BidCardView from "../../components/bids/BidCardView";
+import CustomerBidCard from "../../components/customer-view/BidCard";
 import { createLocationString } from "../../utils/dataValidation";
 import { ACCEPT_BID } from "../../utils/mutations";
 
@@ -91,7 +91,7 @@ export default function JobPosting() {
         <h5 className="body-font">Live Bids</h5>
         {data.posting.bids &&
           data.posting.bids.map((bid) => (
-            <BidCardView
+            <CustomerBidCard
               {...bid}
               handleAcceptBid={handleAcceptBid}
               key={bid._id}

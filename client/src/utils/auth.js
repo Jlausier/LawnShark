@@ -59,6 +59,17 @@ export function validateEmail(email) {
 }
 
 export function validatePassword(input) {
-  const passw = /^[A-Za-z]\w{7,14}$/;
-  return input.match(passw);
+  return input.match(/^[A-Za-z]\w{7,14}$/);
+}
+
+export function getUserProfileLink() {
+  const role = getUserRole();
+  switch (role) {
+    case "undefined":
+      return "/";
+    case "customer":
+      return "/UserProfile";
+    case "company":
+      return `/CompanyProfile/${getUserRoleId()}`;
+  }
 }

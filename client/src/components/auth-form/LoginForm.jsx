@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import Button from "../Button";
+import Button from "../common/Button";
 import useLogin from "../../hooks/useLogin";
 
 export default function LoginForm() {
@@ -26,7 +26,7 @@ export default function LoginForm() {
 
   return (
     <div>
-      <h2 className="mb-4 fs-3 header">Log in to Lawn Shark</h2>
+      <h2 className="mb-4 fs-3 header">Log in to LawnShark</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="email" className="form-label body-font">

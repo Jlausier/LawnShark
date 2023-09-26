@@ -6,14 +6,12 @@ import { QUERY_CUSTOMER_USER } from "../../utils/queries";
 import { getUserId } from "../../utils/auth";
 import { createLocationString } from "../../utils/dataValidation";
 
-import Button from "../../components/Button";
-import UserPostings from "../../components/UserPostings";
+import Button from "../../components/common/Button";
+import CustomerPostings from "../../components/customer-view/Postings";
 import UpdateForm from "../../components/modal/UpdateForm";
 
 export default function UserProfile() {
   const userId = getUserId();
-  console.log(userId);
-
   const [showModal, setShowModal] = useState(false);
   const [userData, setUserData] = useState({
     email: "",
@@ -73,56 +71,51 @@ export default function UserProfile() {
 
   return (
     <div>
-        <div className="border p-4 rounded">
-          <div className="row">
-            <div className="col-12 col-lg-10">
-              <span>It's good to see you,</span>
-              <h2 className="header">{userData._customer.name}</h2>
-            </div>
-
+      <div className="border p-4 rounded">
+        <div className="row">
+          <div className="col-12 col-lg-10">
+            <span>It&apos;s good to see you,</span>
+            <h2 className="header">{userData._customer.name}</h2>
           </div>
-          <hr />
-          <div className="row">
-            <div className="col-6">
+        </div>
+        <hr />
+        <div className="row">
+          <div className="col-6">
             <h3 className="fs-5 mb-4 body-font">User Info</h3>
-
-            </div>
-            <div className="col-6 d-flex justify-content-end align-items-start">
-              <Button title={"Edit Profile"} onClick={openModal} />
-            </div>
           </div>
-          <div className="row mb-3">
-            <div className="col-12 col-lg-1">
-              <span>email:</span>
-            </div>
-            <div className="col">
-            {userData.email}
-            </div>
+          <div className="col-6 d-flex justify-content-end align-items-start">
+            <Button title={"Edit Profile"} onClick={openModal} />
           </div>
-          <div className="row mb-3">
-            <div className="col-12 col-lg-1">
-              <span>location:</span>
-            </div>
-            <div className="col">
+        </div>
+        <div className="row mb-3">
+          <div className="col-12 col-lg-1">
+            <span>email:</span>
+          </div>
+          <div className="col">{userData.email}</div>
+        </div>
+        <div className="row mb-3">
+          <div className="col-12 col-lg-1">
+            <span>location:</span>
+          </div>
+          <div className="col">
             {createLocationString(userData._customer.location)}
-            </div>
-
           </div>
-          <hr />
-          <div className="row">
-            <div className="col">
-              <h3 className="fs-5 body-font">Job Posting History</h3>
-              <span>
-                {" "}
-                Total Job Postings: {userData._customer.postings.length}{" "}
-              </span>
-            </div>
-            <div className="col">
-              {userData._customer.postings.length > 0 && (
-                <UserPostings postings={userData._customer.postings} />
-              )}
-            </div>
+        </div>
+        <hr />
+        <div className="row">
+          <div className="col">
+            <h3 className="fs-5 body-font">Job Posting History</h3>
+            <span>
+              {" "}
+              Total Job Postings: {userData._customer.postings.length}{" "}
+            </span>
           </div>
+          <div className="col">
+            {userData._customer.postings.length > 0 && (
+              <CustomerPostings postings={userData._customer.postings} />
+            )}
+          </div>
+        </div>
       </div>
       {showModal && (
         // Turn into a Component

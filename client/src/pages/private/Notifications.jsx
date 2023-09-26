@@ -1,5 +1,6 @@
+import { nanoid } from "nanoid";
 import NotificationCard from "../../components/NotificationCard";
-import { notification } from "../../utils/testData";
+import { notifications } from "../../utils/testData";
 
 export default function Notifications() {
   return (
@@ -7,7 +8,9 @@ export default function Notifications() {
       <div className="border p-4 rounded">
         <h2 className="header mb-5">Notifications</h2>
         <div className="d-flex flex-column border-top">
-          <NotificationCard {...notification} />
+          {notifications.map((notification) => (
+            <NotificationCard {...notification} key={nanoid()} />
+          ))}
         </div>
       </div>
     </div>

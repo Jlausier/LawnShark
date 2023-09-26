@@ -1,100 +1,98 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { logoutUser } from "../../utils/auth";
+
+import useLogout from "../../hooks/useLogout";
+import { getUserProfileLink } from "../../utils/auth";
 
 export default function TopBar() {
-  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const handleLogout = () => {
-    logoutUser();
-    navigate("/welcome");
-  };
+  const logout = useLogout();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-//   return (
-//     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-//       <div className="container">
-//         <a className="navbar-brand" href="#">
-//           Your Logo
-//         </a>
-//         <button
-//           className={`navbar-toggler ${isMenuOpen ? '' : 'collapsed'}`}
-//           type="button"
-//           data-bs-toggle="collapse"
-//           data-bs-target="#navbarNav"
-//           aria-controls="navbarNav"
-//           aria-expanded={isMenuOpen ? 'true' : 'false'}
-//           aria-label="Toggle navigation"
-//           onClick={toggleMenu}
-//         >
-//           <span className="navbar-toggler-icon"></span>
-//         </button>
-//         <div
-//           className={`w-75 collapse navbar-collapse fixed-top top-0 start-0 green text-light ${isMenuOpen ? 'show' : ''}`}
-//           id="navbarNav"
-//         >
-//           <ul className="navbar-nav ml-auto">
-//             <li className="nav-item">
-//               <a className="nav-link" href="#">
-//                 Home
-//               </a>
-//             </li>
-//             <li className="nav-item">
-//               <a className="nav-link" href="#">
-//                 About
-//               </a>
-//             </li>
-//             <li className="nav-item">
-//               <a className="nav-link" href="#">
-//                 Services
-//               </a>
-//             </li>
-//             <li className="nav-item">
-//               <a className="nav-link" href="#">
-//                 Contact
-//               </a>
-//             </li>
-//             <li className="nav-item ps-2">
-//               <button className="nav-link" onClick={handleLogout}>
-//                 <svg
-//                   xmlns="http://www.w3.org/2000/svg"
-//                   width="16"
-//                   height="16"
-//                   fill="currentColor"
-//                   className="bi bi-arrow-bar-right"
-//                   viewBox="0 0 16 16"
-//                 >
-//                   <path
-//                     fillRule="evenodd"
-//                     d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8Zm-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5Z"
-//                   />
-//                 </svg>
-//               </button>
-//             </li>
-//           </ul>
-//         </div>
-//       </div>
-//     </nav>
-//   );
-
-// }
+  // return (
+  //   <nav className="navbar navbar-expand-lg navbar-light bg-light">
+  //     <div className="container">
+  //       <a className="navbar-brand" href="#">
+  //         Your Logo
+  //       </a>
+  //       <button
+  //         className={`navbar-toggler ${isMenuOpen ? "" : "collapsed"}`}
+  //         type="button"
+  //         data-bs-toggle="collapse"
+  //         data-bs-target="#navbarNav"
+  //         aria-controls="navbarNav"
+  //         aria-expanded={isMenuOpen ? "true" : "false"}
+  //         aria-label="Toggle navigation"
+  //         onClick={toggleMenu}
+  //       >
+  //         <span className="navbar-toggler-icon"></span>
+  //       </button>
+  //       <div
+  //         className={`w-75 collapse navbar-collapse fixed-top top-0 start-0 green text-light ${
+  //           isMenuOpen ? "show" : ""
+  //         }`}
+  //         id="navbarNav"
+  //       >
+  //         <ul className="navbar-nav ml-auto">
+  //           <li className="nav-item">
+  //             <a className="nav-link" href="#">
+  //               Home
+  //             </a>
+  //           </li>
+  //           <li className="nav-item">
+  //             <a className="nav-link" href="#">
+  //               About
+  //             </a>
+  //           </li>
+  //           <li className="nav-item">
+  //             <a className="nav-link" href="#">
+  //               Services
+  //             </a>
+  //           </li>
+  //           <li className="nav-item">
+  //             <a className="nav-link" href="#">
+  //               Contact
+  //             </a>
+  //           </li>
+  //           <li className="nav-item ps-2">
+  //             <button className="nav-link" onClick={handleLogout}>
+  //               <svg
+  //                 xmlns="http://www.w3.org/2000/svg"
+  //                 width="16"
+  //                 height="16"
+  //                 fill="currentColor"
+  //                 className="bi bi-arrow-bar-right"
+  //                 viewBox="0 0 16 16"
+  //               >
+  //                 <path
+  //                   fillRule="evenodd"
+  //                   d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8Zm-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5Z"
+  //                 />
+  //               </svg>
+  //             </button>
+  //           </li>
+  //         </ul>
+  //       </div>
+  //     </div>
+  //   </nav>
+  // );
 
   return (
     <div>
       <nav className=" pt-3 pe-5 navbar navbar-expand-lg navbar-light">
         {/* Collapse Button for Responsiveness */}
         <button
-          className="navbar-toggler ms-auto"
+          className={`navbar-toggler ms-auto ${isMenuOpen ? "" : "collapsed"}`}
           type="button"
           data-toggle="collapse"
           data-target="#navbarNav"
           aria-controls="navbarNav"
           aria-expanded="false"
           aria-label="Toggle navigation"
+          onClick={toggleMenu}
         >
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -132,7 +130,7 @@ export default function TopBar() {
               </a>
             </li>
             <li className="nav-item ps-2">
-              <a className="nav-link" href="/UserProfile">
+              <a className="nav-link" href={getUserProfileLink()}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="25"
@@ -145,6 +143,23 @@ export default function TopBar() {
                   <path d="M4.5 0A2.5 2.5 0 0 0 2 2.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2.5A2.5 2.5 0 0 0 11.5 0h-7zM3 2.5A1.5 1.5 0 0 1 4.5 1h7A1.5 1.5 0 0 1 13 2.5v10.795a4.2 4.2 0 0 0-.776-.492C11.392 12.387 10.063 12 8 12s-3.392.387-4.224.803a4.2 4.2 0 0 0-.776.492V2.5z" />
                 </svg>
               </a>
+            </li>
+            <li className="nav-item ps-2">
+              <button className="nav-link" onClick={logout}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  className="bi bi-arrow-bar-right"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8Zm-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5Z"
+                  />
+                </svg>
+              </button>
             </li>
           </ul>
         </div>

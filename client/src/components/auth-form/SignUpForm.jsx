@@ -11,7 +11,7 @@ export default function SignUpForm() {
 
   return (
     <div>
-      <h2 className="mb-4 fs-3 header">Sign Up to Lawn Shark</h2>
+      <h2 className="mb-4 fs-3 header">Sign Up to LawnShark</h2>
       <div className="row gy-3 mb-4">
         <div className="col-12 col-md-6 text-sm-center">
           <button
