@@ -112,3 +112,11 @@
   background-size: contain;
   background-repeat: none;
 }
+
+.delete-button {
+  background: none;
+}
+
+.delete-button:hover {
+  color: #dc3545;
+}
