@@ -92,7 +92,7 @@
 
 /* Apply these styles to the container div */
 .containerClass {
-  min-height: 100vh; /* Set minimum height to 100% of the viewport height */
+  height: 100vh; /* Set height to 100% of the viewport height */
   display: flex; /* Use flexbox for vertical alignment */
   flex-direction: column; /* Stack children vertically */
 }
