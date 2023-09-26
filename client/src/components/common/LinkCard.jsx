@@ -2,7 +2,11 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-export default function LinkCard({ to, children }) {
+export default function LinkCard({
+  to,
+  children,
+  classes = "mb-3 card w-100",
+}) {
   const [isHovered, setIsHovered] = useState(false);
 
   const linkStyle = {
@@ -21,7 +25,7 @@ export default function LinkCard({ to, children }) {
       style={isHovered ? { ...linkStyle, ...linkHoverStyle } : linkStyle}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="mb-3 card w-100"
+      className={classes}
     >
       {children}
     </Link>
@@ -31,4 +35,5 @@ export default function LinkCard({ to, children }) {
 LinkCard.propTypes = {
   to: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
+  classes: PropTypes.string,
 };

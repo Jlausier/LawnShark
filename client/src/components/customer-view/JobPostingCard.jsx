@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+
+import LinkCard from "../common/LinkCard";
 
 export default function CustomerJobPostingCard({
   _id,
@@ -9,26 +9,8 @@ export default function CustomerJobPostingCard({
   frequency,
   description,
 }) {
-  const [isHovered, setIsHovered] = useState(false);
-
-  const linkStyle = {
-    textDecoration: "none",
-    color: "inherit",
-    transition: "0.3s",
-  };
-
-  const linkHoverStyle = {
-    backgroundColor: "#d2f7d5",
-  };
-
   return (
-    <Link
-      to={`/JobPosting/${_id}`}
-      style={isHovered ? { ...linkStyle, ...linkHoverStyle } : linkStyle}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className="mb-3 card w-100"
-    >
+    <LinkCard to={`/JobPosting/${_id}`}>
       <div className="card-body">
         <div className="row mt-2 mb-4">
           <div className="col-6">
@@ -46,7 +28,7 @@ export default function CustomerJobPostingCard({
         </div>
         <p className="card-text">{description}</p>
       </div>
-    </Link>
+    </LinkCard>
   );
 }
 
