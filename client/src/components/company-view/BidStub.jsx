@@ -63,18 +63,6 @@ export default function CompanyBidCard({
             </button>
           </div>
         </div>
-        <div className="row pb-3">
-          <div className="col-5">
-            <span className="card-text">
-              Location: {createLocationString(posting.customer.location)}
-            </span>
-          </div>
-          <div className="col-3">
-            <span className="card-text">Frequency: {posting.frequency}</span>
-          </div>
-        </div>
-        <span>Description:</span>
-        <p className="card-text">{posting.description}</p>
       </div>
     </Link>
   );
