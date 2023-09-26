@@ -3,6 +3,8 @@ import { useLocation } from "react-router-dom";
 import { getUserRole } from "../../utils/auth";
 import NavBarLink from "./NavBarLink";
 
+import LogoSVG from "../../assets/logo.svg";
+
 export default function NavBar() {
   const role = getUserRole();
   const currentPage = useLocation().pathname;
@@ -49,10 +51,7 @@ export default function NavBar() {
     <>
       <div className="main-height p-4 green text-white d-flex flex-column align-items-between d-none d-sm-block">
         <div className="">
-          <img
-            src="./images/lawn-shark-logo-1000.png"
-            className="p-1 size"
-          ></img>
+          <img src={LogoSVG} className="p-1 size"></img>
           <nav className="navbar navbar-expand-lg ">
             <ul
               className="w-100 navbar-nav nav-pills flex-column"

@@ -1,24 +1,22 @@
 .bg-pic {
-    background-image:  url(../public/images/lawncare.jpg);
+  background-image: url(../public/images/lawncare.jpg);
   background-size: cover;
 }
-.card-img-top{
-    background-image: url(../public/images/landing-page-image.png);
- 
+
+.card {
+  width: 18rem;
 }
-.card{
-    width: 18rem;
-}
-.logo{
+
+.logo {
   background-image: url(/images/lawn-shark-logo-1000.png);
   background-size: contain;
   background-repeat: none;
 }
 
-.size { 
+.size {
   width: 100px;
 }
 
 .green {
-  background-color: #278C2E;
+  background-color: #278c2e;
 }

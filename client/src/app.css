@@ -1,116 +1,114 @@
 .green {
-    background-color: #278C2E;
-  }
+  background-color: #278c2e;
+}
 
-  .light-green {
-    background-color: #d2f7d5;
-  }
+.light-green {
+  background-color: #d2f7d5;
+}
 
 .main-height {
-    height: 100vh;
+  height: 100vh;
 }
 
 .footer-height {
-    height: 10vh;
+  height: 10vh;
 }
 
-.dark-green{
-    background-color: #16661B;
+.dark-green {
+  background-color: #16661b;
 }
 
 .dark-footer {
-    background-color: #062601;
+  background-color: #062601;
 }
 
 .landing-page-bg {
-    background-image: url(/images/green-background-image.png);
-    background-size: cover;
+  background-image: url(/images/green-background-image.png);
+  background-size: cover;
 }
 
 .header,
 .header-landing {
-    font-family: 'Rosa', serif;
+  font-family: "Rosa", serif;
 }
 
 .body-font {
-    font-family: 'Urbanist', sans-serif;
+  font-family: "Urbanist", sans-serif;
 }
 
 .header {
-    color: #16661B;
-    font-size: 4rem;
+  color: #16661b;
+  font-size: 4rem;
 }
 
 .header-landing {
-    color: #F8F9FA;
-    font-size: 5rem;
+  color: #f8f9fa;
+  font-size: 5rem;
 }
 
 .size-sm {
-    width: 75px;
+  width: 75px;
 }
 
 .nav-green {
-    background-color: #2E983B;
+  background-color: #2e983b;
 }
 
 .nav-dark {
-    background-color: #2E983B;
+  background-color: #2e983b;
 }
 
 .notification-red {
-    border-radius: 25px;
-    color: #F8F9FA;
-    background-color: orangered;
+  border-radius: 25px;
+  color: #f8f9fa;
+  background-color: orangered;
 }
 
 @media (max-width: 500px) {
-
-    .header {
-      font-size: 3rem; 
-    }
+  .header {
+    font-size: 3rem;
   }
+}
 
 .buttonMaster {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    padding-left: 16px;
-    padding-right: 16px;
-    background-color: #278C2E;
-    color: #F8F9FA;
-    border: none;
-    border-radius:6px;
-    font-family: 'Urbanist', sans-serif;
-    text-align: center;
-    transition: 0.1s ease-in-out;
-    letter-spacing: 1px;
-    text-decoration: none;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 16px;
+  padding-right: 16px;
+  background-color: #278c2e;
+  color: #f8f9fa;
+  border: none;
+  border-radius: 6px;
+  font-family: "Urbanist", sans-serif;
+  text-align: center;
+  transition: 0.1s ease-in-out;
+  letter-spacing: 1px;
+  text-decoration: none;
 }
 
 .buttonMaster:hover {
-    background-color: #16661B;
-
+  background-color: #16661b;
 }
 
 /* Apply these styles to the container div */
 .containerClass {
-    min-height: 100vh; /* Set minimum height to 100% of the viewport height */
-    display: flex; /* Use flexbox for vertical alignment */
-    flex-direction: column; /* Stack children vertically */
-  }
-  
-  /* Apply these styles to the div you want to stretch */
-  .stretchClass {
-    flex-grow: 1; /* Make the div grow and fill available vertical space */
-    /* You can add other styles as needed */
-  }
-
-.border-green {
-    border-color: #278C2E;
+  min-height: 100vh; /* Set minimum height to 100% of the viewport height */
+  display: flex; /* Use flexbox for vertical alignment */
+  flex-direction: column; /* Stack children vertically */
 }
 
-.logo{
-    background-image: url(/images/lawn-shark-logo-1000.png);
-    background-size: contain;
-    background-repeat: none;
-  }
+/* Apply these styles to the div you want to stretch */
+.stretchClass {
+  flex-grow: 1; /* Make the div grow and fill available vertical space */
+  /* You can add other styles as needed */
+}
+
+.border-green {
+  border-color: #278c2e;
+}
+
+.logo {
+  background-image: url(/images/lawn-shark-logo-1000.png);
+  background-size: contain;
+  background-repeat: none;
+}
