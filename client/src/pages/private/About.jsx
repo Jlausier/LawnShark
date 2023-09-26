@@ -1,3 +1,43 @@
+import TeamCard from "../../components/TeamCard";
+
+const teamData = [
+  {
+    imageName: "brian.jpeg",
+    name: "Brian Gorman",
+    role: "Back-End Development",
+    github: "GormanBrian",
+    website: "https://briangorman.netlify.app/",
+  },
+  {
+    imageName: "matthew.jpeg",
+    name: "Matthew Alfaro",
+    role: "Front-End Development",
+    github: "alfaro-matttthew",
+    website: "https://www.alfaromatthew.com/",
+  },
+  {
+    imageName: "holden.jpeg",
+    name: "Holden Garrison",
+    role: "Back-End Development",
+    github: "holdenmg",
+    website: "https://sprightly-kleicha-2518d8.netlify.app/",
+  },
+  {
+    imageName: "jacob.jpeg",
+    name: "Jacob Lausier",
+    role: "Front-End Development",
+    github: "Jlausier",
+    website: "none",
+  },
+  {
+    imageName: "brian.jpeg",
+    name: "Arnaldo Henriquez",
+    role: "Front-End Development",
+    github: "arnald18",
+    website: "none",
+  },
+];
+
 export default function About() {
   return (
     <div className="border p-4 rounded">
@@ -32,7 +72,6 @@ export default function About() {
               </div>
             </div>
           </section>
-
           <section className="bg-light py-5">
             <div className="container">
               <h2 className="text-center body-font">Our Dev Team</h2>
@@ -41,7 +80,7 @@ export default function About() {
         </div>
       </div>
       <div className="row">
-        <div className=" d-flex flex-wrap justify-content-center">
+        <div className="d-flex flex-wrap justify-content-center">
           <div className="card my-3 mx-3">
             <div className="pt-4 d-flex justify-content-center align-items-center">
               <img src="/images/brian.jpeg" className="w-50 rounded-pill" />
@@ -192,7 +231,7 @@ export default function About() {
             </div>
             <div className="card-body">
               <h5 className="card-title text-center body-font">
-                Jocab Lausier
+                Jacob Lausier
               </h5>
               <p className="text-center">Front-End Development</p>
             </div>
