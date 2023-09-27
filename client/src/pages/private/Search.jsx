@@ -33,7 +33,7 @@ export default function Search() {
 
   return (
     <div className="container">
-      <div className="border p-4 rounded">
+      <div className="py-4">
         <div className="mb-5">
           <h2 className="header">Search</h2>
           <span className="body-font">

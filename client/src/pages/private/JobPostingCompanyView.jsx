@@ -20,7 +20,7 @@ export default function JobPostingCompanyView() {
   const { removeBid } = useRemoveBid();
 
   return data && data.companyPosting ? (
-    <div className="border p-4 rounded bg-white">
+    <div className="py-4">
       <div className="row">
         <div className="col-6">
           <h2 className="posting-header">{data.companyPosting.title}</h2>

@@ -14,7 +14,7 @@ const teamData = [
     name: "Matthew Alfaro",
     role: "Front-End Development",
     github: "alfaro-matttthew",
-    website: "https://www.alfaromatthew.com/",
+    website: "https://alfaromatthew.netlify.app/",
     linkedIn: "alfaro-matthew",
   },
   {
@@ -45,7 +45,7 @@ const teamData = [
 
 export default function About() {
   return (
-    <div className="border p-4 rounded">
+    <div className="py-4">
       <div className="mb-5">
         <h2 className="header">About</h2>
       </div>

@@ -38,7 +38,7 @@ export default function FindWork() {
   const { data: postings, loading } = usePostingsSearch(searchOptions);
 
   return (
-    <div className="border p-4 rounded">
+    <div className="py-4">
       <div className="mb-5">
         <h2 className="header">Find Work</h2>
         <span className="">Click on job titles to view more details</span>

@@ -27,7 +27,7 @@ function App() {
           <div className="row gx-0">
             <TopBar />
           </div>
-          <div className="row pb-5 px-5 gx-0 overflow-y-scroll">
+          <div className="border  rounded row mx-5 mb-3 pb-5 px-5 gx-0 overflow-y-scroll">
             <Outlet />
           </div>
         </div>

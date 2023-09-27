@@ -19,7 +19,7 @@ export default function JobPostings() {
 
   return (
     <div>
-      <div className="border p-4 rounded">
+      <div className="py-4">
         <div className=" mb-5 row">
           <div className="col-12 col-lg-10">
             <h2 className="header">My Job Postings</h2>

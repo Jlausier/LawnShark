@@ -92,7 +92,7 @@ export default function CreateJobPosting() {
   };
 
   return (
-    <div className="p-4 border rounded">
+    <div className="py-4">
       <div className="mb-5 d-flex justify-content-between align-items-start">
         <h2 className="header">Create a New Job Post</h2>
       </div>

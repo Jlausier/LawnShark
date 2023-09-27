@@ -38,7 +38,7 @@ export default function JobPosting() {
   return error ? (
     <Navigate to="/" />
   ) : data && data.posting ? (
-    <div className="border p-4 rounded">
+    <div className="py-4">
       <div className="row">
         <div className="col-6">
           <h2 className="header">{data.posting.title}</h2>
