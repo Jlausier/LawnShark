@@ -1,11 +1,15 @@
 import { useQuery } from "@apollo/client";
+
 import { getUserRoleId } from "../../utils/auth";
 import { QUERY_MY_ACCEPTED_BIDS } from "../../utils/queries";
+
 import CompanyBidCard from "../../components/company-view/BidCard";
+import Skeleton from "react-loading-skeleton";
+
 
 export default function MyJobs() {
   const companyId = getUserRoleId();
-  const { data } = useQuery(QUERY_MY_ACCEPTED_BIDS, {
+  const { data, loading } = useQuery(QUERY_MY_ACCEPTED_BIDS, {
     variables: {
       companyId: companyId,
       accepted: true,
@@ -28,6 +32,7 @@ export default function MyJobs() {
         ) : (
           <div>No new bids have been accepted.</div>
         )}
+        {loading && [1,2,3].map((n) => <Skeleton className={"card-body mb-3"} height={280} key={n} />)}
       </div>
     </div>
   );

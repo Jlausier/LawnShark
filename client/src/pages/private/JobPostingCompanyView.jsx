@@ -82,6 +82,7 @@ export default function JobPostingCompanyView() {
           <CreateBid />
         </div>
       )}
+      {!data.companyPosting.bids && <Skeleton className={"card-body mb-3"} height={160} />}
     </div>
   ) : (
     <div>

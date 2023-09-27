@@ -6,8 +6,10 @@ import { QUERY_SERVICES, QUERY_POSTINGS_FILTERED } from "../../utils/queries";
 import { usePostingsSearch } from "../../hooks/usePostings.js";
 
 import CompanyJobPostingCard from "../../components/company-view/JobPostingCard";
+import Skeleton from "react-loading-skeleton";
 
 export default function FindWork() {
+
   const { data } = useQuery(QUERY_SERVICES);
   const [checkedState, setCheckedState] = useState({});
 
@@ -76,6 +78,7 @@ export default function FindWork() {
         ) : (
           <div className="body-font fs-4"> There are no new Job Postings. </div>
         )}
+        {!postings && [1,2,3].map((n) => <Skeleton className={"card-body mb-3"} height={160} key={n} />)}
       </div>
     </div>
   );
