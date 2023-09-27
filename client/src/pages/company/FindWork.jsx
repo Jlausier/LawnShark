@@ -6,8 +6,20 @@ import { QUERY_SERVICES } from "../../utils/queries";
 import { usePostingsSearch } from "../../hooks/usePostings.js";
 
 import CompanyJobPostingCard from "../../components/company-view/JobPostingCard";
+import Skeleton from "react-loading-skeleton";
 
 export default function FindWork() {
+
+  // delete below when done testing
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(true)
+    }, 3000);
+  });
+  // delete above when done testing
+
   const { data } = useQuery(QUERY_SERVICES);
   const [checkedState, setCheckedState] = useState({});
 
@@ -64,6 +76,7 @@ export default function FindWork() {
       ) : (
         <div> </div>
       )}
+      {loading && [1,2,3].map((n) => <Skeleton className={"card-body mb-3"} height={280} key={n} />)}
       <hr />
       <div>
         {postings &&
