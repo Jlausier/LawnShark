@@ -2,7 +2,7 @@
 import { useQuery } from "@apollo/client";
 import { useState, useEffect } from "react";
 
-import { QUERY_SERVICES } from "../../utils/queries";
+import { QUERY_SERVICES, QUERY_POSTINGS_FILTERED } from "../../utils/queries";
 import { usePostingsSearch } from "../../hooks/usePostings.js";
 
 import CompanyJobPostingCard from "../../components/company-view/JobPostingCard";
@@ -33,9 +33,8 @@ export default function FindWork() {
   });
 
   // Fetch postings based on search options
-  const postings = usePostingsSearch(searchOptions);
-  console.log(postings);
-  console.log(data);
+  const { data: postings, loading } = usePostingsSearch(searchOptions);
+
   return (
     <div className="border p-4 rounded">
       <div className="mb-5">
