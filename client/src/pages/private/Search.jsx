@@ -36,12 +36,12 @@ export default function Search() {
                 value={searchText}
                 onChange={handleChange}
               />
-              <button
+              {/* <button
                 className="btn btn-outline-success fs-6 header"
                 type="submit"
               >
                 Search
-              </button>
+              </button> */}
             </form>
           </div>
           {data &&
