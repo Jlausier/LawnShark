@@ -19,7 +19,7 @@ export default function useSignUpCustomer() {
     });
 
     loginUser(data.signUpCustomer.token);
-    navigate("/");
+    navigate("/JobPostings");
   }
 
   return { signUpAsCustomer, error };

@@ -19,7 +19,7 @@ export default function useSignUpCompany() {
     });
 
     loginUser(data.signUpCompany.token);
-    navigate("/");
+    navigate("/FindWork");
   }
 
   return { signUpAsCompany, error };

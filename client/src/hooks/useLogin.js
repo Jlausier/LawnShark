@@ -2,24 +2,24 @@ import { useMutation } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 
 import { LOGIN_USER } from "../utils/mutations";
-import { loginUser } from "../utils/auth";
+import { loginUser, getUserHomeLink } from "../utils/auth";
 
 export default function useLogin() {
-  const [login, { error }] = useMutation(LOGIN_USER);
+  const [_login, { error }] = useMutation(LOGIN_USER);
   const navigate = useNavigate();
 
-  async function loginAsRole({ email, password }) {
+  async function login({ email, password }) {
     try {
-      const { data } = await login({
+      const { data } = await _login({
         variables: { email, password },
       });
 
       loginUser(data.login.token);
-      navigate("/");
+      navigate(getUserHomeLink(data.login.user.role));
     } catch (err) {
       console.error(err);
     }
   }
 
-  return { loginAsRole, error };
+  return { login, error };
 }

@@ -158,15 +158,8 @@ const resolvers = {
       return { token, user };
     },
 
-    addUser: async (_, { email, password }) => {
-      const user = await User.create({ email, password });
-      if (!user) throw AuthenticationError;
-      const token = signToken(user);
-      return { token, user };
-    },
-
     signUpCompany: async (_, { email, password, name, bio }) => {
-      const newUser = await User.create({ email, password });
+      const newUser = await User.create({ email, password, role: "company" });
       if (!newUser) throw AuthenticationError;
 
       const company = await Company.create({
@@ -197,7 +190,7 @@ const resolvers = {
     },
 
     signUpCustomer: async (_, { email, password, name, location }) => {
-      const newUser = await User.create({ email, password });
+      const newUser = await User.create({ email, password, role: "customer" });
       if (!newUser) throw AuthenticationError;
 
       const customer = await Customer.create({

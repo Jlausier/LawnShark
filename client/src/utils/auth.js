@@ -66,10 +66,21 @@ export function getUserProfileLink() {
   const role = getUserRole();
   switch (role) {
     case "undefined":
-      return "/";
+      return "/Welcome";
     case "customer":
       return "/UserProfile";
     case "company":
       return `/CompanyProfile/${getUserRoleId()}`;
+  }
+}
+
+export function getUserHomeLink(role) {
+  switch (role) {
+    case "undefined":
+      return "/Welcome";
+    case "customer":
+      return "/JobPostings";
+    case "company":
+      return "/FindWork";
   }
 }
