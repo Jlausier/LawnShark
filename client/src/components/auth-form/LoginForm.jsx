@@ -5,7 +5,7 @@ import useLogin from "../../hooks/useLogin";
 
 export default function LoginForm() {
   const [formState, setFormState] = useState({ email: "", password: "" });
-  const { loginAsRole } = useLogin();
+  const { login } = useLogin();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,7 +18,7 @@ export default function LoginForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await loginAsRole(formState);
+      await login(formState);
     } catch (err) {
       console.error(err);
     }

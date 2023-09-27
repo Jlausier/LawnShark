@@ -28,19 +28,6 @@ export const LOGIN_USER = gql`
   }
 `;
 
-export const ADD_USER = gql`
-  mutation addUser($email: String!, $password: String!) {
-    user(email: $email, password: $password) {
-      token
-      user {
-        _id
-        email
-        role
-      }
-    }
-  }
-`;
-
 export const SIGN_UP_COMPANY = gql`
   mutation signUpCompany(
     $email: String!
