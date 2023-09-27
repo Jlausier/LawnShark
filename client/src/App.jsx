@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
 
-import { loggedIn, getUserHomeLink } from "./utils/auth";
+import { loggedIn, getHomeLink } from "./utils/auth";
 
 import NavBar from "./components/nav/NavBar";
 import TopBar from "./components/nav/TopBar";
@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     if (!loggedIn()) navigate("/Welcome");
-    else if (currentPage === "/") navigate(getUserHomeLink());
+    else if (currentPage === "/") navigate(getHomeLink());
   }, [navigate, currentPage]);
 
   return (

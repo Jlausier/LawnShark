@@ -74,6 +74,10 @@ export function getUserProfileLink() {
   }
 }
 
+export function getHomeLink() {
+  return getUserHomeLink(getUserRole());
+}
+
 export function getUserHomeLink(role) {
   switch (role) {
     case "undefined":
