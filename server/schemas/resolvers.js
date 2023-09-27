@@ -101,15 +101,18 @@ const resolvers = {
       return await Company.find().populate("services");
     },
 
-    companiesFiltered: async (_, { searchText, services }) => {
-      const options = {};
-
-      if (searchText !== "")
-        options.name = { $regex: searchText, options: "i" };
-      if (services.length > 0) options.services = services;
-
-      return await Company.find(options).populate(services);
+    companiesFiltered: async (_, { searchText }) => {
+     
+        // Create a regular expression for case-insensitive search
+        const regex = new RegExp(searchText, 'i');
+    
+        // Use the regular expression to search for companies by name
+        return await Company.find({ name: { $regex: regex } }).populate('services');
+    
+        
+     
     },
+    
 
     customer: async (_, { customerId }) => {
       return await Customer.findOne({ _id: customerId })

@@ -1,35 +1,19 @@
 import { useState } from "react";
 import CompanyCard from "../../components/company/CompanyCard";
-
 import useCompaniesSearch from "../../hooks/useCompanies";
 import Skeleton from "react-loading-skeleton";
 
 export default function Search() {
-  const [searchOptions, setSearchOptions] = useState({
-    searchText: "",
-    services: [],
-  });
-
-  const [formData, setFormData] = useState({
-    searchText: "",
-    services: [],
-  });
+  const [searchText, setSearchText] = useState(""); // State for the search text
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setSearchOptions(formData);
+    setSearchText(e.target.value); // Update the search text state
   };
 
   // eslint-disable-next-line no-unused-vars
-  const { data, loading } = useCompaniesSearch(searchOptions);
+  const { data, loading } = useCompaniesSearch({
+    searchText, // Pass the searchText as a variable
+  });
 
   return (
     <div className="container">
@@ -42,26 +26,22 @@ export default function Search() {
         </div>
 
         <div className="d-flex flex-column">
-          {/* Turn search form into a seperate component */}
-          {/* <SearchForm /> */}
           <div className="mb-5">
-            {/** @TODO handle submit only works on button, needs to move to form */}
-            <form className="d-flex w-100" role="search">
+            <form className="d-flex w-100" >
               <input
                 className="form-control me-2"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
-                name="searchText"
+                value={searchText}
                 onChange={handleChange}
               />
-              <button
-                onSubmit={handleSubmit}
+              {/* <button
                 className="btn btn-outline-success fs-6 header"
                 type="submit"
               >
                 Search
-              </button>
+              </button> */}
             </form>
           </div>
           {data &&
