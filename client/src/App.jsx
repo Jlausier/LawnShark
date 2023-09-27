@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate, useLocation } from "react-router-dom";
 
-import { loggedIn } from "./utils/auth";
+import { loggedIn, getUserHomeLink } from "./utils/auth";
 
 import NavBar from "./components/nav/NavBar";
 import TopBar from "./components/nav/TopBar";
@@ -11,14 +11,15 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 function App() {
   const navigate = useNavigate();
+  const currentPage = useLocation().pathname;
 
   useEffect(() => {
-    if (!loggedIn()) navigate("/welcome");
-  }, [navigate]);
+    if (!loggedIn()) navigate("/Welcome");
+    else if (currentPage === "/") navigate(getUserHomeLink());
+  }, [navigate, currentPage]);
 
   return (
     <>
-      {/* TODO: create a CSS GRID or Bootstrap Grid System to arrange the divs */}
       <main className="main-height row gx-0 green">
         <div className="d-none d-sm-block col-md-3 col-lg-2 gx-0">
           <NavBar />
