@@ -3,8 +3,8 @@ import { useQuery } from "@apollo/client";
 import { QUERY_COMPANIES_FILTERED } from "../utils/queries";
 
 export default function useCompaniesSearch(variables) {
-  const { data } = useQuery(QUERY_COMPANIES_FILTERED, {
+  const { data, loading } = useQuery(QUERY_COMPANIES_FILTERED, {
     variables,
   });
-  return data;
+  return { data, loading };
 }

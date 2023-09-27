@@ -5,7 +5,6 @@ import useCompaniesSearch from "../../hooks/useCompanies";
 import Skeleton from "react-loading-skeleton";
 
 export default function Search() {
-
   const [searchOptions, setSearchOptions] = useState({
     searchText: "",
     services: [],
@@ -29,7 +28,8 @@ export default function Search() {
     setSearchOptions(formData);
   };
 
-  const companies = useCompaniesSearch(searchOptions);
+  // eslint-disable-next-line no-unused-vars
+  const { data, loading } = useCompaniesSearch(searchOptions);
 
   return (
     <div className="container">
@@ -64,11 +64,11 @@ export default function Search() {
               </button>
             </form>
           </div>
-          {companies &&
-          companies.companiesFiltered &&
-          companies.companiesFiltered.length > 0 ? (
+          {data &&
+          data.companiesFiltered &&
+          data.companiesFiltered.length > 0 ? (
             <div>
-              {companies.companiesFiltered.map((company) => (
+              {data.companiesFiltered.map((company) => (
                 <CompanyCard {...company} key={company._id} />
               ))}
             </div>
@@ -77,7 +77,10 @@ export default function Search() {
               Search results will appear here.
             </div>
           )}
-          {!companies && [1,2,3,4].map((n) => <Skeleton className={"card-body mb-3"} height={160} key={n} />)}
+          {!data &&
+            [1, 2, 3, 4].map((n) => (
+              <Skeleton className={"card-body mb-3"} height={160} key={n} />
+            ))}
         </div>
       </div>
     </div>
