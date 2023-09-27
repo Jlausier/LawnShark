@@ -6,6 +6,7 @@ import { QUERY_COMPANY } from "../../utils/queries";
 import ReviewCard from "../../components/company/ReviewCard";
 import Button from "../../components/common/Button";
 import { createLocationString } from "../../utils/dataValidation";
+import Skeleton from "react-loading-skeleton";
 
 export default function CompanyProfile() {
   const { companyId } = useParams();
@@ -37,12 +38,12 @@ export default function CompanyProfile() {
         </div>
       </div>
       <div>
-        <p>{data.company.description}</p>
+        <p>{data.company.description || <Skeleton width={200} height={60} />}</p>
       </div>
       <hr />
       <div>
         <h3 className="fs-5">Company Info</h3>
-        <p>email: {data.company.email}</p>
+        <p>email: {data.company.email || <Skeleton width={150} height={20} />}</p>
       </div>
       <hr />
       <div className="d-flex justify-content-between">
