@@ -33,33 +33,25 @@ export default function UserProfile() {
     },
   });
 
-  const { data } = useQuery(QUERY_CUSTOMER_USER, {
+  const { data, loading } = useQuery(QUERY_CUSTOMER_USER, {
     variables: { userId },
   });
 
   useEffect(() => {
-    setTimeout(() => {
+    if (data && data.customerUser) {
+      console.log(data.customerUser);
 
-      useEffect(() => {
-        if (data && data.customerUser) {
-          console.log(data.customerUser);
-    
-          setUserData((prevUserData) => ({
-            ...prevUserData,
-            ...data.customerUser,
-          }));
-    
-          setFormData((prevFormData) => ({
-            ...prevFormData,
-            ...data.customerUser,
-          }));
-        }
-      }, [data]);
+      setUserData((prevUserData) => ({
+        ...prevUserData,
+        ...data.customerUser,
+      }));
 
-    }, 2000)
-  })
-
-  
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        ...data.customerUser,
+      }));
+    }
+  }, [data]);
 
   const openModal = () => {
     setShowModal(true);
@@ -116,13 +108,14 @@ export default function UserProfile() {
             <h3 className="fs-5 body-font">Job Posting History</h3>
             <span>
               {" "}
-              Total Job Postings: {userData._customer.postings.length || <Skeleton width={25} height={20} />}{" "}
+              Total Job Postings: {userData._customer.postings.length}{" "}
             </span>
           </div>
           <div className="col">
             {userData._customer.postings.length > 0 && (
               <CustomerPostings postings={userData._customer.postings} />
             )}
+          {loading && [1,2,3].map((n) => <Skeleton className={"card-body mb-3"} height={160} key={n} />)}
           </div>
         </div>
       </div>
