@@ -102,7 +102,7 @@ const typeDefs = `
     myAcceptedBids(companyId: ID!, accepted: Boolean): [Bid]
     company(companyId: ID!): Company
     companies: [Company]
-    companiesFiltered(searchText: String!, services: [ID]!): [Company]
+    companiesFiltered(searchText: String!): [Company]
     customer(customerId: ID!): Customer
     customers: [Customer]
     customerUser(userId: ID!): CustomerUser
