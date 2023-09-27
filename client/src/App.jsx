@@ -7,6 +7,7 @@ import NavBar from "./components/nav/NavBar";
 import TopBar from "./components/nav/TopBar";
 
 import "./app.css";
+import "react-loading-skeleton/dist/skeleton.css"
 
 function App() {
   const navigate = useNavigate();

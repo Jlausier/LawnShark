@@ -5,11 +5,13 @@ import { QUERY_MY_BIDS } from "../../utils/queries";
 import useRemoveBid from "../../hooks/useRemoveBid";
 
 import CompanyBidCard from "../../components/company-view/BidCard";
+import Skeleton from "react-loading-skeleton";
 
 export default function MyBids() {
   const companyId = getUserRoleId();
 
-  const { data } = useQuery(QUERY_MY_BIDS, {
+
+  const { data, loading } = useQuery(QUERY_MY_BIDS, {
     variables: {
       companyId: companyId,
       accepted: false,
@@ -37,6 +39,8 @@ export default function MyBids() {
         ) : (
           <div className="body-font fs-4">You have not made any new bids.</div>
         )}
+
+        {loading && [1,2,3].map((n) => <Skeleton className={"card-body mb-3"} height={280} key={n} />)}
       </div>
     </div>
   );
