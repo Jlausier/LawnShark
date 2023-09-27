@@ -6,7 +6,7 @@ const teamData = [
     name: "Brian Gorman",
     role: "Back-End Development",
     github: "GormanBrian",
-    website: "https://briangorman.netlify.app/",
+    website: "none",
     linkedIn: "brian-gorman-092871289",
   },
   {
