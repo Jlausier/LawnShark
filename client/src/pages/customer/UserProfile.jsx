@@ -72,7 +72,7 @@ export default function UserProfile() {
 
   return (
     <div>
-      <div className="border p-4 rounded">
+      <div className="py-4">
         <div className="row">
           <div className="col-12 col-lg-10">
             <span>It&apos;s good to see you,</span>

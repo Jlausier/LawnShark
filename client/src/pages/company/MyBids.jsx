@@ -21,7 +21,7 @@ export default function MyBids() {
   const { removeBid } = useRemoveBid();
 
   return (
-    <div className="border p-4 rounded">
+    <div className="py-4">
       <div className="mb-5">
         <h2 className="header">My Bids</h2>
       </div>

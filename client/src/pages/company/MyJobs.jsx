@@ -18,7 +18,7 @@ export default function MyJobs() {
   console.log(data);
 
   return (
-    <div className="border p-4 rounded">
+    <div className="py-4">
       <div className="mb-5">
         <h2 className="header">My Jobs</h2>
       </div>

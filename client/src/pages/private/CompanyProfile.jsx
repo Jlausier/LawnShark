@@ -20,7 +20,7 @@ export default function CompanyProfile() {
   console.log(data);
 
   return data && data.company ? (
-    <div className="border p-4 rounded">
+    <div className="py-4">
       <div className="d-flex justify-content-between align-items-start">
         <div>
           <span>Company Profile</span>

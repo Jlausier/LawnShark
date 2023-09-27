@@ -5,7 +5,7 @@ import { notifications } from "../../utils/testData";
 export default function Notifications() {
   return (
     <div className="container">
-      <div className="border p-4 rounded">
+      <div className="py-4">
         <h2 className="header mb-5">Notifications</h2>
         <div className="d-flex flex-column border-top">
           {notifications.map((notification) => (
