@@ -2,8 +2,10 @@ import { useState } from "react";
 import CompanyCard from "../../components/company/CompanyCard";
 
 import useCompaniesSearch from "../../hooks/useCompanies";
+import Skeleton from "react-loading-skeleton";
 
 export default function Search() {
+
   const [searchOptions, setSearchOptions] = useState({
     searchText: "",
     services: [],
@@ -75,6 +77,7 @@ export default function Search() {
               Search results will appear here.
             </div>
           )}
+          {!companies && [1,2,3,4].map((n) => <Skeleton className={"card-body mb-3"} height={160} key={n} />)}
         </div>
       </div>
     </div>

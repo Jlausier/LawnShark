@@ -5,11 +5,13 @@ import { QUERY_MY_POSTINGS } from "../../utils/queries";
 
 import CustomerJobPostingCard from "../../components/customer-view/JobPostingCard";
 import NavButton from "../../components/common/NavButton";
+import Skeleton from "react-loading-skeleton";
 
 export default function JobPostings() {
+
   const customerId = getUserRoleId();
 
-  const { data } = useQuery(QUERY_MY_POSTINGS, {
+  const { data, loading } = useQuery(QUERY_MY_POSTINGS, {
     variables: {
       customerId: customerId,
     },
@@ -38,6 +40,7 @@ export default function JobPostings() {
               You have not made any new Job Postings.
             </div>
           )}
+        {loading && [1,2,3,4].map((n) => <Skeleton className={"card-body mb-3"} height={160} key={n} />)}
         </div>
       </div>
     </div>
