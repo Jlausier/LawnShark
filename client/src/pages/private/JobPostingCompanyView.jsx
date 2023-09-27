@@ -39,16 +39,16 @@ export default function JobPostingCompanyView() {
       </div>
       <hr />
       <div className="row mb-2">
-        <div className="col-1">Client:</div>
-        <div className="col-10">
+        <div className="fw-bold col-12">Client:</div>
+        <div className="col-12">
           <span>{data.companyPosting.customer.name}</span>
         </div>
       </div>
       <div className="row mb-2">
-        <div className="col-1">
+        <div className="fw-bold col-12">
           <span>Location:</span>
         </div>
-        <div className="col-10">
+        <div className="col-12">
           <span>
             {data.companyPosting.customer.location &&
               createLocationString(data.companyPosting.customer.location)}
@@ -56,14 +56,14 @@ export default function JobPostingCompanyView() {
         </div>
       </div>
       <div className="row mb-2">
-        <div className="col-1">Frequency:</div>
-        <div className="col-10">
+        <div className="fw-bold col-12">Frequency:</div>
+        <div className="col-12">
           <span>{data.companyPosting.frequency}</span>
         </div>
       </div>
       <div className="row mb-2">
-        <div className="col-1">Description:</div>
-        <div className="col-10">
+        <div className="fw-bold col-12">Description:</div>
+        <div className="col-12">
           <p>{data.companyPosting.description}</p>
         </div>
       </div>

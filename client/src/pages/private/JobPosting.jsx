@@ -57,16 +57,16 @@ export default function JobPosting() {
       </div>
       <hr />
       <div className="row mb-2">
-        <div className="col-1">Client:</div>
-        <div className="col-10">
+        <div className="fw-bold col-12">Client:</div>
+        <div className="col-12">
           <span>{data.posting.customer.name}</span>
         </div>
       </div>
       <div className="row mb-2">
-        <div className="col-1">
+        <div className="fw-bold col-12">
           <span>Location:</span>
         </div>
-        <div className="col-10">
+        <div className="col-12">
           <span>
             {data.posting.customer.location &&
               createLocationString(data.posting.customer.location)}
@@ -74,14 +74,14 @@ export default function JobPosting() {
         </div>
       </div>
       <div className="row mb-2">
-        <div className="col-1">Frequency:</div>
-        <div className="col-10">
+        <div className="fw-bold col-12">Frequency:</div>
+        <div className="col-12">
           <span>{data.posting.frequency}</span>
         </div>
       </div>
       <div className="row mb-2">
-        <div className="col-1">Description:</div>
-        <div className="col-10">
+        <div className="fw-bold col-12">Description:</div>
+        <div className="col-12">
           <p>{data.posting.description}</p>
         </div>
       </div>
