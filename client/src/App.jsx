@@ -7,7 +7,7 @@ import NavBar from "./components/nav/NavBar";
 import TopBar from "./components/nav/TopBar";
 
 import "./app.css";
-import "react-loading-skeleton/dist/skeleton.css"
+import "react-loading-skeleton/dist/skeleton.css";
 
 function App() {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ function App() {
         <div className="d-none d-sm-block col-md-3 col-lg-2 gx-0">
           <NavBar />
         </div>
-        <div className="containerClass rounded bg-light col-sm-12 col-md-9 col-lg-10 gx-0">
+        <div className="containerClass rounded-start-4 bg-light col-sm-12 col-md-9 col-lg-10 gx-0">
           <div className="row gx-0">
             <TopBar />
           </div>

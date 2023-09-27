@@ -7,6 +7,7 @@ const teamData = [
     role: "Back-End Development",
     github: "GormanBrian",
     website: "https://briangorman.netlify.app/",
+    linkedIn: "brian-gorman-092871289",
   },
   {
     imageName: "matthew.png",
@@ -14,6 +15,7 @@ const teamData = [
     role: "Front-End Development",
     github: "alfaro-matttthew",
     website: "https://www.alfaromatthew.com/",
+    linkedIn: "alfaro-matthew",
   },
   {
     imageName: "holden.jpeg",
@@ -21,13 +23,15 @@ const teamData = [
     role: "Back-End Development",
     github: "holdenmg",
     website: "https://holdengarrison.netlify.app/",
+    linkedIn: "holden-garrison-60615128b",
   },
   {
     imageName: "jacob.jpeg",
     name: "Jacob Lausier",
     role: "Front-End Development",
     github: "Jlausier",
-    website: "none",
+    website: "https://jacoblausier.netlify.app/",
+    linkedIn: "jacob-lausier-53853b282",
   },
   {
     imageName: "arnaldo.jpeg",
@@ -35,6 +39,7 @@ const teamData = [
     role: "Front-End Development",
     github: "arnald18",
     website: "none",
+    linkedIn: "arnaldo-henriquez-3a39a728b",
   },
 ];
 
