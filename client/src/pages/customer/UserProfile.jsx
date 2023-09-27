@@ -9,6 +9,7 @@ import { createLocationString } from "../../utils/dataValidation";
 import Button from "../../components/common/Button";
 import CustomerPostings from "../../components/customer-view/Postings";
 import UpdateForm from "../../components/modal/UpdateForm";
+import Skeleton from "react-loading-skeleton";
 
 export default function UserProfile() {
   const userId = getUserId();
@@ -37,20 +38,28 @@ export default function UserProfile() {
   });
 
   useEffect(() => {
-    if (data && data.customerUser) {
-      console.log(data.customerUser);
+    setTimeout(() => {
 
-      setUserData((prevUserData) => ({
-        ...prevUserData,
-        ...data.customerUser,
-      }));
+      useEffect(() => {
+        if (data && data.customerUser) {
+          console.log(data.customerUser);
+    
+          setUserData((prevUserData) => ({
+            ...prevUserData,
+            ...data.customerUser,
+          }));
+    
+          setFormData((prevFormData) => ({
+            ...prevFormData,
+            ...data.customerUser,
+          }));
+        }
+      }, [data]);
 
-      setFormData((prevFormData) => ({
-        ...prevFormData,
-        ...data.customerUser,
-      }));
-    }
-  }, [data]);
+    }, 2000)
+  })
+
+  
 
   const openModal = () => {
     setShowModal(true);
@@ -75,7 +84,7 @@ export default function UserProfile() {
         <div className="row">
           <div className="col-12 col-lg-10">
             <span>It&apos;s good to see you,</span>
-            <h2 className="header">{userData._customer.name}</h2>
+            <h2 className="header">{userData._customer.name || <Skeleton />}</h2>
           </div>
         </div>
         <hr />
@@ -91,14 +100,14 @@ export default function UserProfile() {
           <div className="col-12 col-lg-1">
             <span>email:</span>
           </div>
-          <div className="col">{userData.email}</div>
+          <div className="col">{userData.email || <Skeleton width={150} height={20} />}</div>
         </div>
         <div className="row mb-3">
           <div className="col-12 col-lg-1">
             <span>location:</span>
           </div>
           <div className="col">
-            {createLocationString(userData._customer.location)}
+            {createLocationString(userData._customer.location) || <Skeleton width={150} height={20} />}
           </div>
         </div>
         <hr />
@@ -107,7 +116,7 @@ export default function UserProfile() {
             <h3 className="fs-5 body-font">Job Posting History</h3>
             <span>
               {" "}
-              Total Job Postings: {userData._customer.postings.length}{" "}
+              Total Job Postings: {userData._customer.postings.length || <Skeleton width={25} height={20} />}{" "}
             </span>
           </div>
           <div className="col">
