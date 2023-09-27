@@ -21,10 +21,10 @@ export default function JobPostings() {
     <div>
       <div className="py-4">
         <div className=" mb-5 row">
-          <div className="col-12 col-lg-10">
+          <div className="col-12 col-lg-9">
             <h2 className="header">My Job Postings</h2>
           </div>
-          <div className=" col-12 col-lg-2 text-end">
+          <div className=" col-12 col-lg-3 text-end">
             <NavButton title={"New Job Posting"} path={"/CreateJobPosting"} />
           </div>
         </div>

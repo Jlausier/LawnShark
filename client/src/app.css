@@ -32,7 +32,7 @@
   font-family: "Rosa", serif;
 }
 
-.posting-header, 
+.secondary-header, 
 .body-font {
   font-family: "Urbanist", sans-serif;
 }
@@ -47,7 +47,7 @@
   font-size: 5rem;
 }
 
-.posting-header {
+.secondary-header {
   font-size: 3rem;
 }
 

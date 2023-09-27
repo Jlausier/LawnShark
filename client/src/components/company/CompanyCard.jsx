@@ -20,10 +20,6 @@ export default function CompanyCard({
             </LinkCard>
           </div>
           <div className="col-6 d-flex justify-content-end align-items-center">
-            {/* Make into a Link */}
-            <Link to={`/Messages/${_id}`} className="mx-2">
-              Message
-            </Link>
             <span className="mx-3 fs-6">Total Reviews: {reviewCount}</span>
             {averageRating !== -1 && (
               <span className="px-4 py-2 rounded green text-light fs-5">
