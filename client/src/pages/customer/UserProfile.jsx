@@ -9,6 +9,7 @@ import { createLocationString } from "../../utils/dataValidation";
 import Button from "../../components/common/Button";
 import CustomerPostings from "../../components/customer-view/Postings";
 import UpdateForm from "../../components/modal/UpdateForm";
+import Skeleton from "react-loading-skeleton";
 
 export default function UserProfile() {
   const userId = getUserId();
@@ -32,7 +33,7 @@ export default function UserProfile() {
     },
   });
 
-  const { data } = useQuery(QUERY_CUSTOMER_USER, {
+  const { data, loading } = useQuery(QUERY_CUSTOMER_USER, {
     variables: { userId },
   });
 
@@ -75,7 +76,7 @@ export default function UserProfile() {
         <div className="row">
           <div className="col-12 col-lg-10">
             <span>It&apos;s good to see you,</span>
-            <h2 className="header">{userData._customer.name}</h2>
+            <h2 className="header">{userData._customer.name || <Skeleton />}</h2>
           </div>
         </div>
         <hr />
@@ -91,14 +92,14 @@ export default function UserProfile() {
           <div className="col-12 col-lg-1">
             <span>email:</span>
           </div>
-          <div className="col">{userData.email}</div>
+          <div className="col">{userData.email || <Skeleton width={150} height={20} />}</div>
         </div>
         <div className="row mb-3">
           <div className="col-12 col-lg-1">
             <span>location:</span>
           </div>
           <div className="col">
-            {createLocationString(userData._customer.location)}
+            {createLocationString(userData._customer.location) || <Skeleton width={150} height={20} />}
           </div>
         </div>
         <hr />
@@ -114,6 +115,7 @@ export default function UserProfile() {
             {userData._customer.postings.length > 0 && (
               <CustomerPostings postings={userData._customer.postings} />
             )}
+          {loading && [1,2,3].map((n) => <Skeleton className={"card-body mb-3"} height={160} key={n} />)}
           </div>
         </div>
       </div>
