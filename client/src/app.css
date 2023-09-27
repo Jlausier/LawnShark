@@ -32,6 +32,7 @@
   font-family: "Rosa", serif;
 }
 
+.posting-header, 
 .body-font {
   font-family: "Urbanist", sans-serif;
 }
@@ -44,6 +45,10 @@
 .header-landing {
   color: #f8f9fa;
   font-size: 5rem;
+}
+
+.posting-header {
+  font-size: 3rem;
 }
 
 .size-sm {
