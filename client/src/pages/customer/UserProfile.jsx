@@ -76,7 +76,7 @@ export default function UserProfile() {
         <div className="row">
           <div className="col-12 col-lg-10">
             <span>It&apos;s good to see you,</span>
-            <h2 className="header">{userData._customer.name || <Skeleton />}</h2>
+            <h2 className="secondary-header">{userData._customer.name || <Skeleton />}</h2>
           </div>
         </div>
         <hr />

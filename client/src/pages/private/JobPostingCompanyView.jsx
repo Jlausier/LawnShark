@@ -23,7 +23,7 @@ export default function JobPostingCompanyView() {
     <div className="py-4">
       <div className="row">
         <div className="col-6">
-          <h2 className="posting-header">{data.companyPosting.title}</h2>
+          <h2 className="secondary-header">{data.companyPosting.title}</h2>
           <span className="px-3 py-1 border border-2 text-secondary body-font rounded-pill">
             {data.companyPosting.service.name}
           </span>

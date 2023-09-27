@@ -52,14 +52,14 @@ export default function Search() {
                 <CompanyCard {...company} key={company._id} />
               ))}
             </div>
-          ) : (
-            <div className="body-font fs-4">
-              Search results will appear here.
-            </div>
-          )}
-          {!data &&
-            [1, 2, 3, 4].map((n) => (
-              <Skeleton className={"card-body mb-3"} height={160} key={n} />
+            ) : (
+              <div className="body-font fs-4">
+                Search results will appear here.
+              </div>
+            )}
+            {!data &&
+              [1, 2, 3, 4].map((n) => (
+                <Skeleton className={"card-body mb-3"} height={160} key={n} />
             ))}
         </div>
       </div>
