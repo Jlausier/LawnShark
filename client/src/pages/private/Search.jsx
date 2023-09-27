@@ -30,6 +30,8 @@ export default function Search() {
 
   // eslint-disable-next-line no-unused-vars
   const { data, loading } = useCompaniesSearch(searchOptions);
+  console.log(searchOptions);
+  console.log(data);
 
   return (
     <div className="container">

@@ -279,10 +279,10 @@ export const QUERY_COMPANIES = gql`
     }
   }
 `;
-
+//Removed services from query for now, will reintroduce once we can add services to company
 export const QUERY_COMPANIES_FILTERED = gql`
-  query companiesFiltered($searchText: String!, $services: [ID]!) {
-    companiesFiltered(searchText: $searchText, services: $services) {
+  query companiesFiltered($searchText: String!) {
+    companiesFiltered(searchText: $searchText) {
       _id
       name
       description

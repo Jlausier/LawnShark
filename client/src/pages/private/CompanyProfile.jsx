@@ -17,6 +17,7 @@ export default function CompanyProfile() {
   const openModal = () => {
     alert("Open Modal");
   };
+  console.log(data);
 
   return data && data.company ? (
     <div className="border p-4 rounded">
@@ -43,7 +44,7 @@ export default function CompanyProfile() {
       <hr />
       <div>
         <h3 className="fs-5">Company Info</h3>
-        <p>email: {data.company.email || <Skeleton width={150} height={20} />}</p>
+        {/* <p>email: {data.company.email || <Skeleton width={150} height={20} />}</p> */}
       </div>
       <hr />
       <div className="d-flex justify-content-between">
